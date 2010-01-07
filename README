@@ -1,2 +1,7 @@
 yarn - Yet Another Random Number
 My first attempt at a java-based numerical library.
+
+Main points:
+- The project is written in Java using NetBeans 6.8.
+- A unit tests will be added using JUnit 4.5, available from within NetBeans 6.8.
+- Documentation will be written using JavaDoc from withing NetBeans 6.8
