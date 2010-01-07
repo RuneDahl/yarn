@@ -4,4 +4,11 @@ My first attempt at a java-based numerical library.
 Main points:
 - The project is written in Java using NetBeans 6.8.
 - A unit tests will be added using JUnit 4.5, available from within NetBeans 6.8.
-- Documentation will be written using JavaDoc from withing NetBeans 6.8
+- Documentation will be written using JavaDoc from within NetBeans 6.8.
+
+Declaration of intent:
+- The project is mainly a learning-space for me for the following:
+    - Mathematics and Numerics.
+    - Application of Design Patterns (see GoF-book) to mathematics and numerics.
+    - Programming Principles.
+    - Test-Driven Development.
