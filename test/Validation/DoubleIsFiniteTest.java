@@ -12,15 +12,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test of the DoubleIsNotNull class.
+ * Test of the DoubleIsFinite class.
  * @author Rune Dahl Iversen
  */
-public class DoubleIsNotNullTest {
+public class DoubleIsFiniteTest {
     private ValidatorTest<Double> _tester;
-    private DoubleIsNotNull _instance;
+    private DoubleIsFinite _instance;
     private Double[] _values;
 
-    public DoubleIsNotNullTest() {
+    public DoubleIsFiniteTest() {
     }
 
     @BeforeClass
@@ -34,7 +34,7 @@ public class DoubleIsNotNullTest {
     @Before
     public void setUp() {
         this._tester = new ValidatorTest<Double>();
-        this._instance = new DoubleIsNotNull();
+        this._instance = new DoubleIsFinite();
         this._values = new Double[7];
         this._values[0] = Double.NEGATIVE_INFINITY;
         this._values[1] = -1.0;
@@ -53,13 +53,14 @@ public class DoubleIsNotNullTest {
     }
 
     /**
-     * Test of Message method, of class DoubleIsNotNull.
+     * Test of Message method, of class DoubleIsNumeric.
      */
     @Test
     public void testMessage() {
-        System.out.println("Testing DoubleIsNotNull.Message(...).");
+        System.out.println("Testing DoubleIsFinite.Message(...).");
         this._tester.testMessage(this._instance, this._values[0],
-                Double.toString(this._values[0]), "");
+                Double.toString(this._values[0]),
+                "-Infinity is not finite.");
         this._tester.testMessage(this._instance, this._values[1],
                 Double.toString(this._values[1]), "");
         this._tester.testMessage(this._instance, this._values[2],
@@ -67,24 +68,25 @@ public class DoubleIsNotNullTest {
         this._tester.testMessage(this._instance, this._values[3],
                 Double.toString(this._values[3]), "");
         this._tester.testMessage(this._instance, this._values[4],
-                Double.toString(this._values[4]), "");
+                Double.toString(this._values[4]),
+                "Infinity is not finite.");
         this._tester.testMessage(this._instance, this._values[5],
                 Double.toString(this._values[5]), "");
         this._tester.testMessage(this._instance, this._values[6],
-                "null", "null is null.");
+                "null", "null is not finite.");
     }
 
     /**
-     * Test of Validate method, of class DoubleIsNotNull.
+     * Test of Validate method, of class DoubleIsNumeric.
      */
     @Test
     public void testValidate() {
-        System.out.println("Testing DoubleIsNotNull.Validate(...)");
-        this._tester.testValidate(this._instance, this._values[0], true);
+        System.out.println("Testing DoubleIsFinite.Validate(...)");
+        this._tester.testValidate(this._instance, this._values[0], false);
         this._tester.testValidate(this._instance, this._values[1], true);
         this._tester.testValidate(this._instance, this._values[2], true);
         this._tester.testValidate(this._instance, this._values[3], true);
-        this._tester.testValidate(this._instance, this._values[4], true);
+        this._tester.testValidate(this._instance, this._values[4], false);
         this._tester.testValidate(this._instance, this._values[5], true);
         this._tester.testValidate(this._instance, this._values[6], false);
     }

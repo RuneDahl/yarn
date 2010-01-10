@@ -58,13 +58,21 @@ public class DoubleIsNumericTest {
     @Test
     public void testMessage() {
         System.out.println("Testing DoubleIsNumeric.Message(...).");
-        this._tester.testMessage(this._instance, this._values[0], "0", "");
-        this._tester.testMessage(this._instance, this._values[1], "1", "");
-        this._tester.testMessage(this._instance, this._values[2], "2", "");
-        this._tester.testMessage(this._instance, this._values[3], "3", "");
-        this._tester.testMessage(this._instance, this._values[4], "4", "");
-        this._tester.testMessage(this._instance, this._values[5], "5",
-                "5 is not a number (Double.NaN).");
+        this._tester.testMessage(this._instance, this._values[0],
+                Double.toString(this._values[0]), "");
+        this._tester.testMessage(this._instance, this._values[1],
+                Double.toString(this._values[1]), "");
+        this._tester.testMessage(this._instance, this._values[2],
+                Double.toString(this._values[2]), "");
+        this._tester.testMessage(this._instance, this._values[3],
+                Double.toString(this._values[3]), "");
+        this._tester.testMessage(this._instance, this._values[4],
+                Double.toString(this._values[4]), "");
+        this._tester.testMessage(this._instance, this._values[5],
+                Double.toString(this._values[5]),
+                "NaN is not a number (Double.NaN).");
+        this._tester.testMessage(this._instance, this._values[6],
+                "null", "null is not a number (Double.NaN).");
     }
 
     /**
@@ -79,13 +87,6 @@ public class DoubleIsNumericTest {
         this._tester.testValidate(this._instance, this._values[3], true);
         this._tester.testValidate(this._instance, this._values[4], true);
         this._tester.testValidate(this._instance, this._values[5], false);
-    }
-
-    /**
-     * Test of Validate method, of class DoubleIsNumeric for a null value.
-     */
-    @Test(expected=NullPointerException.class)
-    public void testValidateNullValueCausesNullPointerException() {
         this._tester.testValidate(this._instance, this._values[6], false);
     }
 }

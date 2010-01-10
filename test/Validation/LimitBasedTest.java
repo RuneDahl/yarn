@@ -18,7 +18,6 @@ import static org.junit.Assert.*;
  * @param <TypeOfValue> Type of Value.
  */
 public class LimitBasedTest<TypeOfValue> {
-
     public LimitBasedTest() {
     }
 
@@ -40,11 +39,11 @@ public class LimitBasedTest<TypeOfValue> {
 
     /**
      * Test of getLimit method, of a LimitBased validator.
+     * @param validator     Validator.
+     * @param expectedValue Expected limit value.
      */
     public void testGetLimit(LimitBased<TypeOfValue> validator,
             TypeOfValue expectedValue) {
-        //System.out.println("Testing " + validator.getClass().getName() +
-        //        ".getLimit().");
         TypeOfValue result = validator.getLimit();
         assertEquals(expectedValue, result);
     }
@@ -56,8 +55,6 @@ public class LimitBasedTest<TypeOfValue> {
      */
     public void testSetLimit(LimitBased<TypeOfValue> validator,
             TypeOfValue newLimit) {
-        //System.out.println("Testing " + validator.getClass().getName() +
-        //        ".setLimit(" + newLimit.getClass().getName() +").");
         validator.setLimit(newLimit);
         assertEquals(newLimit, validator.getLimit());
     }

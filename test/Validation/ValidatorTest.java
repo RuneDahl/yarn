@@ -18,7 +18,6 @@ import static org.junit.Assert.*;
  * @param <TypeOfValue> Type of value.
  */
 public class ValidatorTest<TypeOfValue> {
-
     public ValidatorTest() {
     }
 
