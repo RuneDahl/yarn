@@ -16,7 +16,7 @@ public interface Validator<TypeOfValue> {
      * @param value Value.
      * @return      True if the value satisfies this validator else false.
      */
-    public boolean Validate(TypeOfValue value);
+    public boolean Validate(final TypeOfValue value);
 
     /**
      * Messages from the validation of the specified value.
@@ -25,5 +25,5 @@ public interface Validator<TypeOfValue> {
      * @return      Message of how this value fails this validator.
      *              Empty string if it does satisfy the validator.
      */
-    public String Message(TypeOfValue value, String name);
+    public String Message(final TypeOfValue value, final String name);
 }

@@ -12,7 +12,7 @@ import java.util.Collection;
  *
  * @author Rune Dahl Iversen
  */
-public class Or<TypeOfValue>
+public final class Or<TypeOfValue>
         extends ArrayList<Validator<TypeOfValue>>
         implements Validator<TypeOfValue> {
 
@@ -24,7 +24,7 @@ public class Or<TypeOfValue>
         super(c);
     }
 
-    public String Message(TypeOfValue value, String name) {
+    public String Message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder();
         if (this.Validate(value))
             return messages.toString();
@@ -36,7 +36,7 @@ public class Or<TypeOfValue>
         return messages.toString();
     }
 
-    public boolean Validate(TypeOfValue value) {
+    public boolean Validate(final TypeOfValue value) {
         for (Validator<TypeOfValue> validator : this)
             if (validator.Validate(value))
                 return true;

@@ -9,13 +9,13 @@ package Validation;
  *
  * @author Rune Dahl Iversen
  */
-public class DoubleLessThan extends LimitBased<Double> {
+public final class DoubleLessThan extends LimitBased<Double> {
 
-    public DoubleLessThan(double limit) {
+    public DoubleLessThan(final double limit) {
         super(limit);
     }
 
-    public String Message(Double value, String name) {
+    public String Message(final Double value, final String name) {
         if (this.Validate(value))
             return "";
         else
@@ -23,7 +23,7 @@ public class DoubleLessThan extends LimitBased<Double> {
                     Double.toString(this.getLimit()) + ".";
     }
 
-    public boolean Validate(Double value) {
+    public boolean Validate(final Double value) {
         return (value < this.getLimit());
     }
 }

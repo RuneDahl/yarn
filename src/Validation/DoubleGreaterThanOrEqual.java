@@ -9,13 +9,12 @@ package Validation;
  * 
  * @author Rune Dahl Iversen
  */
-public class DoubleGreaterThanOrEqual extends LimitBased<Double>  {
-
-    public DoubleGreaterThanOrEqual(double limit) {
+public final class DoubleGreaterThanOrEqual extends LimitBased<Double>  {
+    public DoubleGreaterThanOrEqual(final double limit) {
         super(limit);
     }
 
-    public String Message(Double value, String name) {
+    public String Message(final Double value, final String name) {
         if (this.Validate(value))
             return "";
         else
@@ -23,7 +22,7 @@ public class DoubleGreaterThanOrEqual extends LimitBased<Double>  {
                     Double.toString(this.getLimit()) + ".";
     }
 
-    public boolean Validate(Double value) {
+    public boolean Validate(final Double value) {
         return (this.getLimit() <= value);
     }
 }

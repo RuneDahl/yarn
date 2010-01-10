@@ -16,7 +16,6 @@ import java.util.Collection;
 public final class And<TypeOfValue>
         extends ArrayList<Validator<TypeOfValue>>
         implements Validator<TypeOfValue> {
-
     public And() {
         super();
     }
@@ -25,7 +24,7 @@ public final class And<TypeOfValue>
         super(c);
     }
 
-    public String Message(TypeOfValue value, String name) {
+    public String Message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder();
         for (Validator<TypeOfValue> validator : this)
             if (!validator.Validate(value))
@@ -35,7 +34,7 @@ public final class And<TypeOfValue>
         return messages.toString();
     }
 
-    public boolean Validate(TypeOfValue value) {
+    public boolean Validate(final TypeOfValue value) {
         for (Validator<TypeOfValue> validator : this)
             if (!validator.Validate(value))
                 return false;
