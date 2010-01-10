@@ -7,6 +7,9 @@ package Validation;
 
 /**
  * Interface for a validator.
+ * The declaration of this interface allows all validation of values to
+ * be implemented using the design pattern Strategy.
+ * Further it allows the design pattern Composite.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */

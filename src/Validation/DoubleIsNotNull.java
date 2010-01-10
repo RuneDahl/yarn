@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- *
+ * Validator of doubles not allowing the value null.
  * @author Rune Dahl Iversen
  */
 public class DoubleIsNotNull implements Validator<Double> {

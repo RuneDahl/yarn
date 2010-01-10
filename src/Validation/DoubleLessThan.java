@@ -6,10 +6,13 @@
 package Validation;
 
 /**
- *
+ * Validator allowing doubles less than the limit.
  * @author Rune Dahl Iversen
  */
 public final class DoubleLessThan extends LimitBased<Double> {
+    public DoubleLessThan() {
+        super(0.0);
+    }
 
     public DoubleLessThan(final double limit) {
         super(limit);
@@ -24,6 +27,6 @@ public final class DoubleLessThan extends LimitBased<Double> {
     }
 
     public boolean Validate(final Double value) {
-        return (value < this.getLimit());
+        return (value != null && value < this.getLimit());
     }
 }

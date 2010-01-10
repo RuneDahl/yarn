@@ -6,7 +6,8 @@
 package Validation;
 
 /**
- *
+ * Validator of doubles only allowing finite values.
+ * so Double.POSITIVE_INFINITY and Double.NEGATIVE_INFINITY are not allowed.
  * @author Rune Dahl Iversen
  */
 public final class DoubleIsFinite implements Validator<Double> {
@@ -21,6 +22,6 @@ public final class DoubleIsFinite implements Validator<Double> {
     }
 
     public boolean Validate(final Double value) {
-        return !Double.isInfinite(value);
+        return value != null && !Double.isInfinite(value);
     }
 }

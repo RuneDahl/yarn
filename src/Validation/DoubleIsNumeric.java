@@ -6,7 +6,8 @@
 package Validation;
 
 /**
- *
+ * Validator of doubles only allowing numeric doubles.
+ * That is Double.NaN is not allowed.
  * @author Rune Dahl Iversen
  */
 public final class DoubleIsNumeric implements Validator<Double> {
@@ -21,6 +22,6 @@ public final class DoubleIsNumeric implements Validator<Double> {
     }
 
     public boolean Validate(final Double value) {
-        return !Double.isNaN(value);
+        return value != null && !Double.isNaN(value);
     }
 }

@@ -6,9 +6,10 @@
 package Validation;
 
 /**
- *
+ * Abstract class to allow easy implementation of validators
+ * with a limit i.e. 'GreaterThan X' or 'LessThan Z'.
  * @author Rune Dahl Iversen
- * @param <TypeOfValue> TypeOfValue
+ * @param <TypeOfValue> Type of value
  */
 public abstract class LimitBased<TypeOfValue> implements Validator<TypeOfValue> {
     private TypeOfValue _limit;

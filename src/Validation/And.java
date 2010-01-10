@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *
+ * Composition of validators using logical And.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
@@ -25,12 +25,16 @@ public final class And<TypeOfValue>
     }
 
     public String Message(final TypeOfValue value, final String name) {
-        StringBuilder messages = new StringBuilder();
+        StringBuilder messages = new StringBuilder("(");
         for (Validator<TypeOfValue> validator : this)
             if (!validator.Validate(value))
                 messages.append(validator.Message(value, name) + " && ");
-        if (0 < messages.length())
+        if (1 < messages.length()) {
             messages.delete(messages.length() - 5, messages.length());
+            messages.append(")");
+        }
+        else
+            messages = new StringBuilder();
         return messages.toString();
     }
 

@@ -6,10 +6,14 @@
 package Validation;
 
 /**
- * 
+ * Validator allowing doubles greater than or equal to the limit.
  * @author Rune Dahl Iversen
  */
 public final class DoubleGreaterThanOrEqual extends LimitBased<Double>  {
+    public DoubleGreaterThanOrEqual() {
+        super(0.0);
+    }
+
     public DoubleGreaterThanOrEqual(final double limit) {
         super(limit);
     }
@@ -23,6 +27,6 @@ public final class DoubleGreaterThanOrEqual extends LimitBased<Double>  {
     }
 
     public boolean Validate(final Double value) {
-        return (this.getLimit() <= value);
+        return (value != null && this.getLimit() <= value);
     }
 }
