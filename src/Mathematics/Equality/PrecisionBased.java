@@ -8,8 +8,10 @@ package Mathematics.Equality;
 import Validation.*;
 
 /**
- *
+ * An implementation allowing easy implementation of precision-based
+ * equality-comparers through inheritance.
  * @author Rune Dahl Iversen
+ * @param <TypeOfValue> Type of value.
  */
 public abstract class PrecisionBased<TypeOfValue>
         implements Equals<TypeOfValue> {
@@ -18,11 +20,19 @@ public abstract class PrecisionBased<TypeOfValue>
 
     /**
      * Creates an instance of a PrecisionBased equality-comparer
+     * with the default precision of 0.
+     */
+    protected PrecisionBased() {
+        this(0.0);
+    }
+
+    /**
+     * Creates an instance of a PrecisionBased equality-comparer
      * with the specified required precision.
      * @param precision The precision.
      *                  Must be a non-negative, finite number.
      */
-    protected PrecisionBased(double precision) {
+    protected PrecisionBased(final double precision) {
         Validation.And<Double> validator = new Validation.And<Double>();
         validator.add(new DoubleIsNumeric());
         validator.add(new DoubleIsFinite());
@@ -36,7 +46,7 @@ public abstract class PrecisionBased<TypeOfValue>
      * Gets the required precision of this equality-comparer.
      * @return The required precision.
      */
-    public double getPrecision() {
+    public final double getPrecision() {
         return _precision;
     }
 
@@ -46,7 +56,7 @@ public abstract class PrecisionBased<TypeOfValue>
      * @param precision The desired precision.
      *                  Must be a non-negative, finite number.
      */
-    public void setPrecision(double precision) {
+    public final void setPrecision(final double precision) {
         if (this._precisionValidator.Validate(precision))
             this._precision = precision;
         else
