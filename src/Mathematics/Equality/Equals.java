@@ -11,6 +11,7 @@ package Mathematics.Equality;
  * be implemented using the design pattern Strategy.
  * Further it allows the design pattern Composite.
  * @author Rune Dahl Iversen
+ * @param <TypeOfValue> Type of value.
  */
 public interface Equals<TypeOfValue> {
     /**
@@ -19,5 +20,5 @@ public interface Equals<TypeOfValue> {
      * @param b Value.
      * @return  True if the 2 values are equal, else false.
      */
-    public boolean Equal(TypeOfValue a, TypeOfValue b);
+    public boolean Equal(final TypeOfValue a, final TypeOfValue b);
 }
