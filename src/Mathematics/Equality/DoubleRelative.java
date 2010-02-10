@@ -6,7 +6,8 @@
 package Mathematics.Equality;
 
 /**
- *
+ * Comparison of double values using the absolute value of the difference
+ * relative to the maximum of the absolute values.
  * @author Rune Dahl Iversen
  */
 public class DoubleRelative extends PrecisionBased<Double> {
