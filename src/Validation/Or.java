@@ -9,26 +9,34 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Composition of validators using logical Or.
+ * Composition of {@see Validator} using logical Or.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
 public final class Or<TypeOfValue>
         extends ArrayList<Validator<TypeOfValue>>
         implements Validator<TypeOfValue> {
-
+    /**
+     * Create an empty logical Or composition of {@see Validator}.
+     */
     public Or() {
         super();
     }
 
+    /**
+     * Create a logical Or composition of {@see Validator} with
+     * the specified collection of validators in.
+     * @param c Collection of validators.
+     */
     public Or(Collection<? extends Validator<TypeOfValue>> c) {
         super(c);
     }
 
     public String Message(final TypeOfValue value, final String name) {
-        StringBuilder messages = new StringBuilder("(");
+        StringBuilder messages = new StringBuilder();
         if (this.Validate(value))
             return messages.toString();
+        messages.append("(");
         for (Validator<TypeOfValue> validator : this)
             if (!validator.Validate(value))
                 messages.append(validator.Message(value, name) + " || ");
@@ -43,6 +51,8 @@ public final class Or<TypeOfValue>
     }
 
     public boolean Validate(final TypeOfValue value) {
+        if (this.isEmpty())
+            return true;
         for (Validator<TypeOfValue> validator : this)
             if (validator.Validate(value))
                 return true;
