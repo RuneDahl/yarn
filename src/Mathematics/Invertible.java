@@ -6,7 +6,9 @@
 package Mathematics;
 
 /**
- * Interface for a invertible class.
+ * Interface for an
+ * <a href="http://en.wikipedia.org/wiki/Inverse_element#Real_numbers">
+ * invertible</a> class.
  * This interface should only be implemented on classes that are
  * invertible in a simple and unique way.
  * @author Rune Dahl Iversen
@@ -15,7 +17,9 @@ package Mathematics;
  */
 public interface Invertible<TypeOfOutput> {
     /**
-     * Returns the inverse value of the current instance.
+     * Returns the
+     * <a href="http://en.wikipedia.org/wiki/Inverse_element#Real_numbers">
+     * inverse</a> value of this value.
      * @return The inverse value.
      */
     public TypeOfOutput Inverse();
