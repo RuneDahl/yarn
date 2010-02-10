@@ -6,22 +6,29 @@
 package Mathematics;
 
 /**
- * Interface for a multiplicative class.
+ * Interface for a
+ * <a href="http://en.wikipedia.org/wiki/Multiplication">multiplicative</a>
+ * class.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
 public interface Multiplicative<TypeOfValue> {
     /**
-     * Computes the division of this value by the specified denominator.
+     * Computes the
+     * <a href="http://en.wikipedia.org/wiki/Division_%28mathematics%29">division</a>
+     * of this value by the specified
+     * <a href="http://en.wikipedia.org/wiki/Denominator">denominator</a>.
      * @param denominator Denominator.
      * @return            Divided value.
      */
     public TypeOfValue Divide(final TypeOfValue denominator);
 
     /**
-     * Computes the product of this value and the specified factor.
+     * Computes the
+     * <a href="http://en.wikipedia.org/wiki/Multiplication">product</a>
+     * of this value and the specified factor.
      * @param factor Factor.
-     * @return       Product.
+     * @return       The product.
      */
     public TypeOfValue Multiply(final TypeOfValue factor);
 }
