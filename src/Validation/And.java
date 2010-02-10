@@ -9,17 +9,25 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Composition of validators using logical And.
+ * Composition of {@see Validator} using logical And.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
 public final class And<TypeOfValue>
         extends ArrayList<Validator<TypeOfValue>>
         implements Validator<TypeOfValue> {
+    /**
+     * Create an empty logical And composition of {@see Validator}.
+     */
     public And() {
         super();
     }
 
+    /**
+     * Create a logical And composition of {@see Validator} with
+     * the specified collection of validators in.
+     * @param c Collection of validators.
+     */
     public And(Collection<? extends Validator<TypeOfValue>> c) {
         super(c);
     }
