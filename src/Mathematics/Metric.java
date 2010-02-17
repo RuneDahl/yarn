@@ -6,7 +6,7 @@
 package Mathematics;
 
 /**
- * Interface for a mathematical
+ * Interface for a
  * <a href="http://en.wikipedia.org/wiki/Metric_%28mathematics%29">metric</a>.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
