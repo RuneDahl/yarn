@@ -31,6 +31,8 @@ public abstract class PrecisionBased<TypeOfValue>
      * with the specified required precision.
      * @param precision The precision.
      *                  Must be a non-negative, finite number.
+     * @throws IllegalArgumentException Precision is not a
+     *                                  non-negative finite number.
      */
     protected PrecisionBased(final double precision) {
         Validation.And<Double> validator = new Validation.And<Double>();
@@ -55,6 +57,8 @@ public abstract class PrecisionBased<TypeOfValue>
      * to the specified value.
      * @param precision The desired precision.
      *                  Must be a non-negative, finite number.
+     * @throws IllegalArgumentException Precision is not a
+     *                                  non-negative finite number.
      */
     public final void setPrecision(final double precision) {
         if (this._precisionValidator.Validate(precision))
