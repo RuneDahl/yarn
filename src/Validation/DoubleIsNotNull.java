@@ -6,21 +6,22 @@
 package Validation;
 
 /**
- * Validator of doubles not allowing the value null.
+ * Validator not allowing the value null.
  * @author Rune Dahl Iversen
+ * @param TypeOfValue Type of value.
  */
-public class DoubleIsNotNull implements Validator<Double> {
-    public DoubleIsNotNull() {
+public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
+    public NotNull() {
     }
 
-    public String Message(Double value, String name) {
+    public String Message(final TypeOfValue value, final String name) {
         if (this.Validate(value))
             return "";
         else
             return name + " is null.";
     }
 
-    public boolean Validate(Double value) {
+    public boolean Validate(final TypeOfValue value) {
         return value != null;
     }
 }
