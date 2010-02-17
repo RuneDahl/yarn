@@ -20,7 +20,7 @@ import Validation.*;
 public abstract class NormBased<TypeOfValue>
         extends PrecisionBased<TypeOfValue> {
     private Validator<Norm<TypeOfValue>> _normValidator =
-            new DoubleIsNotNull<Norm<TypeOfValue>>();
+            new NotNull<Norm<TypeOfValue>>();
     private Norm<TypeOfValue> _norm;
 
     /**
