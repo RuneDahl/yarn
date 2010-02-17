@@ -9,9 +9,9 @@ import Mathematics.Additive;
 import Mathematics.Norm;
 
 /**
- * Implementation of an {@see Mathematics.Norm}-based comparison of
- * {@see Mathematics.Additive} values considering the value of the
- * norm realtive to the specified precision
+ * Implementation of an {@see Mathematics.Norm norm}-based comparison of
+ * {@see Mathematics.Additive additive} values considering the norm of the
+ * difference relative to the specified precision.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
@@ -28,7 +28,7 @@ public class NormAbsolute<TypeOfValue> extends NormBased<TypeOfValue> {
 
     public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
         if (a == null)
-            throw new NullPointerException("a is null.");
+            throw new NullPointerException("The value a is null.");
         else if (b == null)
             throw new NullPointerException("The value b is null.");
         else if (a instanceof Additive) {
