@@ -6,7 +6,7 @@
 package Mathematics;
 
 /**
- * Interface of a
+ * Interface for a
  * <a href="http://en.wikipedia.org/wiki/Function_%28mathematics%29">function</a>.
  * @author Rune Dahl Iversen
  * @param <TypeOfInput>  Type of input.
