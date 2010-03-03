@@ -39,6 +39,10 @@ public class EqualsTest<TypeOfValue> {
 
     /**
      * Test of Equal method, of interface Equals(TypeOfValue).
+     * @param equals         Instance of Equals class to test.
+     * @param a              First value.
+     * @param b              Second value.
+     * @param expectedResult Expected result.
      */
     public void testEqual(final Equals<TypeOfValue> equals,
             final TypeOfValue a,
