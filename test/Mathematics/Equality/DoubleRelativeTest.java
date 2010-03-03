@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Test of the class Mathematics.Equality.DoubleAbsolute.
+ * Test of the class Mathematics.Equality.DoubleRelative.
  * @author Rune Dahl Iversen
  */
 public class DoubleRelativeTest {
@@ -84,7 +84,7 @@ public class DoubleRelativeTest {
     }
 
     /**
-     * Test of Equal method, of class DoubleAbsolute.
+     * Test of Equal method, of class DoubleRelative.
      */
     @Test
     public void testEqual() {
