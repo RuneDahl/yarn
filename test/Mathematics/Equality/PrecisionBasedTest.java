@@ -39,6 +39,8 @@ public class PrecisionBasedTest<TypeOfValue> {
 
     /**
      * Test of getPrecision method, of class PrecisionBased.
+     * @param equals         Instance of PrecisionBased to test.
+     * @param expectedResult Expected result.
      */
     public void testGetPrecision(final PrecisionBased<TypeOfValue> equals,
             final double expectedResult) {
@@ -47,6 +49,8 @@ public class PrecisionBasedTest<TypeOfValue> {
 
     /**
      * Test of setPrecision method, of class PrecisionBased.
+     * @param equals       Instance of PrecisionBased to test.
+     * @param newPrecision New value to set as precision.
      */
     public void testSetPrecision(final PrecisionBased<TypeOfValue> equals,
             final double newPrecision) {
