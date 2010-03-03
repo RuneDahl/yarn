@@ -17,7 +17,8 @@ package Mathematics.Equality;
  */
 public interface Equals<TypeOfValue> {
     /**
-     * Determines if the 2 specified values can be considered equal.
+     * Determines if the 2 specified values can be considered equal
+     * according to this equals-operator.
      * @param a Value.
      * @param b Value.
      * @return  True if the 2 values are equal, else false.

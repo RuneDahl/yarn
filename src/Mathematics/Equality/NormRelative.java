@@ -23,7 +23,7 @@ public class NormRelative<TypeOfValue> extends NormBased<TypeOfValue> {
      * @param precision The precision.
      * @param norm      The norm.
      */
-    public NormRelative(double precision, Norm<TypeOfValue> norm) {
+    public NormRelative(final double precision, final Norm<TypeOfValue> norm) {
         super(precision, norm);
     }
 

@@ -22,7 +22,7 @@ public class NormAbsolute<TypeOfValue> extends NormBased<TypeOfValue> {
      * @param precision The precision.
      * @param norm      The norm.
      */
-    public NormAbsolute(double precision, Norm<TypeOfValue> norm) {
+    public NormAbsolute(final double precision, final Norm<TypeOfValue> norm) {
         super(precision, norm);
     }
 

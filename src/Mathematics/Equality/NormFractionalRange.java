@@ -23,7 +23,8 @@ public class NormFractionalRange<TypeOfValue> extends NormBased<TypeOfValue> {
      * @param precision The precision.
      * @param norm      The norm.
      */
-    public NormFractionalRange(double precision, Norm<TypeOfValue> norm) {
+    public NormFractionalRange(final double precision,
+            final Norm<TypeOfValue> norm) {
         super(precision, norm);
     }
 
