@@ -43,7 +43,6 @@ public class NormBasedTest<TypeOfValue> {
      * @param equals         Instance of NormBased to test.
      * @param expectedResult Expected result..
      */
-    @Test
     public void testGetNorm(final NormBased<TypeOfValue> equals,
             final Norm<TypeOfValue> expectedResult) {
         assertEquals(expectedResult, equals.getNorm());
@@ -54,7 +53,6 @@ public class NormBasedTest<TypeOfValue> {
      * @param equals  Instance of NormBased to test.
      * @param newNorm New Norm to set.
      */
-    @Test
     public void testSetNorm(final NormBased<TypeOfValue> equals,
             final Norm<TypeOfValue> newNorm) {
         equals.setNorm(newNorm);
