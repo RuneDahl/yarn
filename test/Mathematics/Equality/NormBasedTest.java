@@ -5,7 +5,7 @@
 
 package Mathematics.Equality;
 
-import Mathematics.Norm;
+import Mathematics.Norm.Norm;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
