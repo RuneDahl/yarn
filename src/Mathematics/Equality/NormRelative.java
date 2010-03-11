@@ -6,7 +6,7 @@
 package Mathematics.Equality;
 
 import Mathematics.Additive;
-import Mathematics.Norm;
+import Mathematics.Norm.Norm;
 
 /**
  * Implementation of an {@see Mathematics.Norm}-based comparison of
