@@ -11,17 +11,20 @@ package Validation;
  * @param TypeOfValue Type of value.
  */
 public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
+    /**
+     * Create an instance of a validator not allowing the value null.
+     */
     public NotNull() {
     }
 
     public String Message(final TypeOfValue value, final String name) {
-        if (this.Validate(value))
+        if (this.isValid(value))
             return "";
         else
             return name + " is null.";
     }
 
-    public boolean Validate(final TypeOfValue value) {
+    public boolean isValid(final TypeOfValue value) {
         return value != null;
     }
 }
