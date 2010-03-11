@@ -35,7 +35,7 @@ public final class And<TypeOfValue>
     public String Message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder("(");
         for (Validator<TypeOfValue> validator : this)
-            if (!validator.Validate(value))
+            if (!validator.isValid(value))
                 messages.append(validator.Message(value, name) + " && ");
         if (1 < messages.length()) {
             messages.delete(messages.length() - 5, messages.length());
@@ -46,9 +46,9 @@ public final class And<TypeOfValue>
         return messages.toString();
     }
 
-    public boolean Validate(final TypeOfValue value) {
+    public boolean isValid(final TypeOfValue value) {
         for (Validator<TypeOfValue> validator : this)
-            if (!validator.Validate(value))
+            if (!validator.isValid(value))
                 return false;
         return true;
     }
