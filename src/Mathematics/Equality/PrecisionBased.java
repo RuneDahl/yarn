@@ -61,7 +61,7 @@ public abstract class PrecisionBased<TypeOfValue>
      *                                  non-negative finite number.
      */
     public final void setPrecision(final double precision) {
-        if (this._precisionValidator.Validate(precision))
+        if (this._precisionValidator.isValid(precision))
             this._precision = precision;
         else
             throw new IllegalArgumentException(
