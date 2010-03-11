@@ -34,11 +34,11 @@ public final class Or<TypeOfValue>
 
     public String Message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder();
-        if (this.Validate(value))
+        if (this.isValid(value))
             return messages.toString();
         messages.append("(");
         for (Validator<TypeOfValue> validator : this)
-            if (!validator.Validate(value))
+            if (!validator.isValid(value))
                 messages.append(validator.Message(value, name) + " || ");
         if (1 < messages.length())
         {
@@ -50,11 +50,11 @@ public final class Or<TypeOfValue>
         return messages.toString();
     }
 
-    public boolean Validate(final TypeOfValue value) {
+    public boolean isValid(final TypeOfValue value) {
         if (this.isEmpty())
             return true;
         for (Validator<TypeOfValue> validator : this)
-            if (validator.Validate(value))
+            if (validator.isValid(value))
                 return true;
         return false;
     }
