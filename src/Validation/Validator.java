@@ -15,11 +15,11 @@ package Validation;
  */
 public interface Validator<TypeOfValue> {
     /**
-     * Validate the specified value.
+     * Returns whether the specified value is valid.
      * @param value Value.
      * @return      True if the value satisfies this validator else false.
      */
-    public boolean Validate(final TypeOfValue value);
+    public boolean isValid(final TypeOfValue value);
 
     /**
      * Messages from the validation of the specified value.
