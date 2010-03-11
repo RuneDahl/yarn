@@ -6,7 +6,7 @@
 package Mathematics.Equality;
 
 import Mathematics.Additive;
-import Mathematics.Norm;
+import Mathematics.Norm.Norm;
 import Validation.*;
 
 /**
@@ -52,7 +52,7 @@ public abstract class NormBased<TypeOfValue>
      * @throws NullPointerException Norm is null.
      */
     public void setNorm(final Norm<TypeOfValue> norm) {
-        if (!this._normValidator.Validate(norm))
+        if (!this._normValidator.isValid(norm))
             throw new NullPointerException(
                     this._normValidator.Message(norm, "Norm"));
         this._norm = norm;
