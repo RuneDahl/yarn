@@ -11,17 +11,21 @@ package Validation;
  * @author Rune Dahl Iversen
  */
 public final class DoubleIsNumeric implements Validator<Double> {
+    /**
+     * Create an instance of a double validator requiring numeric values,
+     * i.e. disallowing Double.NaN.
+     */
     public DoubleIsNumeric() {
     }
 
     public String Message(final Double value, final String name) {
-        if (this.Validate(value))
+        if (this.isValid(value))
             return "";
         else
             return name + " is not a number (Double.NaN).";
     }
 
-    public boolean Validate(final Double value) {
+    public boolean isValid(final Double value) {
         return value != null && !Double.isNaN(value);
     }
 }
