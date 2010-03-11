@@ -38,13 +38,13 @@ public class ValidatorTest<TypeOfValue> {
     }
 
     /**
-     * Test of Validate method, of a Validator.
+     * Test of isValid method, of a Validator.
      */
-    public void testValidate(Validator<TypeOfValue> validator,
+    public void testIsValid(Validator<TypeOfValue> validator,
             TypeOfValue value,
             boolean expectedResult) {
-        //System.out.println("Testing " + validator.getClass().getName() + ".Validate(...).");
-        boolean result = validator.Validate(value);
+        //System.out.println("Testing " + validator.getClass().getName() + ".isValid(...).");
+        boolean result = validator.isValid(value);
         assertEquals(expectedResult, result);
     }
 
