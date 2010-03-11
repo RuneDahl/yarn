@@ -133,17 +133,17 @@ public class DoubleLessThanTest {
     }
 
     /**
-     * Test of Validate method, of class DoubleLessThan.
+     * Test of isValid method, of class DoubleLessThan.
      */
     @Test
-    public void testValidate() {
-        System.out.println("Testing DoubleLessThan.Validate(...)");
-        this._tester.testValidate(this._instance, this._values[0], true);
-        this._tester.testValidate(this._instance, this._values[1], true);
-        this._tester.testValidate(this._instance, this._values[2], false);
-        this._tester.testValidate(this._instance, this._values[3], false);
-        this._tester.testValidate(this._instance, this._values[4], false);
-        this._tester.testValidate(this._instance, this._values[5], false);
-        this._tester.testValidate(this._instance, this._values[6], false);
+    public void testIsValid() {
+        System.out.println("Testing DoubleLessThan.isValid(...)");
+        this._tester.testIsValid(this._instance, this._values[0], true);
+        this._tester.testIsValid(this._instance, this._values[1], true);
+        this._tester.testIsValid(this._instance, this._values[2], false);
+        this._tester.testIsValid(this._instance, this._values[3], false);
+        this._tester.testIsValid(this._instance, this._values[4], false);
+        this._tester.testIsValid(this._instance, this._values[5], false);
+        this._tester.testIsValid(this._instance, this._values[6], false);
     }
 }

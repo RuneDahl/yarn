@@ -133,17 +133,17 @@ public class DoubleGreaterThanTest {
     }
 
     /**
-     * Test of Validate method, of class DoubleGreaterThan.
+     * Test of isValid method, of class DoubleGreaterThan.
      */
     @Test
-    public void testValidate() {
-        System.out.println("Testing DoubleGreaterThan.Validate(...)");
-        this._tester.testValidate(this._instance, this._values[0], false);
-        this._tester.testValidate(this._instance, this._values[1], false);
-        this._tester.testValidate(this._instance, this._values[2], false);
-        this._tester.testValidate(this._instance, this._values[3], true);
-        this._tester.testValidate(this._instance, this._values[4], true);
-        this._tester.testValidate(this._instance, this._values[5], false);
-        this._tester.testValidate(this._instance, this._values[6], false);
+    public void testIsValid() {
+        System.out.println("Testing DoubleGreaterThan.isValid(...)");
+        this._tester.testIsValid(this._instance, this._values[0], false);
+        this._tester.testIsValid(this._instance, this._values[1], false);
+        this._tester.testIsValid(this._instance, this._values[2], false);
+        this._tester.testIsValid(this._instance, this._values[3], true);
+        this._tester.testIsValid(this._instance, this._values[4], true);
+        this._tester.testIsValid(this._instance, this._values[5], false);
+        this._tester.testIsValid(this._instance, this._values[6], false);
     }
 }
