@@ -5,6 +5,8 @@
 
 package Mathematics;
 
+import Mathematics.Norm.ComplexP;
+
 /**
  * Implementation of a
  * <a href="http://en.wikipedia.org/wiki/Complex_number">complex number</a>.
@@ -12,12 +14,13 @@ package Mathematics;
  * @author Rune Dahl Iversen
  */
 public class Complex
-        implements Additive<Complex>, Conjugate<Complex>, Invertible<Complex>,
-        Multiplicative<Complex> {
+        implements Additive<Complex>, Conjugate<Complex>, Divisible<Complex>,
+        Invertible<Complex>, Multiplicative<Complex> {
     private final double _real;
     private final double _imaginary;
     private final double _modulus;
     private final double _argument;
+    private final ComplexP _euclidean = new ComplexP(2.0);
 
     /**
      * Create an instance of a {@see Complex} number
@@ -28,8 +31,9 @@ public class Complex
     public Complex(final double real, final double imaginary) {
         this._real = real;
         this._imaginary = imaginary;
-        this._modulus = this._getModulus(); // Compute the Modulus and Argument,
-        this._argument = this._getArgument(); // for easier access.
+        // Compute the Modulus and Argument, for easier access.
+        this._modulus = this._euclidean.Value(this);
+        this._argument = this._getArgument();
     }
 
     /**
@@ -94,7 +98,7 @@ public class Complex
     }
 
     /**
-     * Returns this {@see Complex} number modified by having the specified
+     * Returns this {@see Complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Imaginary_part">imaginary</a> value.
      * @param imaginary Imaginary value.
      * @return          {@see Complex} number.
@@ -115,7 +119,7 @@ public class Complex
     }
 
     /**
-     * Returns this {@see Complex} number modified by having the specified
+     * Returns this {@see Complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Real_part">real</a> value.
      * @param real Real value.
      * @return     {@see Complex} number.
@@ -146,8 +150,7 @@ public class Complex
             return Complex.Origin;
         if (Complex.isOrigin(this))
             return Complex.Infinity;
-        return new Complex(Math.cos(this._argument) / this._modulus,
-                -Math.sin(this._argument) / this._modulus);
+        return Complex.Polar(1.0 / this._modulus, -this._argument);
     }
 
     public Complex Multiply(final Complex factor) {
@@ -183,6 +186,13 @@ public class Complex
      */
     public static final Complex NaN = new Complex(Double.NaN, Double.NaN);
 
+    /**
+     * Returns a {@see Complex complex number} with the
+     * specified polar coordinates.
+     * @param modulus  Modulus. (Length)
+     * @param argument Argument.
+     * @return Complex number.
+     */
     public static Complex Polar(final double modulus, final double argument) {
         return new Complex(modulus * Math.cos(argument),
                 modulus * Math.sin(argument));
@@ -222,6 +232,51 @@ public class Complex
                 Double.isNaN(complex._imaginary));
     }
 
+    /**
+     * Returns Euler's number <i>e</i> raised to the power of a
+     * {@see Complex complex} value. Also known as the
+     * <a href="http://en.wikipedia.org/wiki/Exponential_function">exponential</a>
+     * function. Special cases:
+     * <ul>
+     * <li>If the value is Complex.NaN, the result is Complex.NaN.</li>
+     * <li>If the value is Complex.Infinity, the result is Complex.NaN.</li>
+     * </ul>
+     * @param value Complex value to raise <i>e</i> to.
+     * @return      The value of <i>e<sup>value</sup></i>, where <i>e</i> is the
+     *              base of the natural logarithms
+     */
+    public static Complex exp(final Complex value) {
+        if (isNaN(value) || isInfinite(value))
+            return Complex.NaN;
+        double modulus = Math.abs(value.getReal()) < 0.1 ?
+            Math.expm1(value.getReal()) + 1.0 :
+            Math.exp(value.getReal());
+        return Polar(modulus, value.getImaginary());
+    }
+
+    /**
+     * Returns the
+     * <a href="http://en.wikipedia.org/wiki/Natural_logarithm">natural logarithm</a>
+     * (base <i>e</i>) of a {@see Complex complex} value. Special cases:
+     * <ul>
+     * <li>If the value is Complex.NaN, the result is Complex.NaN.</li>
+     * <li>If the value is Complex.Infinity, the result is Complex.NaN.</li>
+     * <li>If the value is Complex.Origin, the result is Complex.Infinity.</li>
+     * </ul>
+     * @param value Complex value to get the natural logarithm of.
+     * @return      The value <i>ln value</i>, the natural logarithm of value.
+     */
+    public static Complex log(final Complex value) {
+        if (isNaN(value) || isInfinite(value))
+            return Complex.NaN;
+        if (isOrigin(value))
+            return Complex.Infinity;
+        double real = Math.abs(value.getModulus() - 1.0) < 0.1 ?
+            Math.log1p(value.getModulus() - 1.0) :
+            Math.log(value.getModulus());
+        return new Complex(real, value.getArgument());
+    }
+
     private double _getArgument() {
         if (Complex.isNaN(this) ||
                 Complex.isInfinite(this) ||
@@ -229,14 +284,5 @@ public class Complex
             return Double.NaN;
         double argument = Math.atan2(this._real, this._imaginary);
         return argument;
-    }
-
-    private double _getModulus() {
-        double value = Math.max(Math.abs(this._real), Math.abs(this._imaginary));
-        if (Double.isNaN(value) || Double.isInfinite(value) || value == 0.0)
-            return value;
-        double real = this._real / value;
-        double imaginary = this._imaginary / value;
-        return Math.sqrt(real * real + imaginary * imaginary) * value;
     }
 }
