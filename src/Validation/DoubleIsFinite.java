@@ -11,17 +11,20 @@ package Validation;
  * @author Rune Dahl Iversen
  */
 public final class DoubleIsFinite implements Validator<Double> {
+    /**
+     * Create an instance of a double validator requiring finite values.
+     */
     public DoubleIsFinite() {
     }
 
     public String Message(final Double value, final String name) {
-        if (this.Validate(value))
+        if (this.isValid(value))
             return "";
         else
             return name + " is not finite.";
     }
 
-    public boolean Validate(final Double value) {
+    public boolean isValid(final Double value) {
         return value != null && !Double.isInfinite(value);
     }
 }
