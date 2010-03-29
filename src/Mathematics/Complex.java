@@ -138,8 +138,10 @@ public class Complex
     }
 
     public Complex Divide(final Complex denominator) {
-        if (Complex.isOrigin(denominator))
-            throw new ArithmeticException("Attempt to divide by complex origo.");
+        if (Complex.isOrigin(denominator) &&
+                Complex.isOrigin(this))
+            throw new ArithmeticException("Attempt to divide the complex origin"
+                    + " by the complex origin.");
         return this.Multiply(denominator.Inverse());
     }
 
