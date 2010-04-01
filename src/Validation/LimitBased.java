@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- * Abstract class to allow easy implementation of validators
+ * Abstract class to allow easy implementation of {@see Validator validators}
  * with a limit i.e. 'GreaterThan X' or 'LessThan Z'.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value

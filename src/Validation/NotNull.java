@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- * Validator not allowing the value null.
+ * {@see Validator} not allowing the value null.
  * @author Rune Dahl Iversen
  * @param TypeOfValue Type of value.
  */

@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- * Validator allowing doubles greater than or equal to the limit.
+ * {@see Validator} allowing doubles greater than or equal to the limit.
  * @author Rune Dahl Iversen
  */
 public final class DoubleGreaterThanOrEqual extends LimitBased<Double> {

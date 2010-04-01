@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- * Validator of doubles only allowing finite values.
+ * {@see Validator} of doubles only allowing finite values.
  * so Double.POSITIVE_INFINITY and Double.NEGATIVE_INFINITY are not allowed.
  * @author Rune Dahl Iversen
  */

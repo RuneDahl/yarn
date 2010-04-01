@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- * Validator allowing integers greater than the limit.
+ * {@see Validator} allowing integers greater than the limit.
  * @author Rune Dahl Iversen
  */
 public final class IntegerGreaterThan extends LimitBased<Integer> {

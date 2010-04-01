@@ -6,7 +6,7 @@
 package Validation;
 
 /**
- * Validator of doubles only allowing numeric doubles.
+ * {@see Validator} of doubles only allowing numeric doubles.
  * That is Double.NaN is not allowed.
  * @author Rune Dahl Iversen
  */
