@@ -6,7 +6,10 @@
 package Mathematics.Result;
 
 /**
- * Abstract class representing a result of an algorithm.
+ * Abstract class representing a result.
+ * Typically from an {@see Mathematics.Algorithm.Algorithm algorithm}
+ * or some similarly complicated operation.
+ * A result can represent both success, failure and any state in between.
  * @author Rune Dahl Iversen
  */
 public abstract class Result {
