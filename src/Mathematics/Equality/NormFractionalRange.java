@@ -29,20 +29,11 @@ public class NormFractionalRange<TypeOfValue> extends NormBased<TypeOfValue> {
     }
 
     public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
-        if (a == null)
-            throw new NullPointerException("The value a is null.");
-        else if (b == null)
-            throw new NullPointerException("The value b is null.");
-        else if (a instanceof Additive) {
-            Additive<TypeOfValue> basis = (Additive<TypeOfValue>) a;
-            Norm<TypeOfValue> norm = this.getNorm();
-            double denominator = norm.Value(a) + norm.Value(b);
-            if (denominator == 0.0)
-                return true;
-            TypeOfValue difference = basis.Subtract(b);
-            return norm.Value(difference) / denominator <= this.getPrecision();
-        }
-        else
-            throw new IllegalStateException("The specified values are not additive.");
+        double numerator = this.getMetric().Value(a, b);
+        Norm<TypeOfValue> norm = this.getNorm();
+        double denominator = norm.Value(a) + norm.Value(b);
+        if (denominator == 0.0)
+            return true;
+        return numerator / denominator <= this.getPrecision();
     }
 }

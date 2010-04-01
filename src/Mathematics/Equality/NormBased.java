@@ -6,7 +6,8 @@
 package Mathematics.Equality;
 
 import Mathematics.Additive;
-import Mathematics.Norm.Norm;
+import Mathematics.Metric.*;
+import Mathematics.Norm.*;
 import Validation.*;
 
 /**
@@ -21,7 +22,7 @@ public abstract class NormBased<TypeOfValue>
         extends PrecisionBased<TypeOfValue> {
     private Validator<Norm<TypeOfValue>> _normValidator =
             new NotNull<Norm<TypeOfValue>>();
-    private Norm<TypeOfValue> _norm;
+    private Mathematics.Metric.NormBased<TypeOfValue> _metric;
 
     /**
      * Creates an instance of a {@see Mathematics.Norm norm}-based comparison of
@@ -34,7 +35,16 @@ public abstract class NormBased<TypeOfValue>
      */
     protected NormBased(final double precision, final Norm<TypeOfValue> norm) {
         super(precision);
-        this.setNorm(norm);
+        this._metric = new Mathematics.Metric.NormBased<TypeOfValue>(norm);
+    }
+
+    /**
+     * Gets the (norm-based) metric of this {@see Mathematics.Norm norm}-based
+     * comparison of values.
+     * @return The metric based on the norm.
+     */
+    public Metric<TypeOfValue> getMetric() {
+        return this._metric;
     }
 
     /**
@@ -42,7 +52,7 @@ public abstract class NormBased<TypeOfValue>
      * @return The norm.
      */
     public Norm<TypeOfValue> getNorm() {
-        return this._norm;
+        return this._metric.getNorm();
     }
 
     /**
@@ -55,6 +65,6 @@ public abstract class NormBased<TypeOfValue>
         if (!this._normValidator.isValid(norm))
             throw new NullPointerException(
                     this._normValidator.Message(norm, "Norm"));
-        this._norm = norm;
+        this._metric.setNorm(norm);
     }
 }

@@ -27,16 +27,6 @@ public class NormAbsolute<TypeOfValue> extends NormBased<TypeOfValue> {
     }
 
     public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
-        if (a == null)
-            throw new NullPointerException("The value a is null.");
-        else if (b == null)
-            throw new NullPointerException("The value b is null.");
-        else if (a instanceof Additive) {
-            Additive<TypeOfValue> basis = (Additive<TypeOfValue>) a;
-            TypeOfValue difference = basis.Subtract(b);
-            return this.getNorm().Value(difference) <= this.getPrecision();
-        }
-        else
-            throw new IllegalStateException("The specified values are not additive.");
+        return this.getMetric().Value(a, b) <= this.getPrecision();
     }
 }
