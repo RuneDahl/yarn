@@ -6,21 +6,19 @@
 package Mathematics.Algorithm;
 
 /**
- * Interface for an algorithm with an initial value.
+ * Interface for a stateful class with an initial value.
  * @author Rune Dahl Iversen
- * @param <TypeOfAlgorithmValue> Type of value of the algorithm.
- * @param <TypeOfInitialValue>   Type of initial value.
+ * @param <TypeOfInitialValue> Type of initial value.
  */
-public interface InitialValue<TypeOfInitialValue, TypeOfAlgorithmValue>
-        extends Algorithm<TypeOfAlgorithmValue> {
+public interface InitialValue<TypeOfInitialValue> {
     /**
-     * Gets the initial value of this algorithm.
+     * Gets the initial value.
      * @return The initial value.
      */
     public TypeOfInitialValue getInitialValue();
 
     /**
-     * Sets the initial value of this algorithm.
+     * Sets the initial value.
      * @param initialValue The initial value.
      */
     public void setInitialValue(final TypeOfInitialValue initialValue);

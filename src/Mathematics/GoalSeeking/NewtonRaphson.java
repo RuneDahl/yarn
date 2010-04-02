@@ -18,7 +18,8 @@ import Validation.*;
  */
 public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         Mathematics.Algorithm.Iterative<Function<Double, Double>>,
-        Mathematics.Algorithm.InitialValue<Double, Function<Double, Double>> {
+        Mathematics.Algorithm.InitialValue<Double>,
+        Mathematics.Algorithm.Criterion<Equals<Double>> {
     private double _initialValue;
     private Equals<Double> _criterion;
     private Differentiator<Double, Double, Double> _differentiator;
@@ -35,15 +36,19 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         this._validator.add(new NotNull<Double>());
         this._validator.add(new DoubleIsNumeric());
         this._validator.add(new DoubleIsFinite());
-
-    }
-
-    public Differentiator<Double, Double, Double> getDifferentiator() {
-        return this._differentiator;
+        this.setCriterion(criterion);
+        this.setDifferentiator(differentiator);
+        this.setGoalValue(goalValue);
+        this.setInitialValue(initialValue);
+        this.setMaximumIterations(maximumIterations);
     }
 
     public Equals<Double> getCriterion() {
         return this._criterion;
+    }
+
+    public Differentiator<Double, Double, Double> getDifferentiator() {
+        return this._differentiator;
     }
 
     public Double getGoalValue() {
@@ -56,6 +61,19 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
 
     public int getMaximumIterations() {
         return this._maxIter;
+    }
+
+    public void setCriterion(final Equals<Double> criterion) {
+        if (criterion == null)
+            throw new NullPointerException("Criterion is not properly specified.");
+        this._criterion = criterion;
+    }
+
+    public void setDifferentiator(
+            final Differentiator<Double, Double, Double> differentiator) {
+        if (differentiator == null)
+            throw new NullPointerException("Differentiator is not properly specified.");
+        this._differentiator = differentiator;
     }
 
     public void setGoalValue(final Double value) {
