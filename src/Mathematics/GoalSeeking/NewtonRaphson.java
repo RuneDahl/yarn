@@ -17,9 +17,10 @@ import Validation.*;
  * @author Rune Dahl Iversen
  */
 public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
-        Mathematics.Algorithm.Iterative<Function<Double, Double>>,
+        Mathematics.Algorithm.Criterion<Equals<Double>>,
+        Mathematics.Algorithm.Differentiator<Differentiator<Double, Double, Double>>,
         Mathematics.Algorithm.InitialValue<Double>,
-        Mathematics.Algorithm.Criterion<Equals<Double>> {
+        Mathematics.Algorithm.Iterative<Function<Double, Double>> {
     private double _initialValue;
     private Equals<Double> _criterion;
     private Differentiator<Double, Double, Double> _differentiator;
