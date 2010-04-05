@@ -26,17 +26,16 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     private Differentiator<Double, Double, Double> _differentiator;
     private int _maxIter;
     private double _goalValue;
-    private Validation.And<Double> _validator;
+    private Validator<Double> _validator;
+    private Validator<Integer> _maxIterValidator;
 
     public NewtonRaphson(final double goalValue,
             final double initialValue,
             final Equals<Double> criterion,
             final Differentiator<Double, Double, Double> differentiator,
             final int maximumIterations) {
-        this._validator = new Validation.And();
-        this._validator.add(new NotNull<Double>());
-        this._validator.add(new DoubleIsNumeric());
-        this._validator.add(new DoubleIsFinite());
+        this._validator = this._setValidator();
+        this._maxIterValidator = new IntegerGreaterThan();
         this.setCriterion(criterion);
         this.setDifferentiator(differentiator);
         this.setGoalValue(goalValue);
@@ -92,7 +91,9 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     }
 
     public void setMaximumIterations(final int iterations) {
-
+        if (!this._maxIterValidator.isValid(iterations))
+            throw new IllegalArgumentException(
+                    this._maxIterValidator.Message(iterations, "Maximum iterations"));
         this._maxIter = iterations;
     }
 
@@ -104,12 +105,24 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
                 this._criterion.Equal(output, this._goalValue);
                 iterations++) {
             output = function.Value(value);
-            value -= (output - this.getGoalValue()) /
-                    this._differentiator.Value(value, function);
+            double denominator = this._differentiator.Value(value, function);
+            if (denominator != 0.0)
+                value -= (output - this.getGoalValue()) /
+                        denominator;
+            else
+                return new SlopeEqualsZeroFailure();
         }
         if (this._maxIter < iterations) {
             return new MaximumIterationsFailure(iterations);
         }
         return new IterativeSuccess<Double>(iterations, value);
+    }
+
+    private Validator<Double> _setValidator() {
+        Validation.And<Double> validator = new Validation.And();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        return validator;
     }
 }
