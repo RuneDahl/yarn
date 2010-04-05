@@ -12,5 +12,5 @@ package Mathematics.Result;
  * A result can represent both success, failure and any state in between.
  * @author Rune Dahl Iversen
  */
-public abstract class Result {
+public interface Result {
 }
