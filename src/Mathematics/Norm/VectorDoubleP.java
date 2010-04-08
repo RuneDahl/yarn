@@ -14,7 +14,7 @@ import Mathematics.Vector.*;
  * @author Rune Dahl Iversen
  */
 public class VectorDoubleP extends Power<Vector<Double>> {
-    private VectorDoubleMaximum _maxNorm = new VectorDoubleMaximum();
+    private final static VectorDoubleMaximum __maxNorm = new VectorDoubleMaximum();
 
     /**
      * Creates an instance of the
@@ -32,7 +32,7 @@ public class VectorDoubleP extends Power<Vector<Double>> {
         // The trick of normalizing the size by the value of the maximum norm
         // prevents destructive overruns and underruns.
         double power = this.getPower();
-        double max = this._maxNorm.Value(input);
+        double max = __maxNorm.Value(input);
         double norm = 0.0;
         for (int d = 0; d < input.getDimensions(); d++)
             norm += Math.pow(Math.abs(input.getValue(d)) / max, power);
