@@ -14,7 +14,7 @@ import Mathematics.Complex;
  * @author Rune Dahl Iversen
  */
 public final class ComplexP extends Power<Complex> {
-    private ComplexMaximum _maxNorm = new ComplexMaximum();
+    private final static ComplexMaximum __maxNorm = new ComplexMaximum();
 
     /**
      * Creates an instance of the
@@ -32,7 +32,7 @@ public final class ComplexP extends Power<Complex> {
         // The trick of normalizing the size by the value of the maximum norm
         // prevents destructive overruns and underruns.
         double power = this.getPower();
-        double max = this._maxNorm.Value(input);
+        double max = __maxNorm.Value(input);
         double norm = Math.pow(Math.abs(input.getReal()) / max, power);
         norm += Math.pow(Math.abs(input.getImaginary()) / max, power);
         return max * Math.pow(norm, 1.0 / power);
