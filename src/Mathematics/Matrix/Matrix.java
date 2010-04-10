@@ -14,12 +14,14 @@ import Mathematics.Vector.Vector;
  * <br>- It is implicitly assumed that the type of scalar that can be applied
  * to the matrix is of the same type as the values of matrix.
  * <br>- It is suggested that any classes implementing Matrix be implemented
- * as <a href="http://en.wikipedia.org/wiki/Mutable_object">mutable</a>.
+ * with <a href="http://en.wikipedia.org/wiki/Mutable_object">mutable</a>
+ * values, but immutable dimensions.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
 public interface Matrix<TypeOfValue>
         extends Additive<Matrix<TypeOfValue>>,
+        Multiplicative<Vector<TypeOfValue>>,
         Scaleable<TypeOfValue, Matrix<TypeOfValue>> {
     /**
      * Gets the values of the specified column as a vector.
@@ -61,14 +63,14 @@ public interface Matrix<TypeOfValue>
      * @param column Column.
      * @param values Vector of values.
      */
-    public void setColumn(final int column, Vector<TypeOfValue> values);
+    public void setColumn(final int column, final Vector<TypeOfValue> values);
 
     /**
      * Sets the values of the specified row to the vector of values.
      * @param row    Row.
      * @param values Vector of values.
      */
-    public void setRow(final int row, Vector<TypeOfValue> values);
+    public void setRow(final int row, final Vector<TypeOfValue> values);
 
     /**
      * Sets the value of the specified row and column to the desired value.
@@ -78,6 +80,22 @@ public interface Matrix<TypeOfValue>
      */
     public void setValue(final int row, final int column,
             final TypeOfValue value);
+
+    /**
+     * Returns a clone of this matrix with the values from the specified vector
+     * added as the columns+1st column.
+     * @param column Vector of values.
+     * @return       A matrix composed of this matrix and the values from the vector.
+     */
+    public Matrix<TypeOfValue> AddColumn(final Vector<TypeOfValue> column);
+
+    /**
+     * Returns a clone of this matrix with the values from the specified vector
+     * added as the rows+1st row.
+     * @param column Vector of values.
+     * @return       A matrix composed of this matrix and the values from the vector.
+     */
+    public Matrix<TypeOfValue> AddRow(final Vector<TypeOfValue> row);
 
     /**
      * Add the the specified scalar times one column to another column.
@@ -98,12 +116,48 @@ public interface Matrix<TypeOfValue>
             final TypeOfValue scalar);
 
     /**
+     * Add the values of the specified vector to the column.
+     * @param column Column.
+     * @param vector Vector of values.
+     */
+    public void AddToColumn(final int column, final Vector<TypeOfValue> vector);
+
+    /**
+     * Add the values of the specified vector to the row.
+     * @param row    Row.
+     * @param vector Vector of values.
+     */
+    public void AddToRow(final int row, final Vector<TypeOfValue> vector);
+
+    /**
      * Returns whether the matrix is
      * <a href="http://en.wikipedia.org/wiki/Matrix_%28mathematics%29#Square_matrices">square</a>
      * , i.e. if the number of rows equal the number of columns.
      * @return True if the matrix is square, else false.
      */
     public boolean isSquare();
+
+    /**
+     * Returns a matrix consisting of this matrix joined
+     * on the righthand side with the specified matrix.
+     * @param matrix Matrix.
+     * @return       Joined matrix.
+     */
+    public Matrix<TypeOfValue> Join(final Matrix<TypeOfValue> matrix);
+
+    /**
+     * Returns a clone of this matrix with the specified column removed.
+     * @param column Column to be removed.
+     * @return       Clone of this matrix with the column removed.
+     */
+    public Matrix<TypeOfValue> RemoveColumn(final int column);
+
+    /**
+     * Returns a clone of this matrix with the specified row removed.
+     * @param row Row to be removed.
+     * @return    Clone of this matrix with the row removed.
+     */
+    public Matrix<TypeOfValue> RemoveRow(final int row);
 
     /**
      * Scale the values of the specified column by the scalar.
@@ -118,6 +172,14 @@ public interface Matrix<TypeOfValue>
      * @param scalar Scalar.
      */
     public void ScaleRow(final int row, final TypeOfValue scalar);
+
+    /**
+     * Returns a matrix consisting of this matrix
+     * stacked on top of the specified matrix.
+     * @param matrix Matrix.
+     * @return       Stacked matrix.
+     */
+    public Matrix<TypeOfValue> Stack(final Matrix<TypeOfValue> matrix);
 
     /**
      * Switch the values of the 2 specified columns.
