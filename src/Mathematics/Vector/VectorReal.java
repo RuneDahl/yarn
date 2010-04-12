@@ -6,6 +6,7 @@
 package Mathematics.Vector;
 
 import Validation.*;
+import java.util.Arrays;
 
 /**
  * Implementation of a {@see Vector vector} of real numbers (doubles).
@@ -69,6 +70,42 @@ public class VectorReal implements Vector<Double> {
         for (int dim = 0; dim < this._values.length; dim++)
             sums[dim] = this._values[dim] + value.getValue(dim);
         return new VectorReal(sums);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof VectorReal)
+            return this.equals((VectorReal) obj);
+        else
+            return false;
+    }
+
+    /**
+     * Indicates whether some {@see VectorReal vector} of real values
+     * is equal to this vector.
+     * @param vector Vector of real values.
+     * @return       True if the vectors have the same values.
+     */
+    public boolean equals(final VectorReal vector) {
+        if (vector == null)
+            return false;
+        if (vector == this)
+            return true;
+        if (this.hashCode() != vector.hashCode())
+            return false;
+        if (this.getDimensions() != vector.getDimensions())
+            return false;
+        for (int d = 0; d < this.getDimensions(); d++)
+            if (this._values[d] != vector._values[d])
+                return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Arrays.hashCode(this._values);
+        return hash;
     }
 
     public Vector<Double> Subtract(Vector<Double> value) {
