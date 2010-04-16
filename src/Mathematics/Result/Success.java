@@ -6,11 +6,11 @@
 package Mathematics.Result;
 
 /**
- * Interface for a succesful result.
+ * Interface for a succesful {@see Result result}.
  * @author Rune Dahl Iversen
  * @param <TypeOfResult> Type of result.
  */
-public interface Success<TypeOfResult> {
+public interface Success<TypeOfResult> extends Result {
     /**
      * Returns the succesfully computed value.
      * @return The succesfully computed value.
