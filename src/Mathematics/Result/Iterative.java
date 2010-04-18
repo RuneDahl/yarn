@@ -6,7 +6,9 @@
 package Mathematics.Result;
 
 /**
- * Abstract class representing a result from an iterative algorithm.
+ * Abstract class representing a {@see Result result} from an
+ * {@see Mathematics.Algorithm.Iterative iterative}
+ * {@see Mathematics.Algorithm.Algorithm algorithm}.
  * @author Rune Dahl Iversen
  */
 public abstract class Iterative implements Result {

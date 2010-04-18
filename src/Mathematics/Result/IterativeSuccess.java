@@ -6,7 +6,9 @@
 package Mathematics.Result;
 
 /**
- * An implementation of a successful result of an iterative algorithm.
+ * An implementation of a {@see Success successful} {@see Result result}
+ * of an {@see Mathematics.Algorithm.Iterative iterative}
+ * {@see Mathematics.Algorithm.Algorithm algorithm}.
  * @author Rune Dahl Iversen
  * @param <TypeOfResult> Type of result.
  */
