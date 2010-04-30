@@ -14,6 +14,8 @@ import Mathematics.*;
  * to the vector is of the same type as the values of vector.
  * <br>- It is suggested that any classes implementing Vector be implemented
  * as <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable</a>.
+ * <br>- Any implementation of Vector should hve values for the following
+ * dimensions: 0, 1, ..., getDimensions() - 1.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
