@@ -16,6 +16,7 @@ import java.util.Arrays;
 public class VectorReal implements Vector<Double> {
     private Validator<Double> _validator;
     private double[] _values;
+    private int _firstDimension;
 
     /**
      * Creates a real vector with the specified number of dimensions.
@@ -23,7 +24,18 @@ public class VectorReal implements Vector<Double> {
      * @param dimensions Number of dimensions of this vector.
      */
     public VectorReal(final int dimensions) {
-        this(dimensions, 0.0);
+        this(0, dimensions);
+    }
+
+    /**
+     * Creates a real vector with the specified first dimension and number of
+     * dimensions. The vector will be initiated with the value 0.0 in all
+     * dimensions/values.
+     * @param firstDimension First dimension of this vector.
+     * @param dimensions     Number of dimensions of this vector.
+     */
+    public VectorReal(final int firstDimension, final int dimensions) {
+        this(firstDimension, dimensions, 0.0);
     }
 
     /**
@@ -33,7 +45,20 @@ public class VectorReal implements Vector<Double> {
      * @param value      Value.
      */
     public VectorReal(final int dimensions, final double value) {
+        this(0, dimensions, value);
+    }
+
+    /**
+     * Creates a real vector with the specified first dimension, number of
+     * dimensions and the specified value in all dimensions/values.
+     * @param firstDimension First dimension of this vector.
+     * @param dimensions     Number of dimensions of this vector.
+     * @param value          Value.
+     */
+    public VectorReal(final int firstDimension, final int dimensions,
+            final double value) {
         this._validator = this._setValidator();
+        this._firstDimension = firstDimension;
         double[] values = new double[dimensions];
         for (int dim = 0; dim < dimensions; dim++)
             values[dim] = value;
@@ -45,7 +70,18 @@ public class VectorReal implements Vector<Double> {
      * @param values    Array of values.
      */
     public VectorReal(final double[] values) {
+        this(0, values);
+    }
+
+    /**
+     * Creates a real vector with the specified first dimension
+     * and array of values.
+     * @param firstDimension First dimension of this vector.
+     * @param values         Array of values.
+     */
+    public VectorReal(final int firstDimension, final double[] values) {
         this._validator = this._setValidator();
+        this._firstDimension = firstDimension;
         this._setValues(values);
     }
 
@@ -53,27 +89,38 @@ public class VectorReal implements Vector<Double> {
         return this._values.length;
     }
 
-    public Double getValue(int dimension) {
-        return this._values[dimension];
+    public int getFirstDimension() {
+        return this._firstDimension;
     }
 
-    public Vector<Double> setValue(int dimension, Double value) {
+    public Double getValue(final int dimension) {
+        return this._values[dimension - this._firstDimension];
+    }
+
+    public boolean hasSameDimensions(Vector<Double> vector) {
+        return this.getFirstDimension() == vector.getFirstDimension() &&
+                this.getDimensions() == vector.getDimensions();
+    }
+
+    public Vector<Double> setValue(final int dimension, final Double value) {
         VectorReal v = new VectorReal(this._values);
-        v._values[dimension] = value;
+        v._values[dimension - this._firstDimension] = value;
         return v;
     }
 
-    public Vector<Double> Add(Vector<Double> value) {
-        if (value.getDimensions() != this.getDimensions())
-            throw new IllegalArgumentException("The vectors are not conforming.");
+    public Vector<Double> Add(final Vector<Double> value) {
+        if (!this.hasSameDimensions(value))
+            throw new IllegalArgumentException("The vectors are not " +
+                    "conforming in dimensions.");
         double[] sums = new double[this.getDimensions()];
         for (int dim = 0; dim < this._values.length; dim++)
-            sums[dim] = this._values[dim] + value.getValue(dim);
-        return new VectorReal(sums);
+            sums[dim] = this._values[dim] +
+                    value.getValue(dim + this._firstDimension);
+        return new VectorReal(this._firstDimension, sums);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj instanceof VectorReal)
             return this.equals((VectorReal) obj);
         else
@@ -91,9 +138,9 @@ public class VectorReal implements Vector<Double> {
             return false;
         if (vector == this)
             return true;
-        if (this.hashCode() != vector.hashCode())
-            return false;
-        if (this.getDimensions() != vector.getDimensions())
+      //if (this.hashCode() != vector.hashCode())
+      //    return false;
+        if (!this.hasSameDimensions(vector))
             return false;
         for (int d = 0; d < this.getDimensions(); d++)
             if (this._values[d] != vector._values[d])
@@ -103,25 +150,27 @@ public class VectorReal implements Vector<Double> {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = this._firstDimension;
         hash = 97 * hash + Arrays.hashCode(this._values);
         return hash;
     }
 
-    public Vector<Double> Subtract(Vector<Double> value) {
-        if (value.getDimensions() != this.getDimensions())
-            throw new IllegalArgumentException("The vectors are not conforming.");
+    public Vector<Double> Subtract(final Vector<Double> value) {
+        if (!this.hasSameDimensions(value))
+            throw new IllegalArgumentException("The vectors are not " +
+                    "conforming in dimensions.");
         double[] diffs = new double[this.getDimensions()];
         for (int dim = 0; dim < this._values.length; dim++)
-            diffs[dim] = this._values[dim] - value.getValue(dim);
-        return new VectorReal(diffs);
+            diffs[dim] = this._values[dim] -
+                    value.getValue(dim + this._firstDimension);
+        return new VectorReal(this._firstDimension, diffs);
     }
 
-    public Vector<Double> Scale(Double scalar) {
+    public Vector<Double> Scale(final Double scalar) {
         double[] values = new double[this.getDimensions()];
         for (int dim = 0; dim < this._values.length; dim++)
             values[dim] = this._values[dim] * scalar;
-        return new VectorReal(values);
+        return new VectorReal(this._firstDimension, values);
     }
 
     public Double[] ToArray() {
@@ -139,7 +188,7 @@ public class VectorReal implements Vector<Double> {
         return validator;
     }
 
-    private void _setValues(double[] values) {
+    private void _setValues(final double[] values) {
         this._values = new double[values.length];
         for (int dim = 0; dim < values.length; dim++)
         {
@@ -150,5 +199,36 @@ public class VectorReal implements Vector<Double> {
                         this._validator.Message(values[dim],
                         "The value of dimension " + Integer.toString(dim)));
         }
+    }
+
+    /**
+     * Returns an instance of a unit-vector of the specified dimensions
+     * and unit-dimension.
+     * @param dimensions    Number of dimensions of the vector.
+     * @param unitDimension Unit-dimension of the vector. The dimension that has
+     *                      the value 1.
+     * @return              Unit-vector.
+     */
+    public static VectorReal Unit(final int dimensions,
+            final int unitDimension) {
+        VectorReal unit = new VectorReal(dimensions);
+        unit.setValue(unitDimension, 1.0);
+        return unit;
+    }
+
+    /**
+     * Returns an instance of a unit-vector of the specified dimensions
+     * and unit-dimension.
+     * @param firstDimension First dimension of the vector.
+     * @param dimensions     Number of dimensions of the vector.
+     * @param unitDimension  Unit-dimension of the vector. The dimension that
+     *                       has the value 1.
+     * @return               Unit-vector.
+     */
+    public static VectorReal Unit(final int firstDimension,
+            final int dimensions, final int unitDimension) {
+        VectorReal unit = new VectorReal(firstDimension, dimensions);
+        unit.setValue(unitDimension, 1.0);
+        return unit;
     }
 }

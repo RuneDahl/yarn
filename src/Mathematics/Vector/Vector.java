@@ -14,8 +14,8 @@ import Mathematics.*;
  * to the vector is of the same type as the values of vector.
  * <br>- It is suggested that any classes implementing Vector be implemented
  * as <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable</a>.
- * <br>- Any implementation of Vector should hve values for the following
- * dimensions: 0, 1, ..., getDimensions() - 1.
+ * <br>- Any implementation of Vector should have values for the following
+ * dimensions: getFirstDimension(), ..., getFirstDimension() + getDimensions() - 1.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
@@ -31,11 +31,25 @@ public interface Vector<TypeOfValue>
     public int getDimensions();
 
     /**
+     * Gets the index of the first dimension of this vector.
+     * @return The index of the first dimension of this vector.
+     */
+    public int getFirstDimension();
+
+    /**
      * Gets the value from this vector of the specified dimension.
      * @param dimension The dimension.
      * @return          The dimensional value.
      */
     public TypeOfValue getValue(final int dimension);
+
+    /**
+     * Indicates whether the specified vector has the same dimensions
+     * (getFirstDimension() and getDimensions()) as this vector.
+     * @param vector Vector.
+     * @return       True for the same dimensions, else false.
+     */
+    public boolean hasSameDimensions(final Vector<TypeOfValue> vector);
 
     /**
      * Returns a new vector with the specified dimension set to the value.
@@ -47,7 +61,7 @@ public interface Vector<TypeOfValue>
             final TypeOfValue value);
 
     /**
-     * Returns an array of the values from this vector.
+     * Returns a zero-based array of the values from this vector.
      * @return Array of the values of this vector.
      */
     public TypeOfValue[] ToArray();
