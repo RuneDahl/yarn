@@ -5,7 +5,7 @@
 
 package Mathematics.Metric;
 
-import Mathematics.Operator.Operator;
+import Mathematics.Function.Operator;
 
 /**
  * Interface for a
