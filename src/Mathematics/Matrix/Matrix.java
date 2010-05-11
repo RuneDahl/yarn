@@ -151,6 +151,15 @@ public interface Matrix<TypeOfValue>
     public boolean hasSameColumns(final Vector<TypeOfValue> column);
 
     /**
+     * Indicates whether the specified matrix has the same columns
+     * (getFirstColumn() and getColumns()) as the columns
+     * (getFirstColumn() and getColumns()) of this matrix.
+     * @param matrix Matrix.
+     * @return       True for the same columns, else false.
+     */
+    public boolean hasSameColumns(final Matrix<TypeOfValue> matrix);
+
+    /**
      * Indicates whether the specified matrix has the same dimensions
      * (getFirstColumn(), getColumns(), getFirstRow() and getRows())
      * as this matrix.
@@ -167,6 +176,15 @@ public interface Matrix<TypeOfValue>
      * @return    True for the same dimensions, else false.
      */
     public boolean hasSameRows(final Vector<TypeOfValue> row);
+
+    /**
+     * Indicates whether the specified matrix has the same rows
+     * (getFirstRow() and getRows()) as the rows
+     * (getFirstRow() and getRows()) of this matrix.
+     * @param matrix Matrix.
+     * @return       True for the same rows, else false.
+     */
+    public boolean hasSameRows(final Matrix<TypeOfValue> matrix);
 
     /**
      * Returns whether the matrix is
@@ -235,7 +253,7 @@ public interface Matrix<TypeOfValue>
     public void SwitchRows(final int row1, final int row2);
 
     /**
-     * Returns the values of this matrix as a 2-dimensional array.
+     * Returns the values of this matrix as a 2-dimensional zero-based array.
      * @return The values of this matrix.
      */
     public TypeOfValue[][] ToArray();
