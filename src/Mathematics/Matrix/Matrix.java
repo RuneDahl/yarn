@@ -142,6 +142,33 @@ public interface Matrix<TypeOfValue>
     public void AddToRow(final int row, final Vector<TypeOfValue> vector);
 
     /**
+     * Indicates whether the specified vector has the same dimensions
+     * (getFirstDimension() and getDimensions()) as the columns
+     * (getFirstColumn() and getColumns()) of this matrix.
+     * @param column Vector.
+     * @return       True for the same dimensions, else false.
+     */
+    public boolean hasSameColumns(final Vector<TypeOfValue> column);
+
+    /**
+     * Indicates whether the specified matrix has the same dimensions
+     * (getFirstColumn(), getColumns(), getFirstRow() and getRows())
+     * as this matrix.
+     * @param matrix Matrix.
+     * @return       True for the same dimensions, else false.
+     */
+    public boolean hasSameDimensions(final Matrix<TypeOfValue> matrix);
+
+    /**
+     * Indicates whether the specified vector has the same dimensions
+     * (getFirstDimension() and getDimensions()) as the rows
+     * (getFirstRow() and getRows()) of this matrix.
+     * @param row Vector.
+     * @return    True for the same dimensions, else false.
+     */
+    public boolean hasSameRows(final Vector<TypeOfValue> row);
+
+    /**
      * Returns whether the matrix is
      * <a href="http://en.wikipedia.org/wiki/Matrix_%28mathematics%29#Square_matrices">square</a>
      * , i.e. if the number of rows equal the number of columns.
