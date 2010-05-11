@@ -67,7 +67,7 @@ public class VectorReal implements Vector<Double> {
 
     /**
      * Creates a real vector with the specified array of values.
-     * @param values    Array of values.
+     * @param values Zero-based array of values.
      */
     public VectorReal(final double[] values) {
         this(0, values);
@@ -75,9 +75,9 @@ public class VectorReal implements Vector<Double> {
 
     /**
      * Creates a real vector with the specified first dimension
-     * and array of values.
+     * and zero-based array of values.
      * @param firstDimension First dimension of this vector.
-     * @param values         Array of values.
+     * @param values         Zero-based array of values.
      */
     public VectorReal(final int firstDimension, final double[] values) {
         this._validator = this._setValidator();
