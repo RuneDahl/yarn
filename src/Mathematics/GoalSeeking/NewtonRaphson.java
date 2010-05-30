@@ -29,6 +29,17 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     private Validator<Double> _validator;
     private Validator<Integer> _maxIterValidator;
 
+    /**
+     * Creates an instance of a Newton-Raphson
+     * {@see GoalSeekFunction goal-seeking}
+     * {@see Mathematics.Algorithm.Algorithm algorithm}.
+     * @param goalValue         Target output value.
+     * @param initialValue      Initial value of the algorithm.
+     * @param criterion         End criterion for the iteration.
+     * @param differentiator    Differentiation used to estimate/compute the
+     *                          differential of the function.
+     * @param maximumIterations Maximum number of iterations allowed.
+     */
     public NewtonRaphson(final double goalValue,
             final double initialValue,
             final Equals<Double> criterion,
@@ -101,8 +112,8 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         double value = this._initialValue;
         int iterations = 0;
         double output = function.Value(value);
-        for (iterations = 0; iterations < this._maxIter ||
-                this._criterion.Equal(output, this._goalValue);
+        for (iterations = 0; iterations < this._maxIter &&
+                !this._criterion.Equal(output, this._goalValue);
                 iterations++) {
             output = function.Value(value);
             double denominator = this._differentiator.Value(value, function);
@@ -112,7 +123,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
             else
                 return new SlopeEqualsZeroFailure();
         }
-        if (this._maxIter < iterations) {
+        if (this._maxIter <= iterations) {
             return new MaximumIterationsFailure(iterations);
         }
         return new IterativeSuccess<Double>(iterations, value);
