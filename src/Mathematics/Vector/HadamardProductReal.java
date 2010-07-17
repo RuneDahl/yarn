@@ -8,11 +8,14 @@ package Mathematics.Vector;
 import Mathematics.Function.*;
 
 /**
- * Implementation of the element-by-element product (Corresponds to the MatLab
- * Dot Star operator) of two {@see Vector vectors} of real values.
+ * Implementation of the
+ * <a href="http://en.wikipedia.org/wiki/Matrix_product#Hadamard_product">
+ * Hadamard product</a> of two {@see Vector vectors} of real values. <br>
+ * This function result in a vector containing the multiplies the individual
+ * entries in the 2 vectors, that must be the of the same dimensions.
  * @author Rune Dahl Iversen
  */
-public final class ElementProductReal
+public final class HadamardProductReal
         implements Operator<Vector<Double>, Vector<Double>, Vector<Double>> {
     public Vector<Double> Value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
