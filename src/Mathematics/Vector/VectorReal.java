@@ -9,7 +9,7 @@ import Validation.*;
 import java.util.Arrays;
 
 /**
- * Implementation of a {@see Vector vector} of real numbers (doubles).
+ * Implementation of a {@see Vector vector} of {@see Double real} numbers.
  * VectorReal is implemented as an immutable class.
  * @author Rune Dahl Iversen
  */
@@ -174,9 +174,12 @@ public class VectorReal implements Vector<Double> {
     }
 
     public Double[] ToArray() {
-        Double[] values = new Double[this._values.length];
-        for (int dim = 0; dim < this._values.length; dim++)
-            values[dim] = this._values[dim];
+        Double[] values = new Double[this._firstDimension + this._values.length - 1];
+        for (int dim = 0; dim < this._firstDimension; dim++)
+            values[dim] = 0.0;
+        for (int dim = this._firstDimension;
+        dim < this._firstDimension + this._values.length; dim++)
+            values[dim] = this.getValue(dim);
         return values;
     }
 
