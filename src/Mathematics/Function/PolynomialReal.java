@@ -5,12 +5,12 @@
 
 package Mathematics.Function;
 
-import Mathematics.Vector.VectorReal;
+import Mathematics.Vector.*;
 import Validation.*;
 
 /**
- * Implementation of a {@see Polynomial polynomial} with real coefficients,
- * input and scalar.
+ * Implementation of a {@see Polynomial polynomial} with {@see Double real}
+ * coefficients, input and scalar.
  * @author Rune Dahl Iversen
  */
 public final class PolynomialReal implements Polynomial<Double, Double, Double> {
@@ -58,12 +58,13 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     /**
      * Creates a polynomial with the coefficients and degree determined by
      * the vector of coefficients.
-     * <br>- The degree will be the dimension of the vector minus one.
+     * <br>- The degree will be determined by the dimensions of the vector.
      * <br>- The value of dimension i will be the coefficient of the
      * polynomial degree i.
+     * <br>- Any remaining coefficients will by zero.
      * @param coefficients Vector of coefficients.
      */
-    public PolynomialReal(final VectorReal coefficients) {
+    public PolynomialReal(final Vector<Double> coefficients) {
         this(coefficients.ToArray());
     }
 
@@ -142,16 +143,42 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
 
     public Polynomial<Double, Double, Double> Subtract(
             final Polynomial<Double, Double, Double> value) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int degree = Math.max(this.getDegree(), value.getDegree());
+        Double[] diffs = new Double[degree + 1];
+        for (int d = 0; d <= degree; d++)
+        {
+            diffs[d] = 0.0;
+            if (d <= this.getDegree())
+                diffs[d] += this.getCoefficient(d);
+            if (d <= value.getDegree())
+                diffs[d] -= value.getCoefficient(d);
+        }
+        return new PolynomialReal(diffs);
     }
 
     public Polynomial<Double, Double, Double> Multiply(
             final Polynomial<Double, Double, Double> factor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int degree = this.getDegree() + factor.getDegree();
+        Double[] products = new Double[degree + 1];
+        for (int d = 0; d <= degree; d++)
+            products[d] = 0.0;
+        for (int d = 0; d <= this.getDegree(); d++)
+            for (int i = 0; i <= factor.getDegree(); i++)
+                products[d + i] +=
+                        this.getCoefficient(d) * factor.getCoefficient(i);
+        return new PolynomialReal(products);
     }
 
     public Polynomial<Double, Double, Double> Scale(final Double scalar) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int degree = this.getDegree();
+        Double[] scales = new Double[degree + 1];
+        for (int d = 0; d <= degree; d++)
+        {
+            scales[d] = 0.0;
+            if (d <= this.getDegree())
+                scales[d] += this.getCoefficient(d) * scalar;
+        }
+        return new PolynomialReal(scales);
     }
 
     private void _setCoefficients(final Double[] values) {
