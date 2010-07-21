@@ -9,8 +9,8 @@ import Mathematics.Vector.*;
 import Validation.*;
 
 /**
- * Implementation of a {@see Matrix finite-dimensional matrix} of real numbers
- * (doubles). MatrixReal is implemented with
+ * Implementation of a {@see Matrix finite-dimensional matrix} of
+ * {@see Double real} numbers. MatrixReal is implemented with
  * <a href="http://en.wikipedia.org/wiki/Mutable_object">mutable</a> values
  * but immutable dimensions.
  * @author Rune Dahl Iversen
@@ -22,7 +22,7 @@ public final class MatrixReal implements Matrix<Double> {
     private int _firstRow;
 
     /**
-     * Cerates a real matrix with the specified rows and columns.
+     * Creates a real matrix with the specified rows and columns.
      * The matrix will be initialized with the value 0.0 in all values.
      * @param rows    Number of rows of this matrix.
      * @param columns Number of columns of this matrix.
@@ -407,7 +407,8 @@ public final class MatrixReal implements Matrix<Double> {
     public void setValue(final int row, final int column, final Double value) {
         if (!this._validator.isValid(value))
             throw new IllegalArgumentException(
-                    this._validator.Message(value, "Value"));
+                    this._validator.Message(value, "Value(" +
+                    Integer.toString(row) + ";" + Integer.toString(column) + ")"));
         this._values[row - this._firstRow][column - this._firstColumn] = value;
     }
 
