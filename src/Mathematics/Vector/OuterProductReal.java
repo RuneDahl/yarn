@@ -11,7 +11,7 @@ import Mathematics.Matrix.*;
 /**
  * Implementation of the
  * <a href="http://en.wikipedia.org/wiki/Outer_product">outer product</a> of
- * two {@see Vector vectors} of real values.
+ * two {@see Vector vectors} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
 public final class OuterProductReal

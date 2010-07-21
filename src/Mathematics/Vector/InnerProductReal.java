@@ -10,7 +10,7 @@ import Mathematics.Function.*;
 /**
  * Implementation of the
  * <a href="http://en.wikipedia.org/wiki/Dot_product">inner product</a> of
- * two {@see Vector vectors} of real values.
+ * two {@see Vector vectors} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
 public final class InnerProductReal

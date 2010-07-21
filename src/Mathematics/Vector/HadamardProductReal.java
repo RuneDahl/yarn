@@ -10,7 +10,7 @@ import Mathematics.Function.*;
 /**
  * Implementation of the
  * <a href="http://en.wikipedia.org/wiki/Matrix_product#Hadamard_product">
- * Hadamard product</a> of two {@see Vector vectors} of real values. <br>
+ * Hadamard product</a> of two {@see Vector vectors} of {@see Double real} values. <br>
  * This function result in a vector containing the multiplies the individual
  * entries in the 2 vectors, that must be the of the same dimensions.
  * @author Rune Dahl Iversen
