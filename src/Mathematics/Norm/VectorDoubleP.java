@@ -10,7 +10,7 @@ import Mathematics.Vector.*;
 /**
  * An implementation of the
  * <a href="http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm">P-norm</a>
- * for a {@see Vector vector} of real values.
+ * for a {@see Vector vector} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
 public class VectorDoubleP extends Power<Vector<Double>> {
@@ -19,7 +19,7 @@ public class VectorDoubleP extends Power<Vector<Double>> {
     /**
      * Creates an instance of the
      * <a href="http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm">P-norm</a>
-     * for a {@see Vector vector} of real values with the specified power.
+     * for a {@see Vector vector} of {@see Double real} values with the specified power.
      * @param power Power. Must be greater than or equal to 1 and finite.
      * @throws IllegalArgumentException Power is not finite.
      * @throws IllegalArgumentException Power must be greater than or equal to 1.

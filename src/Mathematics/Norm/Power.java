@@ -9,7 +9,8 @@ import Validation.*;
 
 /**
  * Abstract class allowing for easier implementation of the
- * <a href="http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm">P-norm</a>.
+ * <a href="http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm">P-norm</a>
+ * for {@see Double real} numbers.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */

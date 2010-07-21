@@ -10,14 +10,14 @@ import Mathematics.Vector.*;
 /**
  * An implementation of the
  * <a href="http://en.wikipedia.org/wiki/Maximum_norm">maximum norm</a>
- * for a {@see Vector vector} of real values.
+ * for a {@see Vector vector} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
 public class VectorDoubleMaximum implements Norm<Vector<Double>> {
     /**
      * Creates an instance of the
      * <a href="http://en.wikipedia.org/wiki/Maximum_norm">maximum norm</a>
-     * for a {@see Vector vector} of real values.
+     * for a {@see Vector vector} of {@see Double real} values.
      */
     public VectorDoubleMaximum() {
     }
