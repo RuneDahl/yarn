@@ -61,7 +61,9 @@ public interface Vector<TypeOfValue>
             final TypeOfValue value);
 
     /**
-     * Returns a zero-based array of the values from this vector.
+     * Returns an array of the values from this vector.
+     * The values filled with the coefficients of this vector are
+     * determined by its dimensions.
      * @return Array of the values of this vector.
      */
     public TypeOfValue[] ToArray();
