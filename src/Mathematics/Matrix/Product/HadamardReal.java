@@ -3,19 +3,20 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Matrix;
+package Mathematics.Matrix.Product;
 
 import Mathematics.Function.*;
+import Mathematics.Matrix.*;
 
 /**
  * Implementation of the
  * <a href="http://en.wikipedia.org/wiki/Matrix_product#Hadamard_product">
- * Hadamard product</a> of two {@see Matrix matrices} of real values. <br>
+ * Hadamard product</a> of two {@see Matrix matrices} of {@see Double real values}. <br>
  * This function result in a matrix containing the multiplies the individual
  * entries in the 2 matrices, that must be the of the same dimensions.
  * @author Rune Dahl Iversen
  */
-public final class HadamardProductReal
+public final class HadamardReal
         implements Operator<Matrix<Double>, Matrix<Double>, Matrix<Double>> {
     public Matrix<Double> Value(final Matrix<Double> firstInput,
             final Matrix<Double> secondInput) {

@@ -3,17 +3,18 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Matrix;
+package Mathematics.Matrix.Product;
 
 import Mathematics.Function.*;
+import Mathematics.Matrix.*;
 
 /**
  * Implementation of the
  * <a href="http://en.wikipedia.org/wiki/Matrix_product#Ordinary_matrix_product">
- * ordinary matrix product</a> of two {@see Matrix matrices} of real values.
+ * ordinary matrix product</a> of two {@see Matrix matrices} of {@see Double real values}.
  * @author Rune Dahl Iversen
  */
-public class MatrixProductReal implements
+public class OrdinaryReal implements
         Operator<Matrix<Double>, Matrix<Double>, Matrix<Double>> {
     public Matrix<Double> Value(Matrix<Double> firstInput, Matrix<Double> secondInput) {
         if (firstInput.getFirstColumn() != secondInput.getFirstRow())
