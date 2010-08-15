@@ -338,6 +338,14 @@ public final class MatrixReal implements Matrix<Double> {
         return this._firstRow;
     }
 
+    public int getLastColumn() {
+        return this._firstColumn + this._values[0].length - 1;
+    }
+
+    public int getLastRow() {
+        return this._firstRow + this._values.length - 1;
+    }
+
     public Vector<Double> getRow(final int row) {
         Vector<Double> r = new VectorReal(this._firstColumn, this.getColumns());
         int start = r.getFirstDimension();
