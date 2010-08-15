@@ -49,6 +49,18 @@ public interface Matrix<TypeOfValue>
     public int getFirstRow();
 
     /**
+     * Gets the index of the last dimension of the columns of this matrix.
+     * @return The index of the last dimension of the columns of this matrix.
+     */
+    public int getLastColumn();
+
+    /**
+     * Gets the index of the last dimension of the rows of this matrix.
+     * @return The index of the last dimension of the rows of this matrix.
+     */
+    public int getLastRow();
+
+    /**
      * Gets the values of the specified row as a vector.
      * @param row Row.
      * @return    Vector with the relevant values.
