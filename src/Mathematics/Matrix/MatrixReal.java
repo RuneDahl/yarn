@@ -15,7 +15,7 @@ import Validation.*;
  * but immutable dimensions.
  * @author Rune Dahl Iversen
  */
-public final class MatrixReal implements Matrix<Double> {
+public final class MatrixReal extends MatrixBase<Double> {
     private Validator<Double> _validator;
     private double[][] _values; //2-dimensional array of values:[rows][columns].
     private int _firstColumn;
@@ -273,26 +273,6 @@ public final class MatrixReal implements Matrix<Double> {
         return stack;
     }
 
-    public void SwitchColumns(final int column1, final int column2) {
-        Vector<Double> temp = this.getColumn(column1);
-        int start = this._firstRow;
-        int end = start + this.getRows();
-        for (int r = start; r < end; r++) {
-            this.setValue(r, column1, this.getValue(r, column2));
-            this.setValue(r, column2, temp.getValue(r));
-        }
-    }
-
-    public void SwitchRows(final int row1, final int row2) {
-        Vector<Double> temp = this.getRow(row1);
-        int start = this._firstColumn;
-        int end = start + this.getColumns();
-        for (int c = start; c < end; c++) {
-            this.setValue(row1, c, this.getValue(row2, c));
-            this.setValue(row2, c, temp.getValue(c));
-        }
-    }
-
     public Double[][] ToArray() {
         Double[][] array = new Double[this.getRows()][this.getColumns()];
         for (int r = 0; r < this.getRows(); r++)
@@ -338,14 +318,6 @@ public final class MatrixReal implements Matrix<Double> {
         return this._firstRow;
     }
 
-    public int getLastColumn() {
-        return this._firstColumn + this._values[0].length - 1;
-    }
-
-    public int getLastRow() {
-        return this._firstRow + this._values.length - 1;
-    }
-
     public Vector<Double> getRow(final int row) {
         Vector<Double> r = new VectorReal(this._firstColumn, this.getColumns());
         int start = r.getFirstDimension();
@@ -361,55 +333,6 @@ public final class MatrixReal implements Matrix<Double> {
 
     public Double getValue(final int row, final int column) {
         return this._values[row - this._firstRow][column - this._firstColumn];
-    }
-
-    public boolean hasSameColumns(Vector<Double> column) {
-        return this.getFirstColumn() == column.getFirstDimension() &&
-                this.getColumns() == column.getDimensions();
-    }
-
-    public boolean hasSameColumns(Matrix<Double> matrix) {
-        return this.getFirstColumn() == matrix.getFirstColumn() &&
-                this.getColumns() == matrix.getColumns();
-    }
-
-    public boolean hasSameDimensions(Matrix<Double> matrix) {
-        return this.hasSameColumns(matrix) &&
-                this.hasSameRows(matrix);
-    }
-
-    public boolean hasSameRows(Vector<Double> row) {
-        return this.getFirstRow() == row.getFirstDimension() &&
-                this.getRows() == row.getDimensions();
-    }
-
-    public boolean hasSameRows(Matrix<Double> matrix) {
-        return this.getFirstRow() == matrix.getFirstRow() &&
-                this.getRows() == matrix.getRows();
-    }
-
-    public boolean isSquare() {
-        return this.getColumns() == this.getRows();
-    }
-
-    public void setColumn(final int column, final Vector<Double> values) {
-        if (!this.hasSameRows(values))
-            throw new IllegalArgumentException("The vector does not have the " +
-                    "same dimensions as the rows of this matrix.");
-        int start = this._firstRow;
-        int end = start + this.getRows();
-        for (int r = start; r < end; r++)
-            this.setValue(r, column, values.getValue(r));
-    }
-
-    public void setRow(final int row, final Vector<Double> values) {
-        if (!this.hasSameColumns(values))
-            throw new IllegalArgumentException("The vector does not have the " +
-                    "same dimensions as the columns of this matrix.");
-        int start = this._firstColumn;
-        int end = start + this.getColumns();
-        for (int c = start; c < end; c++)
-            this.setValue(row, c, values.getValue(c));
     }
 
     public void setValue(final int row, final int column, final Double value) {
