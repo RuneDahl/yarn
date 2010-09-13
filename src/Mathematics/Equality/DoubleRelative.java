@@ -6,8 +6,10 @@
 package Mathematics.Equality;
 
 /**
- * Comparison of double values using the absolute value of the difference
- * relative to the maximum of the absolute values.
+ * Comparison of double values using a
+ * <a href="http://en.wikipedia.org/wiki/Relative_difference">relative scale</a>.<br>
+ * @see <a href="http://en.wikipedia.org/wiki/Loss_of_significance">
+ * [1] Wikipedia - Loss of significance</a>.
  * @author Rune Dahl Iversen
  */
 public class DoubleRelative extends PrecisionBased<Double> {
@@ -33,6 +35,15 @@ public class DoubleRelative extends PrecisionBased<Double> {
         double denominator = Math.max(Math.abs(a), Math.abs(b));
         if (denominator == 0.0)
             return true;
-        return (Math.abs(a - b) / denominator) <= this.getPrecision();
+        /*
+         * In an attempt to not destroy a large number of significant
+         * digits the code does not subtract a from b, but considers
+         * if the smallest absolute value times the sign of the product
+         * relative to the largest absolute value is close to 1.
+         * See [1].
+         */
+        double numerator = Math.min(Math.abs(a), Math.abs(b)) *
+                Math.signum(a * b);
+        return 1.0 - this.getPrecision() <= (numerator / denominator);
     }
 }
