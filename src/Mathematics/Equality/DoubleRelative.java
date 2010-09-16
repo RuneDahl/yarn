@@ -32,6 +32,10 @@ public class DoubleRelative extends PrecisionBased<Double> {
     }
 
     public boolean Equal(final Double a, final Double b) {
+        if (a == null || b == null ||
+                Double.isInfinite(a) || Double.isNaN(a) ||
+                Double.isInfinite(b) || Double.isNaN(b))
+            return false;
         double denominator = Math.max(Math.abs(a), Math.abs(b));
         if (denominator == 0.0)
             return true;
