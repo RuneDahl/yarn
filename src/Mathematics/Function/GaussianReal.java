@@ -97,8 +97,9 @@ public final class GaussianReal implements Function<Double, Double> {
     }
 
     public Double Value(Double input) {
-        return this._scale * Math.exp(- Math.pow(input - this._center, 2.0) /
-                (2 * Math.pow(this._spread, 2.0)));
+        return this._scale * Math.exp(
+                -(input - this._center) * (input - this._center) /
+                (2 * this._spread * this._spread));
     }
 
     private Validator<Double> _SetValidator() {
