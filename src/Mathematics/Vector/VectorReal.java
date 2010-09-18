@@ -93,6 +93,10 @@ public class VectorReal implements Vector<Double> {
         return this._firstDimension;
     }
 
+    public int getLastDimension() {
+        return this._firstDimension + this.getDimensions() - 1;
+    }
+
     public Double getValue(final int dimension) {
         return this._values[dimension - this._firstDimension];
     }

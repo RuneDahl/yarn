@@ -37,6 +37,12 @@ public interface Vector<TypeOfValue>
     public int getFirstDimension();
 
     /**
+     * Gets the index of the last dimension of this vector.
+     * @return The index of the last dimension of this vector.
+     */
+    public int getLastDimension();
+
+    /**
      * Gets the value from this vector of the specified dimension.
      * @param dimension The dimension.
      * @return          The dimensional value.
