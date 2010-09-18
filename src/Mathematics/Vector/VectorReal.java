@@ -49,7 +49,7 @@ public class VectorReal implements Vector<Double> {
     }
 
     /**
-     * Creates a real vector with the specified first dimension, number of
+     * Creates a finite real vector with the specified first dimension, number of
      * dimensions and the specified value in all dimensions/values.
      * @param firstDimension First dimension of this vector.
      * @param dimensions     Number of dimensions of this vector.
@@ -57,7 +57,7 @@ public class VectorReal implements Vector<Double> {
      */
     public VectorReal(final int firstDimension, final int dimensions,
             final double value) {
-        this._validator = this._setValidator();
+        this._validator = Factory.FiniteReal();
         this._firstDimension = firstDimension;
         double[] values = new double[dimensions];
         for (int dim = 0; dim < dimensions; dim++)
@@ -80,7 +80,7 @@ public class VectorReal implements Vector<Double> {
      * @param values         Zero-based array of values.
      */
     public VectorReal(final int firstDimension, final double[] values) {
-        this._validator = this._setValidator();
+        this._validator = Factory.FiniteReal();
         this._firstDimension = firstDimension;
         this._setValues(values);
     }
@@ -185,14 +185,6 @@ public class VectorReal implements Vector<Double> {
         dim < this._firstDimension + this._values.length; dim++)
             values[dim] = this.getValue(dim);
         return values;
-    }
-
-    private Validator<Double> _setValidator() {
-        And<Double> validator = new And<Double>();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 
     private void _setValues(final double[] values) {

@@ -35,7 +35,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
      * @param coefficients Array of coefficients.
      */
     public PolynomialReal(final Double[] coefficients) {
-        this._validator = this._setValidator();
+        this._validator = Factory.FiniteReal();
         this._setCoefficients(coefficients);
     }
 
@@ -48,7 +48,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
      * @param coefficients Array of coefficients.
      */
     public PolynomialReal(final double[] coefficients) {
-        this._validator = this._setValidator();
+        this._validator = Factory.FiniteReal();
         Double[] c = new Double[coefficients.length];
         for (int d = 0; d < c.length; d++)
             c[d] = coefficients[d];
@@ -192,13 +192,5 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
                         this._validator.Message(values[dim],
                         "The value of dimension " + Integer.toString(dim)));
         }
-    }
-
-    private Validator<Double> _setValidator() {
-        And<Double> validator = new And<Double>();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 }

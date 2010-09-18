@@ -30,7 +30,7 @@ public final class GaussianReal implements Function<Double, Double> {
             final double center,
             final double spread,
             final double scale) {
-        this._validator = this._SetValidator();
+        this._validator = Factory.FiniteReal();
         this.setCenter(center);
         this.setSpread(spread);
         this.setScale(scale);
@@ -100,13 +100,5 @@ public final class GaussianReal implements Function<Double, Double> {
         return this._scale * Math.exp(
                 -(input - this._center) * (input - this._center) /
                 (2 * this._spread * this._spread));
-    }
-
-    private Validator<Double> _SetValidator() {
-        And<Double> validator = new And<Double>();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 }

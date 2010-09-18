@@ -69,7 +69,7 @@ public final class MatrixReal extends MatrixBase<Double> {
      */
     public MatrixReal(final int firstRow, final int rows,
             final int firstColumn, final int columns, final double value) {
-        this._validator = this._setValidator();
+        this._validator = Factory.FiniteReal();
         this._firstColumn = firstColumn;
         this._firstRow = firstRow;
         double[][] values = new double[rows][columns];
@@ -97,7 +97,7 @@ public final class MatrixReal extends MatrixBase<Double> {
      */
     public MatrixReal(final int firstRow, final int firstColumn,
             final double[][] values) {
-        this._validator = this._setValidator();
+        this._validator = Factory.FiniteReal();
         this._firstColumn = firstColumn;
         this._firstRow = firstRow;
         this._setValues(values);
@@ -405,14 +405,6 @@ public final class MatrixReal extends MatrixBase<Double> {
                 difference.setValue(r, c,
                         this.getValue(r, c) - value.getValue(r, c));
         return difference;
-    }
-
-    private Validator<Double> _setValidator() {
-        And<Double> validator = new And<Double>();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 
     private void _setValues(final double[][] values) {
