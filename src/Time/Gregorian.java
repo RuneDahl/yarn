@@ -42,7 +42,48 @@ public final class Gregorian {
         return isLeapYear(date.get(GregorianCalendar.YEAR));
     }
 
-        /**
+    /**
+     * Returns the actual length of a month in a year from the Gregorian calendar in days.
+     * @param year  Year.
+     * @param month Month.
+     * @return Length of the month in days.
+     */
+    public final static double lengthOfMonth(final int year, final int month) {
+        if (month == 1 && isLeapYear(year))
+            return 29.0;
+        switch (month)
+        {
+            case 0:
+            case 2:
+            case 4:
+            case 6:
+            case 7:
+            case 9:
+            case 11:
+                return 31.0;
+            case 1:
+                return 28.0;
+            case 3:
+            case 5:
+            case 8:
+            case 10:
+                return 30.0;
+            default:
+                throw new IllegalArgumentException("The month must be an " +
+                        "integer in the range 0 to 11 (both included).");
+        }
+    }
+
+    /**
+     * Returns the actual length of a year in the Gregorian calendar in days.
+     * @param year Year.
+     * @return Length of the year in days.
+     */
+    public final static double lengthOfYear(final int year) {
+        return 365.0 + (isLeapYear(year) ? 1.0 : 0.0);
+    }
+
+    /**
      * Returns the latest of the 2 specified Gregorian date/times.
      * @param date1 Date/time.
      * @param date2 Date/time.
