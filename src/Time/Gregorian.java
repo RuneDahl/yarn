@@ -18,13 +18,14 @@ public final class Gregorian {
 
     /**
      * Returns the difference between the two specified Gregorian date/times
-     * that stem from the differences in hours, minutes, seconds and
-     * milliseconds measured in days.
+     * that stem from the differences in Hours, Minutes, Seconds and
+     * Milli-seconds measured in days.
      * @param from From date/time.
      * @param to   To date/time.
-     * @return
+     * @return     The difference measured in days stemming from Hours, Minutes,
+     *             Seconds and Milli-seconds.
      */
-    public final double belowDateDifference(
+    public static final double belowDateDifference(
             final GregorianCalendar from,
             final GregorianCalendar to) {
         double difference = (to.get(GregorianCalendar.MILLISECOND) - from.get(GregorianCalendar.MILLISECOND)) / 1000.0;
