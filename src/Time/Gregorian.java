@@ -17,6 +17,27 @@ public final class Gregorian {
     }
 
     /**
+     * Returns the difference between the two specified Gregorian date/times
+     * that stem from the differences in hours, minutes, seconds and
+     * milliseconds measured in days.
+     * @param from From date/time.
+     * @param to   To date/time.
+     * @return
+     */
+    public final double belowDateDifference(
+            final GregorianCalendar from,
+            final GregorianCalendar to) {
+        double difference = (to.get(GregorianCalendar.MILLISECOND) - from.get(GregorianCalendar.MILLISECOND)) / 1000.0;
+        difference += (to.get(GregorianCalendar.SECOND) - from.get(GregorianCalendar.SECOND));
+        difference /= 60.0;
+        difference += (to.get(GregorianCalendar.MINUTE) - from.get(GregorianCalendar.MINUTE));
+        difference /= 60.0;
+        difference += (to.get(GregorianCalendar.HOUR_OF_DAY) - from.get(GregorianCalendar.HOUR_OF_DAY));
+        difference /= 24.0;
+        return difference;
+    }
+
+    /**
      * Computes whether the specified year is a leap-year in the Gregorian calendar.
      * @param year Year.
      * @return     True if year is a leap-year, otherwise false.
