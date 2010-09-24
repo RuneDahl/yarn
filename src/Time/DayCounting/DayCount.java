@@ -8,7 +8,9 @@ package Time.DayCounting;
 /**
  * Interface for a
  * <a href="http://en.wikipedia.org/wiki/Day_count_convention">day count
- * convention</a>.
+ * convention</a>.<br>
+ * A day count convention is a method to translate the time between
+ * two date/times (within a calendar) into a number of days.
  * @author Rune Dahl Iversen
  * @param <TypeOfCalendar> Type of calendar.
  */
