@@ -7,7 +7,7 @@ package Time.DayCounting;
 
 /**
  * Interface for a
- * <a href="http://en.wikipedia.org/wiki/Day_count_convention">daycount
+ * <a href="http://en.wikipedia.org/wiki/Day_count_convention">day count
  * convention</a>.
  * @author Rune Dahl Iversen
  * @param <TypeOfCalendar> Type of calendar.
