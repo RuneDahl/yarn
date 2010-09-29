@@ -17,11 +17,11 @@ public abstract class Gregorian
     private int _basicPeriod;
 
     /**
-     * Create a period of days in the Gregorian calendar.
-     * @param count Number of days.
+     * Create a basic period in the Gregorian calendar.
+     * @param count       Number of periods.
      * @param basicPeriod Integer representing the basic period of this period.
-     *                    This integer must be a value from the integer period
-     *                    constants defined for the {@see GregorianCalendar}.
+     *                    <br>This value must be from the period constants
+     *                    defined for the {@see GregorianCalendar}.
      */
     protected Gregorian(final int count, final int basicPeriod) {
         super(count);
