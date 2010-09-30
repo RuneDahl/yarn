@@ -15,7 +15,7 @@ import Mathematics.*;
  * <br>- It is suggested that any classes implementing Vector be implemented
  * as <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable</a>.
  * <br>- Any implementation of Vector should have values for the following
- * dimensions: getFirstDimension(), ..., getFirstDimension() + getDimensions() - 1.
+ * dimensions: getFirstDimension(), ..., getLastDimension().
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
