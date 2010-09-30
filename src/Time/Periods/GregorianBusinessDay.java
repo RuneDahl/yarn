@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
  * @author Rune Dahl Iversen
  */
 public final class GregorianBusinessDay extends Count<GregorianCalendar> {
-    private BusinessDays<GregorianCalendar> _businessDays;
+    private HolidaysBased<GregorianCalendar> _businessDays;
 
     /**
      * Create a period of business days in the Gregorian calendar using the
