@@ -19,30 +19,6 @@ import Time.Periods.*;
  */
 public interface BusinessDays<TypeOfCalendar> {
     /**
-     * Gets the holidays from this business days.
-     * @return The holidays.
-     */
-    public Holiday<TypeOfCalendar> getHolidays();
-
-    /**
-     * Gets the period used to adjust and shift date/times.
-     * @return The period used to adjust and shift date/times.
-     */
-    public Period<TypeOfCalendar> getPeriod();
-
-    /**
-     * Sets the holidays of this business days.
-     * @param holidays Holidays.
-     */
-    public void setHolidays(final Holiday<TypeOfCalendar> holidays);
-
-    /**
-     * Sets the period used to adjust and shift date/times.
-     * @param period Period used to adjust and shift date/times.
-     */
-    public void setPeriod(final Period<TypeOfCalendar> period);
-
-    /**
      * Returns the adjusted date/time from the specified date/time using the
      * rules and values of this business days.
      * @param dateTime Date/time.
