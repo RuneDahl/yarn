@@ -10,11 +10,11 @@ import Time.Periods.Period;
 
 /**
  * Abstract implementation of the {@see BusinessDays business days} interface
- * containing the holidays and period.
+ * using a set of {@see Holiday holidays} and a {@see Period period}.
  * @author Rune Dahl Iversen
  * @param <TypeOfCalendar> Type of calendar.
  */
-public abstract class BusinessDaysBase<TypeOfCalendar>
+public abstract class HolidaysBased<TypeOfCalendar>
         implements BusinessDays<TypeOfCalendar> {
     private Period<TypeOfCalendar> _period;
     private Holiday<TypeOfCalendar> _holidays;
@@ -27,16 +27,24 @@ public abstract class BusinessDaysBase<TypeOfCalendar>
      * @throws NullPointerException Holidays not properly specified.
      * @throws NullPointerException Period not properly specified.
      */
-    protected BusinessDaysBase(final Holiday<TypeOfCalendar> holidays,
+    protected HolidaysBased(final Holiday<TypeOfCalendar> holidays,
             final Period<TypeOfCalendar> period) {
         this.setHolidays(holidays);
         this.setPeriod(period);
     }
-    
+
+    /**
+     * Gets the holidays of this business days.
+     * @return Holidays.
+     */
     public final  Holiday<TypeOfCalendar> getHolidays() {
         return this._holidays;
     }
 
+    /**
+     * Gets the period used to adjust and shift date/times.
+     * @return Period used to adjust and shift date/times.
+     */
     public final Period<TypeOfCalendar> getPeriod() {
         return this._period;
     }

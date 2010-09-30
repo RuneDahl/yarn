@@ -16,7 +16,7 @@ import Time.Periods.Period;
  * @param <TypeOfCalendar> Type of calendar.
  */
 public final class Previous<TypeOfCalendar>
-        extends BusinessDaysBase<TypeOfCalendar> {
+        extends HolidaysBased<TypeOfCalendar> {
     /**
      * Creates an instance of the previous business days for the specified
      * holidays and period.

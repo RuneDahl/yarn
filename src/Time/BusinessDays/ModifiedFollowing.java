@@ -17,7 +17,7 @@ import java.util.Calendar;
  * @param <TypeOfCalendar> Type of calendar.
  */
 public final class ModifiedFollowing<TypeOfCalendar>
-        extends BusinessDaysBase<TypeOfCalendar> {
+        extends HolidaysBased<TypeOfCalendar> {
     /**
      * Creates an instance of the modified following business days for the
      * specified holidays and period.
