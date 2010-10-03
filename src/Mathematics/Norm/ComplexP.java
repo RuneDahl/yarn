@@ -33,6 +33,12 @@ public final class ComplexP extends Power<Complex> {
         // prevents destructive overruns and underruns.
         double power = this.getPower();
         double max = __maxNorm.Value(input);
+        // Handle the case Complex.Inifity, that would result in max equaling Double.POSITIVE_INFINITY.
+        if (Double.isInfinite(max))
+            return max;
+        // Handle the case Complex.Origin, that would result in max equaling 0.
+        else if (max == 0.0)
+            return max;
         double norm = Math.pow(Math.abs(input.getReal()) / max, power);
         norm += Math.pow(Math.abs(input.getImaginary()) / max, power);
         return max * Math.pow(norm, 1.0 / power);

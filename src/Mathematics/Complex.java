@@ -9,38 +9,51 @@ import Mathematics.Norm.ComplexP;
 
 /**
  * Implementation of a
- * <a href="http://en.wikipedia.org/wiki/Complex_number">complex number</a>.
- * Complex is implemented as an immutable class.
+ * <a href="http://en.wikipedia.org/wiki/Complex_number">complex number</a>.<br>
+ * The class Complex is implemented as
+ * <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable</a>.
  * @author Rune Dahl Iversen
  */
-public class Complex
+public final class Complex
         implements Additive<Complex>, Conjugate<Complex>, Divisible<Complex>,
         Invertible<Complex>, Multiplicative<Complex> {
     private final double _real;
     private final double _imaginary;
     private final double _modulus;
     private final double _argument;
-    private final ComplexP _euclidean = new ComplexP(2.0);
+
+    // The Euclidian Norm to calculate the modulus of complex numbers.
+    private final static ComplexP __euclidean = new ComplexP(2.0);
 
     /**
-     * Create an instance of a {@see Complex} number
-     * using cartesian coordinates.
-     * @param real      Real part of the {@see Complex} number.
-     * @param imaginary Imaginary part of the {@see Complex} number.
+     * Create an instance of a {@see Complex complex} number using
+     * <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">
+     * cartesian coordinates</a>.
+     * @param real      Real part of the complex number.
+     * @param imaginary Imaginary part of the complex number.
      */
     public Complex(final double real, final double imaginary) {
         this._real = real;
         this._imaginary = imaginary;
-        // Compute the Modulus and Argument, for easier access.
-        this._modulus = this._euclidean.Value(this);
+        // Compute the Modulus and Argument, for easier future access.
+        this._modulus = __euclidean.Value(this);
         this._argument = this._getArgument();
+    }
+
+    /**
+     * Create an instance of a {@see Complex complex} number from a
+     * <a href="http://en.wikipedia.org/wiki/Real_number">real number</a>.
+     * @param real Real part of the complex number.
+     */
+    public Complex(final double real) {
+        this(real, 0.0);
     }
 
     /**
      * Returns the
      * <a href="http://en.wikipedia.org/wiki/Arg_(mathematics)#Principal_value">principal</a>
      * <a href="http://en.wikipedia.org/wiki/Arg_%28mathematics%29">argument</a>
-     * of this complex value.
+     * of this {@see Complex complex} value.
      * @return The principal argument of this complex value.
      */
     public double getArgument() {
@@ -51,7 +64,7 @@ public class Complex
      * Returns the
      * <a href="http://en.wikipedia.org/wiki/Arg_(mathematics)#Principal_value">principal</a>
      * <a href="http://en.wikipedia.org/wiki/Arg_%28mathematics%29">argument</a>
-     * of this complex value shifted by 2·Pi · the specified rotations.
+     * of this {@see Complex complex} value shifted by 2·Pi · the specified rotations.
      * @return The argument of this complex value.
      */
     public double getArgument(final int rotations) {
@@ -61,17 +74,21 @@ public class Complex
     /**
      * Gets the
      * <a href="http://en.wikipedia.org/wiki/Imaginary_part">imaginary</a>
-     * part of this {@see Complex} number.
+     * part of this {@see Complex complex} number.
      * @return The imaginary part.
      */
     public double getImaginary() {
+        if (Complex.isNaN(this))
+            return Double.NaN;
+        if (Complex.isInfinite(this))
+            return Double.POSITIVE_INFINITY;
         return this._imaginary;
     }
 
     /**
      * Gets the
      * <a href="http://en.wikipedia.org/wiki/Absolute_value#Complex_numbers">
-     * modulus</a> of this {@see Complex} number.
+     * modulus</a> of this {@see Complex complex} number.
      * @return The modulus.
      */
     public double getModulus() {
@@ -80,15 +97,19 @@ public class Complex
 
     /**
      * Gets the <a href="http://en.wikipedia.org/wiki/Real_part">real part</a>
-     * of this {@see Complex} number.
+     * of this {@see Complex complex} number.
      * @return The real part.
      */
     public double getReal() {
+        if (Complex.isNaN(this))
+            return Double.NaN;
+        if (Complex.isInfinite(this))
+            return Double.POSITIVE_INFINITY;
         return this._real;
     }
 
     /**
-     * Returns this {@see Complex} number modified to have the specified
+     * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Arg_%28mathematics%29">argument</a>.
      * @param argument Argument.
      * @return         {@see Complex} number.
@@ -98,7 +119,7 @@ public class Complex
     }
 
     /**
-     * Returns this {@see Complex} number modified to have the specified
+     * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Imaginary_part">imaginary</a> value.
      * @param imaginary Imaginary value.
      * @return          {@see Complex} number.
@@ -108,7 +129,7 @@ public class Complex
     }
 
     /**
-     * Returns this {@see Complex} number modified to have the specified
+     * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Absolute_value#Complex_numbers">
      * modulus</a>.
      * @param modulus Modulus.
@@ -119,7 +140,7 @@ public class Complex
     }
 
     /**
-     * Returns this {@see Complex} number modified to have the specified
+     * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Real_part">real</a> value.
      * @param real Real value.
      * @return     {@see Complex} number.
@@ -170,27 +191,28 @@ public class Complex
     }
 
     /**
-     * The constant {@see Complex} value
+     * The constant {@see Complex complex} value
      * <a href="http://en.wikipedia.org/wiki/Infinity#Complex_analysis">infinity</a>.
      */
     public static final Complex Infinity =
             new Complex(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
 
     /**
-     * The constant {@see Complex} value
+     * The constant {@see Complex complex} value
      * <a href="http://en.wikipedia.org/wiki/Origin_%28mathematics%29">origin</a>.
      */
     public static final Complex Origin = new Complex(0.0, 0.0);
 
     /**
-     * The constant {@see Complex} value
+     * The constant {@see Complex complex} value
      * <a href="http://en.wikipedia.org/wiki/NaN">NaN (Not a Number)</a>.
      */
     public static final Complex NaN = new Complex(Double.NaN, Double.NaN);
 
     /**
-     * Returns a {@see Complex complex number} with the
-     * specified polar coordinates.
+     * Returns a {@see Complex complex} number with the specified
+     * <a href="http://en.wikipedia.org/wiki/Polar_coordinate_system">polar
+     * coordinates</a>.
      * @param modulus  Modulus. (Length)
      * @param argument Argument.
      * @return Complex number.
@@ -201,7 +223,7 @@ public class Complex
     }
 
     /**
-     * Returns true if the {@see Complex} number is
+     * Returns true if the {@see Complex complex} number is
      * <a href="http://en.wikipedia.org/wiki/Infinity#Complex_analysis">infinite</a>.
      * @param complex Complex number.
      * @return        True if the complex number is infinite.
@@ -209,21 +231,24 @@ public class Complex
     public static boolean isInfinite(final Complex complex) {
         return complex != null &&
                 !Complex.isNaN(complex) &&
-                Double.isInfinite(complex._modulus);
+                (Double.isInfinite(complex._real) ||
+                Double.isInfinite(complex._imaginary));
     }
 
     /**
-     * Returns true if the {@see Complex} number is the complex
+     * Returns true if the {@see Complex complex} number is the complex
      * <a href="http://en.wikipedia.org/wiki/Origin_%28mathematics%29">origin</a>.
      * @param complex Complex number.
      * @return        True if the complex number is the complex origin.
      */
     public static boolean isOrigin(final Complex complex) {
-        return complex != null && complex._modulus == 0.0;
+        return complex != null &&
+                complex._real == 0.0 &&
+                complex._imaginary == 0.0;
     }
 
     /**
-     * Returns true if the {@see Complex} number is the complex
+     * Returns true if the {@see Complex complex} number is the complex
      * <a href="http://en.wikipedia.org/wiki/NaN">NaN</a>.
      * @param complex Complex number.
      * @return        True if the complex number is the complex NaN.
@@ -266,7 +291,7 @@ public class Complex
      * <li>If the value is Complex.Origin, the result is Complex.Infinity.</li>
      * </ul>
      * @param value Complex value to get the natural logarithm of.
-     * @return      The value <i>ln value</i>, the natural logarithm of value.
+     * @return      The the natural logarithm of the complex value.
      */
     public static Complex log(final Complex value) {
         if (isNaN(value) || isInfinite(value))
@@ -284,7 +309,7 @@ public class Complex
                 Complex.isInfinite(this) ||
                 Complex.isOrigin(this))
             return Double.NaN;
-        double argument = Math.atan2(this._real, this._imaginary);
+        double argument = Math.atan2(this._imaginary, this._real);
         return argument;
     }
 }
