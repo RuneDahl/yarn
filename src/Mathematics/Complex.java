@@ -28,25 +28,19 @@ public final class Complex
     /**
      * Create an instance of a {@see Complex complex} number using
      * <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">
-     * cartesian coordinates</a>.
+     * cartesian coordinates</a>.<br>
+     * This constructor is private to the class Complex. The reason is that
+     * users should use one of the 3 factory-methods:
+     * Cartesian, Polar or FromRealNumber.
      * @param real      Real part of the complex number.
      * @param imaginary Imaginary part of the complex number.
      */
-    public Complex(final double real, final double imaginary) {
+    private Complex(final double real, final double imaginary) {
         this._real = real;
         this._imaginary = imaginary;
         // Compute the Modulus and Argument, for easier future access.
         this._modulus = __euclidean.Value(this);
         this._argument = this._getArgument();
-    }
-
-    /**
-     * Create an instance of a {@see Complex complex} number from a
-     * <a href="http://en.wikipedia.org/wiki/Real_number">real number</a>.
-     * @param real Real part of the complex number.
-     */
-    public Complex(final double real) {
-        this(real, 0.0);
     }
 
     /**
@@ -112,7 +106,7 @@ public final class Complex
      * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Arg_%28mathematics%29">argument</a>.
      * @param argument Argument.
-     * @return         {@see Complex} number.
+     * @return         Complex number.
      */
     public Complex setArgument(final double argument) {
         return Complex.Polar(this._modulus, argument);
@@ -122,7 +116,7 @@ public final class Complex
      * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Imaginary_part">imaginary</a> value.
      * @param imaginary Imaginary value.
-     * @return          {@see Complex} number.
+     * @return          Complex number.
      */
     public Complex setImaginary(final double imaginary) {
         return new Complex(this._real, imaginary);
@@ -133,7 +127,7 @@ public final class Complex
      * <a href="http://en.wikipedia.org/wiki/Absolute_value#Complex_numbers">
      * modulus</a>.
      * @param modulus Modulus.
-     * @return        {@see Complex} number.
+     * @return        Complex number.
      */
     public Complex setModulus(final double modulus) {
         return Complex.Polar(modulus, this._argument);
@@ -143,13 +137,15 @@ public final class Complex
      * Returns this {@see Complex complex} number modified to have the specified
      * <a href="http://en.wikipedia.org/wiki/Real_part">real</a> value.
      * @param real Real value.
-     * @return     {@see Complex} number.
+     * @return     Complex number.
      */
     public Complex setReal(final double real) {
         return new Complex(real, this._imaginary);
     }
 
     public Complex Add(final Complex value) {
+        if (value == null)
+            throw new NullPointerException("The value is not properly specified.");
         return new Complex(this._real + value._real,
                 this._imaginary + value._imaginary);
     }
@@ -158,12 +154,45 @@ public final class Complex
         return new Complex(this._real, -this._imaginary);
     }
 
+    /**
+     * Computes the
+     * <a href="http://en.wikipedia.org/wiki/Division_%28mathematics%29">division</a>
+     * of this {@see Complex complex} value by the specified
+     * <a href="http://en.wikipedia.org/wiki/Denominator">denominator</a>.
+     * @param denominator Denominator.
+     * @return            Divided value.
+     */
     public Complex Divide(final Complex denominator) {
-        if (Complex.isOrigin(denominator) &&
-                Complex.isOrigin(this))
-            throw new ArithmeticException("Attempt to divide the complex origin"
-                    + " by the complex origin.");
+        if (denominator == null)
+            throw new NullPointerException("The denominator is not properly specified.");
+        if (Complex.isNaN(this) || Complex.isNaN(denominator))
+            return Complex.NaN;
+        if (Complex.isOrigin(denominator))
+        {
+            if(Complex.isOrigin(this))
+                return Complex.NaN;
+            else
+                return Complex.Infinity;
+        }
         return this.Multiply(denominator.Inverse());
+    }
+
+    @Override
+    public boolean equals(Object value) {
+        if (value instanceof Complex)
+            return this._equals((Complex)value);
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        Double real = this._real;
+        Double imaginary = this._imaginary;
+        Double argument = this._argument;
+        Double modulus = this._modulus;
+        return real.hashCode() + 31 * imaginary.hashCode() +
+                961 * argument.hashCode() + 29791 * modulus.hashCode();
     }
 
     public Complex Inverse() {
@@ -178,7 +207,14 @@ public final class Complex
 
     public Complex Multiply(final Complex factor) {
         if (factor == null)
-            return null;
+            throw new NullPointerException("The factor is not properly specified.");
+        if (Complex.isNaN(factor) || Complex.isNaN(this))
+            return Complex.NaN;
+        if ((Complex.isInfinite(factor) && Complex.isOrigin(this)) ||
+                (Complex.isInfinite(this) && Complex.isOrigin(factor)))
+            return Complex.NaN;
+        if (Complex.isInfinite(factor) || Complex.isInfinite(this))
+            return Complex.Infinity;
         return new Complex(this._real * factor._real -
                 this._imaginary * factor._imaginary,
                 this._real * factor._imaginary +
@@ -186,8 +222,20 @@ public final class Complex
     }
 
     public Complex Subtract(final Complex value) {
+        if (value == null)
+            throw new NullPointerException("The value is not properly specified.");
         return new Complex(this._real - value._real,
                 this._imaginary - value._imaginary);
+    }
+
+    @Override
+    public String toString() {
+        if (Complex.isNaN(this))
+            return "NaN";
+        if (Complex.isInfinite(this))
+            return "Infinity";
+        return "(" + Double.toString(this._real) + " + î " +
+                Double.toString(this._imaginary) + ")";
     }
 
     /**
@@ -210,16 +258,49 @@ public final class Complex
     public static final Complex NaN = new Complex(Double.NaN, Double.NaN);
 
     /**
-     * Returns a {@see Complex complex} number with the specified
+     * Creates a new instance of {@see Complex complex} number with the specified
+     * <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">
+     * cartesian coordinates</a>.
+     * @param real      Real part of the complex number.
+     * @param imaginary Imaginary part of the complex number.
+     * @return          Complex number.
+     */
+    public static Complex Cartesian(final double real, final double imaginary) {
+        return new Complex(real, imaginary);
+    }
+
+    /**
+     * Creates a new instance of {@see Complex complex} number with the specified
      * <a href="http://en.wikipedia.org/wiki/Polar_coordinate_system">polar
      * coordinates</a>.
      * @param modulus  Modulus. (Length)
      * @param argument Argument.
-     * @return Complex number.
+     * @return         Complex number.
+     * @throws IllegalArgumentException Modulus must be non-negative.
      */
     public static Complex Polar(final double modulus, final double argument) {
+        if (modulus < 0.0)
+            throw new IllegalArgumentException("Modulus must be non-negative.");
+        if (Double.isInfinite(modulus))
+            return Complex.Infinity;
+        // TODO - Is the below needed?
+//        if (Double.isNaN(modulus) ||
+//                Double.isNaN(argument) || Double.isInfinite(argument))
+//            return Complex.NaN;
         return new Complex(modulus * Math.cos(argument),
                 modulus * Math.sin(argument));
+    }
+
+    /**
+     * Creates a new instance of {@see Complex complex} number with the specified
+     * <a href="http://en.wikipedia.org/wiki/Real_number">real</a> value of the
+     * <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">
+     * cartesian coordinates</a>.
+     * @param real      Real part of the complex number.
+     * @return          Complex number.
+     */
+    public static Complex RealNumber(final double real) {
+        return new Complex(real, 0.0);
     }
 
     /**
@@ -271,8 +352,11 @@ public final class Complex
      * @param value Complex value to raise <i>e</i> to.
      * @return      The value of <i>e<sup>value</sup></i>, where <i>e</i> is the
      *              base of the natural logarithms
+     * @throws NullPointerException The value is not properly specified.
      */
     public static Complex exp(final Complex value) {
+        if (value == null)
+            throw new NullPointerException("The value is not properly specified.");
         if (isNaN(value) || isInfinite(value))
             return Complex.NaN;
         double modulus = Math.abs(value.getReal()) < 0.1 ?
@@ -292,8 +376,11 @@ public final class Complex
      * </ul>
      * @param value Complex value to get the natural logarithm of.
      * @return      The the natural logarithm of the complex value.
+     * @throws NullPointerException The value is not properly specified.
      */
     public static Complex log(final Complex value) {
+        if (value == null)
+            throw new NullPointerException("The value is not properly specified.");
         if (isNaN(value) || isInfinite(value))
             return Complex.NaN;
         if (isOrigin(value))
@@ -311,5 +398,23 @@ public final class Complex
             return Double.NaN;
         double argument = Math.atan2(this._imaginary, this._real);
         return argument;
+    }
+
+    /**
+     * Compares this complex value to the specified.<br>
+     * Used by the override of Object.equals(Object).
+     * @param value Complex value.
+     * @return True if the values are equal else false.
+     */
+    private boolean _equals(Complex value) {
+        if (value == null) // Return false for a null value.
+            return false;
+        if (value == this)
+            return true;
+        if (Complex.isNaN(this) && Complex.isNaN(value))
+            return true;
+        if (Complex.isInfinite(this) && Complex.isInfinite(value))
+            return true;
+        return this._real == value._real && this._imaginary == value._imaginary;
     }
 }
