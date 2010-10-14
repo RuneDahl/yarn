@@ -35,15 +35,15 @@ public final class MatrixComplexThreeDimensionsOrLess
             case 1:
                 return input.getValue(r, c);
             case 2:
-                return input.getValue(r, c).Multiply(input.getValue(r + 1, c + 1))
-                        .Subtract(input.getValue(r + 1, c).Multiply(input.getValue(r, c + 1)));
+                return input.getValue(r, c).product(input.getValue(r + 1, c + 1))
+                        .subtract(input.getValue(r + 1, c).product(input.getValue(r, c + 1)));
             case 3:
-                return input.getValue(r, c).Multiply(input.getValue(r + 1, c + 1).Multiply(input.getValue(r + 2, c + 2)))
-                        .Add(input.getValue(r + 1, c).Multiply(input.getValue(r + 2, c + 1).Multiply(input.getValue(r, c + 2))))
-                        .Add(input.getValue(r + 2, c).Multiply(input.getValue(r, c + 1).Multiply(input.getValue(r + 1, c + 2))))
-                        .Subtract(input.getValue(r, c).Multiply(input.getValue(r + 2, c + 1).Multiply(input.getValue(r + 1, c + 2))))
-                        .Subtract(input.getValue(r + 1, c).Multiply(input.getValue(r, c + 1).Multiply(input.getValue(r + 2, c + 2))))
-                        .Subtract(input.getValue(r + 2, c).Multiply(input.getValue(r + 1, c + 1).Multiply(input.getValue(r, c + 2))));
+                return input.getValue(r, c).product(input.getValue(r + 1, c + 1).product(input.getValue(r + 2, c + 2)))
+                        .sum(input.getValue(r + 1, c).product(input.getValue(r + 2, c + 1).product(input.getValue(r, c + 2))))
+                        .sum(input.getValue(r + 2, c).product(input.getValue(r, c + 1).product(input.getValue(r + 1, c + 2))))
+                        .subtract(input.getValue(r, c).product(input.getValue(r + 2, c + 1).product(input.getValue(r + 1, c + 2))))
+                        .subtract(input.getValue(r + 1, c).product(input.getValue(r, c + 1).product(input.getValue(r + 2, c + 2))))
+                        .subtract(input.getValue(r + 2, c).product(input.getValue(r + 1, c + 1).product(input.getValue(r, c + 2))));
             default:
                 throw new IllegalArgumentException("Matrix dimensions are too large.");
         }
