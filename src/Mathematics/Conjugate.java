@@ -19,5 +19,5 @@ public interface Conjugate<TypeOfValue> {
      * conjugate</a> of this value.
      * @return The conjugate of this value.
      */
-    public TypeOfValue Conjugate();
+    public TypeOfValue conjugate();
 }
