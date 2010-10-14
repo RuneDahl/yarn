@@ -75,6 +75,6 @@ public abstract class Affine implements Constraint<Vector<Double>> {
     }
 
     protected final Vector<Double> _Evaluate(final Vector<Double> value) {
-        return this._matrix.Multiply(value).Add(this._vector);
+        return this._matrix.product(value).sum(this._vector);
     }
 }
