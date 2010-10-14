@@ -14,18 +14,12 @@ package Mathematics;
 public interface Additive<TypeOfValue> {
     /**
      * Compute the  <a href="http://en.wikipedia.org/wiki/Addition">sum</a>
-     * of this value and the specified value.
+     * of this value and the specified value.<br>
+     * The implementation should throw a NullPointerException
+     * if the specified value is null.
      * @param value Value to add.
      * @return      The sum.
+     * @throws NullPointerException The value is not properly specified.
      */
-    public TypeOfValue Add(final TypeOfValue value);
-
-    /**
-     * Compute the specified value
-     * <a href="http://en.wikipedia.org/wiki/Subtraction">subtracted</a>
-     * from this value.
-     * @param value Value to subtract.
-     * @return      The difference.
-     */
-    public TypeOfValue Subtract(final TypeOfValue value);
+    public TypeOfValue sum(final TypeOfValue value);
 }
