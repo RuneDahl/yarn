@@ -16,7 +16,8 @@ import Mathematics.Norm.ComplexP;
  */
 public final class Complex
         implements Additive<Complex>, Conjugate<Complex>, Divisible<Complex>,
-        Invertible<Complex>, Multiplicative<Complex> {
+        Invertible<Complex>, Multiplicative<Complex>, Reversible<Complex>,
+        Subtractable<Complex> {
     private final double _real;
     private final double _imaginary;
     private final double _modulus;
@@ -119,7 +120,7 @@ public final class Complex
      * @return          Complex number.
      */
     public Complex setImaginary(final double imaginary) {
-        return new Complex(this._real, imaginary);
+        return Complex.Cartesian(this._real, imaginary);
     }
 
     /**
@@ -140,18 +141,11 @@ public final class Complex
      * @return     Complex number.
      */
     public Complex setReal(final double real) {
-        return new Complex(real, this._imaginary);
+        return Complex.Cartesian(real, this._imaginary);
     }
 
-    public Complex Add(final Complex value) {
-        if (value == null)
-            throw new NullPointerException("The value is not properly specified.");
-        return new Complex(this._real + value._real,
-                this._imaginary + value._imaginary);
-    }
-
-    public Complex Conjugate() {
-        return new Complex(this._real, -this._imaginary);
+    public Complex conjugate() {
+        return Complex.Cartesian(this._real, -this._imaginary);
     }
 
     /**
@@ -162,7 +156,7 @@ public final class Complex
      * @param denominator Denominator.
      * @return            Divided value.
      */
-    public Complex Divide(final Complex denominator) {
+    public Complex divide(final Complex denominator) {
         if (denominator == null)
             throw new NullPointerException("The denominator is not properly specified.");
         if (Complex.isNaN(this) || Complex.isNaN(denominator))
@@ -174,7 +168,7 @@ public final class Complex
             else
                 return Complex.Infinity;
         }
-        return this.Multiply(denominator.Inverse());
+        return this.product(denominator.inverse());
     }
 
     @Override
@@ -195,7 +189,7 @@ public final class Complex
                 961 * argument.hashCode() + 29791 * modulus.hashCode();
     }
 
-    public Complex Inverse() {
+    public Complex inverse() {
         if (Complex.isNaN(this))
             return Complex.NaN;
         if (Complex.isInfinite(this))
@@ -205,7 +199,7 @@ public final class Complex
         return Complex.Polar(1.0 / this._modulus, -this._argument);
     }
 
-    public Complex Multiply(final Complex factor) {
+    public Complex product(final Complex factor) {
         if (factor == null)
             throw new NullPointerException("The factor is not properly specified.");
         if (Complex.isNaN(factor) || Complex.isNaN(this))
@@ -215,17 +209,28 @@ public final class Complex
             return Complex.NaN;
         if (Complex.isInfinite(factor) || Complex.isInfinite(this))
             return Complex.Infinity;
-        return new Complex(this._real * factor._real -
+        return Complex.Cartesian(this._real * factor._real -
                 this._imaginary * factor._imaginary,
                 this._real * factor._imaginary +
                 this._imaginary * factor._real);
     }
 
-    public Complex Subtract(final Complex value) {
+    public Complex reverse() {
+        return Complex.Cartesian(-this._real, -this._imaginary);
+    }
+
+    public Complex subtract(final Complex value) {
         if (value == null)
             throw new NullPointerException("The value is not properly specified.");
-        return new Complex(this._real - value._real,
+        return Complex.Cartesian(this._real - value._real,
                 this._imaginary - value._imaginary);
+    }
+
+    public Complex sum(final Complex value) {
+        if (value == null)
+            throw new NullPointerException("The value is not properly specified.");
+        return Complex.Cartesian(this._real + value._real,
+                this._imaginary + value._imaginary);
     }
 
     @Override
@@ -260,19 +265,39 @@ public final class Complex
     /**
      * Creates a new instance of {@see Complex complex} number with the specified
      * <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">
-     * cartesian coordinates</a>.
+     * cartesian coordinates</a>.<br>
+     * Special cases:
+     * <ul>
+     * <li>If either real or imaginary are Double.NaN the function will return
+     * Complex.NaN.</li>
+     * <li>If either real or imaginary are infinite the function will return
+     * Complex.Infinity.</li>
+     * </ul>
      * @param real      Real part of the complex number.
      * @param imaginary Imaginary part of the complex number.
      * @return          Complex number.
      */
     public static Complex Cartesian(final double real, final double imaginary) {
+        if (Double.isNaN(real) || Double.isNaN(imaginary))
+            return Complex.NaN;
+        if (Double.isInfinite(real) || Double.isInfinite(imaginary))
+            return Complex.Infinity;
         return new Complex(real, imaginary);
     }
 
     /**
      * Creates a new instance of {@see Complex complex} number with the specified
      * <a href="http://en.wikipedia.org/wiki/Polar_coordinate_system">polar
-     * coordinates</a>.
+     * coordinates</a>.<br>
+     * Special cases:
+     * <ul>
+     * <li>If either modulus or argument are Double.NaN the function will return
+     * Complex.NaN.</li>
+     * <li>If the argument is infinite the function will return
+     * Complex.NaN.</li>
+     * <li>If the modulus is infinite the function will return
+     * Complex.Infinity.</li>
+     * </ul>
      * @param modulus  Modulus. (Length)
      * @param argument Argument.
      * @return         Complex number.
@@ -287,7 +312,7 @@ public final class Complex
 //        if (Double.isNaN(modulus) ||
 //                Double.isNaN(argument) || Double.isInfinite(argument))
 //            return Complex.NaN;
-        return new Complex(modulus * Math.cos(argument),
+        return Complex.Cartesian(modulus * Math.cos(argument),
                 modulus * Math.sin(argument));
     }
 
@@ -295,12 +320,17 @@ public final class Complex
      * Creates a new instance of {@see Complex complex} number with the specified
      * <a href="http://en.wikipedia.org/wiki/Real_number">real</a> value of the
      * <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">
-     * cartesian coordinates</a>.
+     * cartesian coordinates</a>.<br>
+     * Special cases:
+     * <ul>
+     * <li>If real is Double.NaN the function will return Complex.NaN.</li>
+     * <li>If real is infinite the function will return Complex.Infinity.</li>
+     * </ul>
      * @param real      Real part of the complex number.
      * @return          Complex number.
      */
     public static Complex RealNumber(final double real) {
-        return new Complex(real, 0.0);
+        return Complex.Cartesian(real, 0.0);
     }
 
     /**
@@ -388,7 +418,7 @@ public final class Complex
         double real = Math.abs(value.getModulus() - 1.0) < 0.1 ?
             Math.log1p(value.getModulus() - 1.0) :
             Math.log(value.getModulus());
-        return new Complex(real, value.getArgument());
+        return Complex.Cartesian(real, value.getArgument());
     }
 
     private double _getArgument() {
