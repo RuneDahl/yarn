@@ -112,7 +112,7 @@ public class VectorReal implements Vector<Double> {
         return v;
     }
 
-    public Vector<Double> Add(final Vector<Double> value) {
+    public Vector<Double> sum(final Vector<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The vectors are not " +
                     "conforming in dimensions.");
@@ -159,7 +159,7 @@ public class VectorReal implements Vector<Double> {
         return hash;
     }
 
-    public Vector<Double> Subtract(final Vector<Double> value) {
+    public Vector<Double> subtract(final Vector<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The vectors are not " +
                     "conforming in dimensions.");
@@ -170,7 +170,7 @@ public class VectorReal implements Vector<Double> {
         return new VectorReal(this._firstDimension, diffs);
     }
 
-    public Vector<Double> Scale(final Double scalar) {
+    public Vector<Double> scale(final Double scalar) {
         double[] values = new double[this.getDimensions()];
         for (int dim = 0; dim < this._values.length; dim++)
             values[dim] = this._values[dim] * scalar;
