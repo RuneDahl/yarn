@@ -126,7 +126,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return output;
     }
 
-    public Polynomial<Double, Double, Double> Add(
+    public Polynomial<Double, Double, Double> sum(
             final Polynomial<Double, Double, Double> value) {
         int degree = Math.max(this.getDegree(), value.getDegree());
         Double[] sums = new Double[degree + 1];
@@ -141,7 +141,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(sums);
     }
 
-    public Polynomial<Double, Double, Double> Subtract(
+    public Polynomial<Double, Double, Double> subtract(
             final Polynomial<Double, Double, Double> value) {
         int degree = Math.max(this.getDegree(), value.getDegree());
         Double[] diffs = new Double[degree + 1];
@@ -156,7 +156,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(diffs);
     }
 
-    public Polynomial<Double, Double, Double> Multiply(
+    public Polynomial<Double, Double, Double> product(
             final Polynomial<Double, Double, Double> factor) {
         int degree = this.getDegree() + factor.getDegree();
         Double[] products = new Double[degree + 1];
@@ -169,7 +169,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(products);
     }
 
-    public Polynomial<Double, Double, Double> Scale(final Double scalar) {
+    public Polynomial<Double, Double, Double> scale(final Double scalar) {
         int degree = this.getDegree();
         Double[] scales = new Double[degree + 1];
         for (int d = 0; d <= degree; d++)
