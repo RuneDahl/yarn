@@ -5,7 +5,7 @@
 
 package Mathematics.Metric;
 
-import Mathematics.Additive;
+import Mathematics.Subtractable;
 import Mathematics.Norm.Norm;
 
 /**
@@ -51,10 +51,10 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
             throw new NullPointerException("First input is null.");
         else if (secondInput == null)
             throw new NullPointerException("Second input is null.");
-        else if (!(firstInput instanceof Additive))
-            throw new IllegalStateException("The type of value is not additive.");
-        Additive<TypeOfValue> base = (Additive<TypeOfValue>) firstInput;
-        TypeOfValue diff = base.Subtract(secondInput);
+        else if (!(firstInput instanceof Subtractable))
+            throw new IllegalStateException("The type of value is not subtractable.");
+        Subtractable<TypeOfValue> base = (Subtractable<TypeOfValue>) firstInput;
+        TypeOfValue diff = base.subtract(secondInput);
         return this._norm.Value(diff);
     }
 }
