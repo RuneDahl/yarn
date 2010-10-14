@@ -22,5 +22,5 @@ public interface Invertible<TypeOfOutput> {
      * inverse</a> value of this value.
      * @return The inverse value.
      */
-    public TypeOfOutput Inverse();
+    public TypeOfOutput inverse();
 }
