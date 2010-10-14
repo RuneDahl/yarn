@@ -17,9 +17,12 @@ public interface Divisible<TypeOfValue> {
      * Computes the
      * <a href="http://en.wikipedia.org/wiki/Division_%28mathematics%29">division</a>
      * of this value by the specified
-     * <a href="http://en.wikipedia.org/wiki/Denominator">denominator</a>.
+     * <a href="http://en.wikipedia.org/wiki/Denominator">denominator</a>.<br>
+     * The implementation should throw a NullPointerException
+     * if the specified denominator is null.
      * @param denominator Denominator.
      * @return            Divided value.
+     * @throws NullPointerException The denominator is not properly specified.
      */
-    public TypeOfValue Divide(final TypeOfValue denominator);
+    public TypeOfValue divide(final TypeOfValue denominator);
 }
