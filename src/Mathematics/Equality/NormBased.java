@@ -5,7 +5,6 @@
 
 package Mathematics.Equality;
 
-import Mathematics.Additive;
 import Mathematics.Metric.*;
 import Mathematics.Norm.*;
 import Validation.*;

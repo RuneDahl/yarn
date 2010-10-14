@@ -5,14 +5,13 @@
 
 package Mathematics.Equality;
 
-import Mathematics.Additive;
 import Mathematics.Norm.Norm;
 
 /**
  * Implementation of an {@see Mathematics.Norm}-based comparison of
- * {@see Mathematics.Additive} values considering the norm of the difference
- * relative to the maximum of the two value's norm in relation to the
- * specified precision.
+ * {@see Mathematics.Additive additive} values considering the norm of the
+ * difference relative to the maximum of the two value's norm in relation to
+ * the specified precision.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
