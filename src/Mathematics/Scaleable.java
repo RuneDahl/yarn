@@ -18,9 +18,12 @@ public interface Scaleable<TypeOfScalar, TypeOfOutput> {
     /**
      * This value scaled by the specified
      * <a href="http://en.wikipedia.org/wiki/Scalar_%28mathematics%29">scalar</a>
-     * value.
+     * value.<br>
+     * The implementation should throw a NullPointerException
+     * if the specified scalar is null.
      * @param scalar Scalar value.
      * @return       The scaled value.
+     * @throws NullPointerException The scalar is not properly specified.
      */
-    public TypeOfOutput Scale(final TypeOfScalar scalar);
+    public TypeOfOutput scale(final TypeOfScalar scalar);
 }
