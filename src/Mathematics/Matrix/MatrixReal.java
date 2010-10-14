@@ -343,7 +343,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         this._values[row - this._firstRow][column - this._firstColumn] = value;
     }
 
-    public Matrix<Double> Add(final Matrix<Double> value) {
+    public Matrix<Double> sum(final Matrix<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The matrix does not the same " +
                     "dimensions as this matrix.");
@@ -359,7 +359,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return sum;
     }
 
-    public Vector<Double> Multiply(final Vector<Double> factor) {
+    public Vector<Double> product(final Vector<Double> factor) {
         if (!this.hasSameColumns(factor))
             throw new IllegalArgumentException("The dimensions of the vector " +
                     "does not match the columns of this matrix.");
@@ -377,7 +377,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return product;
     }
 
-    public Matrix<Double> Scale(final Double scalar) {
+    public Matrix<Double> scale(final Double scalar) {
         int startR = this._firstRow;
         int endR = startR + this.getRows();
         int startC = this._firstColumn;
@@ -390,7 +390,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return scale;
     }
 
-    public Matrix<Double> Subtract(final Matrix<Double> value) {
+    public Matrix<Double> subtract(final Matrix<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The matrix does not the same " +
                     "dimensions as this matrix.");
