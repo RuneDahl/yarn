@@ -289,8 +289,161 @@ public class ComplexTest {
     public void testDivide() {
         System.out.println("Divide");
 
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (int i = 0; i < this._array.length; i++) {
+            if (!Complex.isNaN(this._array[i]) &&
+                    !Complex.isInfinite(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._inf.toString(),
+                        Complex.Infinity, this._inf.divide(this._array[i]));
+            else
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._inf.toString(),
+                        Complex.NaN, this._inf.divide(this._array[i]));
+
+            assertEquals("Test divide by " + this._array[i].toString() +
+                    " failed for " + this._nan.toString(),
+                    Complex.NaN, this._nan.divide(this._array[i]));
+
+            if (!Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._origin.toString(),
+                        Complex.Origin, this._origin.divide(this._array[i]));
+            else
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._origin.toString(),
+                        Complex.NaN, this._origin.divide(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        this._array[i].inverse(), this._realUnit.divide(this._array[i]));
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.NaN, this._realUnit.divide(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.Origin, this._realUnit.divide(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.Infinity, this._realUnit.divide(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                if (i == 3) {
+                    assertEquals("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            Complex.Cartesian(0.0, 1.0), this._complexUnit.divide(this._array[i]));
+                } else if (i == 4) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(1.0, 0.0), this._complexUnit.divide(this._array[i])));
+                } else if (i == 5) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(0.5, 0.5), this._complexUnit.divide(this._array[i])));
+                } else if (i == 6) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(-4.0 / 25.0, 3.0 / 25.0), this._complexUnit.divide(this._array[i])));
+                }
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._complexUnit.toString(),
+                        Complex.NaN, this._complexUnit.divide(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._complexUnit.toString(),
+                        Complex.Origin, this._complexUnit.divide(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._complexUnit.toString(),
+                        Complex.Infinity, this._complexUnit.divide(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                if (i == 3) {
+                    assertEquals("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            Complex.Cartesian(1.0, 1.0), this._onePointOne.divide(this._array[i]));
+                } else if (i == 4) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(1.0, -1.0), this._onePointOne.divide(this._array[i])));
+                } else if (i == 5) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(1.0, 0.0), this._onePointOne.divide(this._array[i])));
+                } else if (i == 6) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(-1.0 / 25.0, 7.0 / 25.0), this._onePointOne.divide(this._array[i])));
+                }
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._onePointOne.toString(),
+                        Complex.NaN, this._onePointOne.divide(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._onePointOne.toString(),
+                        Complex.Origin, this._onePointOne.divide(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._onePointOne.toString(),
+                        Complex.Infinity, this._onePointOne.divide(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                if (i == 3) {
+                    assertEquals("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            Complex.Polar(5.0, -0.9272952180016121),
+                            this._polar.divide(this._array[i]));
+                } else if (i == 4) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                           Complex.Polar(5.0, -0.9272952180016121 - Math.PI/2.0),
+                           this._polar.divide(this._array[i])));
+                } else if (i == 5) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Polar(5.0 / Math.sqrt(2.0), -0.9272952180016121 - Math.PI/4.0),
+                            this._polar.divide(this._array[i])));
+                } else if (i == 6) {
+                    assertTrue("Test divide by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(1.0, 0.0), this._polar.divide(this._array[i])));
+                }
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._polar.toString(),
+                        Complex.NaN, this._polar.divide(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._polar.toString(),
+                        Complex.Origin, this._polar.divide(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._polar.toString(),
+                        Complex.Infinity, this._polar.divide(this._array[i]));
+        }
     }
 
     /**
@@ -299,21 +452,21 @@ public class ComplexTest {
     @Test
     public void testDivideByOrigin() {
         System.out.println("Divide by Complex.Origin");
-        this._inf = this._inf.divide(Complex.Origin);
-        this._nan = this._nan.divide(Complex.Origin);
-        this._origin = this._origin.divide(Complex.Origin);
-        this._realUnit = this._realUnit.divide(Complex.Origin);
-        this._complexUnit = this._complexUnit.divide(Complex.Origin);
-        this._onePointOne = this._onePointOne.divide(Complex.Origin);
-        this._polar = this._polar.divide(Complex.Origin);
 
-        assertEquals(Complex.Infinity, this._inf);
-        assertEquals(Complex.NaN, this._nan);
-        assertEquals(Complex.NaN, this._origin);
-        assertEquals(Complex.Infinity, this._realUnit);
-        assertEquals(Complex.Infinity, this._complexUnit);
-        assertEquals(Complex.Infinity, this._onePointOne);
-        assertEquals(Complex.Infinity, this._polar);
+        assertEquals("Test divide by Complex.Origin failed for " + this._inf.toString(),
+                Complex.Infinity, this._inf.divide(Complex.Origin));
+        assertEquals("Test divide by Complex.Origin failed for " + this._nan.toString(),
+                Complex.NaN, this._nan.divide(Complex.Origin));
+        assertEquals("Test divide by Complex.Origin failed for " + this._origin.toString(),
+                Complex.NaN, this._origin.divide(Complex.Origin));
+        assertEquals("Test divide by Complex.Origin failed for " + this._realUnit.toString(),
+                Complex.Infinity, this._realUnit.divide(Complex.Origin));
+        assertEquals("Test divide by Complex.Origin failed for " + this._complexUnit.toString(),
+                Complex.Infinity, this._complexUnit.divide(Complex.Origin));
+        assertEquals("Test divide by Complex.Origin failed for " + this._onePointOne.toString(),
+                Complex.Infinity, this._onePointOne.divide(Complex.Origin));
+        assertEquals("Test divide by Complex.Origin failed for " + this._polar.toString(),
+                Complex.Infinity, this._polar.divide(Complex.Origin));
     }
 
     /**
@@ -527,8 +680,21 @@ public class ComplexTest {
     public void testReverse() {
         System.out.println("Reverse");
 
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("Failed reversal of " + this._inf.toString(),
+                Complex.Infinity, this._inf.reverse());
+        assertEquals("Failed reversal of " + this._nan.toString(),
+                Complex.NaN, this._nan.reverse());
+        assertEquals("Failed reversal of " + this._origin.toString(),
+                Complex.Origin, this._origin.reverse());
+
+        assertEquals("Failed reversal of " + this._realUnit.toString(),
+                Complex.Cartesian(-1.0, 0.0), this._realUnit.reverse());
+        assertEquals("Failed reversal of " + this._complexUnit.toString(),
+                Complex.Cartesian(0.0, -1.0), this._complexUnit.reverse());
+        assertEquals("Failed reversal of " + this._onePointOne.toString(),
+                Complex.Cartesian(-1.0, -1.0), this._onePointOne.reverse());
+        assertEquals("Failed reversal of " + this._polar.toString(),
+                Complex.Polar(5.0, -0.9272952180016121 - Math.PI), this._polar.reverse());
     }
 
     /**
@@ -537,13 +703,170 @@ public class ComplexTest {
     @Test
     public void testSubtract() {
         System.out.println("Subtract");
-        Complex value = null;
-        Complex instance = null;
-        Complex expResult = null;
-        Complex result = instance.subtract(value);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        for (int i = 0; i < this._array.length; i++) {
+            if (!Complex.isNaN(this._array[i]) &&
+                    !Complex.isInfinite(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._inf.toString(),
+                        Complex.Infinity, this._inf.subtract(this._array[i]));
+            else
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._inf.toString(),
+                        Complex.NaN, this._inf.subtract(this._array[i]));
+
+            assertEquals("Test subtract by " + this._array[i].toString() +
+                    " failed for " + this._nan.toString(),
+                    Complex.NaN, this._nan.subtract(this._array[i]));
+
+            if (!Complex.isNaN(this._array[i]) &&
+                    !Complex.isInfinite(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._origin.toString(),
+                        this._array[i].reverse(), this._origin.subtract(this._array[i]));
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._origin.toString(),
+                        Complex.NaN, this._origin.subtract(this._array[i]));
+            else
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._origin.toString(),
+                        Complex.Infinity, this._origin.subtract(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.Cartesian(1.0, 0.0).sum(this._array[i].reverse()),
+                        this._realUnit.subtract(this._array[i]));
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.NaN, this._realUnit.subtract(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.Infinity, this._realUnit.subtract(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._realUnit.toString(),
+                        Complex.Cartesian(1.0, 0.0), this._realUnit.subtract(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                if (i == 3) {
+                    assertEquals("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            Complex.Cartesian(-1.0, 1.0), this._complexUnit.subtract(this._array[i]));
+                } else if (i == 4) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(0.0, 0.0), this._complexUnit.subtract(this._array[i])));
+                } else if (i == 5) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(-1.0, 0.0), this._complexUnit.subtract(this._array[i])));
+                } else if (i == 6) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._complexUnit.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(-3.0, 5.0), this._complexUnit.subtract(this._array[i])));
+                }
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._complexUnit.toString(),
+                        Complex.NaN, this._complexUnit.subtract(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._complexUnit.toString(),
+                        Complex.Infinity, this._complexUnit.subtract(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._complexUnit.toString(),
+                        Complex.Cartesian(0.0, 1.0), this._complexUnit.subtract(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                if (i == 3) {
+                    assertEquals("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            Complex.Cartesian(0.0, 1.0), this._onePointOne.subtract(this._array[i]));
+                } else if (i == 4) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(1.0, 0.0), this._onePointOne.subtract(this._array[i])));
+                } else if (i == 5) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(0.0, 0.0), this._onePointOne.subtract(this._array[i])));
+                } else if (i == 6) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._onePointOne.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(-2.0, 5.0),
+                            this._onePointOne.subtract(this._array[i])));
+                }
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._onePointOne.toString(),
+                        Complex.NaN, this._onePointOne.subtract(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._onePointOne.toString(),
+                        Complex.Infinity, this._onePointOne.subtract(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._onePointOne.toString(),
+                        Complex.Cartesian(1.0, 1.0), this._onePointOne.subtract(this._array[i]));
+
+            if (!Complex.isInfinite(this._array[i]) &&
+                    !Complex.isNaN(this._array[i]) &&
+                    !Complex.isOrigin(this._array[i]))
+                if (i == 3) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(2.0, -4.0),
+                            this._polar.subtract(this._array[i])));
+                } else if (i == 4) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(3.0, -5.0),
+                            this._polar.subtract(this._array[i])));
+                } else if (i == 5) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(2.0, -5.0),
+                            this._polar.subtract(this._array[i])));
+                } else if (i == 6) {
+                    assertTrue("Test subtract by " + this._array[i].toString() +
+                            " failed for " + this._polar.toString(),
+                            this._numericalComparer.Equal(
+                            Complex.Cartesian(0.0, 0.0), this._polar.subtract(this._array[i])));
+                }
+            else if (Complex.isNaN(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._polar.toString(),
+                        Complex.NaN, this._polar.subtract(this._array[i]));
+            else if (Complex.isInfinite(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._polar.toString(),
+                        Complex.Infinity, this._polar.subtract(this._array[i]));
+            else if (Complex.isOrigin(this._array[i]))
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._polar.toString(),
+                        Complex.Polar(5.0, -0.9272952180016121),
+                        this._polar.subtract(this._array[i]));
+        }
     }
 
     /**
