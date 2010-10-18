@@ -40,7 +40,7 @@ public final class Complex
         this._real = real;
         this._imaginary = imaginary;
         // Compute the Modulus and Argument, for easier future access.
-        this._modulus = __euclidean.Value(this);
+        this._modulus = __euclidean.value(this);
         this._argument = this._getArgument();
     }
 
