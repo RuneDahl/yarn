@@ -111,11 +111,11 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     public Result Run(final Function<Double, Double> function) {
         double value = this._initialValue;
         int iterations = 0;
-        double output = function.Value(value);
+        double output = function.value(value);
         for (iterations = 0; iterations < this._maxIter &&
                 !this._criterion.Equal(output, this._goalValue);
                 iterations++) {
-            output = function.Value(value);
+            output = function.value(value);
             double denominator = this._differentiator.Value(value, function);
             if (denominator != 0.0)
                 value -= (output - this.getGoalValue()) /

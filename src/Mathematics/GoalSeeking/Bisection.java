@@ -100,12 +100,12 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
             Interval<Double> interval = new DoubleInterval(
                     this._initialValue.getLowerBound(), Interval.EndType.Includes,
                     this._initialValue.getUpperBound(), Interval.EndType.Includes);
-            double output = value.Value(this._initialValue.getLowerBound()) -
+            double output = value.value(this._initialValue.getLowerBound()) -
                     this._goalValue;
             if (this._criterion.Equal(output, this._goalValue))
                 return new SuccessWithValue(output);
             double lSign = Math.signum(output);
-            output = value.Value(interval.getUpperBound()) - this._goalValue;
+            output = value.value(interval.getUpperBound()) - this._goalValue;
             if (this._criterion.Equal(output, this._goalValue))
                 return new SuccessWithValue(output);
             double uSign = Math.signum(output);
@@ -122,7 +122,7 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
                         midPoint == interval.getUpperBound())
                     return new ResolutionNotFineEnough<Double, Double>(
                             value, interval, this._goalValue);
-                output = value.Value(midPoint) - this._goalValue;
+                output = value.value(midPoint) - this._goalValue;
                 if (Math.signum(output) == lSign)
                     interval.setLowerBound(midPoint);
                 else
