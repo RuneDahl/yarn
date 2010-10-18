@@ -45,7 +45,7 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
         this._norm = norm;
     }
 
-    public Double Value(final TypeOfValue firstInput,
+    public Double value(final TypeOfValue firstInput,
             final TypeOfValue secondInput) {
         if (firstInput == null)
             throw new NullPointerException("First input is null.");
