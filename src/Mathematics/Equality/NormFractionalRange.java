@@ -28,7 +28,7 @@ public class NormFractionalRange<TypeOfValue> extends NormBased<TypeOfValue> {
     }
 
     public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
-        double numerator = this.getMetric().Value(a, b);
+        double numerator = this.getMetric().value(a, b);
         Norm<TypeOfValue> norm = this.getNorm();
         double denominator = norm.value(a) + norm.value(b);
         if (denominator == 0.0)

@@ -26,6 +26,6 @@ public class NormAbsolute<TypeOfValue> extends NormBased<TypeOfValue> {
     }
 
     public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
-        return this.getMetric().Value(a, b) <= this.getPrecision();
+        return this.getMetric().value(a, b) <= this.getPrecision();
     }
 }
