@@ -28,11 +28,11 @@ public final class ComplexP extends Power<Complex> {
         super(power);
     }
 
-    public Double Value(final Complex input) {
+    public Double value(final Complex input) {
         // The trick of normalizing the size by the value of the maximum norm
         // prevents destructive overruns and underruns.
         double power = this.getPower();
-        double max = __maxNorm.Value(input);
+        double max = __maxNorm.value(input);
         // Handle the case Complex.Inifity, that would result in max equaling Double.POSITIVE_INFINITY.
         if (Double.isInfinite(max))
             return max;

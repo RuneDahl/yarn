@@ -28,11 +28,11 @@ public class VectorDoubleP extends Power<Vector<Double>> {
         super(power);
     }
 
-    public Double Value(Vector<Double> input) {
+    public Double value(Vector<Double> input) {
         // The trick of normalizing the size by the value of the maximum norm
         // prevents destructive overruns and underruns.
         double power = this.getPower();
-        double max = __maxNorm.Value(input);
+        double max = __maxNorm.value(input);
         double norm = 0.0;
         for (int d = 0; d < input.getDimensions(); d++)
             norm += Math.pow(Math.abs(input.getValue(d)) / max, power);

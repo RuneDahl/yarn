@@ -22,7 +22,7 @@ public class ComplexMaximum implements Norm<Complex>{
     public ComplexMaximum() {
     }
 
-    public Double Value(final Complex input) {
+    public Double value(final Complex input) {
         return Math.max(Math.abs(input.getReal()),
                 Math.abs(input.getImaginary()));
     }
