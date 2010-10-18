@@ -16,7 +16,7 @@ import Mathematics.Vector.*;
  * @author Rune Dahl Iversen
  */
 public class Rosenbrock implements Function<Vector<Double>, Double> {
-    public Double Value(Vector<Double> input) {
+    public Double value(Vector<Double> input) {
         if (input.getDimensions() != 2)
             throw new IllegalArgumentException("Input must be 2 dimensional.");
         double x = input.getValue(input.getFirstDimension());
