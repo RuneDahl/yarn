@@ -55,6 +55,6 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
             throw new IllegalStateException("The type of value is not subtractable.");
         Subtractable<TypeOfValue> base = (Subtractable<TypeOfValue>) firstInput;
         TypeOfValue diff = base.subtract(secondInput);
-        return this._norm.Value(diff);
+        return this._norm.value(diff);
     }
 }
