@@ -15,7 +15,7 @@ import Mathematics.Function.*;
  */
 public final class InnerProductReal
         implements Operator<Vector<Double>, Vector<Double>, Double> {
-    public Double Value(final Vector<Double> firstInput,
+    public Double value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))
             throw new IllegalArgumentException("The vectors are not conforming" +

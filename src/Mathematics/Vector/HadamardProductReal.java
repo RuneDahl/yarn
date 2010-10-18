@@ -17,7 +17,7 @@ import Mathematics.Function.*;
  */
 public final class HadamardProductReal
         implements Operator<Vector<Double>, Vector<Double>, Vector<Double>> {
-    public Vector<Double> Value(final Vector<Double> firstInput,
+    public Vector<Double> value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))
             throw new IllegalArgumentException("The vectors are not conforming" +

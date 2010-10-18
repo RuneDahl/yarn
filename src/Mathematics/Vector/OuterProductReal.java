@@ -16,7 +16,7 @@ import Mathematics.Matrix.*;
  */
 public final class OuterProductReal
         implements Operator<Vector<Double>, Vector<Double>, Matrix<Double>> {
-    public Matrix<Double> Value(final Vector<Double> firstInput,
+    public Matrix<Double> value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
         int startR = firstInput.getFirstDimension();
         int endR = startR + firstInput.getDimensions();
