@@ -65,7 +65,7 @@ public final class GaussianReal implements Function<Double, Double> {
      * @param center Center.
      * @exception IllegalArgumentException Center is not valid.
      */
-    public void setCenter(double center) {
+    public void setCenter(final double center) {
         if (!this._validator.isValid(center))
             throw new IllegalArgumentException(
                     this._validator.Message(center, "Center"));
@@ -77,7 +77,7 @@ public final class GaussianReal implements Function<Double, Double> {
      * @param scale Scale.
      * @exception IllegalArgumentException Scale is not valid.
      */
-    public void setScale(double scale) {
+    public void setScale(final double scale) {
         if (!this._validator.isValid(scale))
             throw new IllegalArgumentException(
                     this._validator.Message(scale, "Scale"));
@@ -89,14 +89,14 @@ public final class GaussianReal implements Function<Double, Double> {
      * @param spread Spread.
      * @exception IllegalArgumentException Spread is not valid.
      */
-    public void setSpread(double spread) {
+    public void setSpread(final double spread) {
         if (!this._validator.isValid(spread))
             throw new IllegalArgumentException(
                     this._validator.Message(spread, "Spread"));
         this._spread = spread;
     }
 
-    public Double Value(Double input) {
+    public Double value(final Double input) {
         return this._scale * Math.exp(
                 -(input - this._center) * (input - this._center) /
                 (2 * this._spread * this._spread));
