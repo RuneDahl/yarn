@@ -115,7 +115,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return output;
     }
 
-    public Double Value(final Double input) {
+    public Double value(final Double input) {
         double output = 0.0;
         double value = 1.0;
         for (int degree = 0; degree < this._coefficients.length; degree++)
