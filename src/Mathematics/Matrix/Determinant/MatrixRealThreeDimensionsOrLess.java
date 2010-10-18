@@ -25,7 +25,7 @@ public final class MatrixRealThreeDimensionsOrLess
         super(3);
     }
 
-    public Double Value(Matrix<Double> input) {
+    public Double value(Matrix<Double> input) {
         if (!input.isSquare())
             throw new IllegalArgumentException("Matrix is not square.");
         int r = input.getFirstRow();

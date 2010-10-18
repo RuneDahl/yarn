@@ -26,7 +26,7 @@ public final class MatrixComplexThreeDimensionsOrLess
         super(3);
     }
 
-    public Complex Value(Matrix<Complex> input) {
+    public Complex value(Matrix<Complex> input) {
         if (!input.isSquare())
             throw new IllegalArgumentException("Matrix is not square.");
         int r = input.getFirstRow();
