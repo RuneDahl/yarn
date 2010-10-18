@@ -20,5 +20,5 @@ public interface Function<TypeOfInput, TypeOfOutput> {
      * @param input Input value.
      * @return      The function value.
      */
-    public TypeOfOutput Value(final TypeOfInput input);
+    public TypeOfOutput value(final TypeOfInput input);
 }
