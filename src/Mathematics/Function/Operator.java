@@ -22,6 +22,6 @@ public interface Operator<TypeOfFirstInput, TypeOfSecondInput, TypeOfOutput> {
      * @param secondInput Second input.
      * @return            Resulting value.
      */
-    public TypeOfOutput Value(final TypeOfFirstInput firstInput,
+    public TypeOfOutput value(final TypeOfFirstInput firstInput,
             final TypeOfSecondInput secondInput);
 }
