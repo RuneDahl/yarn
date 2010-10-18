@@ -16,7 +16,7 @@ import Mathematics.Matrix.*;
  */
 public class KroneckerReal implements
         Operator<Matrix<Double>, Matrix<Double>, Matrix<Double>> {
-    public Matrix<Double> Value(Matrix<Double> firstInput,
+    public Matrix<Double> value(Matrix<Double> firstInput,
             Matrix<Double> secondInput) {
         int sir = secondInput.getRows();
         int sic = secondInput.getColumns();

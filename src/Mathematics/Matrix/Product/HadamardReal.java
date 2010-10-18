@@ -18,7 +18,7 @@ import Mathematics.Matrix.*;
  */
 public final class HadamardReal
         implements Operator<Matrix<Double>, Matrix<Double>, Matrix<Double>> {
-    public Matrix<Double> Value(final Matrix<Double> firstInput,
+    public Matrix<Double> value(final Matrix<Double> firstInput,
             final Matrix<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))
             throw new IllegalArgumentException("The matrices are not " +
