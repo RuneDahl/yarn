@@ -37,7 +37,7 @@ public class PrimeNumber implements Function<Integer, Boolean> {
         this._primes.put(12, 37);
     }
 
-    public Boolean Value(final Integer input) {
+    public Boolean value(final Integer input) {
         if (input <= 2)
             return false;
         int largestKnownPrime = this._primes.get(this._primes.size());
