@@ -34,7 +34,7 @@ public final class DoubleInterval implements Interval<Double> {
         this.setUpperType(upperType);
     }
 
-    public boolean Contains(final Double value) {
+    public boolean contains(final Double value) {
         boolean contained = true;
         contained &= (this._lowerType == EndType.Includes ?
             this._lowerBound <= value:

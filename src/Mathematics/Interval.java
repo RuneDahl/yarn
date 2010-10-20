@@ -66,7 +66,7 @@ public interface Interval<TypeOfValue> {
      * @param value Value.
      * @return      True if this interval contains the value, else false.
      */
-    public boolean Contains(final TypeOfValue value);
+    public boolean contains(final TypeOfValue value);
 
     /**
      * Types for end-points of intervals.
