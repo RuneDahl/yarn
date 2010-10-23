@@ -60,7 +60,8 @@ public final class Complex
      * <a href="http://en.wikipedia.org/wiki/Arg_(mathematics)#Principal_value">principal</a>
      * <a href="http://en.wikipedia.org/wiki/Arg_%28mathematics%29">argument</a>
      * of this {@see Complex complex} value shifted by 2·Pi · the specified rotations.
-     * @return The argument of this complex value.
+     * @param rotations The number of rotations.
+     * @return          The argument of this complex value.
      */
     public double getArgument(final int rotations) {
         return this._argument + 2.0 * Math.PI * rotations;
