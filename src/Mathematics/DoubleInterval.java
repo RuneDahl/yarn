@@ -97,6 +97,11 @@ public final class DoubleInterval implements Interval<Double> {
         return equals;
     }
 
+    /**
+     * Indicates whether the specified interval equals this interval.
+     * @param interval Interval.
+     * @return         True if the intervals are equal, else false.
+     */
     public boolean equals(DoubleInterval interval) {
         boolean equals;
         if (interval == null)
