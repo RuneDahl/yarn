@@ -8,7 +8,7 @@ package Validation;
 /**
  * {@see Validator} not allowing the value null.
  * @author Rune Dahl Iversen
- * @param TypeOfValue Type of value.
+ * @param <TypeOfValue> TypeOfValue Type of value.
  */
 public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
     /**
