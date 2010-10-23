@@ -23,7 +23,8 @@ public interface Polynomial<TypeOfCoefficient, TypeOfInput, TypeOfOutput>
         Additive<Polynomial<TypeOfCoefficient, TypeOfInput, TypeOfOutput>>,
         Multiplicative<Polynomial<TypeOfCoefficient, TypeOfInput, TypeOfOutput>>,
         Scaleable<TypeOfCoefficient,
-        Polynomial<TypeOfCoefficient, TypeOfInput, TypeOfOutput>> {
+        Polynomial<TypeOfCoefficient, TypeOfInput, TypeOfOutput>>,
+        Subtractable<Polynomial<TypeOfCoefficient, TypeOfInput, TypeOfOutput>> {
     /**
      * Gets the
      * <a href="http://en.wikipedia.org/wiki/Coefficient">coefficient</a>
