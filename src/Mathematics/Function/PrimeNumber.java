@@ -17,7 +17,10 @@ import java.util.Map.Entry;
  */
 public class PrimeNumber implements Function<Integer, Boolean> {
     private HashMap<Integer, Integer> _primes;
-    
+
+    /**
+     * Creates an instance of this prime number function.
+     */
     public PrimeNumber() {
         // Initializes the cache with the first few prime numbers.
         // See Wikipedia article on Prime Numbers to verify:
