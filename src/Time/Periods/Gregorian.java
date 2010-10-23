@@ -25,6 +25,7 @@ public abstract class Gregorian
      */
     protected Gregorian(final int count, final int basicPeriod) {
         super(count);
+        this._basicPeriod = basicPeriod;
     }
 
     public GregorianCalendar Shift(final GregorianCalendar date, final int count) {
