@@ -7,6 +7,7 @@ package Mathematics.Function;
 
 import Mathematics.Vector.*;
 import Validation.*;
+import java.util.Arrays;
 
 /**
  * Implementation of a {@see Polynomial polynomial} with {@see Double real}
@@ -179,6 +180,63 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
                 scales[d] += this.getCoefficient(d) * scalar;
         }
         return new PolynomialReal(scales);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        boolean equals;
+        if (o == null)
+            equals = false;
+        else if (o == this)
+            equals = true;
+        else if (o instanceof PolynomialReal)
+            equals = this.equals((PolynomialReal)o);
+        else
+            equals = false;
+        return equals;
+    }
+
+    /**
+     * Indicates whether some other PolynomialReal is equal to this.
+     * @param function Polynomial.
+     * @return         True if the polynomials are equal, else false.
+     */
+    public boolean equals(final PolynomialReal function) {
+        boolean equals;
+        if (function == null)
+            equals = false;
+        else if (function == this)
+            equals = true;
+        else if (function.getDegree() != this.getDegree())
+            equals = false;
+        else {
+            equals = true;
+            for (int degree = 0; degree <= this.getDegree(); degree++)
+                equals &= (this.getCoefficient(degree) -
+                        function.getCoefficient(degree) == 0);
+        }
+        return equals;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Arrays.hashCode(this._coefficients);
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        String value = "{PolynomialReal[";
+        for (int d = this.getDegree(); 0 <= d; d--) {
+            value += (Math.signum(this.getCoefficient(d)) != 1 ? " -" : " +");
+            value += Double.toString(Math.abs(this.getCoefficient(d)));
+            if (d != 0) {
+                value += "*x^" + Integer.toString(d);
+            }
+        }
+        value += "]}";
+        return value;
     }
 
     private void _setCoefficients(final Double[] values) {
