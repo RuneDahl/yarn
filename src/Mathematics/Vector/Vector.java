@@ -21,7 +21,8 @@ import Mathematics.*;
  */
 public interface Vector<TypeOfValue>
         extends Additive<Vector<TypeOfValue>>,
-        Scaleable<TypeOfValue, Vector<TypeOfValue>> {
+        Scaleable<TypeOfValue, Vector<TypeOfValue>>,
+        Subtractable<Vector<TypeOfValue>> {
     /**
      * Gets the number of
      * <a href="http://en.wikipedia.org/wiki/Dimension_%28vector_space%29">dimensions</a>
