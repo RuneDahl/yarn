@@ -83,6 +83,56 @@ public final class DoubleInterval implements Interval<Double> {
         this._upperType = upperType;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        boolean equals;
+        if (o == null)
+            equals = false;
+        else if (o == this)
+            equals = true;
+        else if (o instanceof DoubleInterval)
+            equals = this.equals((DoubleInterval)o);
+        else
+            equals = false;
+        return equals;
+    }
+
+    public boolean equals(DoubleInterval interval) {
+        boolean equals;
+        if (interval == null)
+            equals = false;
+        else if (interval == this)
+            equals = true;
+        else {
+            equals = this.getLowerType() == interval.getLowerType();
+            equals &= this.getLowerBound() - interval.getLowerBound() == 0.0;
+            equals &= this.getUpperType() == interval.getUpperType();
+            equals &= this.getUpperBound() - interval.getUpperBound() == 0.0;
+        }
+        return equals;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this._lowerBound) ^ (Double.doubleToLongBits(this._lowerBound) >>> 32));
+        hash = 37 * hash + (this._lowerType != null ? this._lowerType.hashCode() : 0);
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this._upperBound) ^ (Double.doubleToLongBits(this._upperBound) >>> 32));
+        hash = 37 * hash + (this._upperType != null ? this._upperType.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        String value = "";
+        value += (this._lowerType == EndType.Includes ? "[" : "]");
+        value += Double.toString(this._lowerBound);
+        value += " : ";
+        value += Double.toString(this._upperBound);
+        value += (this._upperType == EndType.Excludes ? "[" : "]");
+        return value;
+    }
+
     private Validator<Double> _setValidator() {
         And<Double> validator = new And<Double>();
         validator.add(new NotNull<Double>());
