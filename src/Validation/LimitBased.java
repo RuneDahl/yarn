@@ -14,14 +14,26 @@ package Validation;
 public abstract class LimitBased<TypeOfValue> implements Validator<TypeOfValue> {
     private TypeOfValue _limit;
 
+    /**
+     * Creates a new instance of a limit based validator with the specified limit.
+     * @param limit The limit.
+     */
     protected LimitBased(final TypeOfValue limit) {
         this._limit = limit;
     }
 
+    /**
+     * Gets the limit of this limit based validator.
+     * @return The limit.
+     */
     public final TypeOfValue getLimit() {
         return _limit;
     }
 
+    /**
+     * Sets the limit of this limit based validator to the specified limit.
+     * @param limit The limit.
+     */
     public final void setLimit(final TypeOfValue limit) {
         if (limit == null)
             throw new NullPointerException("Limit must be specified.");
