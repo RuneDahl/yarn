@@ -51,13 +51,13 @@ public interface Interval<TypeOfValue> {
 
     /**
      * Sets the value of the upper bound of this interval.
-     * @param lowerBound The value of the upper bound.
+     * @param upperBound The value of the upper bound.
      */
     public void setUpperBound(final TypeOfValue upperBound);
 
     /**
      * Sets the type of the upper bound of this interval.
-     * @param lowerType The type of the upper bound.
+     * @param upperType The type of the upper bound.
      */
     public void setUpperType(final EndType upperType);
 
