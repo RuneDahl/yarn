@@ -74,6 +74,11 @@ public abstract class Affine implements Constraint<Vector<Double>> {
         this._vector = vector;
     }
 
+    /**
+     * Evaluates this affine function of the specified valus.
+     * @param value Value.
+     * @return      Resulting value.
+     */
     protected final Vector<Double> _Evaluate(final Vector<Double> value) {
         return this._matrix.product(value).sum(this._vector);
     }
