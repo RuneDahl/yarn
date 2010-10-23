@@ -22,7 +22,8 @@ import Mathematics.Vector.Vector;
 public interface Matrix<TypeOfValue>
         extends Additive<Matrix<TypeOfValue>>,
         Multiplicative<Vector<TypeOfValue>>,
-        Scaleable<TypeOfValue, Matrix<TypeOfValue>> {
+        Scaleable<TypeOfValue, Matrix<TypeOfValue>>,
+        Subtractable<Matrix<TypeOfValue>> {
     /**
      * Gets the values of the specified column as a vector.
      * @param column Column.
@@ -116,8 +117,8 @@ public interface Matrix<TypeOfValue>
     /**
      * Returns a clone of this matrix with the values from the specified vector
      * added as the rows+1st row.
-     * @param column Vector of values.
-     * @return       A matrix composed of this matrix and the values from the vector.
+     * @param row Vector of values.
+     * @return    A matrix composed of this matrix and the values from the vector.
      */
     public Matrix<TypeOfValue> AddRow(final Vector<TypeOfValue> row);
 
