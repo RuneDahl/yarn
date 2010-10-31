@@ -14,7 +14,19 @@ import Mathematics.Result.Result;
  * of a specified {@see Function function} over an interval/area.
  * @author Rune Dahl Iversen
  * @param <TypeOfFunction>  Type of function.
+ * @param <TypeOfRegion>    Type of region.
  */
-public interface Integrator<TypeOfFunction> extends
+public interface Integrator<TypeOfFunction, TypeOfRegion> extends
         Function<TypeOfFunction, Result> {
+    /**
+     * Ges the region to integrate over.
+     * @return The region.
+     */
+    public TypeOfRegion getRegion();
+
+    /**
+     * Sets the region to integrate over.
+     * @param region The region.
+     */
+    public void setRegion(final TypeOfRegion region);
 }
