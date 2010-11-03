@@ -93,7 +93,7 @@ public final class CompositeRealReal extends IterativeSplitBased
             double lowerBound = this.getRegion().getLowerBound();
             double length = this.getRegion().getUpperBound() - lowerBound;
             int innerMax = this.getInitialSplits();
-            int iterativeSplits = this.getIterativeSplits();
+            final int iterativeSplits = this.getIterativeSplits();
             length /= (double)innerMax;
 
             int iteration = 0;
