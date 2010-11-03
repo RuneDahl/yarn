@@ -11,7 +11,7 @@ import Mathematics.Result.Result;
 /**
  * Interface for a integrator, that computes/estimates the {@see Result result}
  * of an <a href="http://en.wikipedia.org/wiki/Integral">integral</a>
- * of a specified {@see Function function} over an interval/area.
+ * of a specified {@see Function function} over a region.
  * @author Rune Dahl Iversen
  * @param <TypeOfFunction>  Type of function.
  * @param <TypeOfRegion>    Type of region.
@@ -19,7 +19,7 @@ import Mathematics.Result.Result;
 public interface Integrator<TypeOfFunction, TypeOfRegion> extends
         Function<TypeOfFunction, Result> {
     /**
-     * Ges the region to integrate over.
+     * Gets the region to integrate over.
      * @return The region.
      */
     public TypeOfRegion getRegion();
