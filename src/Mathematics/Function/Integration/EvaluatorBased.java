@@ -6,7 +6,7 @@
 package Mathematics.Function.Integration;
 
 /**
- * Interface for an object using an {@see Evaluator evaluator}.
+ * Interface for a class having an {@see Evaluator evaluator}.
  * @author Rune Dahl Iversen
  * @param <TypeOfFunction> Type of function.
  * @param <TypeOfRegion>   Type of region.
