@@ -154,6 +154,6 @@ public final class CompositeRealReal extends IterativeSplitBased
         Double[] v = new Double[values.size()];
         for (int i = 0; i < values.size(); i++)
             v[i] = values.get(i);
-        return this.getCriterion().Converges(v);
+        return this.getCriterion().converges(v);
     }
 }
