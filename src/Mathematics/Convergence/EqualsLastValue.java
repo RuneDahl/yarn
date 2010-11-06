@@ -59,7 +59,7 @@ public final class EqualsLastValue<TypeOfValue>
         this._numberOfEqualities = numberOfEqualities;
     }
 
-    public boolean Converges(final TypeOfValue[] series) {
+    public boolean converges(final TypeOfValue[] series) {
         if (series.length < this._numberOfEqualities + 1)
             return false;
         TypeOfValue lastValue = series[series.length - 1];

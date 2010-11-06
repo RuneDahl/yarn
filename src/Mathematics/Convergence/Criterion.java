@@ -20,5 +20,5 @@ public interface Criterion<TypeOfValue> {
      *               to have the lowest index.
      * @return       True for convergent else false.
      */
-    public boolean Converges(final TypeOfValue[] series);
+    public boolean converges(final TypeOfValue[] series);
 }
