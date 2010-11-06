@@ -26,7 +26,10 @@ public abstract class IterativeSplitBased extends MaximumIterations {
      * @param initialSplits     The number of initial splits.
      * @param iterativeSplits   The number of sub-intervals to split an interval into.
      */
-    protected IterativeSplitBased(int maximumIterations, int initialSplits, int iterativeSplits) {
+    protected IterativeSplitBased(
+            final int maximumIterations,
+            final int initialSplits,
+            final int iterativeSplits) {
         super(maximumIterations);
         this.setInitialSplits(initialSplits);
         this.setIterativeSplits(iterativeSplits);
