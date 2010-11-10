@@ -5,10 +5,8 @@
 
 package Mathematics.Result;
 
-import Mathematics.DoubleInterval;
-import Mathematics.Function.Function;
-import Mathematics.Function.PolynomialReal;
-import Mathematics.Interval;
+import Mathematics.*;
+import Mathematics.Function.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,7 +36,7 @@ public class ResolutionNotFineEnoughTest {
     public void setUp() {
         double[] coefficients = new double[]{ -1.0 , 2.0 , 0.5 };
         Function<Double, Double> function = new PolynomialReal(coefficients);
-        DoubleInterval interval = new DoubleInterval(3.0, Interval.EndType.Includes, 3.2, Interval.EndType.Includes);
+        IntervalReal interval = new IntervalReal(3.0, Interval.EndType.Includes, 3.2, Interval.EndType.Includes);
         this._double = new ResolutionNotFineEnough<Double, Double>(function, interval, 4.5);
     }
 
@@ -86,7 +84,7 @@ public class ResolutionNotFineEnoughTest {
     @Test
     public void testGetInterval() {
         System.out.println("getInterval");
-        DoubleInterval expected = new DoubleInterval(3.0, Interval.EndType.Includes, 3.2, Interval.EndType.Includes);
+        IntervalReal expected = new IntervalReal(3.0, Interval.EndType.Includes, 3.2, Interval.EndType.Includes);
         Interval result = this._double.getInterval();
         assertEquals(expected, result);
     }

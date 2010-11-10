@@ -53,7 +53,7 @@ public class CompositeRealRealTest {
         this._functionPoly = new PolynomialReal(coefficients);
         this._sine = new SineReal(1.0, Math.PI, 0.0);
 
-        this._unitInterval = new DoubleInterval(0.0, Interval.EndType.Includes, 1.0, Interval.EndType.Includes);
+        this._unitInterval = new IntervalReal(0.0, Interval.EndType.Includes, 1.0, Interval.EndType.Includes);
 
         this._criterion6 = new EqualsLastValue<Double>(new DoubleAbsolute(Math.pow(10.0, -6.0)), 2);
         this._criterion8 = new EqualsLastValue<Double>(new DoubleAbsolute(Math.pow(10.0, -8.0)), 2);
@@ -166,7 +166,7 @@ public class CompositeRealRealTest {
     public void testGetInterval() {
         System.out.println("getInterval");
         CompositeRealReal instance = this._tunable;
-        Interval expResult = new DoubleInterval(
+        Interval expResult = new IntervalReal(
                 0.0, Interval.EndType.Includes,
                 1.0, Interval.EndType.Includes);
         Interval result = instance.getRegion();
@@ -179,12 +179,12 @@ public class CompositeRealRealTest {
     @Test
     public void testSetInterval() {
         System.out.println("setInterval");
-        Interval<Double> interval = new DoubleInterval(
+        Interval<Double> interval = new IntervalReal(
                 -7.4, Interval.EndType.Excludes,
                 Math.PI, Interval.EndType.Excludes);
         CompositeRealReal instance = this._tunable;
         instance.setRegion(interval);
-        Interval<Double> expected = new DoubleInterval(
+        Interval<Double> expected = new IntervalReal(
                 -7.4, Interval.EndType.Excludes,
                 Math.PI, Interval.EndType.Excludes);
         assertEquals(expected, interval);

@@ -99,7 +99,7 @@ public final class CompositeRealReal extends IterativeSplitBased
             int iteration = 0;
             for (iteration = 0; iteration < this.getMaximumIterations() &&
                     !this._HasConverged(values); iteration++) {
-                Interval<Double> t = new DoubleInterval(
+                Interval<Double> t = new IntervalReal(
                         lowerBound, Interval.EndType.Includes,
                         lowerBound + length, Interval.EndType.Includes);
 

@@ -26,8 +26,10 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
     private Interval<Double> _initialValue;
     private double _goalValue;
 
-    private Validator<Double> _validator;
-    private Validator<Integer> _maxIterValidator;
+    private static Validator<Double> __validator =
+            Validation.Factory.FiniteReal();
+    private static Validator<Integer> __maxIterValidator =
+            new IntegerGreaterThan();
 
     /**
      * Creates an instance of the secant method {@see Algorithm algorithm}
@@ -43,9 +45,7 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
             final double initialValue2,
             final Equals<Double> criterion,
             final int maximumIterations) {
-        this._validator = this._setValidator();
-        this._maxIterValidator = new IntegerGreaterThan();
-        this._initialValue = new DoubleInterval(
+        this._initialValue = new IntervalReal(
                 initialValue1, Interval.EndType.Includes,
                 initialValue2, Interval.EndType.Includes);
 
@@ -91,9 +91,9 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
     }
 
     public void setGoalValue(final Double value) {
-        if (!this._validator.isValid(value))
+        if (!__validator.isValid(value))
             throw new IllegalArgumentException(
-                    this._validator.Message(value, "Goal value"));
+                    __validator.Message(value, "Goal value"));
         this._goalValue = value;
     }
 
@@ -102,9 +102,9 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
      * @param initialValue1 The first initial value.
      */
     public void setInitialValue1(final double initialValue1) {
-        if (!this._validator.isValid(initialValue1))
+        if (!__validator.isValid(initialValue1))
             throw new IllegalArgumentException(
-                    this._validator.Message(initialValue1, "First initial value"));
+                    __validator.Message(initialValue1, "First initial value"));
         this._initialValue.setLowerBound(initialValue1);
     }
 
@@ -113,16 +113,16 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
      * @param initialValue2 The second initial value.
      */
     public void setInitialValue2(final double initialValue2) {
-        if (!this._validator.isValid(initialValue2))
+        if (!__validator.isValid(initialValue2))
             throw new IllegalArgumentException(
-                    this._validator.Message(initialValue2, "Second initial value"));
+                    __validator.Message(initialValue2, "Second initial value"));
         this._initialValue.setUpperBound(initialValue2);
     }
 
     public void setMaximumIterations(final int iterations) {
-        if (!this._maxIterValidator.isValid(iterations))
+        if (!__maxIterValidator.isValid(iterations))
             throw new IllegalArgumentException(
-                    this._maxIterValidator.Message(iterations, "Maximum iterations"));
+                    __maxIterValidator.Message(iterations, "Maximum iterations"));
         this._maxIter = iterations;
     }
 
@@ -149,13 +149,5 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
             return new MaximumIterationsFailure(iter);
         return new IterativeSuccess(iter, x);
 
-    }
-
-    private Validator<Double> _setValidator() {
-        Validation.And<Double> validator = new Validation.And();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 }

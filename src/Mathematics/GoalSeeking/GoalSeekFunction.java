@@ -34,4 +34,4 @@ public interface GoalSeekFunction<TypeOfInput, TypeOfOutput>
      * @param value The goal value.
      */
     public void setGoalValue(final TypeOfOutput value);
-}
+} // http://en.wikipedia.org/wiki/Steffensen's_method

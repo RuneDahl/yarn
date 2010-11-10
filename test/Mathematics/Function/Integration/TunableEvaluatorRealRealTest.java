@@ -38,7 +38,7 @@ public class TunableEvaluatorRealRealTest {
     @Before
     public void setUp() {
         this._evaluator = new TunableEvaluatorRealReal(2.0, 0.35);
-        this._interval = new DoubleInterval(
+        this._interval = new IntervalReal(
                 0.0, Interval.EndType.Includes,
                 1.0, Interval.EndType.Includes);
         double[] coefficients = new double[] { -1.0, 2.0, 0.5 };
