@@ -27,8 +27,10 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
     private Interval<Double> _initialValue;
     private double _goalValue;
 
-    private Validator<Double> _validator;
-    private Validator<Integer> _maxIterValidator;
+    private static Validator<Double> __validator =
+            Validation.Factory.FiniteReal();
+    private static Validator<Integer> _maxIterValidator =
+            new IntegerGreaterThan();;
 
     /**
      * Creates an instance of the bisection method {@see Algorithm algorithm}
@@ -43,9 +45,6 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
             final Interval<Double> initialValue,
             final Equals<Double> criterion,
             final int maximumIterations) {
-        this._validator = this._setValidator();
-        this._maxIterValidator = new IntegerGreaterThan();
-
         this.setGoalValue(goalValue);
         this.setInitialValue(initialValue);
         this.setCriterion(criterion);
@@ -75,9 +74,9 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
     }
 
     public void setGoalValue(final Double value) {
-        if (!this._validator.isValid(value))
+        if (!__validator.isValid(value))
             throw new IllegalArgumentException(
-                    this._validator.Message(value, "Goal value"));
+                    __validator.Message(value, "Goal value"));
         this._goalValue = value;
     }
 
@@ -88,16 +87,16 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
     }
 
     public void setMaximumIterations(final int iterations) {
-        if (!this._maxIterValidator.isValid(iterations))
+        if (!_maxIterValidator.isValid(iterations))
             throw new IllegalArgumentException(
-                    this._maxIterValidator.Message(iterations, "Maximum iterations"));
+                    _maxIterValidator.Message(iterations, "Maximum iterations"));
         this._maxIter = iterations;
     }
 
     public Result Run(final Function<Double, Double> value) {
         try
         {
-            Interval<Double> interval = new DoubleInterval(
+            Interval<Double> interval = new IntervalReal(
                     this._initialValue.getLowerBound(), Interval.EndType.Includes,
                     this._initialValue.getUpperBound(), Interval.EndType.Includes);
             double output = value.value(this._initialValue.getLowerBound()) -
@@ -134,13 +133,5 @@ public class Bisection implements GoalSeekFunction<Double, Double>,
         }
         catch (Exception e)
         { return new UnhandledExceptionThrown(e); }
-    }
-
-    private Validator<Double> _setValidator() {
-        Validation.And<Double> validator = new Validation.And();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 }
