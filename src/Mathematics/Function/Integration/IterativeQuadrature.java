@@ -8,12 +8,16 @@ package Mathematics.Function.Integration;
 import Mathematics.Function.MaximumIterations;
 
 /**
- * Abstract class with a {@see MaximumIterations maximum number of iterations},
- * initial splits and iterative splits.<br>
- * This combination of values will prove helpful in
+ * Abstract class with a {@see MaximumIterations maximum number of iterations}
+ * using <a href="http://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions">
+ * numerical quadrature</a>.<br>
+ * This combination of values will prove helpful in implementing numerical
+ * integration using quadrature. The quadrature can be implemented as
+ * <a href="http://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions">composite</a>
+ * or <a href="http://en.wikipedia.org/wiki/Adaptive_quadrature">adaptive</a>.
  * @author Rune Dahl Iversen
  */
-public abstract class IterativeSplitBased extends MaximumIterations {
+public abstract class IterativeQuadrature extends MaximumIterations {
     private int _initialSplits;
     private int _iterativeSplits;
 
@@ -26,7 +30,7 @@ public abstract class IterativeSplitBased extends MaximumIterations {
      * @param initialSplits     The number of initial splits.
      * @param iterativeSplits   The number of sub-intervals to split an interval into.
      */
-    protected IterativeSplitBased(
+    protected IterativeQuadrature(
             final int maximumIterations,
             final int initialSplits,
             final int iterativeSplits) {

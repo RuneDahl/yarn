@@ -23,7 +23,7 @@ import java.util.HashMap;
  * or the {@see MaximumIterations maximum iterations} are reached.
  * @author Rune Dahl Iversen
  */
-public final class CompositeRealReal extends IterativeSplitBased
+public final class CompositeRealReal extends IterativeQuadrature
         implements Mathematics.Algorithm.Criterion<Criterion<Double>>,
         Integrator<Function<Double, Double>, Interval<Double>>,
         EvaluatorBased<Function<Double, Double>, Interval<Double>, Double> {
