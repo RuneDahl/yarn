@@ -75,7 +75,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of getCriterion method, of class Composite.
+     * Test of getCriterion method, of class CompositeRealReal.
      */
     @Test
     public void testGetCriterion() {
@@ -91,7 +91,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of setCriterion method, of class Composite.
+     * Test of setCriterion method, of class CompositeRealReal.
      */
     @Test
     public void testSetCriterion() {
@@ -110,7 +110,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of setCriterion method, of class Composite, for the value null.
+     * Test of setCriterion method, of class CompositeRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
     public void testSetCriterionNull() {
@@ -122,7 +122,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of getEvaluator method, of class Composite.
+     * Test of getEvaluator method, of class CompositeRealReal.
      */
     @Test
     public void testGetEvaluator() {
@@ -136,7 +136,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of setEvaluator method, of class Composite.
+     * Test of setEvaluator method, of class CompositeRealReal.
      */
     @Test
     public void testSetEvaluator() {
@@ -148,7 +148,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of setEvaluator method, of class Composite, for the value null.
+     * Test of setEvaluator method, of class CompositeRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
     public void testSetEvaluatorNull() {
@@ -160,11 +160,129 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of getInterval method, of class Composite.
+     * Test of getMaximumIterations method, of class CompositeRealReal.
      */
     @Test
-    public void testGetInterval() {
-        System.out.println("getInterval");
+    public void testGetMaximumIterations() {
+        System.out.println("getMaximumIterations");
+        CompositeRealReal instance = this._tunable;
+        assertEquals("Wrong number of maximum iterations", 20, instance.getMaximumIterations());
+    }
+
+    /**
+     * Test of setMaximumIterations method, of class CompositeRealReal.
+     */
+    @Test
+    public void testSetMaximumIterations() {
+        System.out.println("setMaximumIterations");
+        CompositeRealReal instance = this._tunable;
+        instance.setMaximumIterations(6);
+        assertEquals("Wrong number of maximum iterations", 6, instance.getMaximumIterations());
+    }
+
+    /**
+     * Test of getInitialSplits method, of class CompositeRealReal.
+     */
+    @Test
+    public void testGetInitialSplits() {
+        System.out.println("getInitialSplits");
+        CompositeRealReal instance = this._tunable;
+        assertEquals("Wrong number of initial splits", 1, instance.getInitialSplits());
+    }
+
+    /**
+     * Test of setInitialSplits method, of class CompositeRealReal.
+     */
+    @Test
+    public void testSetInitialSplits() {
+        System.out.println("setInitialSplits");
+        CompositeRealReal instance = this._tunable;
+        instance.setInitialSplits(2);
+        assertEquals("Wrong number of initial splits", 2, instance.getInitialSplits());
+    }
+
+    /**
+     * Test of setInitialSplits method, of class CompositeRealReal, to 0.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetInitialSplitsToNegative() {
+        System.out.println("setInitialSplits to -2");
+        CompositeRealReal instance = this._tunable;
+        instance.setInitialSplits(-2);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of setInitialSplits method, of class CompositeRealReal, to 0.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetInitialSplitsToZero() {
+        System.out.println("setInitialSplits to 0");
+        CompositeRealReal instance = this._tunable;
+        instance.setInitialSplits(0);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of getIterativeSplits method, of class CompositeRealReal.
+     */
+    @Test
+    public void testGetIterativeSplits() {
+        System.out.println("getIterativeSplits");
+        CompositeRealReal instance = this._tunable;
+        assertEquals("Wrong number of iterative splits", 2, instance.getIterativeSplits());
+    }
+
+    /**
+     * Test of setIterativeSplits method, of class CompositeRealReal.
+     */
+    @Test
+    public void testSetIterativeSplits() {
+        System.out.println("setIterativeSplits");
+        CompositeRealReal instance = this._tunable;
+        instance.setIterativeSplits(4);
+        assertEquals("Wrong number of iterative splits", 4, instance.getIterativeSplits());
+    }
+
+    /**
+     * Test of setInitialSplits method, of class CompositeRealReal, to a negative value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetIterativeSplitsToNegative() {
+        System.out.println("setIterativeSplits to -2");
+        CompositeRealReal instance = this._tunable;
+        instance.setIterativeSplits(-2);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of setIterativeSplits method, of class CompositeRealReal, to 0.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetIterativeSplitsToZero() {
+        System.out.println("setIterativeSplits to 0");
+        CompositeRealReal instance = this._tunable;
+        instance.setIterativeSplits(0);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of setIterativeSplits method, of class CompositeRealReal, to 1.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetIterativeSplitsToOne() {
+        System.out.println("setIterativeSplits to 1");
+        CompositeRealReal instance = this._tunable;
+        instance.setIterativeSplits(1);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of getRegion method, of class CompositeRealReal.
+     */
+    @Test
+    public void testGetRegion() {
+        System.out.println("getRegion");
         CompositeRealReal instance = this._tunable;
         Interval expResult = new IntervalReal(
                 0.0, Interval.EndType.Includes,
@@ -174,11 +292,11 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of setInterval method, of class Composite.
+     * Test of setRegion method, of class CompositeRealReal.
      */
     @Test
-    public void testSetInterval() {
-        System.out.println("setInterval");
+    public void testSetRegion() {
+        System.out.println("setRegion");
         Interval<Double> interval = new IntervalReal(
                 -7.4, Interval.EndType.Excludes,
                 Math.PI, Interval.EndType.Excludes);
@@ -191,11 +309,11 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of setInterval method, of class Composite, for the value null.
+     * Test of setRegion method, of class CompositeRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetIntervalNull() {
-        System.out.println("setInterval to null");
+    public void testSetRegionNull() {
+        System.out.println("setRegion to null");
         Interval<Double> interval = null;
         CompositeRealReal instance = this._tunable;
         instance.setRegion(interval);
@@ -203,7 +321,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of value method, of class Composite.
+     * Test of value method, of class CompositeRealReal.
      */
     @Test
     public void testValue() {
@@ -288,7 +406,7 @@ public class CompositeRealRealTest {
     }
 
     /**
-     * Test of value method, of class Composite, for the value null.
+     * Test of value method, of class CompositeRealReal, for the value null.
      */
     @Test
     public void testValueNull() {
