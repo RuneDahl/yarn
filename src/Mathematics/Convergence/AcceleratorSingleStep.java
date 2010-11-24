@@ -5,13 +5,16 @@
 
 package Mathematics.Convergence;
 
+import Mathematics.Function.Operator;
+
 /**
  * {@see Accelerator} allowing single-step acceleration.
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
 public interface AcceleratorSingleStep<TypeOfValue>
-        extends Accelerator<TypeOfValue> {
+        extends Accelerator<TypeOfValue>,
+        Operator<Integer, TypeOfValue[], TypeOfValue> {
     /**
      * Compute the accelerated value for the specified series/sequence
      * and iteration.<br>
@@ -23,7 +26,7 @@ public interface AcceleratorSingleStep<TypeOfValue>
      * @param sequence  Sequence/Series.
      * @return          Accelerated value.
      */
-    public TypeOfValue accelerate(
-            final int iteration,
+    public TypeOfValue value(
+            final Integer iteration,
             final TypeOfValue[] sequence);
 }
