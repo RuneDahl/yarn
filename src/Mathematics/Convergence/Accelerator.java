@@ -5,6 +5,8 @@
 
 package Mathematics.Convergence;
 
+import Mathematics.Function.Function;
+
 /**
  * Interface for a
  * <a href="http://en.wikipedia.org/wiki/Series_acceleration">series/sequence
@@ -15,15 +17,13 @@ package Mathematics.Convergence;
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
-public interface Accelerator<TypeOfValue> {
-    // http://en.wikipedia.org/wiki/Aitken's_delta-squared_process
-    // http://en.wikipedia.org/wiki/Richardson_extrapolation
-    // http://en.wikipedia.org/wiki/Shanks_transformation
+public interface Accelerator<TypeOfValue>
+        extends Function<TypeOfValue[], TypeOfValue[]> {
     /**
-     * Computed the accelerated series/sequence of the
+     * Computes the accelerated series/sequence of the
      * specified sequence/series using this accelerator.
      * @param sequence Series/Sequence.
      * @return         Accelerated series/sequence.
      */
-    public TypeOfValue[] accelerate(final TypeOfValue[] sequence);
+    public TypeOfValue[] value(final TypeOfValue[] sequence);
 }
