@@ -129,15 +129,15 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
     public Result Run(final Function<Double, Double> value) {
         double x_1 = this.getInitialValue1();
         double fx_1 = value.value(x_1);
-        if (this._criterion.Equal(fx_1, this._goalValue))
+        if (this._criterion.value(fx_1, this._goalValue))
             return new SuccessWithValue(x_1);
         double x = this.getInitialValue2();
         double fx = value.value(x);
-        if (this._criterion.Equal(fx, this._goalValue))
+        if (this._criterion.value(fx, this._goalValue))
             return new SuccessWithValue(x);
         int iter;
         for (iter = 0; iter < this._maxIter &&
-                !this._criterion.Equal(fx, this._goalValue); iter++) {
+                !this._criterion.value(fx, this._goalValue); iter++) {
             double n = x - (fx - this._goalValue) * (x - x_1) / (fx - fx_1);
             double fn = value.value(n);
             x_1 = x;

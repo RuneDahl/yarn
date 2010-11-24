@@ -32,11 +32,11 @@ public class Or<TypeOfValue>
         super(c);
     }
 
-    public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
+    public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         if (this.isEmpty())
             return true;
         for (Equals<TypeOfValue> equals : this)
-            if (equals.Equal(a, b))
+            if (equals.value(a, b))
                 return true;
         return false;
     }

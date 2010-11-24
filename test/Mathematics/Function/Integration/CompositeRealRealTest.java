@@ -338,14 +338,14 @@ public class CompositeRealRealTest {
         assertTrue("Wrong class of result poly+Tunable.", result instanceof IterativeSuccess);
         IterativeSuccess<Double> is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result poly+Tunable.", 15, is.getIterations());
-        assertTrue("Wrong value of result poly+Tunable.", precision.Equal(poly, is.getResult()));
+        assertTrue("Wrong value of result poly+Tunable.", precision.value(poly, is.getResult()));
 
         result = instance.value(this._sine);
 
         assertTrue("Wrong class of result sine+Tunable.", result instanceof IterativeSuccess);
         is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result sine+Tunable.", 16, is.getIterations());
-        assertTrue("Wrong value of result sine+Tunable.", precision.Equal(sine, is.getResult()));
+        assertTrue("Wrong value of result sine+Tunable.", precision.value(sine, is.getResult()));
 
         instance = this._trapezoid;
         result = instance.value(this._functionPoly);
@@ -353,14 +353,14 @@ public class CompositeRealRealTest {
         assertTrue("Wrong class of result poly+Trapezoid.", result instanceof IterativeSuccess);
         is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result poly+Trapezoid.", 15, is.getIterations());
-        assertTrue("Wrong value of result poly+Trapezoid.", precision.Equal(poly, is.getResult()));
+        assertTrue("Wrong value of result poly+Trapezoid.", precision.value(poly, is.getResult()));
 
         result = instance.value(this._sine);
 
         assertTrue("Wrong class of result sine+Trapezoid.", result instanceof IterativeSuccess);
         is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result sine+Trapezoid.", 16, is.getIterations());
-        assertTrue("Wrong value of result sine+Trapezoid.", precision.Equal(sine, is.getResult()));
+        assertTrue("Wrong value of result sine+Trapezoid.", precision.value(sine, is.getResult()));
 
         instance = this._righthand;
         result = instance.value(this._functionPoly);
@@ -374,7 +374,7 @@ public class CompositeRealRealTest {
         assertTrue("Wrong class of result sine+RightHand.", result instanceof IterativeSuccess);
         is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result sine+RightHand.", 13, is.getIterations());
-        assertTrue("Wrong value of result sine+RightHand.", precision.Equal(sine, is.getResult()));
+        assertTrue("Wrong value of result sine+RightHand.", precision.value(sine, is.getResult()));
 
         instance = this._midpoint;
         result = instance.value(this._functionPoly);
@@ -382,14 +382,14 @@ public class CompositeRealRealTest {
         assertTrue("Wrong class of result poly+MidPoint.", result instanceof IterativeSuccess);
         is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result poly+MidPoint.", 11, is.getIterations());
-        assertTrue("Wrong value of result poly+MidPoint.", precision.Equal(poly, is.getResult()));
+        assertTrue("Wrong value of result poly+MidPoint.", precision.value(poly, is.getResult()));
 
         result = instance.value(this._sine);
 
         assertTrue("Wrong class of result sine+MidPoint.", result instanceof IterativeSuccess);
         is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations of result sine+MidPoint.", 12, is.getIterations());
-        assertTrue("Wrong value of result sine+MidPoint.", precision.Equal(sine, is.getResult()));
+        assertTrue("Wrong value of result sine+MidPoint.", precision.value(sine, is.getResult()));
 
         instance = this._lefthand;
         result = instance.value(this._functionPoly);

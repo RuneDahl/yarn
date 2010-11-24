@@ -48,7 +48,7 @@ public class EqualsTest<TypeOfValue> {
             final TypeOfValue a,
             final TypeOfValue b,
             boolean expectedResult) {
-        boolean result = equals.Equal(a, b);
+        boolean result = equals.value(a, b);
         assertEquals(expectedResult, result);
     }
 

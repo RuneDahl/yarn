@@ -5,6 +5,8 @@
 
 package Mathematics.Equality;
 
+import Mathematics.Function.Operator;
+
 /**
  * Interface for comparison of values.
  * The declaration of this interface allows all comparison of values to
@@ -15,13 +17,6 @@ package Mathematics.Equality;
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
-public interface Equals<TypeOfValue> {
-    /**
-     * Determines if the 2 specified values can be considered equal
-     * according to this equals-operator.
-     * @param a Value.
-     * @param b Value.
-     * @return  True if the 2 values are equal, else false.
-     */
-    public boolean Equal(final TypeOfValue a, final TypeOfValue b);
+public interface Equals<TypeOfValue>
+        extends Operator<TypeOfValue, TypeOfValue, Boolean> {
 }

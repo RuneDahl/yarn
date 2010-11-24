@@ -26,7 +26,7 @@ public class NormRelative<TypeOfValue> extends NormBased<TypeOfValue> {
         super(precision, norm);
     }
 
-    public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
+    public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         double numerator = this.getMetric().value(a, b);
         Norm<TypeOfValue> norm = this.getNorm();
         double denominator = Math.max(norm.value(a), norm.value(b));

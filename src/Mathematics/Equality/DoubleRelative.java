@@ -31,7 +31,7 @@ public class DoubleRelative extends PrecisionBased<Double> {
         super(precision);
     }
 
-    public boolean Equal(final Double a, final Double b) {
+    public Boolean value(final Double a, final Double b) {
         if (a == null || b == null ||
                 Double.isInfinite(a) || Double.isNaN(a) ||
                 Double.isInfinite(b) || Double.isNaN(b))

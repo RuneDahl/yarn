@@ -114,7 +114,7 @@ public class DoubleAbsoluteTest {
                 assertEquals("j = " + Integer.toString(j) +
                         " i = " + Integer.toString(i),
                         expecteds[i],
-                        _instance.Equal(_values[j], _values[j + i]));
+                        _instance.value(_values[j], _values[j + i]));
             }
         }
 
@@ -129,7 +129,7 @@ public class DoubleAbsoluteTest {
                 assertEquals("j = " + Integer.toString(j) +
                         " i = " + Integer.toString(i),
                         expecteds[i],
-                        _instance.Equal(_values[j], _values[j + i]));
+                        _instance.value(_values[j], _values[j + i]));
             }
         }
 
@@ -140,7 +140,7 @@ public class DoubleAbsoluteTest {
                 assertEquals("j = " + Integer.toString(j) +
                         " i = " + Integer.toString(i),
                         i == 0,
-                        _instance.Equal(_values[j], _values[j + i]));
+                        _instance.value(_values[j], _values[j + i]));
             }
         }
     }

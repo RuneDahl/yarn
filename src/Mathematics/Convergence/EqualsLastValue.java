@@ -65,7 +65,7 @@ public final class EqualsLastValue<TypeOfValue>
         TypeOfValue lastValue = series[series.length - 1];
         for (int i = 1; i <= this._numberOfEqualities; i++)
         {
-            if (!this.getEquals().Equal(lastValue,
+            if (!this.getEquals().value(lastValue,
                     series[series.length - 1 - i]))
                 return false;
         }

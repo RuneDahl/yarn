@@ -32,9 +32,9 @@ public class And<TypeOfValue>
         super(c);
     }
 
-    public boolean Equal(final TypeOfValue a, final TypeOfValue b) {
+    public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         for (Equals<TypeOfValue> equals : this)
-            if (!equals.Equal(a, b))
+            if (!equals.value(a, b))
                 return false;
         return true;
     }

@@ -279,7 +279,7 @@ public class ComplexTest {
         assertEquals(Complex.Cartesian(0.0, -1.0), this._complexUnit.conjugate());
         assertEquals(Complex.Cartesian(1.0, -1.0), this._onePointOne.conjugate());
         assertTrue("Failed test of Conjugate for " + this._polar.toString(),
-                this._numericalComparer.Equal(Complex.Cartesian(3.0, 4.0), this._polar.conjugate()));
+                this._numericalComparer.value(Complex.Cartesian(3.0, 4.0), this._polar.conjugate()));
     }
 
     /**
@@ -343,17 +343,17 @@ public class ComplexTest {
                 } else if (i == 4) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._complexUnit.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(1.0, 0.0), this._complexUnit.divide(this._array[i])));
                 } else if (i == 5) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._complexUnit.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(0.5, 0.5), this._complexUnit.divide(this._array[i])));
                 } else if (i == 6) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._complexUnit.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(-4.0 / 25.0, 3.0 / 25.0), this._complexUnit.divide(this._array[i])));
                 }
             else if (Complex.isNaN(this._array[i]))
@@ -379,17 +379,17 @@ public class ComplexTest {
                 } else if (i == 4) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._onePointOne.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(1.0, -1.0), this._onePointOne.divide(this._array[i])));
                 } else if (i == 5) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._onePointOne.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(1.0, 0.0), this._onePointOne.divide(this._array[i])));
                 } else if (i == 6) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._onePointOne.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(-1.0 / 25.0, 7.0 / 25.0), this._onePointOne.divide(this._array[i])));
                 }
             else if (Complex.isNaN(this._array[i]))
@@ -416,19 +416,19 @@ public class ComplexTest {
                 } else if (i == 4) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                            Complex.Polar(5.0, -0.9272952180016121 - Math.PI/2.0),
                            this._polar.divide(this._array[i])));
                 } else if (i == 5) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Polar(5.0 / Math.sqrt(2.0), -0.9272952180016121 - Math.PI/4.0),
                             this._polar.divide(this._array[i])));
                 } else if (i == 6) {
                     assertTrue("Test divide by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(1.0, 0.0), this._polar.divide(this._array[i])));
                 }
             else if (Complex.isNaN(this._array[i]))
@@ -639,22 +639,22 @@ public class ComplexTest {
                             if (j == 3)
                                 assertTrue("Failed test for Complex.product " +
                                     this._array[i].toString() + " * " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(3.0, -4.0), this._array[i].product(this._array[j])));
                             else if (j == 4)
                                 assertTrue("Failed test for Complex.product " +
                                     this._array[i].toString() + " * " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(4.0, 3.0), this._array[i].product(this._array[j])));
                             else if (j == 5)
                                 assertTrue("Failed test for Complex.product " +
                                     this._array[i].toString() + " * " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(7.0, -1.0), this._array[i].product(this._array[j])));
                             else
                                 assertTrue("Failed test for Complex.product " +
                                     this._array[i].toString() + " * " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(-7.0, -24.0), this._array[i].product(this._array[j])));
                             break;
                         default:
@@ -763,17 +763,17 @@ public class ComplexTest {
                 } else if (i == 4) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._complexUnit.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(0.0, 0.0), this._complexUnit.subtract(this._array[i])));
                 } else if (i == 5) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._complexUnit.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(-1.0, 0.0), this._complexUnit.subtract(this._array[i])));
                 } else if (i == 6) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._complexUnit.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(-3.0, 5.0), this._complexUnit.subtract(this._array[i])));
                 }
             else if (Complex.isNaN(this._array[i]))
@@ -799,17 +799,17 @@ public class ComplexTest {
                 } else if (i == 4) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._onePointOne.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(1.0, 0.0), this._onePointOne.subtract(this._array[i])));
                 } else if (i == 5) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._onePointOne.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(0.0, 0.0), this._onePointOne.subtract(this._array[i])));
                 } else if (i == 6) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._onePointOne.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(-2.0, 5.0),
                             this._onePointOne.subtract(this._array[i])));
                 }
@@ -832,25 +832,25 @@ public class ComplexTest {
                 if (i == 3) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(2.0, -4.0),
                             this._polar.subtract(this._array[i])));
                 } else if (i == 4) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(3.0, -5.0),
                             this._polar.subtract(this._array[i])));
                 } else if (i == 5) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(2.0, -5.0),
                             this._polar.subtract(this._array[i])));
                 } else if (i == 6) {
                     assertTrue("Test subtract by " + this._array[i].toString() +
                             " failed for " + this._polar.toString(),
-                            this._numericalComparer.Equal(
+                            this._numericalComparer.value(
                             Complex.Cartesian(0.0, 0.0), this._polar.subtract(this._array[i])));
                 }
             else if (Complex.isNaN(this._array[i]))
@@ -960,27 +960,27 @@ public class ComplexTest {
                             if (j == 2)
                                 assertTrue("Failed test for Complex.add " +
                                     this._array[i].toString() + " + " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(3.0, -4.0), this._array[i].sum(this._array[j])));
                             else if (j == 3)
                                 assertTrue("Failed test for Complex.add " +
                                     this._array[i].toString() + " + " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(4.0, -4.0), this._array[i].sum(this._array[j])));
                             else if (j == 4)
                                 assertTrue("Failed test for Complex.add " +
                                     this._array[i].toString() + " + " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(3.0, -3.0), this._array[i].sum(this._array[j])));
                             else if (j == 5)
                                 assertTrue("Failed test for Complex.add " +
                                     this._array[i].toString() + " + " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(4.0, -3.0), this._array[i].sum(this._array[j])));
                             else
                                 assertTrue("Failed test for Complex.add " +
                                     this._array[i].toString() + " + " + this._array[j].toString(),
-                                    this._numericalComparer.Equal(
+                                    this._numericalComparer.value(
                                     Complex.Cartesian(6.0, -8.0), this._array[i].sum(this._array[j])));
                             break;
                         default:
@@ -1209,25 +1209,25 @@ public class ComplexTest {
         for (int i = -5; i < 6; i++)
             assertTrue("Failed creating of Complex real unit for rotations: " +
                     Integer.toString(i),
-                    this._numericalComparer.Equal(
+                    this._numericalComparer.value(
                     Complex.Cartesian(1.0, 0.0), Complex.Polar(1.0, 2.0*Math.PI*i)));
 
          for (int i = -5; i < 6; i++)
             assertTrue("Failed creating of Complex negative real unit for rotations: " +
                     Integer.toString(i),
-                    this._numericalComparer.Equal(
+                    this._numericalComparer.value(
                     Complex.Cartesian(-1.0, 0.0), Complex.Polar(1.0, 2.0*Math.PI*i + Math.PI)));
 
         for (int i = -5; i < 6; i++)
             assertTrue("Failed creating of Complex imaginary unit for rotations: " +
                     Integer.toString(i),
-                    this._numericalComparer.Equal(
+                    this._numericalComparer.value(
                     Complex.Cartesian(0.0, 1.0), Complex.Polar(1.0, 2.0*Math.PI*i + Math.PI/2.0)));
 
         for (int i = -5; i < 6; i++)
             assertTrue("Failed creating of Complex negative imaginary unit for rotations: " +
                     Integer.toString(i),
-                    this._numericalComparer.Equal(
+                    this._numericalComparer.value(
                     Complex.Cartesian(0.0, -1.0), Complex.Polar(1.0, 2.0*Math.PI*i - Math.PI/2.0)));
 
         Complex tri = Complex.Cartesian(3.0, -4.0);
@@ -1235,7 +1235,7 @@ public class ComplexTest {
         for (int i = -5; i < 6; i++)
             assertTrue("Failed creating of Compex value " + tri.toString() +
                     " for rotations: " + Integer.toString(i),
-                    this._numericalComparer.Equal(
+                    this._numericalComparer.value(
                     tri, Complex.Polar(5.0, -0.9272952180016121 + 2.0*Math.PI*i)));
     }
 
@@ -1325,7 +1325,7 @@ public class ComplexTest {
             assertEquals(expected[i], Complex.exp(this._array[i]));
         for (int i = 2; i < this._array.length; i++)
             assertTrue("Failed test of Complex.exp" + this._array[i].toString() + ".",
-                    this._numericalComparer.Equal(expected[i], Complex.exp(this._array[i])));
+                    this._numericalComparer.value(expected[i], Complex.exp(this._array[i])));
     }
 
     /**
@@ -1351,7 +1351,7 @@ public class ComplexTest {
             assertEquals(expected[i], Complex.log(this._array[i]));
         for (int i = 4; i < this._array.length; i++)
             assertTrue("Failed test of Complex.log" + this._array[i].toString() + ".",
-                    this._numericalComparer.Equal(expected[i], Complex.log(this._array[i])));
+                    this._numericalComparer.value(expected[i], Complex.log(this._array[i])));
     }
 
     /**
