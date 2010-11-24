@@ -21,5 +21,5 @@ public interface Period<TypeOfCalendar> {
      * @return      The date/time shifted by this period
      * the specified number of of times.
      */
-    public TypeOfCalendar Shift(final TypeOfCalendar date, final int count);
+    public TypeOfCalendar shift(final TypeOfCalendar date, final int count);
 }

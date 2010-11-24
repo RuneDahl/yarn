@@ -47,12 +47,12 @@ public class Periods<TypeOfCalendar>
         this._count = count;
     }
 
-    public TypeOfCalendar Shift(final TypeOfCalendar date, final int count) {
+    public TypeOfCalendar shift(final TypeOfCalendar date, final int count) {
         TypeOfCalendar shifted = date;
         int totalCount = count * this.getCount();
         for (int i = 0; i < Math.abs(totalCount); i++)
             for (Period<TypeOfCalendar> period : this)
-                shifted = period.Shift(shifted, (int)Math.signum(totalCount));
+                shifted = period.shift(shifted, (int)Math.signum(totalCount));
         return shifted;
     }
 }

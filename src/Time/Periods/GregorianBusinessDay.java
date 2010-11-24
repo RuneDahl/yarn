@@ -53,7 +53,7 @@ public final class GregorianBusinessDay extends Count<GregorianCalendar> {
             this._businessDays.setHolidays(holidays);
     }
 
-    public GregorianCalendar Shift(GregorianCalendar date, int count) {
+    public GregorianCalendar shift(GregorianCalendar date, int count) {
         return this._businessDays.Shift(date, count);
     }
 }

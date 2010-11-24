@@ -67,7 +67,7 @@ public final class Relatives<TypeOfCalendar>
      */
     public boolean isHoliday(final TypeOfCalendar date) {
         for (Period<TypeOfCalendar> p : this) {
-            TypeOfCalendar d = p.Shift(date, -1);
+            TypeOfCalendar d = p.shift(date, -1);
             if (this._centralHoliday.isHoliday(d))
                 return true;
         }

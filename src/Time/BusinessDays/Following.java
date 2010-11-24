@@ -35,11 +35,11 @@ public final class Following<TypeOfCalendar>
     public TypeOfCalendar Shift(final TypeOfCalendar dateTime,
             final int count) {
         Period<TypeOfCalendar> p = this.getPeriod();
-        TypeOfCalendar shifted = p.Shift(dateTime, 0);
+        TypeOfCalendar shifted = p.shift(dateTime, 0);
         Holiday<TypeOfCalendar> holidays = this.getHolidays();
         for (int i = 0; i < Math.abs(count); )
         {
-            shifted = p.Shift(shifted, (int)Math.signum(count));
+            shifted = p.shift(shifted, (int)Math.signum(count));
             if (!holidays.isHoliday(shifted))
                 i++;
         }
