@@ -27,5 +27,5 @@ public interface MonthlyRecurring<TypeOfCalendar>
      * @param month Month.
      * @return      Whether the holiday occurs/exists for the specified year and month.
      */
-    public boolean Occurs(final int year, final int month);
+    public boolean occurs(final int year, final int month);
 }

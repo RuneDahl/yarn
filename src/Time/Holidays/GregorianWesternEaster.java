@@ -46,7 +46,7 @@ public final class GregorianWesternEaster
      *             cannot be computed for the specified year.
      */
     public GregorianCalendar getHoliday(final int year) {
-        if (!this.Occurs(year))
+        if (!this.occurs(year))
             throw new NullPointerException("Gregorian Easter does not occur/" +
                     "cannot be computed for the specified year " +
                     Integer.toString(year) + ".");
@@ -81,7 +81,7 @@ public final class GregorianWesternEaster
      * @return     Whether the Gregorian Easter occurs/can be computed for the
      *             specified year.
      */
-    public boolean Occurs(final int year) {
+    public boolean occurs(final int year) {
         return 1582 < year && year < 4100;
     }
 
@@ -92,7 +92,7 @@ public final class GregorianWesternEaster
      */
     public boolean isHoliday(final GregorianCalendar date) {
         int year = date.get(GregorianCalendar.YEAR);
-        if (!this.Occurs(year))
+        if (!this.occurs(year))
             return false;
         GregorianCalendar easter = this.getHoliday(year);
         return date.get(GregorianCalendar.DATE) == easter.get(GregorianCalendar.DATE) &&

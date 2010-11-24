@@ -53,7 +53,7 @@ public final class GregorianMonthly
      * @return      This holiday as occuring in the specified year and month.
      */
     public GregorianCalendar getHoliday(final int year, final int month) {
-        if (this.Occurs(year, month))
+        if (this.occurs(year, month))
             return new GregorianCalendar(year, month, this._date);
         throw new NullPointerException("This monthly holiday does not occur in " +
                 "the specified yead and month: " + Integer.toString(year) +
@@ -66,7 +66,7 @@ public final class GregorianMonthly
      * @param month Month.
      * @return      Whether this holiday occurs in the specified year and month.
      */
-    public boolean Occurs(final int year, final int month) {
+    public boolean occurs(final int year, final int month) {
         return this._date <= Time.Gregorian.lengthOfMonth(year, month);
     }
 

@@ -25,5 +25,5 @@ public interface AnnuallyRecurring<TypeOfCalendar>
      * @param year  Year.
      * @return      Whether the holiday occurs/exists for the specified year.
      */
-    public boolean Occurs(final int year);
+    public boolean occurs(final int year);
 }

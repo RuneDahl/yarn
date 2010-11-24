@@ -79,7 +79,7 @@ public class GregorianAnniversary
      *         This anniversary does not occur in the specified year.
      */
     public GregorianCalendar getHoliday(final int year) {
-        if (this.Occurs(year))
+        if (this.occurs(year))
             return new GregorianCalendar(year, this._month, this._date);
         throw new NullPointerException("This anniversay does not occur in the " +
                 "specified year: " + Integer.toString(year));
@@ -90,7 +90,7 @@ public class GregorianAnniversary
      * @param year Year.
      * @return     Whether this Gregorian anniversary happens in the specified year.
      */
-    public boolean Occurs(final int year) {
+    public boolean occurs(final int year) {
         return this._date <= Time.Gregorian.lengthOfMonth(year, this._month);
     }
 
