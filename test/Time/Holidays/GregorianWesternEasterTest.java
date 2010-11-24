@@ -93,7 +93,7 @@ public class GregorianWesternEasterTest {
     @Test
     public void testGetHoliday() {
         System.out.println("getHoliday");
-        GregorianWesternEaster instance = new GregorianWesternEaster();
+        GregorianWesternEaster instance = this._easter;
         for (int year = 1982; year < 2023; year++) {
             GregorianCalendar expResult = this._easters.get(year);
             GregorianCalendar result = instance.getHoliday(year);
