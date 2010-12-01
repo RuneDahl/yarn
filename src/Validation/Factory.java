@@ -8,7 +8,7 @@ package Validation;
 import Mathematics.Complex;
 
 /**
- * Factory class for often used validation setups.
+ * Factory class for often used {@see Validator validation} setups.
  * @author Rune Dahl Iversen
  */
 public final class Factory {
@@ -16,7 +16,7 @@ public final class Factory {
     { }
 
     /**
-     * Validator allowing not null, finite {@see Mathematics.Complex complex}
+     * Validator allowing not null, finite {@see Complex complex}
      * values that are not Complex.NaN.
      * @return New validator.
      */
@@ -30,7 +30,7 @@ public final class Factory {
     }
 
     /**
-     * Validator allowing not null, finite {@see double double}
+     * Validator allowing not null, finite {@see Double double}
      * values that are not Double.NaN.
      * @return New validator.
      */
@@ -43,7 +43,67 @@ public final class Factory {
     }
 
     /**
-     * Validator allowing not null {@see Mathematics.Complex complex}
+     * Validator allowing not null, finite {@see Double double} values that are
+     * not Double.NaN and are greater than the specified limit.
+     * @param limit Limit.
+     * @return      New validator.
+     */
+    public static Validator<Double> FiniteRealGreaterThan(final double limit) {
+        And<Double> validator = new And<Double>();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        validator.add(new DoubleGreaterThan(limit));
+        return validator;
+    }
+
+    /**
+     * Validator allowing not null, finite {@see Double double} values that are
+     * not Double.NaN and are greater than or equal to the specified limit.
+     * @param limit Limit.
+     * @return      New validator.
+     */
+    public static Validator<Double> FiniteRealGreaterThanOrEqual(final double limit) {
+        And<Double> validator = new And<Double>();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        validator.add(new DoubleGreaterThanOrEqual(limit));
+        return validator;
+    }
+
+    /**
+     * Validator allowing not null, finite {@see Double double} values that are
+     * not Double.NaN and are less than the specified limit.
+     * @param limit Limit.
+     * @return      New validator.
+     */
+    public static Validator<Double> FiniteRealLessThan(final double limit) {
+        And<Double> validator = new And<Double>();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        validator.add(new DoubleLessThan(limit));
+        return validator;
+    }
+
+    /**
+     * Validator allowing not null, finite {@see Double double} values that are
+     * not Double.NaN and are less than or equal to the specified limit.
+     * @param limit Limit.
+     * @return      New validator.
+     */
+    public static Validator<Double> FiniteRealLessThanOrEqual(final double limit) {
+        And<Double> validator = new And<Double>();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        validator.add(new DoubleLessThanOrEqual(limit));
+        return validator;
+    }
+
+    /**
+     * Validator allowing not null {@see Complex complex}
      * values that are not Complex.NaN.
      * @return New validator.
      */
@@ -55,7 +115,7 @@ public final class Factory {
     }
 
     /**
-     * Validator allowing not null [@see Integer integer}
+     * Validator allowing not null {@see Integer integer}
      * values that are positive.
      * @return New validator.
      */
@@ -67,7 +127,7 @@ public final class Factory {
     }
 
     /**
-     * Validator allowing not null {@see double double}
+     * Validator allowing not null {@see Double double}
      * values that are not Double.NaN.
      * @return New validator.
      */
