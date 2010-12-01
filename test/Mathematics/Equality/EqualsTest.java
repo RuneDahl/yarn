@@ -49,7 +49,7 @@ public class EqualsTest<TypeOfValue> {
             final TypeOfValue b,
             boolean expectedResult) {
         boolean result = equals.value(a, b);
-        assertEquals(expectedResult, result);
+        assertEquals(equals.getClass().getName(), expectedResult, result);
     }
 
     /**
