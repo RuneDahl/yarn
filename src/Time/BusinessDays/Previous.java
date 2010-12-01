@@ -29,13 +29,18 @@ public final class Previous<TypeOfCalendar>
     }
 
     public TypeOfCalendar adjust(final TypeOfCalendar dateTime) {
-        return this.shift(dateTime, 1);
+        Period<TypeOfCalendar> p = this.getPeriod();
+        TypeOfCalendar adjusted = dateTime;
+        Holiday<TypeOfCalendar> holidays = this.getHolidays();
+        for (; holidays.isHoliday(adjusted); )
+            adjusted = p.shift(adjusted, 1);
+        return adjusted;
     }
 
     public TypeOfCalendar shift(final TypeOfCalendar dateTime,
             final int count) {
         Period<TypeOfCalendar> p = this.getPeriod();
-        TypeOfCalendar shifted = p.shift(dateTime, 0);
+        TypeOfCalendar shifted = dateTime;
         Holiday<TypeOfCalendar> holidays = this.getHolidays();
         for (int i = 0; i < Math.abs(count); )
         {
