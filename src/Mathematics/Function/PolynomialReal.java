@@ -117,14 +117,15 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     }
 
     public Double value(final Double input) {
-        double output = 0.0;
-        double value = 1.0;
-        for (int degree = 0; degree < this._coefficients.length; degree++)
-        {
-            output += this._coefficients[degree] * value;
+        double value = 0.0;
+        for (int degree = this._coefficients.length - 1; 0 <= degree; degree--)
+        { // Following the technique on pp. 181-183 of
+          // Forman, Acton S.: Numerical Methods That (Usually) Work
+          // http://www.amazon.com/Numerical-Methods-that-Work-Spectrum/dp/0883854503/ref=sr_1_2?ie=UTF8&s=books&qid=1291226712&sr=8-2
             value *= input;
+            value += this._coefficients[degree];
         }
-        return output;
+        return value;
     }
 
     public Polynomial<Double, Double, Double> sum(
