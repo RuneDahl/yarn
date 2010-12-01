@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  * despite the implementation of the holiday that is wrapped.
  * @author Rune Dahl Iversen
  */
-public class GregorianEndDate implements Holiday<GregorianCalendar> {
+public final class GregorianEndDate implements Holiday<GregorianCalendar> {
     private Holiday<GregorianCalendar> _holiday;
     private GregorianCalendar _end;
 
