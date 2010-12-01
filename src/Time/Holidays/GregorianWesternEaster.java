@@ -24,7 +24,9 @@ import java.util.Hashtable;
  * Gregorian calendar. That is not to Easter in the
  * <a href="http://en.wikipedia.org/wiki/Julian_calendar">Julian calendar</a>
  * nor to the Easter celebrated by the
- * <a href="http://en.wikipedia.org/wiki/Eastern_Christianity">Eastern Christianity</a>.
+ * <a href="http://en.wikipedia.org/wiki/Eastern_Christianity">Eastern Christianity</a>.<br>
+ * This implementation is limited in validity to the years 1583 through 4099
+ * (both included).
  * @author Rune Dahl Iversen
  */
 public final class GregorianWesternEaster
