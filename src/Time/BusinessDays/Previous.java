@@ -33,7 +33,7 @@ public final class Previous<TypeOfCalendar>
         TypeOfCalendar adjusted = dateTime;
         Holiday<TypeOfCalendar> holidays = this.getHolidays();
         for (; holidays.isHoliday(adjusted); )
-            adjusted = p.shift(adjusted, 1);
+            adjusted = p.shift(adjusted, -1);
         return adjusted;
     }
 
