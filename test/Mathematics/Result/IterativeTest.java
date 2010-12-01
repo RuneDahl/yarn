@@ -5,6 +5,7 @@
 
 package Mathematics.Result;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -15,5 +16,12 @@ public class IterativeTest {
     public static void getIterationsTest(final Iterative result, int expected) {
         System.out.println("iterations for " + result.getClass().getName());
         assertEquals(expected, result.getIterations());
+    }
+
+    /**
+     * Dummy test to allow this class in the test setup without causing failure.
+     */
+    @Test
+    public void BlankTest(){
     }
 }
