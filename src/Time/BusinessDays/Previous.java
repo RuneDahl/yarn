@@ -28,11 +28,11 @@ public final class Previous<TypeOfCalendar>
         super(holidays, period);
     }
 
-    public TypeOfCalendar Adjust(final TypeOfCalendar dateTime) {
-        return this.Shift(dateTime, 1);
+    public TypeOfCalendar adjust(final TypeOfCalendar dateTime) {
+        return this.shift(dateTime, 1);
     }
 
-    public TypeOfCalendar Shift(final TypeOfCalendar dateTime,
+    public TypeOfCalendar shift(final TypeOfCalendar dateTime,
             final int count) {
         Period<TypeOfCalendar> p = this.getPeriod();
         TypeOfCalendar shifted = p.shift(dateTime, 0);

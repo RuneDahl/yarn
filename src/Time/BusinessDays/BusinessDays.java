@@ -24,7 +24,7 @@ public interface BusinessDays<TypeOfCalendar> {
      * @param dateTime Date/time.
      * @return The adjusted date/time.
      */
-    public TypeOfCalendar Adjust(final TypeOfCalendar dateTime);
+    public TypeOfCalendar adjust(final TypeOfCalendar dateTime);
 
     /**
      * Returns the specified date/time shifted the number of times using the
@@ -34,6 +34,6 @@ public interface BusinessDays<TypeOfCalendar> {
      * @param count    Number of shifts to apply.
      * @return The shifted date/time.
      */
-    public TypeOfCalendar Shift(final TypeOfCalendar dateTime,
+    public TypeOfCalendar shift(final TypeOfCalendar dateTime,
             final int count);
 }

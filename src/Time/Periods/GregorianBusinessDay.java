@@ -54,6 +54,6 @@ public final class GregorianBusinessDay extends Count<GregorianCalendar> {
     }
 
     public GregorianCalendar shift(GregorianCalendar date, int count) {
-        return this._businessDays.Shift(date, count);
+        return this._businessDays.shift(date, count);
     }
 }

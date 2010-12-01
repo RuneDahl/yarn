@@ -29,16 +29,16 @@ public final class ModifiedFollowing<TypeOfCalendar>
         super(holidays, period);
     }
 
-    public TypeOfCalendar Adjust(final TypeOfCalendar dateTime) {
-        TypeOfCalendar adjusted = this.Shift(dateTime, 1);
+    public TypeOfCalendar adjust(final TypeOfCalendar dateTime) {
+        TypeOfCalendar adjusted = this.shift(dateTime, 1);
         Calendar d = (Calendar)dateTime;
         Calendar a = (Calendar)adjusted;
         if (d.get(Calendar.MONTH) != a.get(Calendar.MONTH))
-            return this.Shift(dateTime, -1);
+            return this.shift(dateTime, -1);
         return adjusted;
     }
 
-    public TypeOfCalendar Shift(final TypeOfCalendar dateTime,
+    public TypeOfCalendar shift(final TypeOfCalendar dateTime,
             final int count) {
         Period<TypeOfCalendar> p = this.getPeriod();
         TypeOfCalendar shifted = p.shift(dateTime, 0);
