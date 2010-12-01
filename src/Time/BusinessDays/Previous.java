@@ -44,7 +44,7 @@ public final class Previous<TypeOfCalendar>
         Holiday<TypeOfCalendar> holidays = this.getHolidays();
         for (int i = 0; i < Math.abs(count); )
         {
-            shifted = p.shift(shifted, -(int)Math.signum(count));
+            shifted = p.shift(shifted, (int)Math.signum(count));
             if (!holidays.isHoliday(shifted))
                 i++;
         }
