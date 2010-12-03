@@ -68,10 +68,10 @@ public interface Vector<TypeOfValue>
             final TypeOfValue value);
 
     /**
-     * Returns an array of the values from this vector.
-     * The values filled with the coefficients of this vector are
-     * determined by its dimensions.
+     * Returns an array of the values from this vector.<br>
+     * The values filled with the coefficients of this vector as
+     * determined by their relative dimensions to the first dimension.
      * @return Array of the values of this vector.
      */
-    public TypeOfValue[] ToArray();
+    public TypeOfValue[] toArray();
 }

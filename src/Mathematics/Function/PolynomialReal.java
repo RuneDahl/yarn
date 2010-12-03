@@ -62,11 +62,13 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
      * <br>- The degree will be determined by the dimensions of the vector.
      * <br>- The value of dimension i will be the coefficient of the
      * polynomial degree i.
-     * <br>- Any remaining coefficients will by zero.
+     * <br>- The first dimension of the vector must be zero.
      * @param coefficients Vector of coefficients.
      */
     public PolynomialReal(final Vector<Double> coefficients) {
-        this(coefficients.ToArray());
+        this(coefficients.toArray());
+        if (coefficients.getFirstDimension() != 0)
+            throw new IndexOutOfBoundsException("First dimension is not zero 0.");
     }
 
     public Double getCoefficient(final int degree) {

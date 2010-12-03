@@ -13,8 +13,8 @@ import java.util.Arrays;
  * VectorReal is implemented as an immutable class.
  * @author Rune Dahl Iversen
  */
-public class VectorReal implements Vector<Double> {
-    private Validator<Double> _validator;
+public final class VectorReal implements Vector<Double> {
+    private static final Validator<Double> __validator = Factory.FiniteReal();
     private double[] _values;
     private int _firstDimension;
 
@@ -57,7 +57,6 @@ public class VectorReal implements Vector<Double> {
      */
     public VectorReal(final int firstDimension, final int dimensions,
             final double value) {
-        this._validator = Factory.FiniteReal();
         this._firstDimension = firstDimension;
         double[] values = new double[dimensions];
         for (int dim = 0; dim < dimensions; dim++)
@@ -80,7 +79,6 @@ public class VectorReal implements Vector<Double> {
      * @param values         Zero-based array of values.
      */
     public VectorReal(final int firstDimension, final double[] values) {
-        this._validator = Factory.FiniteReal();
         this._firstDimension = firstDimension;
         this._setValues(values);
     }
@@ -107,7 +105,10 @@ public class VectorReal implements Vector<Double> {
     }
 
     public Vector<Double> setValue(final int dimension, final Double value) {
-        VectorReal v = new VectorReal(this._values);
+        if (!__validator.isValid(value))
+            throw new IllegalArgumentException(
+                    __validator.Message(value, "Value"));
+        VectorReal v = new VectorReal(this._firstDimension, this._values);
         v._values[dimension - this._firstDimension] = value;
         return v;
     }
@@ -177,25 +178,33 @@ public class VectorReal implements Vector<Double> {
         return new VectorReal(this._firstDimension, values);
     }
 
-    public Double[] ToArray() {
-        Double[] values = new Double[this._firstDimension + this._values.length - 1];
-        for (int dim = 0; dim < this._firstDimension; dim++)
-            values[dim] = 0.0;
-        for (int dim = this._firstDimension;
-        dim < this._firstDimension + this._values.length; dim++)
-            values[dim] = this.getValue(dim);
+    public Double[] toArray() {
+        Double[] values = new Double[this._values.length];
+        for (int dim = 0; dim < this._values.length; dim++)
+            values[dim] = this._values[dim];
         return values;
+    }
+
+    @Override
+    public String toString() {
+        String text = "[";
+        for (int dim = 0; dim < this.getDimensions(); dim++) {
+            text += Double.toString(this._values[dim]);
+            text += (dim < this.getDimensions() - 1 ? " ; " : "");
+        }
+        text += "]";
+        return text;
     }
 
     private void _setValues(final double[] values) {
         this._values = new double[values.length];
         for (int dim = 0; dim < values.length; dim++)
         {
-            if (this._validator.isValid(values[dim]))
+            if (__validator.isValid(values[dim]))
                 this._values[dim] = values[dim];
             else
                 throw new IllegalArgumentException(
-                        this._validator.Message(values[dim],
+                        __validator.Message(values[dim],
                         "The value of dimension " + Integer.toString(dim)));
         }
     }
@@ -211,8 +220,7 @@ public class VectorReal implements Vector<Double> {
     public static VectorReal Unit(final int dimensions,
             final int unitDimension) {
         VectorReal unit = new VectorReal(dimensions);
-        unit.setValue(unitDimension, 1.0);
-        return unit;
+        return (VectorReal)unit.setValue(unitDimension, 1.0);
     }
 
     /**
@@ -227,7 +235,6 @@ public class VectorReal implements Vector<Double> {
     public static VectorReal Unit(final int firstDimension,
             final int dimensions, final int unitDimension) {
         VectorReal unit = new VectorReal(firstDimension, dimensions);
-        unit.setValue(unitDimension, 1.0);
-        return unit;
+        return (VectorReal)unit.setValue(unitDimension, 1.0);
     }
 }
