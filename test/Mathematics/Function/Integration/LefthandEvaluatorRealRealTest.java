@@ -88,4 +88,15 @@ public class LefthandEvaluatorRealRealTest {
         Double result = this._evaluator.value(this._poly, null);
         fail("Expected exception not thrown.");
     }
+
+    /**
+     * Test of value method, of class LefthandEvaluatorRealReal
+     * for two null values.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_Null_BothValues() {
+        System.out.println("value(null, null)");
+        double result = this._evaluator.value(null, null);
+        fail("No exception thrown.");
+    }
 }
