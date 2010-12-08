@@ -51,7 +51,7 @@ public class TrapezoidEvaluatorRealRealTest {
     }
 
     /**
-     * Test of value method, of class LefthandEvaluatorRealReal.
+     * Test of value method, of class TrapezoidEvaluatorRealReal.
      */
     @Test
     public void testValue() {
@@ -69,7 +69,7 @@ public class TrapezoidEvaluatorRealRealTest {
     }
 
     /**
-     * Test of value method, of class LefthandEvaluatorRealReal
+     * Test of value method, of class TrapezoidEvaluatorRealReal
      * for a function that is null.
      */
     @Test (expected=NullPointerException.class)
@@ -79,7 +79,7 @@ public class TrapezoidEvaluatorRealRealTest {
         fail("Expected exception not thrown.");
     }
     /**
-     * Test of value method, of class LefthandEvaluatorRealReal
+     * Test of value method, of class TrapezoidEvaluatorRealReal
      * for an interval that is null.
      */
     @Test (expected=NullPointerException.class)
@@ -87,5 +87,16 @@ public class TrapezoidEvaluatorRealRealTest {
         System.out.println("value of interval that is null");
         Double result = this._evaluator.value(this._poly, null);
         fail("Expected exception not thrown.");
+    }
+
+    /**
+     * Test of value method, of class TrapezoidEvaluatorRealReal
+     * for two null values.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_Null_BothValues() {
+        System.out.println("value(null, null)");
+        double result = this._evaluator.value(null, null);
+        fail("No exception thrown.");
     }
 }
