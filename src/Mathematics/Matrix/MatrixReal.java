@@ -46,7 +46,6 @@ public final class MatrixReal extends MatrixBase<Double> {
     }
 
     /**
-    /**
      * Cerates a real matrix with the specified rows and columns and the
      * specified value.
      * @param rows    Number of rows of this matrix.
@@ -57,7 +56,6 @@ public final class MatrixReal extends MatrixBase<Double> {
         this(0, rows, 0, columns, value);
     }
 
-    /**
     /**
      * Cerates a real matrix with the specified dimensions
      * (firstRow, rows, firstColumn and columns) and value.
