@@ -173,4 +173,37 @@ public class TunableEvaluatorRealRealTest {
                 this._evaluator.value(this._sine, this._interval),
                 precision);
     }
+
+    /**
+     * Test of value method, of class TunableEvaluatorRealReal
+     * for a null function.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_NullFunction() {
+        System.out.println("value(null, i)");
+        double result = this._evaluator.value(null, this._interval);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of value method, of class TunableEvaluatorRealReal
+     * for a null interval.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_NullInterval() {
+        System.out.println("value(f, null)");
+        double result = this._evaluator.value(this._poly, null);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of value method, of class TunableEvaluatorRealReal
+     * for two null values.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_Null_BothValues() {
+        System.out.println("value(null, null)");
+        double result = this._evaluator.value(null, null);
+        fail("No exception thrown.");
+    }
 }
