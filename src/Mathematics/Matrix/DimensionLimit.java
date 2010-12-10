@@ -31,7 +31,7 @@ public abstract class DimensionLimit {
      * Returns the dimensional limit.
      * @return The dimensional limit.
      */
-    public int getDimensionLimit() {
+    public final int getDimensionLimit() {
         return this._dimensionLimit;
     }
 }

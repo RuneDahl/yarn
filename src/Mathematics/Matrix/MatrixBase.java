@@ -19,7 +19,8 @@ public abstract class MatrixBase<TypeOfValue> implements Matrix<TypeOfValue> {
     /**
      * Creates a new instance of a matrix.
      */
-    protected MatrixBase() {}
+    protected MatrixBase() { // Intentional
+    }
 
     public final void SwitchColumns(final int column1, final int column2) {
         Vector<TypeOfValue> temp = this.getColumn(column1);
