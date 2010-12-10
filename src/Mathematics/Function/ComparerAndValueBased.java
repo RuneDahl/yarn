@@ -42,7 +42,7 @@ public abstract class ComparerAndValueBased<TypeOfValue>
      * Returns the value of this function.
      * @return The value.
      */
-    public TypeOfValue getValue() {
+    public final TypeOfValue getValue() {
         return this._value;
     }
 
@@ -51,7 +51,7 @@ public abstract class ComparerAndValueBased<TypeOfValue>
      * @param value The value.
      * @exception IllegalArgumentException Value is not valid.
      */
-    public void setValue(final TypeOfValue value) {
+    public final void setValue(final TypeOfValue value) {
         if (!this._valueValidator.isValid(value))
             throw new IllegalArgumentException("Value is not valid.");
         this._value = value;

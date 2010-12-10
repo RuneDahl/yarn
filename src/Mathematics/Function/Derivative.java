@@ -22,7 +22,7 @@ public final class Derivative<TypeOfInput, TypeOfFunctionOutput,
     /**
      * Creates an instance of a Derivative {@see Differentiator differentiator}.
      */
-    public Derivative() {
+    public Derivative() { // Intentional
     }
 
     public TypeOfDifferentialOutput Value(final TypeOfInput value,

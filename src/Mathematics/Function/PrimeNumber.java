@@ -15,8 +15,8 @@ import java.util.Map.Entry;
  * <br>Any number outside the natural numbers cannot be considered prime.
  * @author Rune Dahl Iversen
  */
-public class PrimeNumber implements Function<Integer, Boolean> {
-    private HashMap<Integer, Integer> _primes;
+public final class PrimeNumber implements Function<Integer, Boolean> {
+    private final HashMap<Integer, Integer> _primes;
 
     /**
      * Creates an instance of this prime number function.

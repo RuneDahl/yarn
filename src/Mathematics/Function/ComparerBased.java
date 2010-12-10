@@ -29,7 +29,7 @@ public abstract class ComparerBased<TypeOfValue> {
      * Returns the comparer of this function.
      * @return The comparer.
      */
-    public Equals<TypeOfValue> getComparer() {
+    public final Equals<TypeOfValue> getComparer() {
         return this._comparer;
     }
 
@@ -38,7 +38,7 @@ public abstract class ComparerBased<TypeOfValue> {
      * @param comparer The comparer.
      * @exception NullPointerException Comparer not specified.
      */
-    public void setComparer(final Equals<TypeOfValue> comparer) {
+    public final void setComparer(final Equals<TypeOfValue> comparer) {
         if (comparer == null)
             throw new NullPointerException("Comparer not specified.");
         this._comparer = comparer;

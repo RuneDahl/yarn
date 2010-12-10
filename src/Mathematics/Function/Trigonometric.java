@@ -18,11 +18,12 @@ import Validation.Validator;
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
-public abstract class Trigonometric<TypeOfValue> {
+public abstract class Trigonometric<TypeOfValue>
+        implements Function<TypeOfValue, TypeOfValue> {
     private TypeOfValue _amplitude;
     private TypeOfValue _frequency;
     private TypeOfValue _phase;
-    private Validation.Validator<TypeOfValue> _validation;
+    private final Validator<TypeOfValue> _validation;
 
     /**
      * Creates a new instance of a trigonometric function with the
@@ -33,7 +34,7 @@ public abstract class Trigonometric<TypeOfValue> {
      * @param phase      Phase.
      */
     protected Trigonometric(
-            final Validation.Validator<TypeOfValue> validation,
+            final Validator<TypeOfValue> validation,
             final TypeOfValue amplitude,
             final TypeOfValue frequency,
             final TypeOfValue phase) {

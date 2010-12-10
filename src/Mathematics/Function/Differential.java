@@ -19,7 +19,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
         implements Differentiator<TypeOfInput, TypeOfOutput, TypeOfOutput> {
     private DiffentialDirection _direction;
     private TypeOfInput _step;
-    private Validator<TypeOfInput> _stepValidator;
+    private final Validator<TypeOfInput> _stepValidator;
 
     protected Differential(final Validator<TypeOfInput> stepValidator,
             final TypeOfInput step, final DiffentialDirection direction) {
@@ -34,7 +34,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Gets the direction/way the differential is computed relative to the step.
      * @return The direction.
      */
-    public DiffentialDirection getDirection() {
+    public final DiffentialDirection getDirection() {
         return this._direction;
     }
 
@@ -42,7 +42,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Gets the step added to the input when computing the derivative value.
      * @return Step.
      */
-    public TypeOfInput getStep() {
+    public final TypeOfInput getStep() {
         return this._step;
     }
 
@@ -50,7 +50,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Sets the direction/way the differential is computed relative to the step.
      * @param direction The direction.
      */
-    public void setDirection(final DiffentialDirection direction) {
+    public final void setDirection(final DiffentialDirection direction) {
         this._direction = direction;
     }
 
@@ -58,7 +58,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Sets the step added to the input when computing the derivative value.
      * @param step Step.
      */
-    public void setStep(final TypeOfInput step) {
+    public final void setStep(final TypeOfInput step) {
         if (!this._stepValidator.isValid(step))
             throw new IllegalArgumentException(
                     this._stepValidator.Message(step, "Step"));

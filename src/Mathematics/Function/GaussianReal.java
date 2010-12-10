@@ -17,7 +17,7 @@ public final class GaussianReal implements Function<Double, Double> {
     private double _center;
     private double _spread;
     private double _scale;
-    private Validator<Double> _validator;
+    private static final Validator<Double> __validator = Factory.FiniteReal();
 
     /**
      * Creates an instance of the GaussianReal function with the specified
@@ -30,7 +30,6 @@ public final class GaussianReal implements Function<Double, Double> {
             final double center,
             final double spread,
             final double scale) {
-        this._validator = Factory.FiniteReal();
         this.setCenter(center);
         this.setSpread(spread);
         this.setScale(scale);
@@ -66,9 +65,9 @@ public final class GaussianReal implements Function<Double, Double> {
      * @exception IllegalArgumentException Center is not valid.
      */
     public void setCenter(final double center) {
-        if (!this._validator.isValid(center))
+        if (!__validator.isValid(center))
             throw new IllegalArgumentException(
-                    this._validator.Message(center, "Center"));
+                    __validator.Message(center, "Center"));
         this._center = center;
     }
 
@@ -78,9 +77,9 @@ public final class GaussianReal implements Function<Double, Double> {
      * @exception IllegalArgumentException Scale is not valid.
      */
     public void setScale(final double scale) {
-        if (!this._validator.isValid(scale))
+        if (!__validator.isValid(scale))
             throw new IllegalArgumentException(
-                    this._validator.Message(scale, "Scale"));
+                    __validator.Message(scale, "Scale"));
         this._scale = scale;
     }
 
@@ -90,9 +89,9 @@ public final class GaussianReal implements Function<Double, Double> {
      * @exception IllegalArgumentException Spread is not valid.
      */
     public void setSpread(final double spread) {
-        if (!this._validator.isValid(spread))
+        if (!__validator.isValid(spread))
             throw new IllegalArgumentException(
-                    this._validator.Message(spread, "Spread"));
+                    __validator.Message(spread, "Spread"));
         this._spread = spread;
     }
 

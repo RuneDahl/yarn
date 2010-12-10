@@ -92,10 +92,10 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
                     this._validator.Message(value, "Value"));
         Double[] coefficients = new Double[this._coefficients.length];
         for (int d = 0; d < this._coefficients.length; d++)
-            if (d != degree)
-                coefficients[d] = this._coefficients[d];
-            else
+            if (d == degree)
                 coefficients[d] = value;
+            else
+                coefficients[d] = this._coefficients[d];
         return new PolynomialReal(coefficients);
     }
 
@@ -210,14 +210,14 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
             equals = false;
         else if (function == this)
             equals = true;
-        else if (function.getDegree() != this.getDegree())
-            equals = false;
-        else {
+        else if (function.getDegree() == this.getDegree()){
             equals = true;
             for (int degree = 0; degree <= this.getDegree(); degree++)
                 equals &= (this.getCoefficient(degree) -
                         function.getCoefficient(degree) == 0);
         }
+        else 
+            equals = false;
         return equals;
     }
 
@@ -232,7 +232,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     public String toString() {
         String value = "{PolynomialReal[";
         for (int d = this.getDegree(); 0 <= d; d--) {
-            value += (Math.signum(this.getCoefficient(d)) != 1 ? " -" : " +");
+            value += (Math.signum(this.getCoefficient(d)) == 1 ? " +" : " -");
             value += Double.toString(Math.abs(this.getCoefficient(d)));
             if (d != 0) {
                 value += "*x^" + Integer.toString(d);
