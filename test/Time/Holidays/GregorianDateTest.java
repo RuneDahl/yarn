@@ -22,15 +22,15 @@ public class GregorianDateTest {
     private GregorianDate _mayNinth2k9;
     private GregorianDate _juneFirst2k;
 
-    public GregorianDateTest() {
+    public GregorianDateTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -42,6 +42,9 @@ public class GregorianDateTest {
 
     @After
     public void tearDown() {
+        this._mayNinth2k = null;
+        this._mayNinth2k9 = null;
+        this._juneFirst2k = null;
     }
 
     /**
@@ -132,8 +135,7 @@ public class GregorianDateTest {
         System.out.println("isHoliday(null)");
         GregorianCalendar date = null;
         GregorianDate instance = this._mayNinth2k;
-        boolean expResult = false;
-        boolean result = instance.isHoliday(date);
+        instance.isHoliday(date);
         fail("No exception thrown.");
     }
 }

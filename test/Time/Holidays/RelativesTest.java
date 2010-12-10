@@ -26,15 +26,15 @@ public class RelativesTest {
     private Period<GregorianCalendar> _days3;
     private GregorianAnniversary _central;
 
-    public RelativesTest() {
+    public RelativesTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -50,6 +50,10 @@ public class RelativesTest {
 
     @After
     public void tearDown() {
+        this._relative = null;
+        this._week = null;
+        this._days3 = null;
+        this._central = null;
     }
 
     /**
@@ -61,13 +65,12 @@ public class RelativesTest {
         Relatives<GregorianCalendar> instance = this._relative;
         Holiday result = instance.getCentralHoliday();
         assertNotNull("No central holiday.", result);
-        if (!(result instanceof GregorianAnniversary))
-            fail("Wrong class of central holiday.");
-        else {
+        if (result instanceof GregorianAnniversary) {
             GregorianAnniversary ga = (GregorianAnniversary)result;
             assertEquals("Wrong month from central holiday.", 4, ga.getMonth());
             assertEquals("Wrong date from central holiday.", 9, ga.getDate());
-        }
+        } else
+            fail("Wrong class of central holiday.");
     }
 
     /**
@@ -79,19 +82,20 @@ public class RelativesTest {
         Relatives<GregorianCalendar> instance = this._relative;
         Holiday result = instance.getCentralHoliday();
         assertNotNull("Pre-condition: No central holiday.", result);
-        if (!(result instanceof GregorianAnniversary))
-            fail("Pre-condition: Wrong class of central holiday.");
-        else {
+        if (result instanceof GregorianAnniversary) {
             GregorianAnniversary ga = (GregorianAnniversary)result;
             assertEquals("Pre-condition: Wrong month from central holiday.", 4, ga.getMonth());
             assertEquals("Pre-condition: Wrong date from central holiday.", 9, ga.getDate());
-        }
+        } else
+            fail("Pre-condition: Wrong class of central holiday.");
         
         instance.setCentralHoliday(new GregorianWesternEaster());
 
         result = instance.getCentralHoliday();
         assertNotNull("No central holiday after setCentralHoliday.", result);
-        if (!(result instanceof GregorianWesternEaster))
+        if (result instanceof GregorianWesternEaster)
+            assertTrue(true);
+        else
             fail("Wrong class of central holiday after setCentralHoliday.");
     }
 
@@ -132,7 +136,7 @@ public class RelativesTest {
         System.out.println("isHoliday(null)");
         GregorianCalendar date = null;
         Relatives<GregorianCalendar> instance = this._relative;
-        boolean result = instance.isHoliday(date);
+        instance.isHoliday(date);
         fail("No exception thrown.");
     }
 }

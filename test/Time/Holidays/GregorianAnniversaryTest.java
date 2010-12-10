@@ -21,15 +21,15 @@ public class GregorianAnniversaryTest {
     private GregorianAnniversary _mayNinth;
     private GregorianAnniversary _februaryThirtyFirst;
 
-    public GregorianAnniversaryTest() {
+    public GregorianAnniversaryTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -40,6 +40,8 @@ public class GregorianAnniversaryTest {
 
     @After
     public void tearDown() {
+        this._mayNinth = null;
+        this._februaryThirtyFirst = null;
     }
 
     /**
@@ -155,7 +157,7 @@ public class GregorianAnniversaryTest {
         System.out.println("getHoliday from invalid/non-existing holiday");
         int year = 2000;
         GregorianAnniversary instance = this._februaryThirtyFirst;
-        GregorianCalendar result = instance.getHoliday(year);
+        instance.getHoliday(year);
         fail("No exception thrown.");
     }
 
@@ -208,7 +210,8 @@ public class GregorianAnniversaryTest {
     public void testIsHoliday_Null() {
         System.out.println("isHoliday(null)");
         GregorianAnniversary instance = this._mayNinth;
-        boolean result = instance.isHoliday(null);
+        GregorianCalendar nullValue = null;
+        instance.isHoliday(nullValue);
         fail("No exception thrown.");
     }
 }

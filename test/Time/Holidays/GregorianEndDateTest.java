@@ -21,15 +21,15 @@ public class GregorianEndDateTest {
     private GregorianEndDate _valid;
     private Holiday<GregorianCalendar> _weekday;
 
-    public GregorianEndDateTest() {
+    public GregorianEndDateTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -41,6 +41,8 @@ public class GregorianEndDateTest {
 
     @After
     public void tearDown() {
+        this._weekday = null;
+        this._valid = null;
     }
 
     /**
@@ -52,13 +54,12 @@ public class GregorianEndDateTest {
         GregorianEndDate instance = this._valid;
         Holiday result = instance.getHoliday();
         assertNotNull("No holiday returned.", result);
-        if (!(result instanceof GregorianWeekday))
-            fail("Wrong type of holiday returned.");
-        else {
+        if (result instanceof GregorianWeekday) {
             GregorianWeekday gwd = (GregorianWeekday)result;
             assertEquals("Wrong value from returned GregorianWeekday.",
                     GregorianCalendar.SUNDAY, gwd.getWeekday());
-        }
+        } else
+            fail("Wrong type of holiday returned.");
     }
 
     /**
@@ -84,25 +85,23 @@ public class GregorianEndDateTest {
 
         Holiday<GregorianCalendar> result = instance.getHoliday();
         assertNotNull("Pre-condition: No holiday returned.", result);
-        if (!(result instanceof GregorianWeekday))
-            fail("Pre-condition: Wrong type of holiday returned.");
-        else {
+        if (result instanceof GregorianWeekday) {
             GregorianWeekday gwd = (GregorianWeekday)result;
             assertEquals("Pre-condition: Wrong value from returned GregorianWeekday.",
                     GregorianCalendar.SUNDAY, gwd.getWeekday());
-        }
+        } else
+            fail("Pre-condition: Wrong type of holiday returned.");
         
         instance.setHoliday(holiday);
 
         result = instance.getHoliday();
         assertNotNull("No holiday returned after setHoliday.", result);
-        if (!(result instanceof GregorianWeekday))
-            fail("Wrong type of holiday returned after setHoliday.");
-        else {
+        if (result instanceof GregorianWeekday) {
             GregorianWeekday gwd = (GregorianWeekday)result;
             assertEquals("Wrong value from returned GregorianWeekday after setHoliday.",
                     GregorianCalendar.SATURDAY, gwd.getWeekday());
-        }
+        } else
+            fail("Wrong type of holiday returned after setHoliday.");
     }
 
     /**
@@ -176,7 +175,7 @@ public class GregorianEndDateTest {
         System.out.println("isHoliday(null)");
         GregorianCalendar dateTime = null;
         GregorianEndDate instance = this._valid;
-        boolean result = instance.isHoliday(dateTime);
+       instance.isHoliday(dateTime);
         fail("No exception thrown.");
     }
 }

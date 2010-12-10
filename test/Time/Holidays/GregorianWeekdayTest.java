@@ -21,15 +21,15 @@ public class GregorianWeekdayTest {
     private GregorianWeekday _saturday;
     private GregorianWeekday _sunday;
 
-    public GregorianWeekdayTest() {
+    public GregorianWeekdayTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -40,6 +40,8 @@ public class GregorianWeekdayTest {
 
     @After
     public void tearDown() {
+        this._saturday = null;
+        this._sunday = null;
     }
 
     /**
@@ -121,7 +123,7 @@ public class GregorianWeekdayTest {
     public void testIsHoliday_Null() {
         System.out.println("isHoliday");
         GregorianWeekday instance = this._saturday;
-        boolean result = instance.isHoliday(null);
+        instance.isHoliday(null);
         fail("No exception thrown.");
     }
 }

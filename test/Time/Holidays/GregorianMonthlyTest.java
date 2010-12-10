@@ -22,15 +22,15 @@ public class GregorianMonthlyTest {
     private GregorianMonthly _ninth;
     private GregorianMonthly _thirtyFirst;
 
-    public GregorianMonthlyTest() {
+    public GregorianMonthlyTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -42,6 +42,9 @@ public class GregorianMonthlyTest {
 
     @After
     public void tearDown() {
+        this._first = null;
+        this._ninth = null;
+        this._thirtyFirst = null;
     }
 
     /**
@@ -132,7 +135,7 @@ public class GregorianMonthlyTest {
         int year = 2000;
         int month = 1;
         GregorianMonthly instance = this._thirtyFirst;
-        GregorianCalendar result = instance.getHoliday(year, month);
+        instance.getHoliday(year, month);
         fail("No exception thrown.");
     }
 
@@ -162,6 +165,10 @@ public class GregorianMonthlyTest {
                     case 8:
                     case 10:
                         expResult = false;
+                        break;
+                    default:
+                        expResult = true;
+                        break;
                 }
                 result = instance.occurs(year, month);
                 assertEquals(expResult, result);

@@ -22,15 +22,15 @@ public class GregorianWesternEasterTest {
     private GregorianWesternEaster _easter;
     private HashMap<Integer, GregorianCalendar> _easters;
 
-    public GregorianWesternEasterTest() {
+    public GregorianWesternEasterTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -84,6 +84,7 @@ public class GregorianWesternEasterTest {
 
     @After
     public void tearDown() {
+        this._easter = null;
         this._easters.clear();
     }
 
@@ -108,7 +109,7 @@ public class GregorianWesternEasterTest {
     public void testGetHoliday_1582() {
         System.out.println("getHoliday(1582)");
         GregorianWesternEaster instance = this._easter;
-        GregorianCalendar result = instance.getHoliday(1582);
+        instance.getHoliday(1582);
         fail("No exception thrown.");
     }
 
@@ -119,7 +120,7 @@ public class GregorianWesternEasterTest {
     public void testGetHoliday_4100() {
         System.out.println("getHoliday(4100)");
         GregorianWesternEaster instance = this._easter;
-        GregorianCalendar result = instance.getHoliday(4100);
+        instance.getHoliday(4100);
         fail("No exception thrown.");
     }
 
@@ -161,7 +162,7 @@ public class GregorianWesternEasterTest {
     public void testIsHoliday_Null() {
         System.out.println("isHoliday(null)");
         GregorianWesternEaster instance = this._easter;
-        boolean result = instance.isHoliday(null);
+        instance.isHoliday(null);
         fail("No exception thrown.");
     }
 }
