@@ -31,13 +31,14 @@ import java.util.Hashtable;
  */
 public final class GregorianWesternEaster
         implements AnnuallyRecurring<GregorianCalendar> {
-    private Hashtable<Integer, GregorianCalendar> _easters =
+    // A cache of computed easter dates. This should speed up results.
+    private static final Hashtable<Integer, GregorianCalendar> __easters =
             new Hashtable<Integer, GregorianCalendar>();
 
     /**
-     * Create a Gregorian Easter.
+     * Create a Gregorian Western Easter.
      */
-    public GregorianWesternEaster() {
+    public GregorianWesternEaster() { // Intentional
     }
 
     /**
@@ -52,8 +53,8 @@ public final class GregorianWesternEaster
             throw new NullPointerException("Gregorian Easter does not occur/" +
                     "cannot be computed for the specified year " +
                     Integer.toString(year) + ".");
-        if (this._easters.containsKey(year))
-            return this._easters.get(year);
+        if (__easters.containsKey(year))
+            return __easters.get(year);
 
         int a, b, c, d, e, f, g, h, j, k, m, n, p;
 
@@ -72,7 +73,7 @@ public final class GregorianWesternEaster
         p = (g - h + m + 114) % 31;
 
         GregorianCalendar easter = new GregorianCalendar(year, n - 1, p + 1);
-        this._easters.put(year, easter);
+        __easters.put(year, easter);
         return easter;
     }
 

@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  * <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a>.
  * @author Rune Dahl Iversen
  */
-public class GregorianAnniversary
+public final class GregorianAnniversary
         implements AnnuallyRecurring<GregorianCalendar> {
     private int _date;
     private int _month;

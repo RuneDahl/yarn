@@ -7,7 +7,6 @@ package Time.Holidays;
 
 import Time.Periods.Period;
 import java.util.*;
-import java.util.GregorianCalendar;
 
 /**
  * Factory class for {@see Holiday holidays}.

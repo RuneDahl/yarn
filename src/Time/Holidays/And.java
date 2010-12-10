@@ -20,6 +20,7 @@ public final class And<TypeOfCalendar>
      * Create an empty collection of holidays.
      */
     public And() {
+        super();
     }
 
     /**

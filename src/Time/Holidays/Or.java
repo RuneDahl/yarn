@@ -20,6 +20,7 @@ public final class Or<TypeOfCalendar>
      * Create an empty collection of holidays.
      */
     public Or() {
+        super();
     }
 
     /**
