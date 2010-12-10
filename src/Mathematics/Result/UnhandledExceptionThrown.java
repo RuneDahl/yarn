@@ -12,7 +12,7 @@ package Mathematics.Result;
  * @author Rune Dahl Iversen
  */
 public final class UnhandledExceptionThrown implements Result {
-    private Exception _exception;
+    private final Exception _exception;
 
     /**
      * Creates an instance of a result representing that the specified

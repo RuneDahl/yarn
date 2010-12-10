@@ -26,7 +26,7 @@ public final class IterativeSuccess<TypeOfResult> extends Iterative
         this._result = result;
     }
 
-    public final TypeOfResult getResult() {
+    public TypeOfResult getResult() {
         return this._result;
     }
 }

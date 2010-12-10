@@ -18,9 +18,9 @@ import Mathematics.Interval;
  */
 public final class SolutionNotEnclosedFailure<TypeOfInput, TypeOfOutput>
         implements Result {
-    private Interval<TypeOfInput> _interval;
-    private Function<TypeOfInput, TypeOfOutput> _function;
-    private TypeOfOutput _goalValue;
+    private final Interval<TypeOfInput> _interval;
+    private final Function<TypeOfInput, TypeOfOutput> _function;
+    private final TypeOfOutput _goalValue;
 
     /**
      * Creates an instance of root not enclosed failure for the specified

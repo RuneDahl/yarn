@@ -13,7 +13,7 @@ package Mathematics.Result;
  */
 public final class SuccessWithValue<TypeOfResult>
         implements Success<TypeOfResult> {
-    private TypeOfResult _result;
+    private final TypeOfResult _result;
 
     /**
      * Creates an instance of a {@see Success successful} {@see Result result}

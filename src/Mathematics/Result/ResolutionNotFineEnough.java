@@ -23,11 +23,11 @@ import Mathematics.Interval;
  *                       of the interval.
  * @param <TypeOfOutput> Type of output from the function.
  */
-public class ResolutionNotFineEnough<TypeOfInput, TypeOfOutput>
+public final class ResolutionNotFineEnough<TypeOfInput, TypeOfOutput>
         implements Result {
-    private Interval<TypeOfInput> _interval;
-    private Function<TypeOfInput, TypeOfOutput> _function;
-    private TypeOfOutput _goalValue;
+    private final Interval<TypeOfInput> _interval;
+    private final Function<TypeOfInput, TypeOfOutput> _function;
+    private final TypeOfOutput _goalValue;
 
     /**
      * Creates an instance of the resolution not fine enough {@see Result result}
