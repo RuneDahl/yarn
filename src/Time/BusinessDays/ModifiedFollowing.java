@@ -33,13 +33,13 @@ public final class ModifiedFollowing<TypeOfCalendar>
         Period<TypeOfCalendar> p = this.getPeriod();
         TypeOfCalendar adjusted = dateTime;
         Holiday<TypeOfCalendar> holidays = this.getHolidays();
-        for (; holidays.isHoliday(adjusted); )
+        while (holidays.isHoliday(adjusted))
             adjusted = p.shift(adjusted, 1);
         Calendar d = (Calendar)dateTime;
         Calendar a = (Calendar)adjusted;
         if (d.get(Calendar.MONTH) != a.get(Calendar.MONTH)) {
             adjusted = dateTime;
-            for (; holidays.isHoliday(adjusted); )
+            while (holidays.isHoliday(adjusted))
                 adjusted = p.shift(adjusted, -1);
         }
         return adjusted;
