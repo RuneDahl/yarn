@@ -23,7 +23,7 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
         Mathematics.Algorithm.Iterative<Function<Double, Double>>  {
     private int _maxIter;
     private Equals<Double> _criterion;
-    private Interval<Double> _initialValue;
+    private final Interval<Double> _initialValue;
     private double _goalValue;
 
     private static Validator<Double> __validator =

@@ -18,7 +18,7 @@ import Validation.*;
  * for a function of double into double.
  * @author Rune Dahl Iversen
  */
-public class Bisection implements GoalSeekFunction<Double, Double>,
+public final class Bisection implements GoalSeekFunction<Double, Double>,
         Criterion<Equals<Double>>,
         InitialValue<Interval<Double>>,
         Mathematics.Algorithm.Iterative<Function<Double, Double>> {

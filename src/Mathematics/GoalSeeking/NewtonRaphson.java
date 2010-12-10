@@ -26,8 +26,8 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     private Differentiator<Double, Double, Double> _differentiator;
     private int _maxIter;
     private double _goalValue;
-    private Validator<Double> _validator;
-    private Validator<Integer> _maxIterValidator;
+    private static final Validator<Double> __validator = Factory.FiniteReal();
+    private static final Validator<Integer> __maxIterValidator = new IntegerGreaterThan();
 
     /**
      * Creates an instance of a Newton-Raphson
@@ -45,8 +45,6 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
             final Equals<Double> criterion,
             final Differentiator<Double, Double, Double> differentiator,
             final int maximumIterations) {
-        this._validator = this._setValidator();
-        this._maxIterValidator = new IntegerGreaterThan();
         this.setCriterion(criterion);
         this.setDifferentiator(differentiator);
         this.setGoalValue(goalValue);
@@ -88,23 +86,23 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     }
 
     public void setGoalValue(final Double value) {
-        if (!this._validator.isValid(value))
+        if (!__validator.isValid(value))
             throw new IllegalArgumentException(
-                    this._validator.Message(value, "Goal value"));
+                    __validator.Message(value, "Goal value"));
         this._goalValue = value;
     }
 
     public void setInitialValue(final Double initialValue) {
-        if (!this._validator.isValid(initialValue))
+        if (!__validator.isValid(initialValue))
             throw new IllegalArgumentException(
-                    this._validator.Message(initialValue, "Initial value"));
+                    __validator.Message(initialValue, "Initial value"));
         this._initialValue = initialValue;
     }
 
     public void setMaximumIterations(final int iterations) {
-        if (!this._maxIterValidator.isValid(iterations))
+        if (!__maxIterValidator.isValid(iterations))
             throw new IllegalArgumentException(
-                    this._maxIterValidator.Message(iterations, "Maximum iterations"));
+                    __maxIterValidator.Message(iterations, "Maximum iterations"));
         this._maxIter = iterations;
     }
 
@@ -117,23 +115,15 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
                 iterations++) {
             output = function.value(value);
             double denominator = this._differentiator.Value(value, function);
-            if (denominator != 0.0)
+            if (denominator == 0.0)
+                return new SlopeEqualsZeroFailure();
+            else
                 value -= (output - this.getGoalValue()) /
                         denominator;
-            else
-                return new SlopeEqualsZeroFailure();
         }
         if (this._maxIter <= iterations) {
             return new MaximumIterationsFailure(iterations);
         }
         return new IterativeSuccess<Double>(iterations, value);
-    }
-
-    private Validator<Double> _setValidator() {
-        Validation.And<Double> validator = new Validation.And();
-        validator.add(new NotNull<Double>());
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        return validator;
     }
 }
