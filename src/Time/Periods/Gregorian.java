@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  */
 public abstract class Gregorian
         extends Count<GregorianCalendar> {
-    private int _basicPeriod;
+    private final int _basicPeriod;
 
     /**
      * Create a basic period in the Gregorian calendar.

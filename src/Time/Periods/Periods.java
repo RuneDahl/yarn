@@ -13,7 +13,7 @@ import java.util.Collection;
  * @param <TypeOfCalendar> Type of calendar.
  * @author Rune Dahl Iversen
  */
-public class Periods<TypeOfCalendar>
+public final class Periods<TypeOfCalendar>
         extends ArrayList<Period<TypeOfCalendar>>
         implements Mathematics.Count, Period<TypeOfCalendar> {
     private int _count;
