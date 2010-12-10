@@ -20,15 +20,15 @@ public class DoubleIsFiniteTest {
     private DoubleIsFinite _instance;
     private Double[] _values;
 
-    public DoubleIsFiniteTest() {
+    public DoubleIsFiniteTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before

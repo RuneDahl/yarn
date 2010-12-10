@@ -21,15 +21,15 @@ public class DoubleGreaterThanTest {
     private DoubleGreaterThan _instance;
     private Double[] _values;
 
-    public DoubleGreaterThanTest() {
+    public DoubleGreaterThanTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before

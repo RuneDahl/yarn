@@ -24,7 +24,7 @@ public class PreviousTest {
     private Holiday<GregorianCalendar> _holidays;
     private Period<GregorianCalendar> _day;
 
-    public PreviousTest() {
+    public PreviousTest() { // Intentional
     }
 
     @BeforeClass
@@ -33,7 +33,7 @@ public class PreviousTest {
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -45,6 +45,9 @@ public class PreviousTest {
 
     @After
     public void tearDown() {
+        this._day = null;
+        this._holidays = null;
+        this._previous = null;
     }
 
     /**
@@ -56,13 +59,12 @@ public class PreviousTest {
         Previous<GregorianCalendar> instance = this._previous;
         Holiday<GregorianCalendar> holiday = instance.getHolidays();
         assertNotNull(holiday);
-        if (!(holiday instanceof GregorianWeekday))
-            fail("Wrong class of holidays returned.");
-        else {
+        if (holiday instanceof GregorianWeekday) {
             GregorianWeekday gwd = (GregorianWeekday)holiday;
             assertEquals("Wrong weekday from returned holidays.",
                     GregorianCalendar.SUNDAY, gwd.getWeekday());
-        }
+        } else
+            fail("Wrong class of holidays returned.");
     }
 
     /**
@@ -74,19 +76,20 @@ public class PreviousTest {
         Previous<GregorianCalendar> instance = this._previous;
         Holiday<GregorianCalendar> holiday = instance.getHolidays();
         assertNotNull(holiday);
-        if (!(holiday instanceof GregorianWeekday))
-            fail("Pre-condition: Wrong class of holidays returned.");
-        else {
+        if (holiday instanceof GregorianWeekday) {
             GregorianWeekday gwd = (GregorianWeekday)holiday;
             assertEquals("Pre-condition: Wrong weekday from returned holidays.",
                     GregorianCalendar.SUNDAY, gwd.getWeekday());
-        }
+        } else
+            fail("Pre-condition: Wrong class of holidays returned.");
 
         instance.setHolidays(new GregorianWesternEaster());
 
         holiday = instance.getHolidays();
         assertNotNull(holiday);
-        if (!(holiday instanceof GregorianWesternEaster))
+        if (holiday instanceof GregorianWesternEaster)
+            assertTrue(true);
+        else
             fail("Wrong class of holidays returned after setHolidays.");
     }
 
@@ -109,12 +112,11 @@ public class PreviousTest {
         Previous<GregorianCalendar> instance = this._previous;
         Period<GregorianCalendar> period = instance.getPeriod();
         assertNotNull(period);
-        if (!(period instanceof GregorianDay))
-            fail("Wrong class of period returned.");
-        else {
+        if (period instanceof GregorianDay) {
             GregorianDay gd = (GregorianDay)period;
             assertEquals("Wrong count from returned period.", 1, gd.getCount());
-        }
+        } else
+            fail("Wrong class of period returned.");
     }
 
     /**
@@ -126,24 +128,22 @@ public class PreviousTest {
         Previous<GregorianCalendar> instance = this._previous;
         Period<GregorianCalendar> period = instance.getPeriod();
         assertNotNull(period);
-        if (!(period instanceof GregorianDay))
-            fail("Pre-condition: Wrong class of period returned.");
-        else {
+        if (period instanceof GregorianDay) {
             GregorianDay gd = (GregorianDay)period;
             assertEquals("Precondition: Wrong count from returned period.", 1, gd.getCount());
-        }
+        } else
+            fail("Pre-condition: Wrong class of period returned.");
 
         instance.setPeriod(new GregorianWeek(2));
 
         period = instance.getPeriod();
         assertNotNull(period);
-        if (!(period instanceof GregorianWeek))
-            fail("Wrong class of period returned after setPeriod.");
-        else {
+        if (period instanceof GregorianWeek) {
             GregorianWeek gd = (GregorianWeek)period;
             assertEquals("Wrong count from returned period after setPeriod.",
                     2, gd.getCount());
-        }
+        } else
+            fail("Wrong class of period returned after setPeriod.");
     }
 
     /**
@@ -182,7 +182,7 @@ public class PreviousTest {
         System.out.println("Adjust(null)");
         GregorianCalendar dateTime = null;
         Previous<GregorianCalendar> instance = this._previous;
-        Object result = instance.adjust(dateTime);
+        instance.adjust(dateTime);
         fail("No exception thrown.");
     }
 
@@ -218,7 +218,7 @@ public class PreviousTest {
         GregorianCalendar dateTime = null;
         int count = 2;
         Previous<GregorianCalendar> instance = this._previous;
-        Object result = instance.shift(dateTime, count);
+        instance.shift(dateTime, count);
         fail("No exception thrown.");
     }
 }

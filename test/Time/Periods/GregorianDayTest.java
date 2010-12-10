@@ -22,15 +22,15 @@ public class GregorianDayTest {
     private GregorianDay _one;
     private GregorianDay _two;
 
-    public GregorianDayTest() {
+    public GregorianDayTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -42,6 +42,9 @@ public class GregorianDayTest {
 
     @After
     public void tearDown() {
+        this._negativeOne = null;
+        this._one = null;
+        this._two = null;
     }
 
     /**
@@ -100,7 +103,7 @@ public class GregorianDayTest {
     public void testShift_NullDate() {
         System.out.println("shift(null ,i)");
         int count = 15;
-        GregorianCalendar result = this._negativeOne.shift(null, count);
+        this._negativeOne.shift(null, count);
         fail("No exception thrown.");
     }
 }

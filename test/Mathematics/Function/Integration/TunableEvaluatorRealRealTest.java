@@ -24,15 +24,15 @@ public class TunableEvaluatorRealRealTest {
     private Function<Double, Double> _poly;
     private Function<Double, Double> _sine;
 
-    public TunableEvaluatorRealRealTest() {
+    public TunableEvaluatorRealRealTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -48,6 +48,10 @@ public class TunableEvaluatorRealRealTest {
 
     @After
     public void tearDown() {
+        this._evaluator = null;
+        this._interval = null;
+        this._poly = null;
+        this._sine = null;
     }
 
     /**
@@ -181,7 +185,7 @@ public class TunableEvaluatorRealRealTest {
     @Test (expected=NullPointerException.class)
     public void testValue_NullFunction() {
         System.out.println("value(null, i)");
-        double result = this._evaluator.value(null, this._interval);
+        this._evaluator.value(null, this._interval);
         fail("No exception thrown.");
     }
 
@@ -192,7 +196,7 @@ public class TunableEvaluatorRealRealTest {
     @Test (expected=NullPointerException.class)
     public void testValue_NullInterval() {
         System.out.println("value(f, null)");
-        double result = this._evaluator.value(this._poly, null);
+        this._evaluator.value(this._poly, null);
         fail("No exception thrown.");
     }
 
@@ -203,7 +207,7 @@ public class TunableEvaluatorRealRealTest {
     @Test (expected=NullPointerException.class)
     public void testValue_Null_BothValues() {
         System.out.println("value(null, null)");
-        double result = this._evaluator.value(null, null);
+        this._evaluator.value(null, null);
         fail("No exception thrown.");
     }
 }

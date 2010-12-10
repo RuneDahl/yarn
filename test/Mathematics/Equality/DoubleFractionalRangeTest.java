@@ -17,8 +17,8 @@ import static org.junit.Assert.*;
  * @author Rune Dahl Iversen
  */
 public class DoubleFractionalRangeTest {
-    private EqualsTest<Double> _equals;
-    private PrecisionBasedTest<Double> _precisionBased;
+    private final EqualsTest<Double> _equals;
+    private final PrecisionBasedTest<Double> _precisionBased;
     private double[] _values;
     private double[] _precisions;
     private DoubleFractionalRange _instance;
@@ -30,11 +30,11 @@ public class DoubleFractionalRangeTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -81,6 +81,9 @@ public class DoubleFractionalRangeTest {
 
     @After
     public void tearDown() {
+        this._instance = null;
+        this._values = null;
+        this._precisions = null;
     }
 
     /**

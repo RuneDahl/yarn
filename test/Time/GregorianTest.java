@@ -18,24 +18,23 @@ import static org.junit.Assert.*;
  * @author Rune Dahl Iversen
  */
 public class GregorianTest {
-
-    public GregorianTest() {
+    public GregorianTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
-    public void setUp() {
+    public void setUp() { // Intentional
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() { // Intentional
     }
 
     /**
@@ -89,7 +88,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testBelowDateDifferenceBothNull() {
         System.out.println("belowDateDifference(null, null)");
-        double result = Gregorian.belowDateDifference(null, null);
+        Gregorian.belowDateDifference(null, null);
         fail("No exception thrown.");
     }
 
@@ -99,7 +98,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testBelowDateDifferenceFromNull() {
         System.out.println("belowDateDifference(null, x)");
-        double result = Gregorian.belowDateDifference(null, new GregorianCalendar());
+        Gregorian.belowDateDifference(null, new GregorianCalendar());
         fail("No exception thrown.");
     }
 
@@ -109,7 +108,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testBelowDateDifferenceToNull() {
         System.out.println("belowDateDifference(x, null)");
-        double result = Gregorian.belowDateDifference(new GregorianCalendar(), null);
+        Gregorian.belowDateDifference(new GregorianCalendar(), null);
         fail("No exception thrown.");
     }
 
@@ -150,7 +149,7 @@ public class GregorianTest {
     public void testIsLeapYear_Null() {
         System.out.println("isLeapYear(null)");
         GregorianCalendar date = null;
-        boolean result = Gregorian.isLeapYear(date);
+        Gregorian.isLeapYear(date);
         fail("No exception thrown.");
     }
 
@@ -160,7 +159,6 @@ public class GregorianTest {
     @Test
     public void testLengthOfMonth() {
         System.out.println("lengthOfMonth");
-        GregorianCalendar g = new GregorianCalendar();
         for (int year = 1582; year < 2101; year++){
             for (int month = 0; month < 12; month++) {
                 double expResult = 0.0;
@@ -184,6 +182,9 @@ public class GregorianTest {
                     case 10:
                         expResult = 30.0;
                         break;
+                    default:
+                        throw new IndexOutOfBoundsException("Index for the " +
+                                "month is out of range.");
                 }
                 double result = Gregorian.lengthOfMonth(year, month);
                 assertEquals(Integer.toString(year) + ":" + Integer.toString(month) +
@@ -229,7 +230,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testMaxBothNull() {
         System.out.println("max(null, null)");
-        GregorianCalendar result = Gregorian.max(null, null);
+        Gregorian.max(null, null);
         fail("No exception thrown.");
     }
 
@@ -239,7 +240,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testMaxNull1() {
         System.out.println("max(null, x)");
-        GregorianCalendar result = Gregorian.max(null, new GregorianCalendar());
+        Gregorian.max(null, new GregorianCalendar());
         fail("No exception thrown.");
     }
 
@@ -249,7 +250,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testMaxNull2() {
         System.out.println("max(x, null)");
-        GregorianCalendar result = Gregorian.max(new GregorianCalendar(), null);
+        Gregorian.max(new GregorianCalendar(), null);
         fail("No exception thrown.");
     }
 
@@ -274,7 +275,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testminBothNull() {
         System.out.println("min(null, null)");
-        GregorianCalendar result = Gregorian.min(null, null);
+        Gregorian.min(null, null);
         fail("No exception thrown.");
     }
 
@@ -284,7 +285,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testminNull1() {
         System.out.println("min(null, x)");
-        GregorianCalendar result = Gregorian.min(null, new GregorianCalendar());
+        Gregorian.min(null, new GregorianCalendar());
         fail("No exception thrown.");
     }
 
@@ -294,7 +295,7 @@ public class GregorianTest {
     @Test (expected=NullPointerException.class)
     public void testminNull2() {
         System.out.println("min(x, null)");
-        GregorianCalendar result = Gregorian.min(new GregorianCalendar(), null);
+        Gregorian.min(new GregorianCalendar(), null);
         fail("No exception thrown.");
     }
 }

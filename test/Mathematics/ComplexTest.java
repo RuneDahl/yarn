@@ -31,15 +31,15 @@ public class ComplexTest {
 
     private Equals<Complex> _numericalComparer;
 
-    public ComplexTest() {
+    public ComplexTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -59,11 +59,20 @@ public class ComplexTest {
 
         Norm<Complex> norm = new ComplexP(2.0);
 
-        this._numericalComparer = new NormRelative<Complex>(Math.pow(10.0, -9.0), norm);
+        this._numericalComparer = new Mathematics.Equality.NormRelative<Complex>(Math.pow(10.0, -9.0), norm);
     }
 
     @After
     public void tearDown() {
+        this._inf = null;
+        this._nan = null;
+        this._origin = null;
+        this._realUnit = null;
+        this._complexUnit = null;
+        this._onePointOne = null;
+        this._polar = null;
+        this._array = null;
+        this._numericalComparer = null;
     }
 
     /**
@@ -290,29 +299,29 @@ public class ComplexTest {
         System.out.println("Divide");
 
         for (int i = 0; i < this._array.length; i++) {
-            if (!Complex.isNaN(this._array[i]) &&
-                    !Complex.isInfinite(this._array[i]))
-                assertEquals("Test divide by " + this._array[i].toString() +
-                        " failed for " + this._inf.toString(),
-                        Complex.Infinity, this._inf.divide(this._array[i]));
-            else
+            if (Complex.isNaN(this._array[i]) ||
+                    Complex.isInfinite(this._array[i]))
                 assertEquals("Test divide by " + this._array[i].toString() +
                         " failed for " + this._inf.toString(),
                         Complex.NaN, this._inf.divide(this._array[i]));
+            else
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._inf.toString(),
+                        Complex.Infinity, this._inf.divide(this._array[i]));
 
             assertEquals("Test divide by " + this._array[i].toString() +
                     " failed for " + this._nan.toString(),
                     Complex.NaN, this._nan.divide(this._array[i]));
 
-            if (!Complex.isNaN(this._array[i]) &&
-                    !Complex.isOrigin(this._array[i]))
-                assertEquals("Test divide by " + this._array[i].toString() +
-                        " failed for " + this._origin.toString(),
-                        Complex.Origin, this._origin.divide(this._array[i]));
-            else
+            if (Complex.isNaN(this._array[i]) ||
+                    Complex.isOrigin(this._array[i]))
                 assertEquals("Test divide by " + this._array[i].toString() +
                         " failed for " + this._origin.toString(),
                         Complex.NaN, this._origin.divide(this._array[i]));
+            else
+                assertEquals("Test divide by " + this._array[i].toString() +
+                        " failed for " + this._origin.toString(),
+                        Complex.Origin, this._origin.divide(this._array[i]));
 
             if (!Complex.isInfinite(this._array[i]) &&
                     !Complex.isNaN(this._array[i]) &&
@@ -484,6 +493,7 @@ public class ComplexTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
+        Complex nullValue = null;
         for (int i = 0; i < this._array.length; i++)
         {
             for (int j = 0; j < this._array.length; j++)
@@ -492,7 +502,7 @@ public class ComplexTest {
                         i == j, this._array[i].equals(this._array[j]));
             assertEquals("Failed comparison of Complex value " +
                     this._array[i].toString() + " to null.",
-                    false, this._array[i].equals(null));
+                    false, this._array[i].equals(nullValue));
         }
     }
 
@@ -705,15 +715,15 @@ public class ComplexTest {
         System.out.println("Subtract");
 
         for (int i = 0; i < this._array.length; i++) {
-            if (!Complex.isNaN(this._array[i]) &&
-                    !Complex.isInfinite(this._array[i]))
-                assertEquals("Test subtract by " + this._array[i].toString() +
-                        " failed for " + this._inf.toString(),
-                        Complex.Infinity, this._inf.subtract(this._array[i]));
-            else
+            if (Complex.isNaN(this._array[i]) ||
+                    Complex.isInfinite(this._array[i]))
                 assertEquals("Test subtract by " + this._array[i].toString() +
                         " failed for " + this._inf.toString(),
                         Complex.NaN, this._inf.subtract(this._array[i]));
+            else
+                assertEquals("Test subtract by " + this._array[i].toString() +
+                        " failed for " + this._inf.toString(),
+                        Complex.Infinity, this._inf.subtract(this._array[i]));
 
             assertEquals("Test subtract by " + this._array[i].toString() +
                     " failed for " + this._nan.toString(),
@@ -1245,7 +1255,7 @@ public class ComplexTest {
     @Test (expected=IllegalArgumentException.class)
     public void testPolarNegativeModulus() {
         System.out.println("Polar with negative modulus throws exception.");
-        Complex p = Complex.Polar(-1.0, 0.0);
+        Complex.Polar(-1.0, 0.0);
     }
 
     /**
@@ -1334,7 +1344,7 @@ public class ComplexTest {
     @Test (expected=NullPointerException.class)
     public void testExpNullException() {
         System.out.println("exp of null.");
-        Complex x = Complex.exp(null);
+        Complex.exp(null);
     }
 
     /**
@@ -1360,6 +1370,6 @@ public class ComplexTest {
     @Test (expected=NullPointerException.class)
     public void testLogNullException() {
         System.out.println("log of null.");
-        Complex x = Complex.log(null);
+        Complex.log(null);
     }
 }

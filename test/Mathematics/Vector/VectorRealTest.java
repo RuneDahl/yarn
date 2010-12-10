@@ -24,15 +24,15 @@ public class VectorRealTest {
     private VectorReal _dim1Though4;
     private VectorReal _dim3;
 
-    public VectorRealTest() {
+    public VectorRealTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -51,6 +51,11 @@ public class VectorRealTest {
 
     @After
     public void tearDown() {
+        this._values = null;
+        this._vector = null;
+        this._dim1Though4 = null;
+        this._dim3 = null;
+        this._dim4 = null;
     }
 
     /**
@@ -142,7 +147,8 @@ public class VectorRealTest {
     public void testHasSameDimensions_Null() {
         System.out.println("hasSameDimensions(null)");
         VectorReal instance = this._vector;
-        instance.hasSameDimensions(null);
+        VectorReal nullValue = null;
+        instance.hasSameDimensions(nullValue);
         fail("No exception thrown.");
     }
 
@@ -170,8 +176,7 @@ public class VectorRealTest {
         int dimension = 22;
         Double value = Math.E;
         VectorReal instance = this._vector;
-        double[] values = new double[]{Math.E, 3.2, -1.54, -Math.PI};
-        Vector<Double> result = instance.setValue(dimension, value);
+        instance.setValue(dimension, value);
         fail("No exception thrown.");
     }
 
@@ -184,8 +189,7 @@ public class VectorRealTest {
         int dimension = 0;
         Double value = null;
         VectorReal instance = this._vector;
-        VectorReal expResult = null;
-        Vector<Double> result = instance.setValue(dimension, value);
+        instance.setValue(dimension, value);
         fail("No exception thrown.");
     }
 
@@ -198,8 +202,7 @@ public class VectorRealTest {
         int dimension = 3;
         Double value = Double.NaN;
         VectorReal instance = this._vector;
-        VectorReal expResult = null;
-        Vector<Double> result = instance.setValue(dimension, value);
+        instance.setValue(dimension, value);
         fail("No exception thrown.");
     }
 
@@ -212,8 +215,7 @@ public class VectorRealTest {
         int dimension = 3;
         Double value = Double.POSITIVE_INFINITY;
         VectorReal instance = this._vector;
-        VectorReal expResult = null;
-        Vector<Double> result = instance.setValue(dimension, value);
+        instance.setValue(dimension, value);
         fail("No exception thrown.");
     }
 
@@ -226,8 +228,7 @@ public class VectorRealTest {
         int dimension = 3;
         Double value = Double.NEGATIVE_INFINITY;
         VectorReal instance = this._vector;
-        VectorReal expResult = null;
-        Vector<Double> result = instance.setValue(dimension, value);
+        instance.setValue(dimension, value);
         fail("No exception thrown.");
     }
 
@@ -253,7 +254,7 @@ public class VectorRealTest {
         System.out.println("sum(null)");
         Vector<Double> value = null;
         VectorReal instance = this._vector;
-        Vector result = instance.sum(value);
+        instance.sum(value);
         fail("No Exception thrown.");
     }
 
@@ -265,7 +266,7 @@ public class VectorRealTest {
         System.out.println("sum(wrong dimensions vector)");
         Vector<Double> value = this._dim3;
         VectorReal instance = this._vector;
-        Vector result = instance.sum(value);
+        instance.sum(value);
         fail("No Exception thrown.");
     }
 
@@ -277,7 +278,7 @@ public class VectorRealTest {
         System.out.println("sum(wrong first dimension vector)");
         Vector<Double> value = this._dim1Though4;
         VectorReal instance = this._vector;
-        Vector result = instance.sum(value);
+        instance.sum(value);
         fail("No Exception thrown.");
     }
 
@@ -335,7 +336,8 @@ public class VectorRealTest {
         System.out.println("equals(null)");
         VectorReal instance = this._vector;
         boolean expResult = false;
-        boolean result = instance.equals(null);
+        VectorReal nullValue = null;
+        boolean result = instance.equals(nullValue);
         assertEquals(expResult, result);
     }
 
@@ -378,7 +380,7 @@ public class VectorRealTest {
         System.out.println("subtract(null)");
         Vector<Double> value = null;
         VectorReal instance = this._vector;
-        Vector result = instance.subtract(value);
+        instance.subtract(value);
         fail("No Exception thrown.");
     }
 
@@ -390,7 +392,7 @@ public class VectorRealTest {
         System.out.println("subtract(wrong dimensions vector)");
         Vector<Double> value = this._dim3;
         VectorReal instance = this._vector;
-        Vector result = instance.subtract(value);
+        instance.subtract(value);
         fail("No Exception thrown.");
     }
 
@@ -402,7 +404,7 @@ public class VectorRealTest {
         System.out.println("subtract(wrong first dimension vector)");
         Vector<Double> value = this._dim1Though4;
         VectorReal instance = this._vector;
-        Vector result = instance.subtract(value);
+        instance.subtract(value);
         fail("No Exception thrown.");
     }
 
@@ -428,7 +430,7 @@ public class VectorRealTest {
         System.out.println("scale(null)");
         Double scalar = null;
         VectorReal instance = this._vector;
-        Vector result = instance.scale(scalar);
+        instance.scale(scalar);
         fail("No exception thrown.");
     }
 
@@ -440,7 +442,7 @@ public class VectorRealTest {
         System.out.println("scale(Double.NaN)");
         Double scalar = Double.NaN;
         VectorReal instance = this._vector;
-        Vector result = instance.scale(scalar);
+        instance.scale(scalar);
         fail("No exception thrown.");
     }
 
@@ -452,7 +454,7 @@ public class VectorRealTest {
         System.out.println("scale(Double.POSITIVE_INFINITY)");
         Double scalar = Double.POSITIVE_INFINITY;
         VectorReal instance = this._vector;
-        Vector result = instance.scale(scalar);
+        instance.scale(scalar);
         fail("No exception thrown.");
     }
 
@@ -464,7 +466,7 @@ public class VectorRealTest {
         System.out.println("scale(Double.NEGATIVE_INFINITY)");
         Double scalar = Double.NEGATIVE_INFINITY;
         VectorReal instance = this._vector;
-        Vector result = instance.scale(scalar);
+        instance.scale(scalar);
         fail("No exception thrown.");
     }
 
@@ -526,7 +528,7 @@ public class VectorRealTest {
         System.out.println("Unit(int, index out of )");
         int dimensions = -3;
         int unitDimension = 5;
-        VectorReal result = VectorReal.Unit(dimensions, unitDimension);
+        VectorReal.Unit(dimensions, unitDimension);
         fail("No exception thrown.");
     }
 
@@ -562,7 +564,7 @@ public class VectorRealTest {
         int firstDimension = 5;
         int dimensions = 10;
         int unitDimension = 2;
-        VectorReal result = VectorReal.Unit(firstDimension, dimensions, unitDimension);
+        VectorReal.Unit(firstDimension, dimensions, unitDimension);
         fail("No exception thrown.");
     }
 
@@ -575,7 +577,7 @@ public class VectorRealTest {
         int firstDimension = 5;
         int dimensions = -1;
         int unitDimension = 6;
-        VectorReal result = VectorReal.Unit(firstDimension, dimensions, unitDimension);
+        VectorReal.Unit(firstDimension, dimensions, unitDimension);
         fail("No exception thrown.");
     }
 }

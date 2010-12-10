@@ -18,23 +18,23 @@ import static org.junit.Assert.*;
  * @param <TypeOfValue> Type of Value.
  */
 public class LimitBasedTest<TypeOfValue> {
-    public LimitBasedTest() {
+    public LimitBasedTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
-    public void setUp() {
+    public void setUp() { // Intentional
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() { // Intentional
     }
 
     /**

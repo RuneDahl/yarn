@@ -20,15 +20,15 @@ public class IterativeSuccessTest {
     private IterativeSuccess<Double> _double;
     private IterativeSuccess<Integer> _int;
 
-    public IterativeSuccessTest() {
+    public IterativeSuccessTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before

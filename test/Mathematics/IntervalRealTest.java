@@ -26,11 +26,11 @@ public class IntervalRealTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -41,6 +41,8 @@ public class IntervalRealTest {
 
     @After
     public void tearDown() {
+        this._normal = null;
+        this._reverse = null;
     }
 
     /**
@@ -278,8 +280,9 @@ public class IntervalRealTest {
     public void testEquals_Null() {
         System.out.println("equals(null)");
         IntervalReal instance = this._normal;
+        IntervalReal nullValue = null;
         boolean expResult = false;
-        boolean result = instance.equals(null);
+        boolean result = instance.equals(nullValue);
         assertEquals(expResult, result);
     }
 

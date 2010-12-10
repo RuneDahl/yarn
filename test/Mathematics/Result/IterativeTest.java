@@ -23,5 +23,6 @@ public class IterativeTest {
      */
     @Test
     public void BlankTest(){
+        assertTrue(true);
     }
 }

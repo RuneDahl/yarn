@@ -19,15 +19,15 @@ import static org.junit.Assert.*;
 public class MaximumIterationsFailureTest {
     private MaximumIterationsFailure _result;
 
-    public MaximumIterationsFailureTest() {
+    public MaximumIterationsFailureTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before

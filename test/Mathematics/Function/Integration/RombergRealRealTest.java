@@ -32,15 +32,15 @@ public class RombergRealRealTest {
     private Function<Double, Double> _functionPoly;
     private Function<Double, Double> _sine;
 
-    public RombergRealRealTest() {
+    public RombergRealRealTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -59,6 +59,11 @@ public class RombergRealRealTest {
 
     @After
     public void tearDown() {
+        this._functionPoly = null;
+        this._sine = null;
+        this._unitInterval = null;
+        this._criterion6 = null;
+        this._criterion8 = null;
     }
 
     /**

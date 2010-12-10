@@ -24,15 +24,15 @@ public class RighthandEvaluatorRealRealTest {
     private Function<Double, Double> _poly;
     private Function<Double, Double> _sine;
 
-    public RighthandEvaluatorRealRealTest() {
+    public RighthandEvaluatorRealRealTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception { // Intentional
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
@@ -48,6 +48,10 @@ public class RighthandEvaluatorRealRealTest {
 
     @After
     public void tearDown() {
+        this._evaluator = null;
+        this._interval = null;
+        this._poly = null;
+        this._sine = null;
     }
 
     /**
@@ -69,13 +73,24 @@ public class RighthandEvaluatorRealRealTest {
     }
 
     /**
+     * Test of value method, of class RightHandEvaluatorRealReal,
+     * for null values.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_BothNull() {
+        System.out.println("value(null, null)");
+        this._evaluator.value(null, null);
+        fail("No exception thrown.");
+    }
+
+    /**
      * Test of value method, of class RighthandEvaluatorRealReal
      * for a function that is null.
      */
     @Test (expected=NullPointerException.class)
     public void testValueFunctionNull() {
         System.out.println("value of function that is null");
-        Double result = this._evaluator.value(null, this._interval);
+        this._evaluator.value(null, this._interval);
         fail("Expected exception not thrown.");
     }
     /**
@@ -85,7 +100,7 @@ public class RighthandEvaluatorRealRealTest {
     @Test (expected=NullPointerException.class)
     public void testValueIntervalNull() {
         System.out.println("value of interval that is null");
-        Double result = this._evaluator.value(this._poly, null);
+        this._evaluator.value(this._poly, null);
         fail("Expected exception not thrown.");
     }
 }
