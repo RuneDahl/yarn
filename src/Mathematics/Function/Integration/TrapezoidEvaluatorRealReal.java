@@ -24,7 +24,7 @@ public class TrapezoidEvaluatorRealReal implements
     /**
      * Creates an instance of a trapezoid evaluator.
      */
-    public TrapezoidEvaluatorRealReal() {
+    public TrapezoidEvaluatorRealReal() { // Intentional
     }
 
     public Double value(final Function<Double, Double> function,

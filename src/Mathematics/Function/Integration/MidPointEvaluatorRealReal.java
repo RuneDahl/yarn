@@ -25,7 +25,7 @@ public class MidPointEvaluatorRealReal implements
     /**
      * Creates an instance of a mid point evaluator.
      */
-    public MidPointEvaluatorRealReal() {
+    public MidPointEvaluatorRealReal() { // Intentional
     }
 
     public Double value(final Function<Double, Double> function,

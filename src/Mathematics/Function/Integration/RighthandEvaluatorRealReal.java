@@ -22,7 +22,7 @@ public class RighthandEvaluatorRealReal implements
     /**
      * Creates an instance of a right-hand evaluator.
      */
-    public RighthandEvaluatorRealReal() {
+    public RighthandEvaluatorRealReal() { // Intentional
     }
 
     public Double value(final Function<Double, Double> function,
