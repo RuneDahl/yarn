@@ -19,9 +19,9 @@ import Validation.*;
  */
 public abstract class NormBased<TypeOfValue>
         extends PrecisionBased<TypeOfValue> {
-    private Validator<Norm<TypeOfValue>> _normValidator =
+    private final Validator<Norm<TypeOfValue>> _normValidator =
             new NotNull<Norm<TypeOfValue>>();
-    private Mathematics.Metric.NormBased<TypeOfValue> _metric;
+    private final Mathematics.Metric.NormBased<TypeOfValue> _metric;
 
     /**
      * Creates an instance of a {@see Mathematics.Norm norm}-based comparison of

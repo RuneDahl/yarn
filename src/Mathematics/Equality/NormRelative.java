@@ -15,7 +15,7 @@ import Mathematics.Norm.Norm;
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
-public class NormRelative<TypeOfValue> extends NormBased<TypeOfValue> {
+public final class NormRelative<TypeOfValue> extends NormBased<TypeOfValue> {
     /**
      * Creates an instance of a NormRelative equality-comparer
      * with the specified required precision and {@see Mathematics.Norm norm}.
