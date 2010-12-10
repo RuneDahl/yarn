@@ -121,9 +121,9 @@ public final class IntervalReal implements Interval<Double> {
     public int hashCode() {
         int hash = 3;
         hash = 37 * hash + (int) (Double.doubleToLongBits(this._lowerBound) ^ (Double.doubleToLongBits(this._lowerBound) >>> 32));
-        hash = 37 * hash + (this._lowerType != null ? this._lowerType.hashCode() : 0);
+        hash = 37 * hash + (this._lowerType == null ? 0 : this._lowerType.hashCode());
         hash = 37 * hash + (int) (Double.doubleToLongBits(this._upperBound) ^ (Double.doubleToLongBits(this._upperBound) >>> 32));
-        hash = 37 * hash + (this._upperType != null ? this._upperType.hashCode() : 0);
+        hash = 37 * hash + (this._upperType == null ? 0 : this._upperType.hashCode());
         return hash;
     }
 
