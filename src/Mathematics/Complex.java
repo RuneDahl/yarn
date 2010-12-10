@@ -427,8 +427,7 @@ public final class Complex
                 Complex.isInfinite(this) ||
                 Complex.isOrigin(this))
             return Double.NaN;
-        double argument = Math.atan2(this._imaginary, this._real);
-        return argument;
+        return Math.atan2(this._imaginary, this._real);
     }
 
     /**
