@@ -25,7 +25,7 @@ public final class Gregorian {
      * @return     The difference measured in days stemming from Hours, Minutes,
      *             Seconds and Milli-seconds.
      */
-    public static final double belowDateDifference(
+    public static double belowDateDifference(
             final GregorianCalendar from,
             final GregorianCalendar to) {
         double difference = (to.get(GregorianCalendar.MILLISECOND) - from.get(GregorianCalendar.MILLISECOND)) / 1000.0;
@@ -43,7 +43,7 @@ public final class Gregorian {
      * @param year Year.
      * @return     True if year is a leap-year, otherwise false.
      */
-    public final static boolean isLeapYear(final int year) {
+    public static boolean isLeapYear(final int year) {
         boolean isLeapYear = (year % 4 == 0);
         if (isLeapYear)
         {
@@ -60,7 +60,7 @@ public final class Gregorian {
      * @param date Date/time.
      * @return     True if the date is within a leap-year, otherwise false.
      */
-    public final static boolean isLeapYear(final GregorianCalendar date) {
+    public static boolean isLeapYear(final GregorianCalendar date) {
         return isLeapYear(date.get(GregorianCalendar.YEAR));
     }
 
@@ -70,9 +70,8 @@ public final class Gregorian {
      * @param month Month.
      * @return Length of the month in days.
      */
-    public final static double lengthOfMonth(final int year, final int month) {
-        if (month == 1 && isLeapYear(year))
-            return 29.0;
+    public static double lengthOfMonth(final int year, final int month) {
+        double length = 0.0;
         switch (month)
         {
             case 0:
@@ -82,18 +81,24 @@ public final class Gregorian {
             case 7:
             case 9:
             case 11:
-                return 31.0;
+                length = 31.0;
+                break;
             case 1:
-                return 28.0;
+                length = 28.0;
+                break;
             case 3:
             case 5:
             case 8:
             case 10:
-                return 30.0;
+                length = 30.0;
+                break;
             default:
                 throw new IllegalArgumentException("The month must be an " +
                         "integer in the range 0 to 11 (both included).");
         }
+        if (month == 1 && isLeapYear(year))
+            length = 29.0;
+        return length;
     }
 
     /**
@@ -101,7 +106,7 @@ public final class Gregorian {
      * @param year Year.
      * @return Length of the year in days.
      */
-    public final static double lengthOfYear(final int year) {
+    public static double lengthOfYear(final int year) {
         return 365.0 + (isLeapYear(year) ? 1.0 : 0.0);
     }
 
@@ -111,7 +116,7 @@ public final class Gregorian {
      * @param date2 Date/time.
      * @return      The latest of the 2 specified Gregorian date/times.
      */
-    public final static GregorianCalendar max(
+    public static GregorianCalendar max(
             final GregorianCalendar date1, final GregorianCalendar date2) {
         if (0 < date2.compareTo(date1))
             return (GregorianCalendar)date2.clone();
@@ -125,7 +130,7 @@ public final class Gregorian {
      * @param date2 Date/time.
      * @return      The earliest of the 2 specified Gregorian date/times.
      */
-    public final static GregorianCalendar min(
+    public static GregorianCalendar min(
             final GregorianCalendar date1, final GregorianCalendar date2) {
         if (0 < date2.compareTo(date1))
             return (GregorianCalendar)date1.clone();
