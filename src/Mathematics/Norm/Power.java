@@ -16,7 +16,7 @@ import Validation.*;
  */
 public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
     private double _power;
-    private And<Double> _powerValidator;
+    private static final Validator<Double> __powerValidator = Factory.FiniteRealGreaterThanOrEqual(1.0);
 
     /**
      * Creates a new instance of a P-norm.
@@ -25,9 +25,6 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
      * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
     protected Power(double power) {
-        this._powerValidator = new And();
-        this._powerValidator.add(new DoubleIsFinite());
-        this._powerValidator.add(new DoubleGreaterThanOrEqual(1.0));
         this.setPower(power);
     }
 
@@ -35,7 +32,7 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
      * Gets the power of this norm.
      * @return The power.
      */
-    public double getPower() {
+    public final double getPower() {
         return this._power;
     }
 
@@ -45,10 +42,10 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
      * @throws IllegalArgumentException Power is not finite.
      * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
-    public void setPower(double power) {
-        if (!this._powerValidator.isValid(power))
+    public final void setPower(final double power) {
+        if (!__powerValidator.isValid(power))
             throw new IllegalArgumentException(
-                    this._powerValidator.Message(power, "Power"));
+                    __powerValidator.Message(power, "Power"));
         this._power = power;
     }
 }

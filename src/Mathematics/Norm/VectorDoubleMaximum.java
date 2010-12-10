@@ -19,7 +19,7 @@ public class VectorDoubleMaximum implements Norm<Vector<Double>> {
      * <a href="http://en.wikipedia.org/wiki/Maximum_norm">maximum norm</a>
      * for a {@see Vector vector} of {@see Double real} values.
      */
-    public VectorDoubleMaximum() {
+    public VectorDoubleMaximum() { // Intentional
     }
 
     public Double value(Vector<Double> input) {

@@ -19,7 +19,7 @@ public class ComplexMaximum implements Norm<Complex>{
      * <a href="http://en.wikipedia.org/wiki/Maximum_norm">maximum norm</a>
      * for a {@see Complex complex number}.
      */
-    public ComplexMaximum() {
+    public ComplexMaximum() { // Intentional
     }
 
     public Double value(final Complex input) {
