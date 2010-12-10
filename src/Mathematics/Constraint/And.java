@@ -21,6 +21,7 @@ public class And<TypeOfValue>
      * Creates an empty collection of constraints.
      */
     public And() {
+        super();
     }
 
     /**

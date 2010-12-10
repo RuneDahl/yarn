@@ -21,6 +21,7 @@ public class Or<TypeOfValue>
      * Creates an empty collection of constraints.
      */
     public Or() {
+        super();
     }
 
     /**
