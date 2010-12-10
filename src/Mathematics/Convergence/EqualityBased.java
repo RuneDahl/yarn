@@ -18,7 +18,7 @@ import Validation.NotNull;
 public abstract class EqualityBased<TypeOfValue>
         implements Criterion<TypeOfValue> {
     private Equals<TypeOfValue> _equals;
-    private NotNull<Equals<TypeOfValue>> _equalsValidator =
+    private final NotNull<Equals<TypeOfValue>> _equalsValidator =
             new NotNull();
 
     /**
@@ -36,7 +36,7 @@ public abstract class EqualityBased<TypeOfValue>
      * convergence-criterion.
      * @return Equality-comparer.
      */
-    public Equals<TypeOfValue> getEquals() {
+    public final Equals<TypeOfValue> getEquals() {
         return this._equals;
     }
 
@@ -45,7 +45,7 @@ public abstract class EqualityBased<TypeOfValue>
      * @param equals Equality comparer. May not equal null.
      * @throws NullPointerException Equals is null.
      */
-    public void setEquals(Equals<TypeOfValue> equals) {
+    public final void setEquals(Equals<TypeOfValue> equals) {
         if (!this._equalsValidator.isValid(equals))
             throw new NullPointerException(
                     this._equalsValidator.Message(equals, "Equals"));

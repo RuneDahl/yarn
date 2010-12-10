@@ -17,7 +17,7 @@ import Validation.IntegerGreaterThan;
 public final class EqualsLastValue<TypeOfValue>
         extends EqualityBased<TypeOfValue> {
     private int _numberOfEqualities;
-    private IntegerGreaterThan _numberValidator =
+    private static final IntegerGreaterThan __numberValidator =
             new IntegerGreaterThan();
 
     /**
@@ -52,9 +52,9 @@ public final class EqualsLastValue<TypeOfValue>
      *                                  than 0.
      */
     public void setNumberOfEqualities(final int numberOfEqualities) {
-        if (!this._numberValidator.isValid(numberOfEqualities))
+        if (!__numberValidator.isValid(numberOfEqualities))
             throw new IllegalArgumentException(
-                    this._numberValidator.Message(numberOfEqualities,
+                    __numberValidator.Message(numberOfEqualities,
                     "Number of equalities"));
         this._numberOfEqualities = numberOfEqualities;
     }
