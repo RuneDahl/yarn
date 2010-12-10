@@ -15,7 +15,7 @@ public final class DoubleIsNumeric implements Validator<Double> {
      * Create an instance of a double validator requiring numeric values,
      * i.e. disallowing Double.NaN.
      */
-    public DoubleIsNumeric() {
+    public DoubleIsNumeric() { // Intentional
     }
 
     public String Message(final Double value, final String name) {

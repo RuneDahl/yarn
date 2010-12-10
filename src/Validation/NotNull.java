@@ -14,7 +14,7 @@ public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
     /**
      * Create an instance of a validator not allowing the value null.
      */
-    public NotNull() {
+    public NotNull() { // Intentional
     }
 
     public String Message(final TypeOfValue value, final String name) {

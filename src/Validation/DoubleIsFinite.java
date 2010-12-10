@@ -14,7 +14,7 @@ public final class DoubleIsFinite implements Validator<Double> {
     /**
      * Create an instance of a double validator requiring finite values.
      */
-    public DoubleIsFinite() {
+    public DoubleIsFinite() { // Intentional
     }
 
     public String Message(final Double value, final String name) {

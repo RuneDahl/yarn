@@ -17,7 +17,7 @@ public final class ComplexIsNumeric implements Validator<Complex> {
      * Create an instance of a double validator requiring numeric values,
      * i.e. disallowing Complex.NaN.
      */
-    public ComplexIsNumeric() {
+    public ComplexIsNumeric() { // Intentional
     }
 
     public String Message(final Complex value, final String name) {

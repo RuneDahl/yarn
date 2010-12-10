@@ -16,7 +16,7 @@ public final class ComplexIsFinite implements Validator<Complex> {
     /**
      * Create an instance of a complex validator requiring finite values.
      */
-    public ComplexIsFinite() {
+    public ComplexIsFinite() { // Intentional
     }
 
     public String Message(final Complex value, final String name) {
