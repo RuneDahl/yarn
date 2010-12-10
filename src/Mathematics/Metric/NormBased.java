@@ -13,7 +13,7 @@ import Mathematics.Norm.Norm;
  * @author Rune Dahl Iversen
  * @param <TypeOfValue> Type of value.
  */
-public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
+public class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
     private Norm<TypeOfValue> _norm;
 
     /**
@@ -30,7 +30,7 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
      * @return The norm.
      * @throws NullPointerException The norm is not properly specified.
      */
-    public Norm<TypeOfValue> getNorm() {
+    public final Norm<TypeOfValue> getNorm() {
         return this._norm;
     }
 
@@ -39,13 +39,13 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
      * @param norm The norm.
      * @throws NullPointerException The norm is not properly specified.
      */
-    public void setNorm(final Norm<TypeOfValue> norm) {
+    public final void setNorm(final Norm<TypeOfValue> norm) {
         if (norm == null)
             throw new NullPointerException("The norm is not properly specified.");
         this._norm = norm;
     }
 
-    public Double value(final TypeOfValue firstInput,
+    public final Double value(final TypeOfValue firstInput,
             final TypeOfValue secondInput) {
         if (firstInput == null)
             throw new NullPointerException("First input is null.");
