@@ -17,9 +17,8 @@ import java.util.*;
  */
 public final class TreeIteratorPreOrdered<TypeOfState, TypeOfValue>
         implements Iterator<TreeNode<TypeOfState, TypeOfValue>> {
-    private ArrayList<TreeNode<TypeOfState, TypeOfValue>> _done;
-    private TreeNode<TypeOfState, TypeOfValue> _origin;
-    private LinkedList<TreeNode<TypeOfState, TypeOfValue>> _queue;
+    private final ArrayList<TreeNode<TypeOfState, TypeOfValue>> _done;
+    private final LinkedList<TreeNode<TypeOfState, TypeOfValue>> _queue;
 
     /**
      * Creates an instance of this non-repeating pre-order tree-iterator
@@ -27,9 +26,8 @@ public final class TreeIteratorPreOrdered<TypeOfState, TypeOfValue>
      * @param origin Node of origin.
      */
     public TreeIteratorPreOrdered(TreeNode<TypeOfState, TypeOfValue> origin) {
-        this._origin = origin;
         this._queue = new LinkedList<TreeNode<TypeOfState, TypeOfValue>>();
-        this._queue.add(this._origin);
+        this._queue.add(origin);
         this._done = new ArrayList<TreeNode<TypeOfState, TypeOfValue>>();
     }
 

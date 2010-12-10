@@ -57,24 +57,24 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
         this.setValue(value);
     }
 
-    public TypeOfState getState() {
+    public final TypeOfState getState() {
         return this._state;
     }
 
-    public TypeOfValue getValue() {
+    public final TypeOfValue getValue() {
         if (this._value == null)
             this.ComputeValue();
         return this._value;
     }
 
-    public void setState(final TypeOfState state) {
+    public final void setState(final TypeOfState state) {
         if (!this._stateValidator.isValid(state))
             throw new IllegalArgumentException(
                     this._stateValidator.Message(state, "State"));
         this._state = state;
     }
 
-    public void setValue(final TypeOfValue value) {
+    public final void setValue(final TypeOfValue value) {
         if (!this._valueValidator.isValid(value))
             throw new IllegalArgumentException(
                     this._valueValidator.Message(value, "Value"));

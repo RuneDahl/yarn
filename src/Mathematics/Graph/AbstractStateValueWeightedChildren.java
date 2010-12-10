@@ -16,7 +16,7 @@ import java.util.*;
  */
 public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValue>
         extends AbstractStateValue<TypeOfState, TypeOfValue> {
-    private HashMap<TreeNode<TypeOfState, TypeOfValue>, Double> _children =
+    private final HashMap<TreeNode<TypeOfState, TypeOfValue>, Double> _children =
             new HashMap<TreeNode<TypeOfState, TypeOfValue>, Double>();
 
     protected AbstractStateValueWeightedChildren(
