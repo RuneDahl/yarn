@@ -113,6 +113,76 @@ public class GregorianTest {
     }
 
     /**
+     * Test of belowDateDifference method, of class Gregorian.
+     */
+    @Test
+    public void testCorrectionInDaysFromJulianToGregorian() {
+        System.out.println("correctionInDaysFromJulianToGregorian");
+        for (int year = 1582; year < 4100; year++) {
+            int result = Gregorian.correctionInDaysFromJulianToGregorian(year);
+            int expResult = 10;
+            if (1700 <= year)
+                expResult++;
+            if (1800 <= year)
+                expResult++;
+            if (1900 <= year)
+                expResult++;
+            if (2100 <= year)
+                expResult++;
+            if (2200 <= year)
+                expResult++;
+            if (2300 <= year)
+                expResult++;
+            if (2500 <= year)
+                expResult++;
+            if (2600 <= year)
+                expResult++;
+            if (2700 <= year)
+                expResult++;
+            if (2900 <= year)
+                expResult++;
+            if (3000 <= year)
+                expResult++;
+            if (3100 <= year)
+                expResult++;
+            if (3300 <= year)
+                expResult++;
+            if (3400 <= year)
+                expResult++;
+            if (3500 <= year)
+                expResult++;
+            if (3700 <= year)
+                expResult++;
+            if (3800 <= year)
+                expResult++;
+            if (3900 <= year)
+                expResult++;
+            assertEquals("Failed computation of days to add for the year: " +
+                    Integer.toString(year), expResult, result);
+        }
+    }
+
+    /**
+     * Test of belowDateDifference method, of class Gregorian, for the year 1581.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testCorrectionInDaysFromJulianToGregorian_1581() {
+        System.out.println("correctionInDaysFromJulianToGregorian(1581)");
+        Gregorian.correctionInDaysFromJulianToGregorian(1581);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of belowDateDifference method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testCorrectionInDaysFromJulianToGregorian_4100() {
+        System.out.println("correctionInDaysFromJulianToGregorian(4100)");
+        Gregorian.correctionInDaysFromJulianToGregorian(4100);
+        fail("No exception thrown.");
+    }
+
+    /**
      * Test of isLeapYear method, of class Gregorian, for an integer.
      */
     @Test
