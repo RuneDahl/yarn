@@ -21,12 +21,12 @@ public class IntervalRealTest {
     private IntervalReal _normal;
     private IntervalReal _reverse;
 
-    public IntervalRealTest() {
-        System.out.println("Mathematics.IntervalReal");
+    public IntervalRealTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.IntervalReal");
     }
 
     @AfterClass
