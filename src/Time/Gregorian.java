@@ -39,6 +39,30 @@ public final class Gregorian {
     }
 
     /**
+     * Returns the correction in terms of days to add when computing the date/time in the
+     * <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a>
+     * from the same point in time from the
+     * <a href="http://en.wikipedia.org/wiki/Julian_calendar">Julian calendar</a>.
+     * @param year Year. Must be 1582 or later.
+     * @return     Days to add to the date/time to get the date/time in the
+     *             Gregorian calendar from the same point in time in the
+     *             Julian calendar.
+     */
+    public static int correctionInDaysFromJulianToGregorian(final int year) {
+        if (year < 1582)
+            throw new IllegalArgumentException("Before the year 1582 " +
+                    "the Gregorian calendar was not implemented.");
+        if (4100 <= year)
+            throw new IllegalArgumentException("Around the year 4100 " +
+                    "the Gregorian calendar will need a correction of 1 day.");
+        int centuryDigits = year / 100;
+        int days = 10;
+        if (1600 < year)
+            days += centuryDigits - 16 - ((centuryDigits - 16) / 4);
+        return days;
+    }
+
+    /**
      * Computes whether the specified year is a leap-year in the Gregorian calendar.
      * @param year Year.
      * @return     True if year is a leap-year, otherwise false.
