@@ -16,7 +16,8 @@ import Validation.*;
 public abstract class PrecisionBased<TypeOfValue>
         implements Equals<TypeOfValue> {
     private double _precision;
-    private Validator<Double> _precisionValidator;
+    private static final Validator<Double> __precisionValidator =
+            Factory.FiniteRealGreaterThanOrEqual(0.0);
 
     /**
      * Creates an instance of a PrecisionBased equality-comparer
@@ -35,12 +36,6 @@ public abstract class PrecisionBased<TypeOfValue>
      *                                  non-negative finite number.
      */
     protected PrecisionBased(final double precision) {
-        Validation.And<Double> validator = new Validation.And<Double>();
-        validator.add(new DoubleIsNumeric());
-        validator.add(new DoubleIsFinite());
-        validator.add(new DoubleGreaterThanOrEqual(0.0));
-
-        this._precisionValidator = validator;
         this.setPrecision(precision);
     }
 
@@ -61,10 +56,10 @@ public abstract class PrecisionBased<TypeOfValue>
      *                                  non-negative finite number.
      */
     public final void setPrecision(final double precision) {
-        if (this._precisionValidator.isValid(precision))
+        if (__precisionValidator.isValid(precision))
             this._precision = precision;
         else
             throw new IllegalArgumentException(
-                    this._precisionValidator.Message(precision, "Precision"));
+                    __precisionValidator.Message(precision, "Precision"));
     }
 }
