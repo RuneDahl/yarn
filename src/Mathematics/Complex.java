@@ -309,10 +309,6 @@ public final class Complex
             throw new IllegalArgumentException("Modulus must be non-negative.");
         if (Double.isInfinite(modulus))
             return Complex.Infinity;
-        // TODO - Is the below needed?
-//        if (Double.isNaN(modulus) ||
-//                Double.isNaN(argument) || Double.isInfinite(argument))
-//            return Complex.NaN;
         return Complex.Cartesian(modulus * Math.cos(argument),
                 modulus * Math.sin(argument));
     }
