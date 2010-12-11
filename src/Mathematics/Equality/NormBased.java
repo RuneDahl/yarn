@@ -42,7 +42,7 @@ public abstract class NormBased<TypeOfValue>
      * comparison of values.
      * @return The metric based on the norm.
      */
-    public Metric<TypeOfValue> getMetric() {
+    public final Metric<TypeOfValue> getMetric() {
         return this._metric;
     }
 
@@ -50,7 +50,7 @@ public abstract class NormBased<TypeOfValue>
      * Gets the {@see Mathematics.Norm norm} of this norm-based comparison of values.
      * @return The norm.
      */
-    public Norm<TypeOfValue> getNorm() {
+    public final Norm<TypeOfValue> getNorm() {
         return this._metric.getNorm();
     }
 
@@ -60,7 +60,7 @@ public abstract class NormBased<TypeOfValue>
      * @param norm The desired norm.
      * @throws NullPointerException Norm is null.
      */
-    public void setNorm(final Norm<TypeOfValue> norm) {
+    public final void setNorm(final Norm<TypeOfValue> norm) {
         if (!this._normValidator.isValid(norm))
             throw new NullPointerException(
                     this._normValidator.Message(norm, "Norm"));
