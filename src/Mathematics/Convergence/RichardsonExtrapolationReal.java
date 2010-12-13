@@ -7,16 +7,19 @@ package Mathematics.Convergence;
 
 /**
  * Implementation of <a href="http://en.wikipedia.org/wiki/Richardson_extrapolation">
- * Richardson extrapolation</a> for sequence of <{@see Double real numbers}.
+ * Richardson extrapolation</a> for sequence of {@see Double real numbers}.<br>
+ * This implementation allows the Richardson extrapolation to be applied
+ * one step at a time by invoking the method value(Integer, Double[]). This way
+ * of invoking the accelerator requires that the method is called in successive
+ * iterations from the first iteration (with the iteration count 0) and on.
  * @author Rune Dahl Iversen
  */
 public final class RichardsonExtrapolationReal
         implements AcceleratorSingleStep<Double> {
     private double _factor;
-
-    private static final Validation.Validator<Double> __validator = __SetValidator();
-
     private double[] _storage = null;
+    private static final Validation.Validator<Double> __validator =
+            Validation.Factory.FiniteRealGreaterThan(1.0);
 
     /**
      * Create an instance of the Richardson extrapolation with the specified factor.
@@ -54,14 +57,20 @@ public final class RichardsonExtrapolationReal
             this._storage = new double[] { sequence[iteration] };
             return sequence[iteration];
         }
-        double[] temp = new double[iteration + 1];
-        temp[0] = sequence[iteration];
-        for (int j = 1; j <= iteration; j++) {
-            double weight = Math.pow(_factor, (double)j);
+        if (iteration == this._storage.length) {
+            double[] temp = new double[iteration+1];
+            temp[0] = sequence[iteration];
+            for (int j = 1; j <= iteration; j++) {
+                double weight = Math.pow(_factor, (double)j);
                 temp[j] = (weight*temp[j-1] - this._storage[j-1]) / (weight - 1);
+            }
+            this._storage = temp;
+            return temp[iteration];
         }
-        this._storage = temp;
-        return temp[iteration];
+        else
+            throw new IllegalStateException("The internal state of this " +
+                    "Richardson extrapolation is not consistent with applying" +
+                    "the " + Integer.toString(iteration) + "th iteration.");
     }
 
     public Double[] value(final Double[] sequence) {
@@ -83,12 +92,5 @@ public final class RichardsonExtrapolationReal
             accelerated[i] = temp[i];
         }
         return accelerated;
-    }
-
-    private static Validation.Validator<Double> __SetValidator() {
-        Validation.And<Double> validator =
-                (Validation.And<Double>)Validation.Factory.FiniteReal();
-        validator.add(new Validation.DoubleGreaterThan(1.0));
-        return validator;
     }
 }
