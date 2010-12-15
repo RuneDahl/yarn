@@ -6,7 +6,6 @@
 package Time.Periods;
 
 import Time.BusinessDays.*;
-import Time.Holidays.Holiday;
 import java.util.GregorianCalendar;
 
 /**
@@ -15,42 +14,38 @@ import java.util.GregorianCalendar;
  * @author Rune Dahl Iversen
  */
 public final class GregorianBusinessDay extends Count<GregorianCalendar> {
-    private HolidaysBased<GregorianCalendar> _businessDays;
+    private BusinessDays<GregorianCalendar> _businessDays;
 
     /**
-     * Create a period of business days in the Gregorian calendar using the
-     * specified holidays.
-     * @param count    Number of business days.
-     * @param holidays Holidays.
-     * @throws NullPointerException Holidays are not properly specified.
+     * Create a period of a number of business days in the Gregorian calendar
+     * using the specified businessdays.
+     * @param count        Number of business days.
+     * @param businessDays Business days.
+     * @throws NullPointerException Business days are not properly specified.
      */
     public GregorianBusinessDay(final int count,
-            final Holiday<GregorianCalendar> holidays) {
+            final BusinessDays<GregorianCalendar> businessDays) {
         super(count);
-        this.setHolidays(holidays);
+        this.setBusinessDays(businessDays);
     }
 
     /**
-     * Gets the holidays determining what days are businessdays.
+     * Gets the business days of this period.
      * @return Holidays.
      */
-    public Holiday<GregorianCalendar> getHolidays() {
-        return this._businessDays.getHolidays();
+    public BusinessDays<GregorianCalendar> getBusinessDays() {
+        return this._businessDays;
     }
 
     /**
-     * Sets the holidays used to determine what days are businessdays.
-     * @param holidays Holidays.
-     * @throws NullPointerException Holidays are not properly specified.
+     * Sets the business days of this period.
+     * @param businessDays Business days.
+     * @throws NullPointerException Business days are not properly specified.
      */
-    public void setHolidays(final Holiday<GregorianCalendar> holidays) {
-        if (holidays == null)
-            throw new NullPointerException("Holidays not properly specified.");
-        if (this._businessDays == null)
-            this._businessDays = new Following<GregorianCalendar>(
-                    holidays, new GregorianDay(1));
-        else
-            this._businessDays.setHolidays(holidays);
+    public void setBusinessDays(final BusinessDays<GregorianCalendar> businessDays) {
+        if (businessDays == null)
+            throw new NullPointerException("Business days not properly specified.");
+        this._businessDays = businessDays;
     }
 
     public GregorianCalendar shift(GregorianCalendar date, int count) {
