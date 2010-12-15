@@ -24,9 +24,9 @@ public abstract class Gregorian implements DayCount<GregorianCalendar> {
      * @param to   To date/time.
      * @return     The length of the period between the 2 specified date/times.
      */
-    public final double Days(final GregorianCalendar from, final GregorianCalendar to) {
+    public final double days(final GregorianCalendar from, final GregorianCalendar to) {
         if (0 < from.compareTo(to))
-            return -Days(to, from);
+            return -this.days(to, from);
 
         final GregorianCalendar f = this._Adjust(from);
         final GregorianCalendar t = this._Adjust(to);
@@ -42,12 +42,12 @@ public abstract class Gregorian implements DayCount<GregorianCalendar> {
         for (int month = 0; month < 12; month++)
         {
             if (month < fromMonth)
-                difference -= this.Month(fromYear, month);
+                difference -= this.month(fromYear, month);
             if (month < toMonth)
-                difference += this.Month(toYear, month);
+                difference += this.month(toYear, month);
         }
         for (int year = fromYear; year < toYear; year++)
-            difference += this.Year(year);
+            difference += this.year(year);
         return difference;
     }
 

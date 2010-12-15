@@ -25,9 +25,9 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * @param to   To date/time.
      * @return     The length of the period between the 2 specified date/times.
      */
-    public double Days(final GregorianCalendar from, final GregorianCalendar to) {
+    public double days(final GregorianCalendar from, final GregorianCalendar to) {
         if (0 < from.compareTo(to))
-            return -Days(to, from);
+            return -this.days(to, from);
         GregorianCalendar f = _AdjustFrom(from);
         GregorianCalendar t = _AdjustTo(to, from);
         double difference = Time.Gregorian.belowDateDifference(f, t);
@@ -44,7 +44,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * @param month Month.
      * @return      The length in days of the specified month of the specified year.
      */
-    public double Month(final int year, final int month) {
+    public double month(final int year, final int month) {
         return 30.0;
     }
 
@@ -53,7 +53,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * @param year  Year.
      * @return      The length in days of the specified year.
      */
-    public double Year(final int year) {
+    public double year(final int year) {
         return 360.0;
     }
 

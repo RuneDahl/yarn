@@ -22,7 +22,7 @@ public interface DayCount<TypeOfCalendar>
      * @param to   To date/time.
      * @return     The length of the period between the 2 specified date/times.
      */
-    public double Days(final TypeOfCalendar from, final TypeOfCalendar to);
+    public double days(final TypeOfCalendar from, final TypeOfCalendar to);
 
     /**
      * Returns the length in days of the specified month of the specified year.
@@ -30,14 +30,14 @@ public interface DayCount<TypeOfCalendar>
      * @param month Month.
      * @return      The length in days of the specified month of the specified year.
      */
-    public double Month(final int year, final int month);
+    public double month(final int year, final int month);
 
     /**
      * Returns the length in days of the specified year.
      * @param year  Year.
      * @return      The length in days of the specified year.
      */
-    public double Year(final int year);
+    public double year(final int year);
 
     /**
      * Gets a string representation of this daycount when acting as a denominator.

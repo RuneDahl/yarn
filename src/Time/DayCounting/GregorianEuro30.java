@@ -23,7 +23,7 @@ public final class GregorianEuro30 extends Gregorian {
      * @param month Month.
      * @return      The length in days of the specified month of the specified year.
      */
-    public double Month(final int year, final int month) {
+    public double month(final int year, final int month) {
         return 30.0;
     }
 
@@ -32,7 +32,7 @@ public final class GregorianEuro30 extends Gregorian {
      * @param year Year.
      * @return     The length in days of the specified year.
      */
-    public double Year(final int year) {
+    public double year(final int year) {
         return 360.0;
     }
 
