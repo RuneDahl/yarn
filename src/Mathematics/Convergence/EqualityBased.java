@@ -27,7 +27,7 @@ public abstract class EqualityBased<TypeOfValue>
      * @param equals Equality-comparer. May not equal null.
      * @throws NullPointerException Equals is null.
      */
-    protected EqualityBased(Equals<TypeOfValue> equals) {
+    protected EqualityBased(final Equals<TypeOfValue> equals) {
         this.setEquals(equals);
     }
 
@@ -45,7 +45,7 @@ public abstract class EqualityBased<TypeOfValue>
      * @param equals Equality comparer. May not equal null.
      * @throws NullPointerException Equals is null.
      */
-    public final void setEquals(Equals<TypeOfValue> equals) {
+    public final void setEquals(final Equals<TypeOfValue> equals) {
         if (!this._equalsValidator.isValid(equals))
             throw new NullPointerException(
                     this._equalsValidator.Message(equals, "Equals"));
