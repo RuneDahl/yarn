@@ -25,7 +25,8 @@ public class GregorianStartDateTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Time.Holidays.GregorianStartDate");
     }
 
     @AfterClass

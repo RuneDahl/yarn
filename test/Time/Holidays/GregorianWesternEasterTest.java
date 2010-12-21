@@ -26,7 +26,8 @@ public class GregorianWesternEasterTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Time.Holidays.GregorianWesterEaster");
     }
 
     @AfterClass

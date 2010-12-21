@@ -24,12 +24,12 @@ public class ModifiedFollowingTest {
     private Holiday<GregorianCalendar> _holidays;
     private Period<GregorianCalendar> _day;
 
-    public ModifiedFollowingTest() {
-        System.out.println("Time.BusinessDays.ModifiedFollowing");
+    public ModifiedFollowingTest() { // Intentional
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Time.BusinessDays.ModifiedFollowing");
     }
 
     @AfterClass

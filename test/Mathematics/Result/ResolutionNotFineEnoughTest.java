@@ -25,7 +25,8 @@ public class ResolutionNotFineEnoughTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.Result.ResolutionNotFineEnough");
     }
 
     @AfterClass

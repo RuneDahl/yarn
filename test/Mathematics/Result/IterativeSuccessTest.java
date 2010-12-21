@@ -24,7 +24,8 @@ public class IterativeSuccessTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.Result.IterativeSuccess");
     }
 
     @AfterClass
