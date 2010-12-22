@@ -80,7 +80,7 @@ public final class RichardsonExtrapolationReal
         if (sequence.length == 0)
             return accelerated;
         accelerated[0] = sequence[0];
-        double[] storage = null;
+        double[] storage = new double[] {sequence[0]};
         for (int i = 1; i < sequence.length; i++) {
             double[] temp = new double[i + 1];
             temp[0] = sequence[i];
