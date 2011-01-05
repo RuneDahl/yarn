@@ -15,4 +15,12 @@ import Mathematics.Function.Operator;
  */
 public interface Metric<TypeOfValue>
         extends Operator<TypeOfValue, TypeOfValue, Double> {
+    /**
+     * Returns the distance under this metric between the 2 specified values.
+     * @param value1 Value 1.
+     * @param value2 Value 2.
+     * @return       The distance according to this metric.
+     */
+    @Override
+    public Double value(final TypeOfValue value1, final TypeOfValue value2);
 }
