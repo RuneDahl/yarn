@@ -45,6 +45,7 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
         this._norm = norm;
     }
 
+    @Override
     public Double value(final TypeOfValue firstInput,
             final TypeOfValue secondInput) {
         if (firstInput == null)
