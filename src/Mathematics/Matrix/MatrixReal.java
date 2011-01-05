@@ -16,7 +16,7 @@ import Validation.*;
  * @author Rune Dahl Iversen
  */
 public final class MatrixReal extends MatrixBase<Double> {
-    private Validator<Double> _validator;
+    private final static Validator<Double> __validator = Factory.FiniteReal();
     private double[][] _values; //2-dimensional array of values:[rows][columns].
     private int _firstColumn;
     private int _firstRow;
@@ -67,7 +67,6 @@ public final class MatrixReal extends MatrixBase<Double> {
      */
     public MatrixReal(final int firstRow, final int rows,
             final int firstColumn, final int columns, final double value) {
-        this._validator = Factory.FiniteReal();
         this._firstColumn = firstColumn;
         this._firstRow = firstRow;
         double[][] values = new double[rows][columns];
@@ -95,12 +94,12 @@ public final class MatrixReal extends MatrixBase<Double> {
      */
     public MatrixReal(final int firstRow, final int firstColumn,
             final double[][] values) {
-        this._validator = Factory.FiniteReal();
         this._firstColumn = firstColumn;
         this._firstRow = firstRow;
         this._setValues(values);
     }
 
+    @Override
     public Matrix<Double> AddColumn(final Vector<Double> column) {
         if (!this.hasSameRows(column))
             throw new IllegalArgumentException("The dimensions of the vector " +
@@ -120,6 +119,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return matrix;
     }
 
+    @Override
     public Matrix<Double> AddRow(final Vector<Double> row) {
         if (!this.hasSameColumns(row))
             throw new IllegalArgumentException("The dimensions of the vector " +
@@ -139,6 +139,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return matrix;
     }
 
+    @Override
     public void AddScaledCloumn(final int columnToAddTo, final int columnToAdd,
             final Double scalar) {
         int start = this.getFirstRow();
@@ -147,6 +148,7 @@ public final class MatrixReal extends MatrixBase<Double> {
             this.setValue(r, columnToAddTo, this.getValue(r, columnToAdd) * scalar);
     }
 
+    @Override
     public void AddScaledRow(final int rowToAddTo, final int rowToAdd,
             final Double scalar) {
         int start = this.getFirstColumn();
@@ -155,6 +157,7 @@ public final class MatrixReal extends MatrixBase<Double> {
             this.setValue(rowToAddTo, c, this.getValue(rowToAdd, c) * scalar);
     }
 
+    @Override
     public void AddToColumn(final int column, final Vector<Double> vector) {
         if (!this.hasSameRows(vector))
             throw new IllegalArgumentException("The dimensions of the vector " +
@@ -165,6 +168,7 @@ public final class MatrixReal extends MatrixBase<Double> {
             this.setValue(r, column, vector.getValue(r));
     }
 
+    @Override
     public void AddToRow(final int row, final Vector<Double> vector) {
         if (!this.hasSameColumns(vector))
             throw new IllegalArgumentException("The dimensions of the vecor " +
@@ -175,6 +179,7 @@ public final class MatrixReal extends MatrixBase<Double> {
             this.setValue(row, c, vector.getValue(c));
     }
 
+    @Override
     public Matrix<Double> Join(final Matrix<Double> matrix) {
         if (!this.hasSameRows(matrix))
             throw new IllegalArgumentException("The matrix does not have " +
@@ -197,6 +202,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return join;
     }
 
+    @Override
     public Matrix<Double> RemoveColumn(final int column) {
         if (this.getColumns() == 1)
             throw new NullPointerException("No matrix left after removal " +
@@ -216,6 +222,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return matrix;
     }
 
+    @Override
     public Matrix<Double> RemoveRow(final int row) {
         if (this.getRows() == 1)
             throw new NullPointerException("No matrix left after removal " +
@@ -235,6 +242,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return matrix;
     }
 
+    @Override
     public void ScaleColumn(final int column, final Double scalar) {
         int start = this.getFirstRow();
         int end = start + this.getRows();
@@ -242,6 +250,7 @@ public final class MatrixReal extends MatrixBase<Double> {
             this.setValue(r, column, this.getValue(r, column) * scalar);
     }
 
+    @Override
     public void ScaleRow(final int row, final Double scalar) {
         int start = this.getFirstColumn();
         int end = start + this.getColumns();
@@ -249,6 +258,7 @@ public final class MatrixReal extends MatrixBase<Double> {
             this.setValue(row, c, this.getValue(row, c) * scalar);
     }
 
+    @Override
     public Matrix<Double> Stack(final Matrix<Double> matrix) {
         if (!this.hasSameColumns(matrix))
             throw new IllegalArgumentException("The matrix does not have " +
@@ -271,6 +281,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return stack;
     }
 
+    @Override
     public Double[][] ToArray() {
         Double[][] array = new Double[this.getRows()][this.getColumns()];
         for (int r = 0; r < this.getRows(); r++)
@@ -282,6 +293,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return array;
     }
 
+    @Override
     public Matrix<Double> Transpose() {
         Matrix<Double> transpose = new MatrixReal(this._firstColumn,
                 this.getColumns(), this._firstRow, this.getRows());
@@ -295,6 +307,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return transpose;
     }
 
+    @Override
     public Vector<Double> getColumn(final int column) {
         Vector<Double> c = new VectorReal(this._firstRow, this.getRows());
         int start = c.getFirstDimension();
@@ -304,18 +317,22 @@ public final class MatrixReal extends MatrixBase<Double> {
         return c;
     }
 
+    @Override
     public int getColumns() {
         return this._values[0].length;
     }
 
+    @Override
     public int getFirstColumn() {
         return this._firstColumn;
     }
 
+    @Override
     public int getFirstRow() {
         return this._firstRow;
     }
 
+    @Override
     public Vector<Double> getRow(final int row) {
         Vector<Double> r = new VectorReal(this._firstColumn, this.getColumns());
         int start = r.getFirstDimension();
@@ -325,22 +342,26 @@ public final class MatrixReal extends MatrixBase<Double> {
         return r;
     }
 
+    @Override
     public int getRows() {
         return this._values.length;
     }
 
+    @Override
     public Double getValue(final int row, final int column) {
         return this._values[row - this._firstRow][column - this._firstColumn];
     }
 
+    @Override
     public void setValue(final int row, final int column, final Double value) {
-        if (!this._validator.isValid(value))
+        if (!__validator.isValid(value))
             throw new IllegalArgumentException(
-                    this._validator.Message(value, "Value(" +
+                    __validator.Message(value, "Value(" +
                     Integer.toString(row) + ";" + Integer.toString(column) + ")"));
         this._values[row - this._firstRow][column - this._firstColumn] = value;
     }
 
+    @Override
     public Matrix<Double> sum(final Matrix<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The matrix does not the same " +
@@ -357,6 +378,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return sum;
     }
 
+    @Override
     public Vector<Double> product(final Vector<Double> factor) {
         if (!this.hasSameColumns(factor))
             throw new IllegalArgumentException("The dimensions of the vector " +
@@ -375,6 +397,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return product;
     }
 
+    @Override
     public Matrix<Double> scale(final Double scalar) {
         int startR = this._firstRow;
         int endR = startR + this.getRows();
@@ -388,6 +411,7 @@ public final class MatrixReal extends MatrixBase<Double> {
         return scale;
     }
 
+    @Override
     public Matrix<Double> subtract(final Matrix<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The matrix does not the same " +
@@ -405,20 +429,21 @@ public final class MatrixReal extends MatrixBase<Double> {
         return difference;
     }
 
-    private void _setValues(final double[][] values) {
+    /**
+     * Sets all the values of this matrix to the values specified in the array.
+     * <br> The values are validated. Any invalid values causes an IllegalArgumentException.
+     * @param values Array of values. This is assumed to be indexed starting from 0.
+     * @throws IllegalArgumentException The value of row r and column c ...
+     */
+    private void _setValues(final double[][] values)
+            throws IllegalArgumentException {
         int rows = values.length;
         int columns = values[0].length;
+        int fRow = this.getFirstRow();
+        int fColumn = this.getFirstColumn();
         this._values = new double[rows][columns];
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < columns; c++)
-            {
-                if (this._validator.isValid(values[r][c]))
-                    this._values[r][c] = values[r][c];
-                else
-                    throw new IllegalArgumentException(
-                            this._validator.Message(values[r][c],
-                            "The value of row " + Integer.toString(r) +
-                            " and column " + Integer.toString(c)));
-            }
+                this.setValue(r + fRow, c + fColumn, values[r][c]);
     }
 }
