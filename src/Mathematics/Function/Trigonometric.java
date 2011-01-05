@@ -100,4 +100,39 @@ public abstract class Trigonometric<TypeOfValue>
                     this._validation.Message(phase, "Phase"));
         this._phase = phase;
     }
+
+    /**
+     * Returns whether the values of the specified
+     * Trigonometric equals the values of this.<br>
+     * This method is useful when implementing/overriding equals(...).
+     * @param obj Trigonometric.
+     * @return    True if the value are equal, else false.
+     */
+    protected boolean _equals(final Trigonometric<TypeOfValue> obj) {
+        if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        return this._amplitude.equals(obj.getAmplitude()) &&
+                this._frequency.equals(obj.getFrequency()) &&
+                this._phase.equals(obj.getPhase());
+    }
+
+    /**
+     * Returns a hash code value of this Trigonometric.<br>
+     * This method is useful when implementing/overriding hashCode(...).
+     * @return Hash code value.
+     */
+    protected int _hashCode() {
+        int hashCode = 0;
+        try {
+            hashCode = this._amplitude.hashCode() +
+                    this._frequency.hashCode() * 19 +
+                    this._phase.hashCode() * 361;
+        }
+        catch (Exception e) {
+            hashCode = 0;
+        }
+        return hashCode;
+    }
 }
