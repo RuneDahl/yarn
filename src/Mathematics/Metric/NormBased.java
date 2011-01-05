@@ -58,4 +58,28 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
         TypeOfValue diff = base.subtract(secondInput);
         return this._norm.value(diff);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equals = false;
+        if (obj == null)
+            equals = false;
+        else if (obj == this)
+            equals = true;
+        else if (obj instanceof NormBased)
+            equals = this._norm.equals(((NormBased)obj).getNorm());
+        else
+            equals = false;
+        return equals;
+    }
+
+    @Override
+    public int hashCode() {
+        return this._norm.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "{NormBased(" + this._norm.toString() + ")}";
+    }
 }
