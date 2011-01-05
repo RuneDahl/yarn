@@ -49,4 +49,31 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
                     __powerValidator.Message(power, "Power"));
         this._power = power;
     }
+
+    /**
+     * Returns whether the specified power-based norm has a power that equals
+     * the power of this norm. <br>
+     * This method is meant to help implement equals(...).
+     * @param p Power-based norm.
+     * @return  True if the power values are the same, else false.
+     */
+    protected boolean _equals(Power<TypeOfValue> p) {
+        boolean equals = false;
+        if (p == null)
+            equals = false;
+        else if (p == this)
+            equals = true;
+        else
+            equals = (this._power == p.getPower());
+        return equals;
+    }
+
+    /**
+     * Returns a hash code value that represents the values of this power norm.
+     * <br> This method is meant to simplify the implementation/overriding of hashCode.
+     * @return Vash code value.
+     */
+    protected int _hashCode() {
+        return Double.valueOf(this._power).hashCode();
+    }
 }
