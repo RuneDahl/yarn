@@ -12,6 +12,7 @@ package Mathematics.Function;
  * @author Rune Dahl Iversen
  */
 public class Collatz implements Function<Long, Long> {
+    @Override
     public Long value(final Long input) {
         long value = input;
         if (value / 2.0 == value / 2)

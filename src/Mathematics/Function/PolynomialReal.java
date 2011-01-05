@@ -71,14 +71,17 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
             throw new IndexOutOfBoundsException("First dimension is not zero 0.");
     }
 
+    @Override
     public Double getCoefficient(final int degree) {
         return this._coefficients[degree];
     }
 
+    @Override
     public int getDegree() {
         return this._coefficients.length - 1;
     }
 
+    @Override
     public Polynomial<Double, Double, Double> setCoefficient(final int degree,
             final Double value) {
         if (degree < 0)
@@ -99,6 +102,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(coefficients);
     }
 
+    @Override
     public Function<Double, Double> getDifferential() {
         Double[] coefficients = new Double[Math.max(this.getDegree() - 1, 1)];
         coefficients[0] = 0.0;
@@ -107,6 +111,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(coefficients);
     }
 
+    @Override
     public Double getDifferential(final Double input) {
         double output = 0.0;
         double value = 1.0;
@@ -118,6 +123,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return output;
     }
 
+    @Override
     public Double value(final Double input) {
         double value = 0.0;
         for (int degree = this._coefficients.length - 1; 0 <= degree; degree--)
@@ -130,6 +136,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return value;
     }
 
+    @Override
     public Polynomial<Double, Double, Double> sum(
             final Polynomial<Double, Double, Double> value) {
         int degree = Math.max(this.getDegree(), value.getDegree());
@@ -145,6 +152,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(sums);
     }
 
+    @Override
     public Polynomial<Double, Double, Double> subtract(
             final Polynomial<Double, Double, Double> value) {
         int degree = Math.max(this.getDegree(), value.getDegree());
@@ -160,6 +168,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(diffs);
     }
 
+    @Override
     public Polynomial<Double, Double, Double> product(
             final Polynomial<Double, Double, Double> factor) {
         int degree = this.getDegree() + factor.getDegree();
@@ -173,6 +182,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         return new PolynomialReal(products);
     }
 
+    @Override
     public Polynomial<Double, Double, Double> scale(final Double scalar) {
         int degree = this.getDegree();
         Double[] scales = new Double[degree + 1];

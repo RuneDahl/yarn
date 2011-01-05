@@ -34,6 +34,7 @@ public final class CosineReal
         super(Validation.Factory.FiniteReal(), amplitude, frequency, phase);
     }
 
+    @Override
     public Double value(final Double input) {
         return this.getAmplitude() *
                 Math.cos(input*this.getFrequency() + this.getPhase());

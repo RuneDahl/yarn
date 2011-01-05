@@ -16,6 +16,7 @@ import Mathematics.Vector.*;
  * @author Rune Dahl Iversen
  */
 public class Rosenbrock implements Function<Vector<Double>, Double> {
+    @Override
     public Double value(Vector<Double> input) {
         if (input.getDimensions() != 2)
             throw new IllegalArgumentException("Input must be 2 dimensional.");

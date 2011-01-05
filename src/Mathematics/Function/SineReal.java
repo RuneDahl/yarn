@@ -34,6 +34,7 @@ public final class SineReal
         super(Validation.Factory.FiniteReal(), amplitude, frequency, phase);
     }
 
+    @Override
     public Double value(final Double input) {
         return this.getAmplitude() *
                 Math.sin(input*this.getFrequency() + this.getPhase());

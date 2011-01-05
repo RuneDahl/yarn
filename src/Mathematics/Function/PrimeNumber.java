@@ -40,6 +40,7 @@ public final class PrimeNumber implements Function<Integer, Boolean> {
         this._primes.put(12, 37);
     }
 
+    @Override
     public Boolean value(final Integer input) {
         if (input <= 2)
             return false;

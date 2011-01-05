@@ -95,6 +95,7 @@ public final class GaussianReal implements Function<Double, Double> {
         this._spread = spread;
     }
 
+    @Override
     public Double value(final Double input) {
         return this._scale * Math.exp(
                 -(input - this._center) * (input - this._center) /
