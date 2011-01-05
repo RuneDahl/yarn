@@ -16,7 +16,8 @@ import Validation.*;
  */
 public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
     private double _power;
-    private static final Validator<Double> __powerValidator = Factory.FiniteRealGreaterThanOrEqual(1.0);
+    private static final Validator<Double> __powerValidator =
+            Factory.FiniteRealGreaterThanOrEqual(1.0);
 
     /**
      * Creates a new instance of a P-norm.
