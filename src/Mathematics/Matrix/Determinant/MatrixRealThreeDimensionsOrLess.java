@@ -16,7 +16,7 @@ import Mathematics.Matrix.*;
  * @author Rune Dahl Iversen
  */
 public final class MatrixRealThreeDimensionsOrLess
-        extends DimensionLimit
+        extends DimensionLimits
         implements Function<Matrix<Double>, Double> {
     /**
      * Creates an instance of this determinant calculator.
@@ -25,6 +25,7 @@ public final class MatrixRealThreeDimensionsOrLess
         super(3);
     }
 
+    @Override
     public Double value(Matrix<Double> input) {
         if (!input.isSquare())
             throw new IllegalArgumentException("Matrix is not square.");

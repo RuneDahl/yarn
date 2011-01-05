@@ -17,7 +17,7 @@ import Mathematics.Matrix.*;
  * @author Rune Dahl Iversen
  */
 public final class MatrixComplexThreeDimensionsOrLess
-        extends DimensionLimit
+        extends DimensionLimits
         implements Function<Matrix<Complex>, Complex> {
     /**
      * Creates an instance of this determinant calculator.
@@ -26,6 +26,7 @@ public final class MatrixComplexThreeDimensionsOrLess
         super(3);
     }
 
+    @Override
     public Complex value(Matrix<Complex> input) {
         if (!input.isSquare())
             throw new IllegalArgumentException("Matrix is not square.");
