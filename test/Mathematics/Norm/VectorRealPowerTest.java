@@ -47,6 +47,89 @@ public class VectorRealPowerTest {
     }
 
     /**
+     * Test of getPower method, of class VectorRealPower.
+     */
+    @Test
+    public void testGetPower() {
+        System.out.println("getPower");
+        VectorRealPower instance = this._norm;
+
+        double expResult = 2.0;
+        double result = instance.getPower();
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of setPower method, of class VectorRealPower.
+     */
+    @Test
+    public void testSetPower() {
+        System.out.println("setPower");
+        VectorRealPower instance = this._norm;
+
+        double expResult = 2.0;
+        double result = instance.getPower();
+        assertEquals("Failed pre-condition for testing setPower(double)",
+                expResult, result, 0.0);
+
+        instance.setPower(8.0);
+
+        expResult = 8.0;
+        result = instance.getPower();
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of setPower method, of class VectorRealPower, for the value 0.5.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetPower_OneHalf() {
+        System.out.println("setPower(0.5)");
+        VectorRealPower instance = this._norm;
+
+        instance.setPower(0.5);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of setPower method, of class VectorRealPower, for the value Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetPower_NaN() {
+        System.out.println("setPower(Double.NaN)");
+        VectorRealPower instance = this._norm;
+
+        instance.setPower(Double.NaN);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of setPower method, of class VectorRealPower, for the value
+     * Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetPower_PositiveInfinity() {
+        System.out.println("setPower(Double.POSITIVE_INFINITY)");
+        VectorRealPower instance = this._norm;
+
+        instance.setPower(Double.POSITIVE_INFINITY);
+        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of setPower method, of class VectorRealPower, for the value
+     * Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetPower_NegativeInfinity() {
+        System.out.println("setPower(Double.NEGATIVE_INFINITY)");
+        VectorRealPower instance = this._norm;
+
+        instance.setPower(Double.NEGATIVE_INFINITY);
+        fail("No exception thrown.");
+    }
+
+    /**
      * Test of value method, of class VectorRealPower.
      */
     @Test
@@ -109,7 +192,7 @@ public class VectorRealPowerTest {
 
         obj = new VectorRealPower(1.0);
         result = instance.equals(obj);
-        assertEquals("Equal a VectorRealPower(1.0)", expResult, result);
+        assertEquals("Equals a VectorRealPower(1.0)", expResult, result);
 
         obj = 7.0;
         result = instance.equals(obj);
