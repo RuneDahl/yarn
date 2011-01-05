@@ -27,6 +27,7 @@ public class TrapezoidEvaluatorRealReal implements
     public TrapezoidEvaluatorRealReal() { // Intentional
     }
 
+    @Override
     public Double value(final Function<Double, Double> function,
             final Interval<Double> interval) {
         return (function.value(interval.getLowerBound()) + function.value(interval.getUpperBound())) *

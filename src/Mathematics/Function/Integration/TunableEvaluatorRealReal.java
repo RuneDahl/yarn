@@ -71,6 +71,7 @@ public final class TunableEvaluatorRealReal implements
         this._phase = phase;
     }
 
+    @Override
     public Double value(final Function<Double, Double> function,
             final Interval<Double> interval) {
         return this._gain * (interval.getUpperBound()-interval.getLowerBound()) *

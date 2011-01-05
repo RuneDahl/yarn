@@ -28,6 +28,7 @@ public class MidPointEvaluatorRealReal implements
     public MidPointEvaluatorRealReal() { // Intentional
     }
 
+    @Override
     public Double value(final Function<Double, Double> function,
             final Interval<Double> interval) {
         return function.value(this._MidPoint(interval)) *

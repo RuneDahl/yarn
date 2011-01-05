@@ -25,6 +25,7 @@ public class LefthandEvaluatorRealReal implements
     public LefthandEvaluatorRealReal() { // Intentional
     }
 
+    @Override
     public Double value(final Function<Double, Double> function,
             final Interval<Double> interval) {
         return function.value(interval.getLowerBound()) *
