@@ -13,8 +13,8 @@ import Mathematics.Vector.*;
  * for a {@see Vector vector} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
-public class VectorDoubleP extends Power<Vector<Double>> {
-    private final static VectorDoubleMaximum __maxNorm = new VectorDoubleMaximum();
+public class VectorRealPower extends Power<Vector<Double>> {
+    private final static VectorRealMaximum __maxNorm = new VectorRealMaximum();
 
     /**
      * Creates an instance of the
@@ -24,7 +24,7 @@ public class VectorDoubleP extends Power<Vector<Double>> {
      * @throws IllegalArgumentException Power is not finite.
      * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
-    public VectorDoubleP(double power) {
+    public VectorRealPower(double power) {
         super(power);
     }
 
@@ -47,8 +47,8 @@ public class VectorDoubleP extends Power<Vector<Double>> {
             equals = false;
         else if (obj == this)
             equals = true;
-        else if (obj instanceof VectorDoubleP)
-            equals = this._equals((VectorDoubleP)obj);
+        else if (obj instanceof VectorRealPower)
+            equals = this._equals((VectorRealPower)obj);
         else
             equals = false;
         return equals;
