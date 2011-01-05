@@ -14,4 +14,11 @@ import Mathematics.Function.Function;
  * @param <TypeOfValue> Type of value.
  */
 public interface Norm<TypeOfValue> extends Function<TypeOfValue, Double> {
+    /**
+     * Returns this norm of the specified value.
+     * @param value Value.
+     * @return      Norm.
+     */
+    @Override
+    public Double value(TypeOfValue value);
 }
