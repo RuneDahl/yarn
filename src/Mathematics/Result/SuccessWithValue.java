@@ -24,6 +24,7 @@ public final class SuccessWithValue<TypeOfResult>
         this._result = result;
     }
 
+    @Override
     public TypeOfResult getResult() {
         return this._result;
     }
