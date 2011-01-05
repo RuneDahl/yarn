@@ -145,6 +145,7 @@ public final class Complex
         return Complex.Cartesian(real, this._imaginary);
     }
 
+    @Override
     public Complex conjugate() {
         return Complex.Cartesian(this._real, -this._imaginary);
     }
@@ -157,6 +158,7 @@ public final class Complex
      * @param denominator Denominator.
      * @return            Divided value.
      */
+    @Override
     public Complex divide(final Complex denominator) {
         if (denominator == null)
             throw new NullPointerException("The denominator is not properly specified.");
@@ -190,6 +192,7 @@ public final class Complex
                 961 * argument.hashCode() + 29791 * modulus.hashCode();
     }
 
+    @Override
     public Complex inverse() {
         if (Complex.isNaN(this))
             return Complex.NaN;
@@ -200,6 +203,7 @@ public final class Complex
         return Complex.Polar(1.0 / this._modulus, -this._argument);
     }
 
+    @Override
     public Complex product(final Complex factor) {
         if (factor == null)
             throw new NullPointerException("The factor is not properly specified.");
@@ -216,10 +220,12 @@ public final class Complex
                 this._imaginary * factor._real);
     }
 
+    @Override
     public Complex reverse() {
         return Complex.Cartesian(-this._real, -this._imaginary);
     }
 
+    @Override
     public Complex subtract(final Complex value) {
         if (value == null)
             throw new NullPointerException("The value is not properly specified.");
@@ -227,6 +233,7 @@ public final class Complex
                 this._imaginary - value._imaginary);
     }
 
+    @Override
     public Complex sum(final Complex value) {
         if (value == null)
             throw new NullPointerException("The value is not properly specified.");
@@ -418,6 +425,10 @@ public final class Complex
         return Complex.Cartesian(real, value.getArgument());
     }
 
+    /**
+     * Compues the Argument of this complex number from the cartesian coordinates.
+     * @return The Argument.
+     */
     private double _getArgument() {
         if (Complex.isNaN(this) ||
                 Complex.isInfinite(this) ||
