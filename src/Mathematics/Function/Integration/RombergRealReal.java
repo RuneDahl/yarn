@@ -39,26 +39,31 @@ public final class RombergRealReal extends MaximumIterations
         this.setCriterion(criterion);
     }
 
+    @Override
     public Criterion<Double> getCriterion() {
         return this._criterion;
     }
 
+    @Override
     public void setCriterion(Criterion<Double> criterion) {
         if (criterion == null)
             throw new NullPointerException("Criterion not properly specified.");
         this._criterion = criterion;
     }
 
+    @Override
     public Interval<Double> getRegion() {
         return this._region;
     }
 
+    @Override
     public void setRegion(Interval<Double> region) {
         if (region == null)
             throw new NullPointerException("Interval not properly specified.");
         this._region = region;
     }
 
+    @Override
     public Result value(Function<Double, Double> function) {
         Result result = null;
         try

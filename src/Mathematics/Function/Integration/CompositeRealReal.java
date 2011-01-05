@@ -53,21 +53,25 @@ public final class CompositeRealReal extends IterativeQuadrature
         this.setRegion(region);
     }
 
+    @Override
     public Criterion<Double> getCriterion() {
         return this._criterion;
     }
 
+    @Override
     public void setCriterion(final Criterion<Double> criterion) {
         if (criterion == null)
             throw new NullPointerException("Criterion not properly specified.");
         this._criterion = criterion;
     }
 
+    @Override
     public Evaluator<Function<Double, Double>, Interval<Double>, Double>
             getEvaluator() {
         return this._evaluator;
     }
 
+    @Override
     public void setEvaluator(final
             Evaluator<Function<Double, Double>, Interval<Double>, Double> evaluator) {
         if (evaluator == null)
@@ -75,16 +79,19 @@ public final class CompositeRealReal extends IterativeQuadrature
         this._evaluator = evaluator;
     }
 
+    @Override
     public Interval<Double> getRegion() {
         return this._region;
     }
 
+    @Override
     public void setRegion(final Interval<Double> region) {
         if (region == null)
             throw new NullPointerException("Interval not properly specified.");
         this._region = region;
     }
 
+    @Override
     public Result value(final Function<Double, Double> function) {
         Result result = null;
         try
