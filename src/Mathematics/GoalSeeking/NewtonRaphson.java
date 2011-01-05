@@ -52,32 +52,39 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         this.setMaximumIterations(maximumIterations);
     }
 
+    @Override
     public Equals<Double> getCriterion() {
         return this._criterion;
     }
 
+    @Override
     public Differentiator<Double, Double, Double> getDifferentiator() {
         return this._differentiator;
     }
 
+    @Override
     public Double getGoalValue() {
         return this._goalValue;
     }
 
+    @Override
     public Double getInitialValue() {
         return this._initialValue;
     }
 
+    @Override
     public int getMaximumIterations() {
         return this._maxIter;
     }
 
+    @Override
     public void setCriterion(final Equals<Double> criterion) {
         if (criterion == null)
             throw new NullPointerException("Criterion is not properly specified.");
         this._criterion = criterion;
     }
 
+    @Override
     public void setDifferentiator(
             final Differentiator<Double, Double, Double> differentiator) {
         if (differentiator == null)
@@ -85,6 +92,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         this._differentiator = differentiator;
     }
 
+    @Override
     public void setGoalValue(final Double value) {
         if (!__validator.isValid(value))
             throw new IllegalArgumentException(
@@ -92,6 +100,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         this._goalValue = value;
     }
 
+    @Override
     public void setInitialValue(final Double initialValue) {
         if (!__validator.isValid(initialValue))
             throw new IllegalArgumentException(
@@ -99,6 +108,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         this._initialValue = initialValue;
     }
 
+    @Override
     public void setMaximumIterations(final int iterations) {
         if (!__maxIterValidator.isValid(iterations))
             throw new IllegalArgumentException(
@@ -106,6 +116,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
         this._maxIter = iterations;
     }
 
+    @Override
     public Result Run(final Function<Double, Double> function) {
         double value = this._initialValue;
         int iterations = 0;

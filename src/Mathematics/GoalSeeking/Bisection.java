@@ -27,9 +27,9 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
     private Interval<Double> _initialValue;
     private double _goalValue;
 
-    private static Validator<Double> __validator =
+    private static final Validator<Double> __validator =
             Validation.Factory.FiniteReal();
-    private static Validator<Integer> _maxIterValidator =
+    private static final Validator<Integer> __maxIterValidator =
             new IntegerGreaterThan();;
 
     /**
@@ -51,28 +51,34 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
         this.setMaximumIterations(maximumIterations);
     }
 
+    @Override
     public Equals<Double> getCriterion() {
         return this._criterion;
     }
 
+    @Override
     public Double getGoalValue() {
         return this._goalValue;
     }
 
+    @Override
     public Interval<Double> getInitialValue() {
         return this._initialValue;
     }
 
+    @Override
     public int getMaximumIterations() {
         return this._maxIter;
     }
 
+    @Override
     public void setCriterion(final Equals<Double> criterion) {
         if (criterion == null)
             throw new NullPointerException("Criterion is not properly specified.");
         this._criterion = criterion;
     }
 
+    @Override
     public void setGoalValue(final Double value) {
         if (!__validator.isValid(value))
             throw new IllegalArgumentException(
@@ -80,19 +86,22 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
         this._goalValue = value;
     }
 
+    @Override
     public void setInitialValue(final Interval<Double> initialValue) {
         if (initialValue == null)
             throw new NullPointerException("Initial values are not properly specified.");
         this._initialValue = initialValue;
     }
 
+    @Override
     public void setMaximumIterations(final int iterations) {
-        if (!_maxIterValidator.isValid(iterations))
+        if (!__maxIterValidator.isValid(iterations))
             throw new IllegalArgumentException(
-                    _maxIterValidator.Message(iterations, "Maximum iterations"));
+                    __maxIterValidator.Message(iterations, "Maximum iterations"));
         this._maxIter = iterations;
     }
 
+    @Override
     public Result Run(final Function<Double, Double> value) {
         try
         {
