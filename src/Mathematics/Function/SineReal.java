@@ -39,4 +39,17 @@ public final class SineReal
         return this.getAmplitude() *
                 Math.sin(input*this.getFrequency() + this.getPhase());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof SineReal) {
+            return this._equals((SineReal)obj);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this._hashCode();
+    }
 }

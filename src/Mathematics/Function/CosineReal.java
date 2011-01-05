@@ -39,4 +39,16 @@ public final class CosineReal
         return this.getAmplitude() *
                 Math.cos(input*this.getFrequency() + this.getPhase());
     }
-}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof CosineReal) {
+            return this._equals((CosineReal)obj);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this._hashCode();
+    }}
