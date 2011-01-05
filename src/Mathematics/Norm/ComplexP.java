@@ -28,6 +28,7 @@ public final class ComplexP extends Power<Complex> {
         super(power);
     }
 
+    @Override
     public Double value(final Complex input) {
         // The trick of normalizing the size by the value of the maximum norm
         // prevents destructive overruns and underruns.

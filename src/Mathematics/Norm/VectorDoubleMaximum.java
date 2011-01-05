@@ -22,6 +22,7 @@ public class VectorDoubleMaximum implements Norm<Vector<Double>> {
     public VectorDoubleMaximum() { // Intentional
     }
 
+    @Override
     public Double value(Vector<Double> input) {
         double norm = 0.0;
         for (int d = 0; d < input.getDimensions(); d++)

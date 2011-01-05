@@ -22,6 +22,7 @@ public class ComplexMaximum implements Norm<Complex>{
     public ComplexMaximum() { // Intentional
     }
 
+    @Override
     public Double value(final Complex input) {
         return Math.max(Math.abs(input.getReal()),
                 Math.abs(input.getImaginary()));

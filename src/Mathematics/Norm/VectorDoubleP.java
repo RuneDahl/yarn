@@ -28,6 +28,7 @@ public class VectorDoubleP extends Power<Vector<Double>> {
         super(power);
     }
 
+    @Override
     public Double value(Vector<Double> input) {
         // The trick of normalizing the size by the value of the maximum norm
         // prevents destructive overruns and underruns.
