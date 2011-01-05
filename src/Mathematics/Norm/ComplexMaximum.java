@@ -27,4 +27,26 @@ public class ComplexMaximum implements Norm<Complex>{
         return Math.max(Math.abs(input.getReal()),
                 Math.abs(input.getImaginary()));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equals = false;
+        if (obj == null)
+            equals = false;
+        else if (obj == this)
+            equals = true;
+        else
+            equals = (obj instanceof ComplexMaximum);
+        return equals;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "{ComplexMaximum}";
+    }
 }

@@ -39,4 +39,28 @@ public class VectorDoubleP extends Power<Vector<Double>> {
             norm += Math.pow(Math.abs(input.getValue(d)) / max, power);
         return max * Math.pow(norm, 1.0 / power);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equals = false;
+        if (obj == null)
+            equals = false;
+        else if (obj == this)
+            equals = true;
+        else if (obj instanceof VectorDoubleP)
+            equals = this._equals((VectorDoubleP)obj);
+        else
+            equals = false;
+        return equals;
+    }
+
+    @Override
+    public int hashCode() {
+        return this._hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "{VectorDoubleP(" + Double.toString(this.getPower()) + ")}";
+    }
 }

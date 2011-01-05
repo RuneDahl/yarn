@@ -29,4 +29,26 @@ public class VectorDoubleMaximum implements Norm<Vector<Double>> {
             norm = Math.max(norm, Math.abs(input.getValue(d)));
         return norm;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equals = false;
+        if (obj == null)
+            equals = false;
+        else if (obj == this)
+            equals = true;
+        else
+            equals = (obj instanceof VectorDoubleMaximum);
+        return equals;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "{VectorDoubleMaximum}";
+    }
 }
