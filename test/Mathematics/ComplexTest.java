@@ -58,7 +58,7 @@ public class ComplexTest {
                             this._complexUnit, this._onePointOne, this._polar};
         this._array = array;
 
-        Norm<Complex> norm = new ComplexP(2.0);
+        Norm<Complex> norm = new ComplexPower(2.0);
 
         this._numericalComparer = new NormRelative<Complex>(Math.pow(10.0, -9.0), norm);
     }

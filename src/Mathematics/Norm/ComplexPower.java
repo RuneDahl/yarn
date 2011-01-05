@@ -13,7 +13,7 @@ import Mathematics.Complex;
  * for a {@see Complex complex number}.
  * @author Rune Dahl Iversen
  */
-public final class ComplexP extends Power<Complex> {
+public final class ComplexPower extends Power<Complex> {
     private final static ComplexMaximum __maxNorm = new ComplexMaximum();
 
     /**
@@ -24,7 +24,7 @@ public final class ComplexP extends Power<Complex> {
      * @throws IllegalArgumentException Power is not finite.
      * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
-    public ComplexP(double power) {
+    public ComplexPower(double power) {
         super(power);
     }
 
@@ -52,8 +52,8 @@ public final class ComplexP extends Power<Complex> {
             equals = false;
         else if (obj == this)
             equals = true;
-        else if (obj instanceof ComplexP)
-            equals = this._equals((ComplexP)obj);
+        else if (obj instanceof ComplexPower)
+            equals = this._equals((ComplexPower)obj);
         else
             equals = false;
         return equals;

@@ -5,7 +5,7 @@
 
 package Mathematics;
 
-import Mathematics.Norm.ComplexP;
+import Mathematics.Norm.ComplexPower;
 
 /**
  * Implementation of a
@@ -24,7 +24,7 @@ public final class Complex
     private final double _argument;
 
     // The Euclidian Norm to calculate the modulus of complex numbers.
-    private final static ComplexP __euclidean = new ComplexP(2.0);
+    private final static ComplexPower __euclidean = new ComplexPower(2.0);
 
     /**
      * Create an instance of a {@see Complex complex} number using
