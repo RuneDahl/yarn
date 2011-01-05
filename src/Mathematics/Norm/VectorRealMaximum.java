@@ -49,6 +49,6 @@ public class VectorRealMaximum implements Norm<Vector<Double>> {
 
     @Override
     public String toString() {
-        return "{VectorDoubleMaximum}";
+        return "{VectorRealMaximum}";
     }
 }

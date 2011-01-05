@@ -66,6 +66,6 @@ public final class ComplexPower extends Power<Complex> {
 
     @Override
     public String toString() {
-        return "{ComplexP(" + Double.toString(this.getPower()) + ")}";
+        return "{ComplexPower(" + Double.toString(this.getPower()) + ")}";
     }
 }

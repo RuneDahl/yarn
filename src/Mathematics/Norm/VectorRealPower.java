@@ -61,6 +61,6 @@ public class VectorRealPower extends Power<Vector<Double>> {
 
     @Override
     public String toString() {
-        return "{VectorDoubleP(" + Double.toString(this.getPower()) + ")}";
+        return "{VectorRealPower(" + Double.toString(this.getPower()) + ")}";
     }
 }
