@@ -31,6 +31,7 @@ public class DoubleFractionalRange extends PrecisionBased<Double> {
         super(precision);
     }
 
+    @Override
     public Boolean value(final Double a, final Double b) {
         if (a == null || b == null ||
                 Double.isInfinite(a) || Double.isNaN(a) ||

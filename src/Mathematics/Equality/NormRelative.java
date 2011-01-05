@@ -26,6 +26,7 @@ public final class NormRelative<TypeOfValue> extends NormBased<TypeOfValue> {
         super(precision, norm);
     }
 
+    @Override
     public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         double numerator = this.getMetric().value(a, b);
         Norm<TypeOfValue> norm = this.getNorm();

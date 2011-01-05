@@ -25,6 +25,7 @@ public class NormAbsolute<TypeOfValue> extends NormBased<TypeOfValue> {
         super(precision, norm);
     }
 
+    @Override
     public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         return this.getMetric().value(a, b) <= this.getPrecision();
     }
