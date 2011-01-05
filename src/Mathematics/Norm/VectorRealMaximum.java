@@ -13,13 +13,13 @@ import Mathematics.Vector.*;
  * for a {@see Vector vector} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
-public class VectorDoubleMaximum implements Norm<Vector<Double>> {
+public class VectorRealMaximum implements Norm<Vector<Double>> {
     /**
      * Creates an instance of the
      * <a href="http://en.wikipedia.org/wiki/Maximum_norm">maximum norm</a>
      * for a {@see Vector vector} of {@see Double real} values.
      */
-    public VectorDoubleMaximum() { // Intentional
+    public VectorRealMaximum() { // Intentional
     }
 
     @Override
@@ -38,7 +38,7 @@ public class VectorDoubleMaximum implements Norm<Vector<Double>> {
         else if (obj == this)
             equals = true;
         else
-            equals = (obj instanceof VectorDoubleMaximum);
+            equals = (obj instanceof VectorRealMaximum);
         return equals;
     }
 
