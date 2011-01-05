@@ -114,7 +114,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
                 !this._criterion.value(output, this._goalValue);
                 iterations++) {
             output = function.value(value);
-            double denominator = this._differentiator.Value(value, function);
+            double denominator = this._differentiator.value(value, function);
             if (denominator == 0.0)
                 return new SlopeEqualsZeroFailure<Double>(value);
             else

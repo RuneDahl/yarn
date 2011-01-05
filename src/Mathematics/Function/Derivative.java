@@ -25,7 +25,7 @@ public final class Derivative<TypeOfInput, TypeOfFunctionOutput,
     public Derivative() { // Intentional
     }
 
-    public TypeOfDifferentialOutput Value(final TypeOfInput value,
+    public TypeOfDifferentialOutput value(final TypeOfInput value,
             final Function<TypeOfInput, TypeOfFunctionOutput> function) {
         if (function instanceof Differentiable) {
             Differentiable<TypeOfInput, TypeOfFunctionOutput,
