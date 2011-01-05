@@ -106,6 +106,11 @@ public class VectorRealPowerTest {
         assertEquals("Does not equal itself", expResult, result);
 
         expResult = false;
+
+        obj = new VectorRealPower(1.0);
+        result = instance.equals(obj);
+        assertEquals("Equal a VectorRealPower(1.0)", expResult, result);
+
         obj = 7.0;
         result = instance.equals(obj);
         assertEquals("Equals the value 7.0", expResult, result);
