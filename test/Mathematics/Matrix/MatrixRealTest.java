@@ -1079,7 +1079,7 @@ public class MatrixRealTest {
 
     /**
      * Test of setValue method, of class MatrixReal,
-     * for a row out of range.
+     * for a null value.
      */
     @Test (expected=IllegalArgumentException.class)
     public void testSetValue_ValueNull() {
@@ -1087,6 +1087,48 @@ public class MatrixRealTest {
         int row = 0;
         int column = 0;
         Double value = null;
+        MatrixReal instance = this._matrix;
+        instance.setValue(row, column, value);
+    }
+
+    /**
+     * Test of setValue method, of class MatrixReal,
+     * for a Double.NaN value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetValue_ValueNaN() {
+        System.out.println("setValue(r, c, Double.NAN)");
+        int row = 0;
+        int column = 0;
+        Double value = Double.NaN;
+        MatrixReal instance = this._matrix;
+        instance.setValue(row, column, value);
+    }
+
+    /**
+     * Test of setValue method, of class MatrixReal,
+     * for a Double.POSITIVE_INFINITY value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetValue_ValuePositiveInfinity() {
+        System.out.println("setValue(r, c, Double.POSITIVE_INFINITY)");
+        int row = 0;
+        int column = 0;
+        Double value = Double.POSITIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.setValue(row, column, value);
+    }
+
+    /**
+     * Test of setValue method, of class MatrixReal,
+     * for a Double.NEGATIVE_INFINITY value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetValue_ValueNegativeInfinity() {
+        System.out.println("setValue(r, c, Double.NEGATIVE_INFINITY)");
+        int row = 0;
+        int column = 0;
+        Double value = Double.NEGATIVE_INFINITY;
         MatrixReal instance = this._matrix;
         instance.setValue(row, column, value);
     }
@@ -1442,6 +1484,48 @@ public class MatrixRealTest {
         int firstColumn = 4;
         int columns = 2;
         Double value = null;
+        MatrixReal.Value(firstRow, rows, firstColumn, columns, value);
+    }
+
+    /**
+     * Test of Value method, of class MatrixReal, for a Double.NaN value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testValue_ValueNaN() {
+        System.out.println("Value(fr, r, fc, c, Double.NaN)");
+        int firstRow = 0;
+        int rows = 2;
+        int firstColumn = 4;
+        int columns = 2;
+        Double value = Double.NaN;
+        MatrixReal.Value(firstRow, rows, firstColumn, columns, value);
+    }
+
+    /**
+     * Test of Value method, of class MatrixReal, for a Double.POSITIVE_INFINITY value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testValue_ValuePositiveInfinity() {
+        System.out.println("Value(fr, r, fc, c, Double.POSITIVE_INFINITY)");
+        int firstRow = 0;
+        int rows = 2;
+        int firstColumn = 4;
+        int columns = 2;
+        Double value = Double.POSITIVE_INFINITY;
+        MatrixReal.Value(firstRow, rows, firstColumn, columns, value);
+    }
+
+    /**
+     * Test of Value method, of class MatrixReal, for a Double.NEGATIVE_INFINITY value.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testValue_ValueNegativeInfinity() {
+        System.out.println("Value(fr, r, fc, c, Double.NEGATIVE_INFINITY)");
+        int firstRow = 0;
+        int rows = 2;
+        int firstColumn = 4;
+        int columns = 2;
+        Double value = Double.NEGATIVE_INFINITY;
         MatrixReal.Value(firstRow, rows, firstColumn, columns, value);
     }
 
