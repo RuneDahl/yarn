@@ -83,27 +83,33 @@ public final class VectorReal implements Vector<Double> {
         this._setValues(values);
     }
 
+    @Override
     public int getDimensions() {
         return this._values.length;
     }
 
+    @Override
     public int getFirstDimension() {
         return this._firstDimension;
     }
 
+    @Override
     public int getLastDimension() {
         return this._firstDimension + this.getDimensions() - 1;
     }
 
+    @Override
     public Double getValue(final int dimension) {
         return this._values[dimension - this._firstDimension];
     }
 
+    @Override
     public boolean hasSameDimensions(Vector<Double> vector) {
         return this.getFirstDimension() == vector.getFirstDimension() &&
                 this.getDimensions() == vector.getDimensions();
     }
 
+    @Override
     public Vector<Double> setValue(final int dimension, final Double value) {
         if (!__validator.isValid(value))
             throw new IllegalArgumentException(
@@ -113,6 +119,7 @@ public final class VectorReal implements Vector<Double> {
         return v;
     }
 
+    @Override
     public Vector<Double> sum(final Vector<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The vectors are not " +
@@ -160,6 +167,7 @@ public final class VectorReal implements Vector<Double> {
         return hash;
     }
 
+    @Override
     public Vector<Double> subtract(final Vector<Double> value) {
         if (!this.hasSameDimensions(value))
             throw new IllegalArgumentException("The vectors are not " +
@@ -171,6 +179,7 @@ public final class VectorReal implements Vector<Double> {
         return new VectorReal(this._firstDimension, diffs);
     }
 
+    @Override
     public Vector<Double> scale(final Double scalar) {
         double[] values = new double[this.getDimensions()];
         for (int dim = 0; dim < this._values.length; dim++)
@@ -178,6 +187,7 @@ public final class VectorReal implements Vector<Double> {
         return new VectorReal(this._firstDimension, values);
     }
 
+    @Override
     public Double[] toArray() {
         Double[] values = new Double[this._values.length];
         for (int dim = 0; dim < this._values.length; dim++)
