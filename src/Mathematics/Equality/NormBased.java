@@ -42,7 +42,7 @@ public abstract class NormBased<TypeOfValue>
      * comparison of values.
      * @return The metric based on the norm.
      */
-    public final Metric<TypeOfValue> getMetric() {
+    protected final Metric<TypeOfValue> getMetric() {
         return this._metric;
     }
 
@@ -65,5 +65,10 @@ public abstract class NormBased<TypeOfValue>
             throw new NullPointerException(
                     this._normValidator.Message(norm, "Norm"));
         this._metric.setNorm(norm);
+    }
+
+    @Override
+    public String toString() {
+        return "{" + this.getClass().getName() + "(Metric: " + this._metric.toString() + ")}";
     }
 }
