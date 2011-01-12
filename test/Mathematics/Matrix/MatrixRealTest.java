@@ -344,6 +344,171 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of hasSameColumns(Matrix) method, for class MatrixReal.
+     */
+    @Test
+    public void testHasSameColumns_Matrix() {
+        System.out.println("hasSameColumns");
+        MatrixReal instance = this._matrix;
+        MatrixReal matrix = new MatrixReal(2, 3);
+        this._base.testHasSameColumns_Matrix(instance, matrix, true);
+
+        matrix = new MatrixReal(3, 2);
+        this._base.testHasSameColumns_Matrix(instance, matrix, false);
+
+        matrix = new MatrixReal(1, 3, 1, 3);
+        this._base.testHasSameColumns_Matrix(instance, matrix, false);
+    }
+
+    /**
+     * Test of hasSameColumns(Matrix) method, for class MatrixReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testHasSameColumns_Matrix_Null() {
+        System.out.println("hasSameColumns(null)");
+        MatrixReal instance = this._matrix;
+        MatrixReal matrix = null;
+        this._base.testHasSameColumns_Matrix(instance, matrix, true);
+    }
+
+    /**
+     * Test of hasSameColumns(Vector) method, for class MatrixReal.
+     */
+    @Test
+    public void testHasSameColumns_Vector() {
+        System.out.println("hasSameColumns");
+        MatrixReal instance = this._matrix;
+        Vector vector = new VectorReal(3);
+        this._base.testHasSameColumns_Vector(instance, vector, true);
+
+        vector = new VectorReal(2);
+        this._base.testHasSameColumns_Vector(instance, vector, false);
+
+        vector = new VectorReal(1, 3);
+        this._base.testHasSameColumns_Vector(instance, vector, false);
+    }
+
+    /**
+     * Test of hasSameColumns(Vector) method, for class MatrixReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testHasSameColumns_Vector_Null() {
+        System.out.println("hasSameColumns(null)");
+        MatrixReal instance = this._matrix;
+        Vector vector = null;
+        this._base.testHasSameColumns_Vector(instance, vector, true);
+    }
+
+    /**
+     * Test of hasSameDimensions method, for class MatrixReal.
+     */
+    @Test
+    public void testHasSameDimensions() {
+        System.out.println("hasSameDimensions");
+        MatrixReal instance = this._matrix;
+        MatrixReal matrix = new MatrixReal(3, 3);
+        this._base.testHasSameDimensions(instance, matrix, true);
+
+        matrix = new MatrixReal(3, 2);
+        this._base.testHasSameDimensions(instance, matrix, false);
+
+        matrix = new MatrixReal(2, 3);
+        this._base.testHasSameDimensions(instance, matrix, false);
+
+        matrix = new MatrixReal(11, 3, 0, 3);
+        this._base.testHasSameDimensions(instance, matrix, false);
+
+        matrix = new MatrixReal(0, 3, 10, 3);
+        this._base.testHasSameDimensions(instance, matrix, false);
+    }
+
+    /**
+     * Test of hasSameDimensions method, for class MatrixReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testHasSameDimensions_Null() {
+        System.out.println("hasSameDimensions(null)");
+        MatrixReal instance = this._matrix;
+        MatrixReal matrix = null;
+        this._base.testHasSameDimensions(instance, matrix, true);
+    }
+
+    /**
+     * Test of hasSameColumns(Matrix) method, for class MatrixReal.
+     */
+    @Test
+    public void testHasSameRows_Matrix() {
+        System.out.println("hasSameRows");
+        MatrixReal instance = this._matrix;
+        MatrixReal matrix = new MatrixReal(3, 2);
+        this._base.testHasSameRows_Matrix(instance, matrix, true);
+
+        matrix = new MatrixReal(2, 3);
+        this._base.testHasSameRows_Matrix(instance, matrix, false);
+
+        matrix = new MatrixReal(1, 3, 1, 3);
+        this._base.testHasSameRows_Matrix(instance, matrix, false);
+    }
+
+    /**
+     * Test of hasSameRows(Matrix) method, for class MatrixReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testHasSameRows_Matrix_Null() {
+        System.out.println("hasSameRows(null)");
+        MatrixReal instance = this._matrix;
+        MatrixReal matrix = null;
+        this._base.testHasSameRows_Matrix(instance, matrix, true);
+    }
+
+    /**
+     * Test of hasSameColumns(Vector) method, for class MatrixReal.
+     */
+    @Test
+    public void testHasSameRows_Vector() {
+        System.out.println("hasSameRows");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = new VectorReal(3);
+        this._base.testHasSameRows_Vector(instance, vector, true);
+
+        vector = new VectorReal(2);
+        this._base.testHasSameRows_Vector(instance, vector, false);
+
+        vector = new VectorReal(1, 3);
+        this._base.testHasSameRows_Vector(instance, vector, false);
+    }
+
+    /**
+     * Test of hasSameRows(Vector) method, for class MatrixReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testHasSameRows_Vector_Null() {
+        System.out.println("hasSameRows(null)");
+        MatrixReal instance = this._matrix;
+        Vector vector = null;
+        this._base.testHasSameRows_Vector(instance, vector, true);
+    }
+
+    /**
+     * Test of isSquare method, of MatrixReal.
+     */
+    @Test
+    public void testIsSquare() {
+        System.out.println("isSquare");
+        MatrixReal instance = this._matrix;
+        this._base.testIsSquare(instance, true);
+
+        instance = new MatrixReal(3, 2);
+        this._base.testIsSquare(instance, false);
+
+        instance = new MatrixReal(3, 2, 4, 2);
+        this._base.testIsSquare(instance, true);
+
+        instance = new MatrixReal(2, 3);
+        this._base.testIsSquare(instance, false);
+    }
+
+    /**
      * Test of join method, of class MatrixReal.
      */
     @Test
@@ -677,8 +842,7 @@ public class MatrixRealTest {
         System.out.println("getFirstColumn");
         MatrixReal instance = this._matrix;
         int expResult = 0;
-        int result = instance.getFirstColumn();
-        assertEquals(expResult, result);
+        this._base.testGetFirstColumn(instance, expResult);
     }
 
     /**
@@ -689,8 +853,29 @@ public class MatrixRealTest {
         System.out.println("getFirstRow");
         MatrixReal instance = this._matrix;
         int expResult = 0;
-        int result = instance.getFirstRow();
-        assertEquals(expResult, result);
+        this._base.testGetFirstRow(instance, expResult);
+    }
+
+    /**
+     * Test of getLastColumn method, of class MatrixReal.
+     */
+    @Test
+    public void testGetLastColumn() {
+        System.out.println("getLastColumn");
+        MatrixReal instance = this._matrix;
+        int expResult = 2;
+        this._base.testGetLastColumn(instance, expResult);
+    }
+
+    /**
+     * Test of getLastRow method, of class MatrixReal.
+     */
+    @Test
+    public void testGetLastRow() {
+        System.out.println("getLastRow");
+        MatrixReal instance = this._matrix;
+        int expResult = 2;
+        this._base.testGetLastRow(instance, expResult);
     }
 
     /**
@@ -768,6 +953,84 @@ public class MatrixRealTest {
         System.out.println("getValue(r, x)");
         MatrixReal instance = this._matrix;
         instance.getValue(0, 8);
+    }
+
+    /**
+     * Test of method setColumn, of class MatrixReal.
+     */
+    @Test
+    public void testSetColumn() {
+        System.out.println("setColumn");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = VectorReal.Unit(3, 2);
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++)
+            values[c][c] = 1.0;
+        values[2][1] = 1.0;
+        values[1][1] = 0.0;
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSetColumn(instance, vector, 1, expResult);
+    }
+
+    /**
+     * Test of method setColumn, of class MatrixReal, for a column out of range.
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testSetColumn_Column_OutOfRange() {
+        System.out.println("setColumn(x, vector)");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = VectorReal.Unit(3, 2);
+        this._base.testSetColumn(instance, vector, 3, null);
+    }
+
+    /**
+     * Test of method setColumn, of class MatrixReal, for a null vector.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetColumn_VectorNull() {
+        System.out.println("setColumn(c, null)");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = null;
+        this._base.testSetColumn(instance, vector, 1, null);
+    }
+
+    /**
+     * Test of method setRow, of class MatrixReal.
+     */
+    @Test
+    public void testSetRow() {
+        System.out.println("setRow");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = VectorReal.Unit(3, 2);
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++)
+            values[c][c] = 1.0;
+        values[1][2] = 1.0;
+        values[1][1] = 0.0;
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSetRow(instance, vector, 1, expResult);
+    }
+
+    /**
+     * Test of method setRow, of class MatrixReal, for a row out of range.
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testSetRow_Row_OutOfRange() {
+        System.out.println("setRow(x, vector)");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = VectorReal.Unit(3, 2);
+        this._base.testSetRow(instance, vector, 3, null);
+    }
+
+    /**
+     * Test of method setRow, of class MatrixReal, for a null vector.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetRow_VectorNull() {
+        System.out.println("setRow(c, null)");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = null;
+        this._base.testSetRow(instance, vector, 1, null);
     }
 
     /**
@@ -866,6 +1129,130 @@ public class MatrixRealTest {
         MatrixReal instance = this._matrix;
         instance.sum(value);
     }
+
+    /**
+     * Test of switchColumns method, of class MatrixReal.
+     */
+    @Test
+    public void testSwitchColumns() {
+        System.out.println("switchColumns");
+        MatrixReal instance = this._matrix;
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++) {
+            if (c == 0)
+                values[0][0] = 1.0;
+            else if (c == 1)
+                values[1][2] = 1.0;
+            else if (c == 2)
+                values[2][1] = 1.0;
+        }
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSwitchColumns(instance, 1, 2, expResult);
+     }
+
+    /**
+     * Test of switchColumns method, of class MatrixReal,
+     * for first column out of range.
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testSwitchColumns_FirstColumn_OutOfRange() {
+        System.out.println("switchColumns(x, c)");
+        MatrixReal instance = this._matrix;
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++) {
+            if (c == 0)
+                values[0][0] = 1.0;
+            else if (c == 1)
+                values[1][2] = 1.0;
+            else if (c == 2)
+                values[2][1] = 1.0;
+        }
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSwitchColumns(instance, -1, 2, expResult);
+     }
+
+    /**
+     * Test of switchColumns method, of class MatrixReal,
+     * for second column out of range.
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testSwitchColumns_SecondColumn_OutOfRange() {
+        System.out.println("switchColumns(c, x)");
+        MatrixReal instance = this._matrix;
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++) {
+            if (c == 0)
+                values[0][0] = 1.0;
+            else if (c == 1)
+                values[1][2] = 1.0;
+            else if (c == 2)
+                values[2][1] = 1.0;
+        }
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSwitchColumns(instance, 0, 3, expResult);
+     }
+
+    /**
+     * Test of switchRows method, of class MatrixReal.
+     */
+    @Test
+    public void testSwitchRows() {
+        System.out.println("switchRows");
+        MatrixReal instance = this._matrix;
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++) {
+            if (c == 0)
+                values[0][0] = 1.0;
+            else if (c == 1)
+                values[1][2] = 1.0;
+            else if (c == 2)
+                values[2][1] = 1.0;
+        }
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSwitchRows(instance, 1, 2, expResult);
+     }
+
+    /**
+     * Test of switchRows method, of class MatrixReal,
+     * for first row out of range.
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testSwitchRows_FirstColumn_OutOfRange() {
+        System.out.println("switchRows(x, r)");
+        MatrixReal instance = this._matrix;
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++) {
+            if (c == 0)
+                values[0][0] = 1.0;
+            else if (c == 1)
+                values[1][2] = 1.0;
+            else if (c == 2)
+                values[2][1] = 1.0;
+        }
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSwitchRows(instance, -1, 2, expResult);
+     }
+
+    /**
+     * Test of switchRows method, of class MatrixReal,
+     * for second row out of range.
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testSwitchRows_SecondColumn_OutOfRange() {
+        System.out.println("switchRows(r, x)");
+        MatrixReal instance = this._matrix;
+        double[][] values = new double[3][3];
+        for (int c = 0; c < 3; c++) {
+            if (c == 0)
+                values[0][0] = 1.0;
+            else if (c == 1)
+                values[1][2] = 1.0;
+            else if (c == 2)
+                values[2][1] = 1.0;
+        }
+        MatrixReal expResult = new MatrixReal(values);
+        this._base.testSwitchRows(instance, 0, 3, expResult);
+     }
 
     /**
      * Test of product method, of class MatrixReal.
