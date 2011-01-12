@@ -63,7 +63,7 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
 
     public final TypeOfValue getValue() {
         if (this._value == null)
-            this.ComputeValue();
+            this.computeValue();
         return this._value;
     }
 

@@ -80,7 +80,7 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
         this._children.put(child, weight);
     }
 
-    public boolean HasChild(final TreeNode<TypeOfState, TypeOfValue> node) {
+    public boolean hasChild(final TreeNode<TypeOfState, TypeOfValue> node) {
         return this._children.containsKey(node);
     }
 

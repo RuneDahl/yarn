@@ -58,7 +58,7 @@ public interface TreeNode<TypeOfState, TypeOfValue> {
      * Computes the value of this node and returns the result.
      * @return Result of the computation.
      */
-    public Result ComputeValue();
+    public Result computeValue();
 
     /**
      * Indicates whether the tree from this node and on contains the
@@ -66,5 +66,5 @@ public interface TreeNode<TypeOfState, TypeOfValue> {
      * @param node TreeNode.
      * @return     True if found, else false.
      */
-    public boolean HasChild(final TreeNode<TypeOfState, TypeOfValue> node);
+    public boolean hasChild(final TreeNode<TypeOfState, TypeOfValue> node);
 }
