@@ -80,6 +80,6 @@ public final class NormBased<TypeOfValue> implements Metric<TypeOfValue> {
 
     @Override
     public String toString() {
-        return "{NormBased(" + this._norm.toString() + ")}";
+        return "{" + this.getClass().getName() + "(Norm: " + this._norm.toString() + ")}";
     }
 }
