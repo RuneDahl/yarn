@@ -5,6 +5,7 @@
 
 package Mathematics.Equality;
 
+import Mathematics.Metric.Metric;
 import Mathematics.Norm.Norm;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,9 +40,19 @@ public class NormBasedTest<TypeOfValue> {
     }
 
     /**
+     * Test of the getMetric method, of class NormBased.
+     * @param equals         Instance of NormBased to test.
+     * @param expectedResult Expected result.
+     */
+    public void testGetMetric(final NormBased<TypeOfValue> equals,
+            final Metric<TypeOfValue> expectedResult) {
+        assertEquals(expectedResult, equals.getMetric());
+    }
+
+    /**
      * Test of getNorm method, of class NormBased.
      * @param equals         Instance of NormBased to test.
-     * @param expectedResult Expected result..
+     * @param expectedResult Expected result.
      */
     public void testGetNorm(final NormBased<TypeOfValue> equals,
             final Norm<TypeOfValue> expectedResult) {
