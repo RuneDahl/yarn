@@ -27,7 +27,7 @@ public final class MatrixComplexThreeDimensionsOrLess
     }
 
     @Override
-    public Complex value(Matrix<Complex> input) {
+    public Complex value(final Matrix<Complex> input) {
         if (!input.isSquare())
             throw new IllegalArgumentException("Matrix is not square.");
         int r = input.getFirstRow();

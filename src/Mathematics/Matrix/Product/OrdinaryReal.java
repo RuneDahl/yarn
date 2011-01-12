@@ -16,7 +16,9 @@ import Mathematics.Matrix.*;
  */
 public class OrdinaryReal implements
         Operator<Matrix<Double>, Matrix<Double>, Matrix<Double>> {
-    public Matrix<Double> value(Matrix<Double> firstInput, Matrix<Double> secondInput) {
+    @Override
+    public Matrix<Double> value(final Matrix<Double> firstInput,
+            final Matrix<Double> secondInput) {
         if (firstInput.getFirstColumn() != secondInput.getFirstRow())
              throw new IllegalArgumentException("The matrices are not " +
                     "conforming in dimensions: First column does not " +

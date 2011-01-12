@@ -18,6 +18,7 @@ import Mathematics.Matrix.*;
  */
 public final class HadamardReal
         implements Operator<Matrix<Double>, Matrix<Double>, Matrix<Double>> {
+    @Override
     public Matrix<Double> value(final Matrix<Double> firstInput,
             final Matrix<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))
