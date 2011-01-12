@@ -16,16 +16,21 @@ package Mathematics.Matrix;
  * small matrices that are of dimension 3 or less.
  * @author Rune Dahl Iversen
  */
-public class DimensionLimits {
+public abstract class DimensionLimits {
     private final int _rowLimit;
     private final int _columnLimit;
 
-    public DimensionLimits(final int dimensionLimit) {
+    /**
+     * Creates dimension limits with the specified dimensional limit
+     * for both rows and columns.
+     * @param dimensionLimit The dimensional limit.
+     */
+    protected DimensionLimits(final int dimensionLimit) {
         this(dimensionLimit, dimensionLimit);
     }
 
     /**
-     * Creates dimensional limit with the specified limits.
+     * Creates dimensional limits with the specified limits.
      * @param rowLimit    The row limit.
      * @param columnLimit The column limit.
      */
