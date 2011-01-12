@@ -57,6 +57,22 @@ public class MatrixBaseTest {
     }
 
     /**
+     * Test of getFirstColumn method, of class MatrixBase.
+     */
+    public void testGetFirstColumn(final MatrixBase matrix, final int expResult) {
+        int result = matrix.getFirstColumn();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getFirstRow method, of class MatrixBase.
+     */
+    public void testGetFirstRow(final MatrixBase matrix, final int expResult) {
+        int result = matrix.getFirstRow();
+        assertEquals(expResult, result);
+    }
+
+    /**
      * Test of getLastColumn method, of class MatrixBase.
      */
     public void testGetLastColumn(final MatrixBase matrix, final int expResult) {
