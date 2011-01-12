@@ -112,7 +112,7 @@ public interface Matrix<TypeOfValue>
      * @param column Vector of values.
      * @return       A matrix composed of this matrix and the values from the vector.
      */
-    public Matrix<TypeOfValue> AddColumn(final Vector<TypeOfValue> column);
+    public Matrix<TypeOfValue> addColumn(final Vector<TypeOfValue> column);
 
     /**
      * Returns a clone of this matrix with the values from the specified vector
@@ -120,7 +120,7 @@ public interface Matrix<TypeOfValue>
      * @param row Vector of values.
      * @return    A matrix composed of this matrix and the values from the vector.
      */
-    public Matrix<TypeOfValue> AddRow(final Vector<TypeOfValue> row);
+    public Matrix<TypeOfValue> addRow(final Vector<TypeOfValue> row);
 
     /**
      * Add the the specified scalar times one column to another column.
@@ -128,7 +128,7 @@ public interface Matrix<TypeOfValue>
      * @param columnToAdd   Column to scale and add.
      * @param scalar        Scalar.
      */
-    public void AddScaledCloumn(final int columnToAddTo, final int columnToAdd,
+    public void addScaledColumn(final int columnToAddTo, final int columnToAdd,
             final TypeOfValue scalar);
 
     /**
@@ -137,7 +137,7 @@ public interface Matrix<TypeOfValue>
      * @param rowToAdd   Row to scale and add.
      * @param scalar     Scalar.
      */
-    public void AddScaledRow(final int rowToAddTo, final int rowToAdd,
+    public void addScaledRow(final int rowToAddTo, final int rowToAdd,
             final TypeOfValue scalar);
 
     /**
@@ -145,14 +145,14 @@ public interface Matrix<TypeOfValue>
      * @param column Column.
      * @param vector Vector of values.
      */
-    public void AddToColumn(final int column, final Vector<TypeOfValue> vector);
+    public void addToColumn(final int column, final Vector<TypeOfValue> vector);
 
     /**
      * Add the values of the specified vector to the row.
      * @param row    Row.
      * @param vector Vector of values.
      */
-    public void AddToRow(final int row, final Vector<TypeOfValue> vector);
+    public void addToRow(final int row, final Vector<TypeOfValue> vector);
 
     /**
      * Indicates whether the specified vector has the same dimensions
@@ -213,35 +213,35 @@ public interface Matrix<TypeOfValue>
      * @param matrix Matrix.
      * @return       Joined matrix.
      */
-    public Matrix<TypeOfValue> Join(final Matrix<TypeOfValue> matrix);
+    public Matrix<TypeOfValue> join(final Matrix<TypeOfValue> matrix);
 
     /**
      * Returns a clone of this matrix with the specified column removed.
      * @param column Column to be removed.
      * @return       Clone of this matrix with the column removed.
      */
-    public Matrix<TypeOfValue> RemoveColumn(final int column);
+    public Matrix<TypeOfValue> removeColumn(final int column);
 
     /**
      * Returns a clone of this matrix with the specified row removed.
      * @param row Row to be removed.
      * @return    Clone of this matrix with the row removed.
      */
-    public Matrix<TypeOfValue> RemoveRow(final int row);
+    public Matrix<TypeOfValue> removeRow(final int row);
 
     /**
      * Scale the values of the specified column by the scalar.
      * @param column Column.
      * @param scalar Scalar.
      */
-    public void ScaleColumn(final int column, final TypeOfValue scalar);
+    public void scaleColumn(final int column, final TypeOfValue scalar);
 
     /**
      * Scale the values of the specified row by the scalar.
      * @param row    Row.
      * @param scalar Scalar.
      */
-    public void ScaleRow(final int row, final TypeOfValue scalar);
+    public void scaleRow(final int row, final TypeOfValue scalar);
 
     /**
      * Returns a matrix consisting of this matrix
@@ -249,27 +249,27 @@ public interface Matrix<TypeOfValue>
      * @param matrix Matrix.
      * @return       Stacked matrix.
      */
-    public Matrix<TypeOfValue> Stack(final Matrix<TypeOfValue> matrix);
+    public Matrix<TypeOfValue> stack(final Matrix<TypeOfValue> matrix);
 
     /**
      * Switch the values of the 2 specified columns.
      * @param column1 Column.
      * @param column2 Column.
      */
-    public void SwitchColumns(final int column1, final int column2);
+    public void switchColumns(final int column1, final int column2);
 
     /**
      * Switch the values of the 2 specified rows.
      * @param row1 Row.
      * @param row2 Row.
      */
-    public void SwitchRows(final int row1, final int row2);
+    public void switchRows(final int row1, final int row2);
 
     /**
      * Returns the values of this matrix as a 2-dimensional zero-based array.
      * @return The values of this matrix.
      */
-    public TypeOfValue[][] ToArray();
+    public TypeOfValue[][] toArray();
 
     /**
      * Returns the
@@ -277,8 +277,7 @@ public interface Matrix<TypeOfValue>
      * of this matrix.
      * @return The transpose of this matrix.
      */
-    public Matrix<TypeOfValue> Transpose();
-
+    public Matrix<TypeOfValue> transpose();
 
     /**
      * Basis of the diagonal in a {@see Matrix matrix}.
