@@ -6,7 +6,6 @@
 package Mathematics.Equality;
 
 import Mathematics.*;
-import Mathematics.Metric.*;
 import Mathematics.Norm.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -156,7 +155,7 @@ public class NormAbsoluteTest {
         System.out.println("value(null, x)");
         Complex a = null;
         Complex b = this._b;
-        NormAbsolute instance = this._equality;
+        NormAbsolute<Complex> instance = this._equality;
         instance.value(a, b);
         fail("No exception thrown.");
     }
@@ -169,7 +168,7 @@ public class NormAbsoluteTest {
         System.out.println("value(x, null)");
         Complex a = this._a;
         Complex b = null;
-        NormAbsolute instance = this._equality;
+        NormAbsolute<Complex> instance = this._equality;
         instance.value(a, b);
         fail("No exception thrown.");
     }
