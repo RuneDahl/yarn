@@ -166,6 +166,48 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of addScaledColumn method, of class MatrixReal,
+     * for a scalar value of Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddScaledColumn_ScalarNaN() {
+        System.out.println("addScaledColumn(to, from, Double.NaN)");
+        int columnToAddTo = 0;
+        int columnToAdd = 1;
+        Double scalar = Double.NaN;
+        MatrixReal instance = this._matrix;
+        instance.addScaledColumn(columnToAddTo, columnToAdd, scalar);
+    }
+
+    /**
+     * Test of addScaledColumn method, of class MatrixReal,
+     * for a scalar value of Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddScaledColumn_ScalarPositiveInfinity() {
+        System.out.println("addScaledColumn(to, from, Double.POSITIVE_INFINITY)");
+        int columnToAddTo = 0;
+        int columnToAdd = 1;
+        Double scalar = Double.POSITIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.addScaledColumn(columnToAddTo, columnToAdd, scalar);
+    }
+
+    /**
+     * Test of addScaledColumn method, of class MatrixReal,
+     * for a scalar value of Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddScaledColumn_ScalarNegativeInfinity() {
+        System.out.println("addScaledColumn(to, from, Double.NEGATIVE_INFINITY)");
+        int columnToAddTo = 0;
+        int columnToAdd = 1;
+        Double scalar = Double.NEGATIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.addScaledColumn(columnToAddTo, columnToAdd, scalar);
+    }
+
+    /**
      * Test of addScaledRow method, of class MatrixReal.
      */
     @Test
@@ -223,6 +265,48 @@ public class MatrixRealTest {
         int rowToAddTo = 0;
         int rowToAdd = 1;
         Double scalar = null;
+        MatrixReal instance = this._matrix;
+        instance.addScaledRow(rowToAddTo, rowToAdd, scalar);
+    }
+
+    /**
+     * Test of addScaledRow method, of class MatrixReal,
+     * for a scalar value of Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddScaledRow_ScalarNaN() {
+        System.out.println("addScaledRow(to, from, Double.NaN)");
+        int rowToAddTo = 0;
+        int rowToAdd = 1;
+        Double scalar = Double.NaN;
+        MatrixReal instance = this._matrix;
+        instance.addScaledRow(rowToAddTo, rowToAdd, scalar);
+    }
+
+    /**
+     * Test of addScaledRow method, of class MatrixReal,
+     * for a scalar value of Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddScaledRow_ScalarPositiveInfinity() {
+        System.out.println("addScaledRow(to, from, Double.POSITIVE_INFINITY)");
+        int rowToAddTo = 0;
+        int rowToAdd = 1;
+        Double scalar = Double.POSITIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.addScaledRow(rowToAddTo, rowToAdd, scalar);
+    }
+
+    /**
+     * Test of addScaledRow method, of class MatrixReal,
+     * for a scalar value of Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddScaledRow_ScalarNegativeInfinity() {
+        System.out.println("addScaledRow(to, from, Double.NEGATIVE_INFINITY)");
+        int rowToAddTo = 0;
+        int rowToAdd = 1;
+        Double scalar = Double.NEGATIVE_INFINITY;
         MatrixReal instance = this._matrix;
         instance.addScaledRow(rowToAddTo, rowToAdd, scalar);
     }
@@ -664,6 +748,45 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of scaleColumn method, of class MatrixReal,
+     * for a scalar of value Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScaleColumn_ScalarNaN() {
+        System.out.println("scaleColumn(c, Double.NaN)");
+        int column = 0;
+        Double scalar = Double.NaN;
+        MatrixReal instance = this._matrix;
+        instance.scaleColumn(column, scalar);
+    }
+
+    /**
+     * Test of scaleColumn method, of class MatrixReal,
+     * for a scalar of value Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScaleColumn_ScalarPositiveInfinity() {
+        System.out.println("scaleColumn(c, Double.POSITIVE_INFINITY)");
+        int column = 0;
+        Double scalar = Double.POSITIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.scaleColumn(column, scalar);
+    }
+
+    /**
+     * Test of scaleColumn method, of class MatrixReal,
+     * for a scalar of value Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScaleColumn_ScalarNegativeInfinity() {
+        System.out.println("scaleColumn(c, Double.NEGATIVE_INFINITY)");
+        int column = 0;
+        Double scalar = Double.NEGATIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.scaleColumn(column, scalar);
+    }
+
+    /**
      * Test of scaleRow method, of class MatrixReal.
      */
     @Test
@@ -708,6 +831,45 @@ public class MatrixRealTest {
         System.out.println("scaleRow(r, null)");
         int row = 2;
         Double scalar =null;
+        MatrixReal instance = this._matrix;
+        instance.scaleRow(row, scalar);
+    }
+
+    /**
+     * Test of scaleRow method, of class MatrixReal,
+     * for a scalar of value Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScaleRow_ScalarNaN() {
+        System.out.println("scaleRow(r, Double.NaN)");
+        int row = 2;
+        Double scalar = Double.NaN;
+        MatrixReal instance = this._matrix;
+        instance.scaleRow(row, scalar);
+    }
+
+    /**
+     * Test of scaleRow method, of class MatrixReal,
+     * for a scalar of value Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScaleRow_ScalarPositiveInfinity() {
+        System.out.println("scaleRow(r, Double.POSITIVE_INFINITY)");
+        int row = 2;
+        Double scalar = Double.POSITIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.scaleRow(row, scalar);
+    }
+
+    /**
+     * Test of scaleRow method, of class MatrixReal,
+     * for a scalar of value Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScaleRow_ScalarNegativeInfinity() {
+        System.out.println("scaleRow(r, Double.NEGATIVE_INFINITY)");
+        int row = 2;
+        Double scalar = Double.NEGATIVE_INFINITY;
         MatrixReal instance = this._matrix;
         instance.scaleRow(row, scalar);
     }
@@ -1354,6 +1516,39 @@ public class MatrixRealTest {
     public void testScale_Null() {
         System.out.println("scale(null)");
         Double scalar = null;
+        MatrixReal instance = this._matrix;
+        instance.scale(scalar);
+    }
+
+    /**
+     * Test of scale method, of class MatrixReal, for a value of Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScale_NaN() {
+        System.out.println("scale(Double.NaN)");
+        Double scalar = Double.NaN;
+        MatrixReal instance = this._matrix;
+        instance.scale(scalar);
+    }
+
+    /**
+     * Test of scale method, of class MatrixReal, for a value of Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScale_PositiveInfinity() {
+        System.out.println("scale(Double.POSITIVE_INFINITY)");
+        Double scalar = Double.POSITIVE_INFINITY;
+        MatrixReal instance = this._matrix;
+        instance.scale(scalar);
+    }
+
+    /**
+     * Test of scale method, of class MatrixReal, for a value of Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testScale_NegativeInfinity() {
+        System.out.println("scale(Double.NEGATIVE_INFINITY)");
+        Double scalar = Double.NEGATIVE_INFINITY;
         MatrixReal instance = this._matrix;
         instance.scale(scalar);
     }
