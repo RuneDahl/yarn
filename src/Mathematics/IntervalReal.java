@@ -34,6 +34,7 @@ public final class IntervalReal implements Interval<Double> {
         this.setUpperType(upperType);
     }
 
+    @Override
     public boolean contains(final Double value) {
         boolean contained = true;
         contained &= (this._lowerType == EndType.Includes ?
@@ -45,22 +46,27 @@ public final class IntervalReal implements Interval<Double> {
         return contained;
     }
 
+    @Override
     public Double getLowerBound() {
         return this._lowerBound;
     }
 
+    @Override
     public EndType getLowerType() {
         return this._lowerType;
     }
 
+    @Override
     public Double getUpperBound() {
         return this._upperBound;
     }
 
+    @Override
     public EndType getUpperType() {
         return this._upperType;
     }
 
+    @Override
     public void setLowerBound(final Double lowerBound) {
         if (!__validator.isValid(lowerBound))
             throw new IllegalArgumentException(
@@ -68,10 +74,12 @@ public final class IntervalReal implements Interval<Double> {
         this._lowerBound = lowerBound;
     }
 
+    @Override
     public void setLowerType(final EndType lowerType) {
         this._lowerType = lowerType;
     }
 
+    @Override
     public void setUpperBound(final Double upperBound) {
         if (!__validator.isValid(upperBound))
             throw new IllegalArgumentException(
@@ -79,6 +87,7 @@ public final class IntervalReal implements Interval<Double> {
         this._upperBound = upperBound;
     }
 
+    @Override
     public void setUpperType(final EndType upperType) {
         this._upperType = upperType;
     }
@@ -91,7 +100,7 @@ public final class IntervalReal implements Interval<Double> {
         else if (o == this)
             equals = true;
         else if (o instanceof IntervalReal)
-            equals = this.equals((IntervalReal)o);
+            equals = this._equals((IntervalReal)o);
         else
             equals = false;
         return equals;
@@ -102,7 +111,7 @@ public final class IntervalReal implements Interval<Double> {
      * @param interval Interval.
      * @return         True if the intervals are equal, else false.
      */
-    public boolean equals(IntervalReal interval) {
+    private boolean _equals(IntervalReal interval) {
         boolean equals;
         if (interval == null)
             equals = false;
