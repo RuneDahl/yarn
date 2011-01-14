@@ -81,7 +81,7 @@ public class ComplexTest {
      */
     @Test
     public void testGetArgument() {
-        System.out.println("getArgument without inputs.");
+        System.out.println("getArgument");
         assertEquals(Double.NaN, this._inf.getArgument(), 0.0);
         assertEquals(Double.NaN, this._nan.getArgument(), 0.0);
         assertEquals(Double.NaN, this._origin.getArgument(), 0.0);
@@ -96,7 +96,7 @@ public class ComplexTest {
      */
     @Test
     public void testGetArgument_int() {
-        System.out.println("getArgument with integer input.");
+        System.out.println("getArgument(int)");
         assertEquals(Double.NaN, this._inf.getArgument(2), 0.0);
         assertEquals(Double.NaN, this._nan.getArgument(2), 0.0);
         assertEquals(Double.NaN, this._origin.getArgument(2), 0.0);
@@ -297,7 +297,7 @@ public class ComplexTest {
      */
     @Test
     public void testDivide() {
-        System.out.println("Divide");
+        System.out.println("divide");
 
         for (int i = 0; i < this._array.length; i++) {
             if (Complex.isNaN(this._array[i]) ||
@@ -456,7 +456,7 @@ public class ComplexTest {
      */
     @Test
     public void testDivideByOrigin() {
-        System.out.println("Divide by Complex.Origin");
+        System.out.println("divide(Complex.Origin)");
 
         assertEquals("Test divide by Complex.Origin failed for " + this._inf.toString(),
                 Complex.Infinity, this._inf.divide(Complex.Origin));
@@ -479,7 +479,7 @@ public class ComplexTest {
      */
     @Test (expected=NullPointerException.class)
     public void testDivideNullException() {
-        System.out.println("Divide by null");
+        System.out.println("divide(null)");
         this._origin.divide(null);
     }
 
@@ -547,7 +547,7 @@ public class ComplexTest {
      */
     @Test
     public void testInverse() {
-        System.out.println("Inverse");
+        System.out.println("inverse");
         this._inf = this._inf.inverse();
         this._nan = this._nan.inverse();
         this._origin = this._origin.inverse();
@@ -574,7 +574,7 @@ public class ComplexTest {
      */
     @Test
     public void testProduct() {
-        System.out.println("Product");
+        System.out.println("product");
 
         for (int i = 0; i < this._array.length; i++)
             for (int j = 0; j < this._array.length; j++)
@@ -674,8 +674,8 @@ public class ComplexTest {
      * Test of product method, of class Complex, with null input.
      */
     @Test (expected=NullPointerException.class)
-    public void testProductNullException() {
-        System.out.println("Product of null");
+    public void testProduct_Null() {
+        System.out.println("product(null)");
         this._origin.product(null);
     }
 
@@ -684,7 +684,7 @@ public class ComplexTest {
      */
     @Test
     public void testReverse() {
-        System.out.println("Reverse");
+        System.out.println("reverse");
 
         assertEquals("Failed reversal of " + this._inf.toString(),
                 Complex.Infinity, this._inf.reverse());
@@ -708,7 +708,7 @@ public class ComplexTest {
      */
     @Test
     public void testSubtract() {
-        System.out.println("Subtract");
+        System.out.println("subtract");
 
         for (int i = 0; i < this._array.length; i++) {
             if (Complex.isNaN(this._array[i]) ||
@@ -876,8 +876,8 @@ public class ComplexTest {
      * Test of subtract method, of class Complex, with null input.
      */
     @Test (expected=NullPointerException.class)
-    public void testSubtractNullException() {
-        System.out.println("Subtract of null");
+    public void testSubtract_Null() {
+        System.out.println("subtract(null)");
         this._origin.subtract(null);
     }
 
@@ -886,7 +886,7 @@ public class ComplexTest {
      */
     @Test
     public void testSum() {
-        System.out.println("Sum");
+        System.out.println("sum");
 
         for (int i = 0; i < this._array.length; i++)
             for (int j = 0; j < this._array.length; j++)
@@ -998,7 +998,7 @@ public class ComplexTest {
      */
     @Test (expected=NullPointerException.class)
     public void testSumNullException() {
-        System.out.println("Sum of null");
+        System.out.println("sum(null)");
         this._origin.sum(null);
     }
 
@@ -1246,8 +1246,8 @@ public class ComplexTest {
      * Test of static Polar method, of class Complex with negative value for modulus.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testPolarNegativeModulus() {
-        System.out.println("Polar with negative modulus throws exception.");
+    public void testPolar_NegativeModulus() {
+        System.out.println("Polar(negative, argument)");
         Complex.Polar(-1.0, 0.0);
     }
 
@@ -1335,8 +1335,8 @@ public class ComplexTest {
      * Test of static exp method, of class Complex, of a null value.
      */
     @Test (expected=NullPointerException.class)
-    public void testExpNullException() {
-        System.out.println("exp of null.");
+    public void testExp_Null() {
+        System.out.println("exp(null)");
         Complex.exp(null);
     }
 
@@ -1361,8 +1361,8 @@ public class ComplexTest {
      * Test of static log method, of class Complex, of a null value.
      */
     @Test (expected=NullPointerException.class)
-    public void testLogNullException() {
-        System.out.println("log of null.");
+    public void testLog_Null() {
+        System.out.println("log(null)");
         Complex.log(null);
     }
 }
