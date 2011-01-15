@@ -222,7 +222,7 @@ public class VectorRealPowerTest {
     public void testToString() {
         System.out.println("toString");
         VectorRealPower instance = this._norm;
-        String expResult = "{VectorRealPower(2.0)}";
+        String expResult = "{Mathematics.Norm.VectorRealPower(2.0)}";
         String result = instance.toString();
         assertEquals(expResult, result);
     }

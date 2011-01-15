@@ -230,7 +230,7 @@ public class ComplexPowerTest {
     public void testToString() {
         System.out.println("toString");
         ComplexPower instance = this._norm;
-        String expResult = "{ComplexPower(2.0)}";
+        String expResult = "{Mathematics.Norm.ComplexPower(2.0)}";
         String result = instance.toString();
         assertEquals(expResult, result);
     }
