@@ -176,7 +176,11 @@ public final class Complex
 
     @Override
     public boolean equals(Object value) {
-        if (value instanceof Complex)
+        if (value == null)
+            return false;
+        else if (value == this)
+            return true;
+        else if (value instanceof Complex)
             return this._equals((Complex)value);
         else
             return false;
@@ -444,10 +448,6 @@ public final class Complex
      * @return True if the values are equal else false.
      */
     private boolean _equals(Complex value) {
-        if (value == null) // Return false for a null value.
-            return false;
-        if (value == this)
-            return true;
         if (Complex.isNaN(this) && Complex.isNaN(value))
             return true;
         if (Complex.isInfinite(this) && Complex.isInfinite(value))
