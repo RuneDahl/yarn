@@ -1157,6 +1157,18 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of method setColumn, of class MatrixReal,
+     * for a vector of the wrong size.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetColumn_WrongDimension() {
+        System.out.println("setColumn(c, wrong size)");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = VectorReal.Unit(2, 1);
+        this._base.testSetColumn(instance, vector, 1, null);
+    }
+
+    /**
      * Test of method setRow, of class MatrixReal.
      */
     @Test
@@ -1192,6 +1204,18 @@ public class MatrixRealTest {
         System.out.println("setRow(c, null)");
         MatrixReal instance = this._matrix;
         VectorReal vector = null;
+        this._base.testSetRow(instance, vector, 1, null);
+    }
+
+    /**
+     * Test of method setRow, of class MatrixReal,
+     * for a vector of the wrong size.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetRow_WrongDimension() {
+        System.out.println("setRow(r, wrong size)");
+        MatrixReal instance = this._matrix;
+        VectorReal vector = VectorReal.Unit(2, 1);
         this._base.testSetRow(instance, vector, 1, null);
     }
 
@@ -1593,6 +1617,35 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of equals method, of class MatrixReal.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        MatrixReal instance = this._matrix;
+        Double[][] array = instance.toArray();
+        double[][] values = new double[array.length][array[0].length];
+        for (int r = 0; r < array.length; r++)
+            for (int c = 0; c < array[0].length; c++)
+                values[r][c] = array[r][c];
+        MatrixReal matrix = new MatrixReal(values);
+        MatrixReal three = MatrixReal.Zero(0, 3, 0, 2);
+        MatrixReal two = MatrixReal.Identity(0, 2);
+        this._base.testEquals(instance, matrix, three, two);
+    }
+
+    /**
+     * Test of toString method, of class MatrixReal.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("equals");
+        MatrixReal instance = this._matrix;
+        String expResult = "{Mathematics.Matrix.MatrixReal Rows: 0-2 Columns: 0-2 [[1.0; 0.0; 0.0]; [0.0; 1.0; 0.0]; [0.0; 0.0; 1.0]]}";
+        this._base.testToString(instance, expResult);
+    }
+
+    /**
      * Test of Identity method, of class MatrixReal.
      */
     @Test
@@ -1613,7 +1666,7 @@ public class MatrixRealTest {
      */
     @Test (expected=ArrayIndexOutOfBoundsException.class)
     public void testIdentity_NoDimensions() {
-        System.out.println("Identity");
+        System.out.println("Identity(fd, 0)");
         int firstDimension = 78;
         int dimensions = 0;
         MatrixReal.Identity(firstDimension, dimensions);
