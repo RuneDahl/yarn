@@ -47,12 +47,8 @@ public final class ComplexPower extends Power<Complex> {
 
     @Override
     public boolean equals(Object obj) {
-        boolean equals = false;
-        if (obj == null)
-            equals = false;
-        else if (obj == this)
-            equals = true;
-        else if (obj instanceof ComplexPower)
+        boolean equals = (obj != null);
+        if (obj instanceof ComplexPower)
             equals = this._equals((ComplexPower)obj);
         else
             equals = false;
@@ -62,10 +58,5 @@ public final class ComplexPower extends Power<Complex> {
     @Override
     public int hashCode() {
         return this._hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "{ComplexPower(" + Double.toString(this.getPower()) + ")}";
     }
 }
