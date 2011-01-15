@@ -153,12 +153,10 @@ public abstract class MatrixBase<TypeOfValue> implements Matrix<TypeOfValue> {
     }
 
     private boolean _equals(Matrix<TypeOfValue> matrix) {
-        boolean equals = (matrix == null ? false : this.hasSameDimensions(matrix));
-        if (equals) {
-            for (int col = this.getFirstColumn(); equals && col <= this.getLastColumn(); col++) {
-                for (int row = this.getFirstRow(); equals && row <= this.getLastRow(); row++) {
-                    equals &= this.getValue(row, col).equals(matrix.getValue(row, col));
-                }
+        boolean equals = this.hasSameDimensions(matrix);
+        for (int col = this.getFirstColumn(); equals && col <= this.getLastColumn(); col++) {
+            for (int row = this.getFirstRow(); equals && row <= this.getLastRow(); row++) {
+                equals &= this.getValue(row, col).equals(matrix.getValue(row, col));
             }
         }
         return equals;
