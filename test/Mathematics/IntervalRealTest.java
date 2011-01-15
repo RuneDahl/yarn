@@ -146,7 +146,42 @@ public class IntervalRealTest {
         double result = instance.getLowerBound();
         assertEquals("LowerBound from normal after setLowerBound.",
                 expResult, result, 0.0);
+    }
 
+    /**
+     * Test of setLowerBound method, of class IntervalReal,
+     * for the value Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetLowerBound_NaN() {
+        System.out.println("setLowerBound(Double.NaN)");
+        double lowerBound = Double.NaN;
+        IntervalReal instance = this._normal;
+        instance.setLowerBound(lowerBound);
+    }
+
+    /**
+     * Test of setLowerBound method, of class IntervalReal,
+     * for the value Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetLowerBound_PositiveInfinity() {
+        System.out.println("setLowerBound(Double.POSITIVE_INFINITY)");
+        double lowerBound = Double.POSITIVE_INFINITY;
+        IntervalReal instance = this._normal;
+        instance.setLowerBound(lowerBound);
+    }
+
+    /**
+     * Test of setLowerBound method, of class IntervalReal,
+     * for the value Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetLowerBound_NegativeInfinity() {
+        System.out.println("setLowerBound(Double.NEGATIVE_INFINITY)");
+        double lowerBound = Double.NEGATIVE_INFINITY;
+        IntervalReal instance = this._normal;
+        instance.setLowerBound(lowerBound);
     }
 
     /**
@@ -174,6 +209,17 @@ public class IntervalRealTest {
     }
 
     /**
+     * Test of setLowerType method, of class IntervalReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetLowerType_Null() {
+        System.out.println("setLowerType(null)");
+        EndType lowerType = null;
+        IntervalReal instance = this._normal;
+        instance.setLowerType(lowerType);
+    }
+
+    /**
      * Test of setUpperBound method, of class IntervalReal.
      */
     @Test
@@ -187,6 +233,42 @@ public class IntervalRealTest {
         double result = instance.getUpperBound();
         assertEquals("UpperBound from normal after setUpperBound.",
                 expResult, result, 0.0);
+    }
+
+    /**
+     * Test of setUpperBound method, of class IntervalReal,
+     * for the value Double.NaN.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetUpperBound_NaN() {
+        System.out.println("setUpperBound(Double.NaN)");
+        double upperBound = Double.NaN;
+        IntervalReal instance = this._normal;
+        instance.setUpperBound(upperBound);
+    }
+
+    /**
+     * Test of setUpperBound method, of class IntervalReal,
+     * for the value Double.POSITIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetUpperBound_PositiveInfinity() {
+        System.out.println("setUpperBound(Double.POSITIVE_INFINITY)");
+        double upperBound = Double.POSITIVE_INFINITY;
+        IntervalReal instance = this._normal;
+        instance.setUpperBound(upperBound);
+    }
+
+    /**
+     * Test of setUpperBound method, of class IntervalReal,
+     * for the value Double.NEGATIVE_INFINITY.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetUpperBound_NegativeInfinity() {
+        System.out.println("setUpperBound(Double.NEGATIVE_INFINITY)");
+        double upperBound = Double.NEGATIVE_INFINITY;
+        IntervalReal instance = this._normal;
+        instance.setUpperBound(upperBound);
     }
 
     /**
@@ -214,6 +296,17 @@ public class IntervalRealTest {
     }
 
     /**
+     * Test of setUpperType method, of class IntervalReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetUpperType_Null() {
+        System.out.println("setUpperType(null)");
+        EndType upperType = null;
+        IntervalReal instance = this._normal;
+        instance.setUpperType(upperType);
+    }
+
+    /**
      * Test of equals method, of class IntervalReal.
      */
     @Test
@@ -234,6 +327,9 @@ public class IntervalRealTest {
         System.out.println("equals");
         IntervalReal interval = this._reverse;
         IntervalReal instance = this._normal;
+
+        assertTrue("Does not equal self.", instance.equals(instance));
+
         boolean expResult = false;
         boolean result = instance.equals(interval);
         assertEquals(expResult, result);
@@ -270,7 +366,6 @@ public class IntervalRealTest {
         assertEquals(expResult, result);
         result = interval.equals(instance);
         assertEquals(expResult, result);
-
     }
 
     /**
