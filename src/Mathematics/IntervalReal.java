@@ -76,6 +76,8 @@ public final class IntervalReal implements Interval<Double> {
 
     @Override
     public void setLowerType(final EndType lowerType) {
+        if (lowerType == null)
+            throw new NullPointerException("Lower type not properly specified.");
         this._lowerType = lowerType;
     }
 
@@ -89,6 +91,8 @@ public final class IntervalReal implements Interval<Double> {
 
     @Override
     public void setUpperType(final EndType upperType) {
+        if (upperType == null)
+            throw new NullPointerException("Upper type not properly specified.");
         this._upperType = upperType;
     }
 
@@ -99,8 +103,8 @@ public final class IntervalReal implements Interval<Double> {
             equals = false;
         else if (o == this)
             equals = true;
-        else if (o instanceof IntervalReal)
-            equals = this._equals((IntervalReal)o);
+        else if (o instanceof Interval)
+            equals = this._equals((Interval)o);
         else
             equals = false;
         return equals;
@@ -111,18 +115,11 @@ public final class IntervalReal implements Interval<Double> {
      * @param interval Interval.
      * @return         True if the intervals are equal, else false.
      */
-    private boolean _equals(IntervalReal interval) {
-        boolean equals;
-        if (interval == null)
-            equals = false;
-        else if (interval == this)
-            equals = true;
-        else {
-            equals = this.getLowerType() == interval.getLowerType();
-            equals &= this.getLowerBound() - interval.getLowerBound() == 0.0;
-            equals &= this.getUpperType() == interval.getUpperType();
-            equals &= this.getUpperBound() - interval.getUpperBound() == 0.0;
-        }
+    private boolean _equals(Interval<Double> interval) {
+        boolean equals = this.getLowerType() == interval.getLowerType();
+        equals &= this.getLowerBound() - interval.getLowerBound() == 0.0;
+        equals &= this.getUpperType() == interval.getUpperType();
+        equals &= this.getUpperBound() - interval.getUpperBound() == 0.0;
         return equals;
     }
 
@@ -130,9 +127,9 @@ public final class IntervalReal implements Interval<Double> {
     public int hashCode() {
         int hash = 3;
         hash = 37 * hash + (int) (Double.doubleToLongBits(this._lowerBound) ^ (Double.doubleToLongBits(this._lowerBound) >>> 32));
-        hash = 37 * hash + (this._lowerType == null ? 0 : this._lowerType.hashCode());
+        hash = 37 * hash + this._lowerType.hashCode();
         hash = 37 * hash + (int) (Double.doubleToLongBits(this._upperBound) ^ (Double.doubleToLongBits(this._upperBound) >>> 32));
-        hash = 37 * hash + (this._upperType == null ? 0 : this._upperType.hashCode());
+        hash = 37 * hash + this._upperType.hashCode();
         return hash;
     }
 
