@@ -500,6 +500,11 @@ public class ComplexTest {
                     this._array[i].toString() + " to null.",
                     false, this._array[i].equals(nullValue));
         }
+
+        assertTrue("Complex.NaN equals itself.",
+                Complex.NaN.equals(Complex.NaN));
+        assertTrue("Complex.Infinity equals itself.",
+                Complex.Infinity.equals(Complex.Infinity));
     }
 
     /**
@@ -1283,8 +1288,8 @@ public class ComplexTest {
         for (int i = 0; i < this._array.length; i++)
             assertEquals("Failed test of isInfinite for index " + Integer.toString(i),
                     i == 0, Complex.isInfinite(this._array[i]));
-        assertEquals("Failed test of isInfinite for null value.",
-                false, Complex.isInfinite(null));
+        assertFalse("Failed test of isInfinite for null value.",
+                Complex.isInfinite(null));
     }
 
     /**
@@ -1296,8 +1301,8 @@ public class ComplexTest {
         for (int i = 0; i < this._array.length; i++)
             assertEquals("Failed test of isOrigin for index " + Integer.toString(i),
                     i == 2, Complex.isOrigin(this._array[i]));
-        assertEquals("Failed test of isOrigin for null value.",
-                false, Complex.isOrigin(null));
+        assertFalse("Failed test of isOrigin for null value.",
+                Complex.isOrigin(null));
     }
 
     /**
@@ -1309,8 +1314,8 @@ public class ComplexTest {
         for (int i = 0; i < this._array.length; i++)
             assertEquals("Failed test of isNaN for index " + Integer.toString(i),
                     i == 1, Complex.isNaN(this._array[i]));
-        assertEquals("Failed test of isNaN for null value.",
-                false, Complex.isNaN(null));
+        assertFalse("Failed test of isNaN for null value.",
+                Complex.isNaN(null));
     }
 
     /**
