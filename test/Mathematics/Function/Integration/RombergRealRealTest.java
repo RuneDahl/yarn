@@ -105,7 +105,7 @@ public class RombergRealRealTest {
      * Test of setCriterion method, of class RombergRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetCriterionNull() {
+    public void testSetCriterion_Null() {
         System.out.println("setCriterion(null)");
         Criterion<Double> criterion = null;
         RombergRealReal instance = this._romberg;
@@ -120,7 +120,8 @@ public class RombergRealRealTest {
     public void testGetMaximumIterations() {
         System.out.println("getMaximumIterations");
         RombergRealReal instance = this._romberg;
-        assertEquals("Wrong number of maximum iterations", 20, instance.getMaximumIterations());
+        assertEquals("Wrong number of maximum iterations", 20,
+                instance.getMaximumIterations());
     }
 
     /**
@@ -131,7 +132,8 @@ public class RombergRealRealTest {
         System.out.println("setMaximumIterations");
         RombergRealReal instance = this._romberg;
         instance.setMaximumIterations(6);
-        assertEquals("Wrong number of maximum iterations", 6, instance.getMaximumIterations());
+        assertEquals("Wrong number of maximum iterations", 6,
+                instance.getMaximumIterations());
     }
 
     /**
@@ -169,7 +171,7 @@ public class RombergRealRealTest {
      * Test of setRegion method, of class RombergRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetRegionNull() {
+    public void testSetRegion_Null() {
         System.out.println("setRegion(null)");
         Interval<Double> interval = null;
         RombergRealReal instance = this._romberg;
@@ -211,13 +213,25 @@ public class RombergRealRealTest {
         assertTrue("Wrong class of result sine+Romberg.", result instanceof MaximumIterationsFailure);
         MaximumIterationsFailure mif = (MaximumIterationsFailure)result;
         assertEquals("Wrong number of iterations of result sine+Romberg.", 6, mif.getIterations());
+
+        instance.setCriterion(new Alternator<Double>());
+
+        result = instance.value(this._functionPoly);
+        assertTrue("Wrong class of result.", result instanceof UnhandledExceptionThrown);
+        UnhandledExceptionThrown uet = (UnhandledExceptionThrown)result;
+        Exception e = new ArithmeticException("Unknown termination: " +
+                "Values have not converged and maximum iterations " +
+                "have not been reached.");
+        assertTrue("Wrong class of Exception in result.",
+                uet.getException() instanceof ArithmeticException);
+        assertEquals(e.getMessage(), uet.getException().getMessage());
     }
 
     /**
      * Test of value method, of class RombergRealReal, for the value null.
      */
     @Test
-    public void testValueNull() {
+    public void testValue_Null() {
         System.out.println("value(null)");
         Result result = this._romberg.value(null);
         assertTrue("Wrong class of result.", result instanceof UnhandledExceptionThrown);

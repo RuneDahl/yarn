@@ -411,6 +411,18 @@ public class CompositeRealRealTest {
         assertTrue("Wrong class of result sine+LeftHand.", result instanceof MaximumIterationsFailure);
         mif = (MaximumIterationsFailure)result;
         assertEquals("Wrong number of iterations of result sine+LeftHand.", 15, mif.getIterations());
+
+        instance.setCriterion(new Alternator<Double>());
+
+        result = instance.value(this._functionPoly);
+        assertTrue("Wrong class of result.", result instanceof UnhandledExceptionThrown);
+        UnhandledExceptionThrown uet = (UnhandledExceptionThrown)result;
+        Exception e = new ArithmeticException("Unknown termination: " +
+                "Values have not converged and maximum iterations " +
+                "have not been reached.");
+        assertTrue("Wrong class of Exception in result.",
+                uet.getException() instanceof ArithmeticException);
+        assertEquals(e.getMessage(), uet.getException().getMessage());
     }
 
     /**
