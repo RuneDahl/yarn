@@ -160,6 +160,32 @@ public class MatrixBaseTest {
     }
 
     /**
+     * Test of the equals method, of class MatrixBase.
+     */
+    public void testEquals(final MatrixBase matrix, final MatrixBase value,
+            final MatrixBase wrongRows, final MatrixBase wrongColumns) {
+        assertTrue("Does not equal self.", matrix.equals(matrix));
+
+        assertNotSame("Failed pre-condition to test equals(.).", value, matrix);
+        assertTrue("Does not equal clone.", matrix.equals(value));
+
+        assertFalse("Equals null.", matrix.equals(null));
+
+        assertFalse("Equals a non-matrix.", matrix.equals(4.5));
+
+        assertFalse("Matrices of different rows are equal.", matrix.equals(wrongRows));
+        assertFalse("Matrices of different columns are equal.", matrix.equals(wrongColumns));
+    }
+
+    /**
+     * Test of the toString method, of class MatrixBase.
+     */
+    public void testToString(MatrixBase matrix, String expResult) {
+        String result = matrix.toString();
+        assertEquals(expResult, result);
+    }
+
+    /**
      * Blank test to allow this setup.
      */
     @Test
