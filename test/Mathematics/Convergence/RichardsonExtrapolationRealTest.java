@@ -85,7 +85,6 @@ public class RichardsonExtrapolationRealTest {
         double factor = 1.0;
         RichardsonExtrapolationReal instance = this._richardson;
         instance.setFactor(factor);
-        fail("No exception thrown.");
     }
 
     /**
@@ -98,7 +97,6 @@ public class RichardsonExtrapolationRealTest {
         double factor = 0.0;
         RichardsonExtrapolationReal instance = this._richardson;
         instance.setFactor(factor);
-        fail("No exception thrown.");
     }
 
     /**
@@ -111,7 +109,6 @@ public class RichardsonExtrapolationRealTest {
         double factor = Double.POSITIVE_INFINITY;
         RichardsonExtrapolationReal instance = this._richardson;
         instance.setFactor(factor);
-        fail("No exception thrown.");
     }
 
     /**
@@ -124,7 +121,6 @@ public class RichardsonExtrapolationRealTest {
         double factor = Double.NaN;
         RichardsonExtrapolationReal instance = this._richardson;
         instance.setFactor(factor);
-        fail("No exception thrown.");
     }
 
     /**
@@ -156,7 +152,6 @@ public class RichardsonExtrapolationRealTest {
             instance.value(iteration, sequence);
         }
         instance.value(3, sequence);
-        fail("No exception thrown.");
     }
 
     /**
@@ -170,7 +165,6 @@ public class RichardsonExtrapolationRealTest {
         RichardsonExtrapolationReal instance = this._richardson;
         Integer iteration = 2;
         instance.value(iteration, sequence);
-        fail("No exception thrown.");
     }
 
     /**
@@ -205,6 +199,19 @@ public class RichardsonExtrapolationRealTest {
 
     /**
      * Test of value method, of class RichardsonExtrapolationReal,
+     * for an array value of length zero.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testValue_Integer_DoubleArrLengthZero() {
+        System.out.println("value(Integer, 0-array)");
+        Double[] sequence = new Double[0];
+        RichardsonExtrapolationReal instance = this._richardson;
+        Integer iteration = 2;
+        instance.value(iteration, sequence);
+    }
+
+    /**
+     * Test of value method, of class RichardsonExtrapolationReal,
      * for a null Integer value.
      */
     @Test (expected=NullPointerException.class)
@@ -214,7 +221,6 @@ public class RichardsonExtrapolationRealTest {
         RichardsonExtrapolationReal instance = this._richardson;
         Integer iteration = null;
         instance.value(iteration, sequence);
-        fail("No exception thrown.");
     }
 
     /**
@@ -255,5 +261,19 @@ public class RichardsonExtrapolationRealTest {
         RichardsonExtrapolationReal instance = this._richardson;
         Double[] result = instance.value(sequence);
         assertNull(result);
+    }
+
+    /**
+     * Test of value method, of class RichardsonExtrapolationReal,
+     * for an array value of length zero.
+     */
+    @Test
+    public void testValue_DoubleArrLengthZero() {
+        System.out.println("value(0-array)");
+        Double[] sequence = new Double[0];
+        RichardsonExtrapolationReal instance = this._richardson;
+        Double[] result = instance.value(sequence);
+        Double[] expResult = new Double[0];
+        assertArrayEquals(expResult, result);
     }
 }
