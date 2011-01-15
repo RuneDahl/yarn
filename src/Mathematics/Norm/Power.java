@@ -50,6 +50,12 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
         this._power = power;
     }
 
+    @Override
+    public String toString() {
+        return "{" + this.getClass().getName() +
+                "(" + Double.toString(this.getPower()) + ")}";
+    }
+
     /**
      * Returns whether the specified power-based norm has a power that equals
      * the power of this norm. <br>
@@ -58,13 +64,8 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
      * @return  True if the power values are the same, else false.
      */
     protected boolean _equals(Power<TypeOfValue> p) {
-        boolean equals = false;
-        if (p == null)
-            equals = false;
-        else if (p == this)
-            equals = true;
-        else
-            equals = (this._power == p.getPower());
+        boolean equals = (p == this);
+        equals |= (this._power == p.getPower());
         return equals;
     }
 
