@@ -87,10 +87,9 @@ public class TunableEvaluatorRealRealTest {
      * for the value Double.NaN.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetGainNaN() {
-        System.out.println("setGain to Double.NaN");
+    public void testSetGain_NaN() {
+        System.out.println("setGain(Double.NaN)");
         this._evaluator.setGain(Double.NaN);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -98,10 +97,9 @@ public class TunableEvaluatorRealRealTest {
      * for the value Double.POSITIVE_INFINITY.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetGainPositiveInfinity() {
-        System.out.println("setGain to Double.POSITIVE_INFINITY");
+    public void testSetGain_PositiveInfinity() {
+        System.out.println("setGain(Double.POSITIVE_INFINITY)");
         this._evaluator.setGain(Double.POSITIVE_INFINITY);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -109,10 +107,9 @@ public class TunableEvaluatorRealRealTest {
      * for the value Double.NEGATIVE_INFINITY.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetGainNegativeInfinity() {
-        System.out.println("setGain to Double.NEGATIVE_INFINITY");
+    public void testSetGain_NegativeInfinity() {
+        System.out.println("setGain(Double.NEGATIVE_INFINITY)");
         this._evaluator.setGain(Double.NEGATIVE_INFINITY);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -130,10 +127,9 @@ public class TunableEvaluatorRealRealTest {
      * for the value Double.NaN.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetPhaseNaN() {
-        System.out.println("setPhase to Double.NaN");
+    public void testSetPhase_NaN() {
+        System.out.println("setPhase(Double.NaN)");
         this._evaluator.setPhase(Double.NaN);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -141,10 +137,9 @@ public class TunableEvaluatorRealRealTest {
      * for the value Double.POSITIVE_INFINITY.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetPhasePositiveInfinity() {
-        System.out.println("setPhase to Double.POSITIVE_INFINITY");
+    public void testSetPhase_PositiveInfinity() {
+        System.out.println("setPhase(Double.POSITIVE_INFINITY)");
         this._evaluator.setPhase(Double.POSITIVE_INFINITY);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -152,10 +147,9 @@ public class TunableEvaluatorRealRealTest {
      * for the value Double.NEGATIVE_INFINITY.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetPhaseNegativeInfinity() {
-        System.out.println("setPhase to Double.NEGATIVE_INFINITY");
+    public void testSetPhase_NegativeInfinity() {
+        System.out.println("setPhase(Double.NEGATIVE_INFINITY)");
         this._evaluator.setPhase(Double.NEGATIVE_INFINITY);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -186,7 +180,6 @@ public class TunableEvaluatorRealRealTest {
     public void testValue_NullFunction() {
         System.out.println("value(null, i)");
         this._evaluator.value(null, this._interval);
-        fail("No exception thrown.");
     }
 
     /**
@@ -197,7 +190,6 @@ public class TunableEvaluatorRealRealTest {
     public void testValue_NullInterval() {
         System.out.println("value(f, null)");
         this._evaluator.value(this._poly, null);
-        fail("No exception thrown.");
     }
 
     /**
@@ -208,6 +200,5 @@ public class TunableEvaluatorRealRealTest {
     public void testValue_Null_BothValues() {
         System.out.println("value(null, null)");
         this._evaluator.value(null, null);
-        fail("No exception thrown.");
     }
 }

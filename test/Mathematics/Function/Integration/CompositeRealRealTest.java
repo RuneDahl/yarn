@@ -123,12 +123,11 @@ public class CompositeRealRealTest {
      * Test of setCriterion method, of class CompositeRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetCriterionNull() {
-        System.out.println("setCriterion to null");
+    public void testSetCriterion_Null() {
+        System.out.println("setCriterion(null)");
         Criterion<Double> criterion = null;
         CompositeRealReal instance = this._tunable;
         instance.setCriterion(criterion);
-        fail("No exception thrown.");
     }
 
     /**
@@ -161,12 +160,11 @@ public class CompositeRealRealTest {
      * Test of setEvaluator method, of class CompositeRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetEvaluatorNull() {
-        System.out.println("setEvaluator to null");
+    public void testSetEvaluator_Null() {
+        System.out.println("setEvaluator(null)");
         Evaluator<Function<Double, Double>, Interval<Double>, Double> evaluator = null;
         CompositeRealReal instance = this._tunable;
         instance.setEvaluator(evaluator);
-        fail("No exception thrown.");
     }
 
     /**
@@ -215,8 +213,8 @@ public class CompositeRealRealTest {
      * Test of setInitialSplits method, of class CompositeRealReal, to 0.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetInitialSplitsToNegative() {
-        System.out.println("setInitialSplits to -2");
+    public void testSetInitialSplits_Negative() {
+        System.out.println("setInitialSplits(-2)");
         CompositeRealReal instance = this._tunable;
         instance.setInitialSplits(-2);
         fail("No exception thrown.");
@@ -226,8 +224,8 @@ public class CompositeRealRealTest {
      * Test of setInitialSplits method, of class CompositeRealReal, to 0.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetInitialSplitsToZero() {
-        System.out.println("setInitialSplits to 0");
+    public void testSetInitialSplits_Zero() {
+        System.out.println("setInitialSplits(0)");
         CompositeRealReal instance = this._tunable;
         instance.setInitialSplits(0);
         fail("No exception thrown.");
@@ -258,8 +256,8 @@ public class CompositeRealRealTest {
      * Test of setInitialSplits method, of class CompositeRealReal, to a negative value.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetIterativeSplitsToNegative() {
-        System.out.println("setIterativeSplits to -2");
+    public void testSetIterativeSplits_Negative() {
+        System.out.println("setIterativeSplits(-2)");
         CompositeRealReal instance = this._tunable;
         instance.setIterativeSplits(-2);
         fail("No exception thrown.");
@@ -269,8 +267,8 @@ public class CompositeRealRealTest {
      * Test of setIterativeSplits method, of class CompositeRealReal, to 0.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetIterativeSplitsToZero() {
-        System.out.println("setIterativeSplits to 0");
+    public void testSetIterativeSplits_Zero() {
+        System.out.println("setIterativeSplits(0)");
         CompositeRealReal instance = this._tunable;
         instance.setIterativeSplits(0);
         fail("No exception thrown.");
@@ -280,8 +278,8 @@ public class CompositeRealRealTest {
      * Test of setIterativeSplits method, of class CompositeRealReal, to 1.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetIterativeSplitsToOne() {
-        System.out.println("setIterativeSplits to 1");
+    public void testSetIterativeSplits_One() {
+        System.out.println("setIterativeSplits(1)");
         CompositeRealReal instance = this._tunable;
         instance.setIterativeSplits(1);
         fail("No exception thrown.");
@@ -322,8 +320,8 @@ public class CompositeRealRealTest {
      * Test of setRegion method, of class CompositeRealReal, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetRegionNull() {
-        System.out.println("setRegion to null");
+    public void testSetRegion_Null() {
+        System.out.println("setRegion(null)");
         Interval<Double> interval = null;
         CompositeRealReal instance = this._tunable;
         instance.setRegion(interval);
@@ -419,7 +417,7 @@ public class CompositeRealRealTest {
      * Test of value method, of class CompositeRealReal, for the value null.
      */
     @Test
-    public void testValueNull() {
+    public void testValue_Null() {
         System.out.println("value(null)");
         Result result = this._tunable.value(null);
         assertTrue("Wrong class of result.", result instanceof UnhandledExceptionThrown);

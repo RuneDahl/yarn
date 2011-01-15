@@ -77,10 +77,9 @@ public class MidPointEvaluatorRealRealTest {
      * for a function that is null.
      */
     @Test (expected=NullPointerException.class)
-    public void testValueFunctionNull() {
-        System.out.println("value of function that is null");
+    public void testValue_FunctionNull() {
+        System.out.println("value(null, i)");
         this._evaluator.value(null, this._interval);
-        fail("Expected exception not thrown.");
     }
     /**
      * Test of value method, of class MidPointEvaluatorRealReal
@@ -88,9 +87,8 @@ public class MidPointEvaluatorRealRealTest {
      */
     @Test (expected=NullPointerException.class)
     public void testValueIntervalNull() {
-        System.out.println("value of interval that is null");
+        System.out.println("value(f, null)");
         this._evaluator.value(this._poly, null);
-        fail("Expected exception not thrown.");
     }
 
     /**
@@ -101,6 +99,5 @@ public class MidPointEvaluatorRealRealTest {
     public void testValue_Null_BothValues() {
         System.out.println("value(null, null)");
         this._evaluator.value(null, null);
-        fail("No exception thrown.");
     }
 }

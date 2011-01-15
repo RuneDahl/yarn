@@ -106,7 +106,7 @@ public class RombergRealRealTest {
      */
     @Test (expected=NullPointerException.class)
     public void testSetCriterionNull() {
-        System.out.println("setCriterion to null");
+        System.out.println("setCriterion(null)");
         Criterion<Double> criterion = null;
         RombergRealReal instance = this._romberg;
         instance.setCriterion(criterion);
@@ -170,7 +170,7 @@ public class RombergRealRealTest {
      */
     @Test (expected=NullPointerException.class)
     public void testSetRegionNull() {
-        System.out.println("setRegion to null");
+        System.out.println("setRegion(null)");
         Interval<Double> interval = null;
         RombergRealReal instance = this._romberg;
         instance.setRegion(interval);
