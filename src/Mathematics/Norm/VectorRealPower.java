@@ -42,12 +42,8 @@ public class VectorRealPower extends Power<Vector<Double>> {
 
     @Override
     public boolean equals(Object obj) {
-        boolean equals = false;
-        if (obj == null)
-            equals = false;
-        else if (obj == this)
-            equals = true;
-        else if (obj instanceof VectorRealPower)
+        boolean equals = (obj != null);
+        if (obj instanceof VectorRealPower)
             equals = this._equals((VectorRealPower)obj);
         else
             equals = false;
@@ -57,10 +53,5 @@ public class VectorRealPower extends Power<Vector<Double>> {
     @Override
     public int hashCode() {
         return this._hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "{VectorRealPower(" + Double.toString(this.getPower()) + ")}";
     }
 }
