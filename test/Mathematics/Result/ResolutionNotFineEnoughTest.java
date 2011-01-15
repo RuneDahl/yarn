@@ -20,6 +20,9 @@ import static org.junit.Assert.*;
  */
 public class ResolutionNotFineEnoughTest {
     private ResolutionNotFineEnough<Double, Double> _double;
+    private Function<Double, Double> _function;
+    private IntervalReal _interval;
+    private double _goalValue;
 
     public ResolutionNotFineEnoughTest() { // Intentional
     }
@@ -36,9 +39,10 @@ public class ResolutionNotFineEnoughTest {
     @Before
     public void setUp() {
         double[] coefficients = new double[]{ -1.0 , 2.0 , 0.5 };
-        Function<Double, Double> function = new PolynomialReal(coefficients);
-        IntervalReal interval = new IntervalReal(3.0, Interval.EndType.Includes, 3.2, Interval.EndType.Includes);
-        this._double = new ResolutionNotFineEnough<Double, Double>(function, interval, 4.5);
+        this._function = new PolynomialReal(coefficients);
+        this._interval = new IntervalReal(3.0, Interval.EndType.Includes, 3.2, Interval.EndType.Includes);
+        this._goalValue = 4.5;
+        this._double = new ResolutionNotFineEnough<Double, Double>(this._function, this._interval,  this._goalValue);
     }
 
     @After
@@ -52,8 +56,43 @@ public class ResolutionNotFineEnoughTest {
     @Test
     public void testResolutionNotFineEnough() {
         System.out.println("Constructor of ResolutionNotFineEnough.");
-
         assertNotNull(this._double);
+    }
+
+    /**
+     * Test of the constructor of class ResolutionNotFineEnough,
+     * for a function null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testResolutionNotFineEnough_FunctionNull() {
+        System.out.println("new ResolutionNotFineEnough(null, i, gv)");
+        ResolutionNotFineEnough<Double, Double> result =
+                new ResolutionNotFineEnough<Double, Double>(
+                null, this._interval, this._goalValue);
+    }
+
+    /**
+     * Test of the constructor of class ResolutionNotFineEnough,
+     * for an interval null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testResolutionNotFineEnough_IntervalNull() {
+        System.out.println("new ResolutionNotFineEnough(f, null, gv)");
+        ResolutionNotFineEnough<Double, Double> result =
+                new ResolutionNotFineEnough<Double, Double>(
+                this._function, null, this._goalValue);
+    }
+
+    /**
+     * Test of the constructor of class ResolutionNotFineEnough,
+     * for an interval null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testResolutionNotFineEnough_GoalValueNull() {
+        System.out.println("new ResolutionNotFineEnough(f, i, null)");
+        ResolutionNotFineEnough<Double, Double> result =
+                new ResolutionNotFineEnough<Double, Double>(
+                this._function, this._interval, null);
     }
 
     /**
