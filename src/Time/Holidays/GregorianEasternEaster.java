@@ -34,8 +34,8 @@ public final class GregorianEasternEaster
     /**
      * Create a Gregorian Eastern Easter.
      */
-    public GregorianEasternEaster() { // Intentional
-    }
+    public GregorianEasternEaster()
+    { /* Intentional */ }
 
     /**
      * Returns the Easter Sunday in the Gregorian Calendar occuring in the specified year.

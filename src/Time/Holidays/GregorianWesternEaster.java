@@ -38,8 +38,8 @@ public final class GregorianWesternEaster
     /**
      * Create a Gregorian Western Easter.
      */
-    public GregorianWesternEaster() { // Intentional
-    }
+    public GregorianWesternEaster()
+    { /* Intentional */ }
 
     /**
      * Returns the Easter Sunday in the Gregorian Calendar occuring in the specified year.
