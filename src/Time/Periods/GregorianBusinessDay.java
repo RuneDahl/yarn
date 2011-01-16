@@ -48,6 +48,7 @@ public final class GregorianBusinessDay extends Count<GregorianCalendar> {
         this._businessDays = businessDays;
     }
 
+    @Override
     public GregorianCalendar shift(GregorianCalendar date, int count) {
         return this._businessDays.shift(date, count);
     }
