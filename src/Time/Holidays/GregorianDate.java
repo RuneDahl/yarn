@@ -50,6 +50,7 @@ public final class GregorianDate implements Holiday<GregorianCalendar>{
      * @param date Date/time.
      * @return     Whether the specified date/time falls within this holiday.
      */
+    @Override
     public boolean isHoliday(final GregorianCalendar date) {
         return this._date == date.get(GregorianCalendar.DATE) &&
                 this._month == date.get(GregorianCalendar.MONTH) &&

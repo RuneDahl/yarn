@@ -52,6 +52,7 @@ public final class GregorianMonthly
      * @param month Month.
      * @return      This holiday as occuring in the specified year and month.
      */
+    @Override
     public GregorianCalendar getHoliday(final int year, final int month) {
         if (this.occurs(year, month))
             return new GregorianCalendar(year, month, this._date);
@@ -66,6 +67,7 @@ public final class GregorianMonthly
      * @param month Month.
      * @return      Whether this holiday occurs in the specified year and month.
      */
+    @Override
     public boolean occurs(final int year, final int month) {
         return this._date <= Time.Gregorian.lengthOfMonth(year, month);
     }
@@ -75,6 +77,7 @@ public final class GregorianMonthly
      * @param date Date/time.
      * @return     Whether the specified date/time falls within this holiday.
      */
+    @Override
     public boolean isHoliday(final GregorianCalendar date) {
         return date.get(GregorianCalendar.DATE) == this._date;
     }

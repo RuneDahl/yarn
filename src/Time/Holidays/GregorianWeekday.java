@@ -50,6 +50,7 @@ public final class GregorianWeekday implements Holiday<GregorianCalendar> {
      * @param date Date/time.
      * @return     Whether the specified date/time falls within this holiday.
      */
+    @Override
     public boolean isHoliday(final GregorianCalendar date) {
         return this._weekday == date.get(GregorianCalendar.DAY_OF_WEEK);
     }

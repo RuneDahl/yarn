@@ -78,6 +78,7 @@ public final class GregorianAnniversary
      * @throws NullPointerException
      *         This anniversary does not occur in the specified year.
      */
+    @Override
     public GregorianCalendar getHoliday(final int year) {
         if (this.occurs(year))
             return new GregorianCalendar(year, this._month, this._date);
@@ -90,6 +91,7 @@ public final class GregorianAnniversary
      * @param year Year.
      * @return     Whether this Gregorian anniversary happens in the specified year.
      */
+    @Override
     public boolean occurs(final int year) {
         return this._date <= Time.Gregorian.lengthOfMonth(year, this._month);
     }
@@ -99,9 +101,9 @@ public final class GregorianAnniversary
      * @param date Date/time.
      * @return     Whether the specified date/time is this Gregorian anniversary.
      */
+    @Override
     public boolean isHoliday(final GregorianCalendar date) {
         return date.get(GregorianCalendar.DATE) == this._date &&
                 date.get(GregorianCalendar.MONTH) == this._month;
     }
-
 }

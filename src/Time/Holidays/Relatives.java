@@ -65,6 +65,7 @@ public final class Relatives<TypeOfCalendar>
      * @return     Whether the specified date, shifted by one of the periods
      *             is a holiday to the central holiday.
      */
+    @Override
     public boolean isHoliday(final TypeOfCalendar date) {
         for (Period<TypeOfCalendar> p : this) {
             TypeOfCalendar d = p.shift(date, -1);

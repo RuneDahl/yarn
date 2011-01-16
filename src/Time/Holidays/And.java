@@ -38,6 +38,7 @@ public final class And<TypeOfCalendar>
      * @return     Whether the specified date/time is a holiday
      *             to all of the holidays in this collection.
      */
+    @Override
     public boolean isHoliday(final TypeOfCalendar date) {
         for (Holiday<TypeOfCalendar> holiday : this)
             if (holiday != null && !holiday.isHoliday(date))

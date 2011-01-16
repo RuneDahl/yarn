@@ -71,6 +71,7 @@ public final class GregorianEndDate implements Holiday<GregorianCalendar> {
         this._end = end;
     }
 
+    @Override
     public boolean isHoliday(final GregorianCalendar dateTime) {
         return (0 <= this._end.compareTo(dateTime) &&
                 this._holiday.isHoliday(dateTime));
