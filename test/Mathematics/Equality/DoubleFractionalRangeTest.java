@@ -106,10 +106,12 @@ public class DoubleFractionalRangeTest {
         System.out.println("value");
         for (int i = 0; i < this._values.length; i++)
         {
+            _equals.testValue(_instance, null, _values[i], false);
             _equals.testValue(_instance, _values[0], _values[i], false);
             _equals.testValue(_instance, _values[1], _values[i], false);
             _equals.testValue(_instance, _values[2], _values[i], false);
 
+            _equals.testValue(_instance, _values[i], null, false);
             _equals.testValue(_instance, _values[i], _values[0], false);
             _equals.testValue(_instance, _values[i], _values[1], false);
             _equals.testValue(_instance, _values[i], _values[2], false);
