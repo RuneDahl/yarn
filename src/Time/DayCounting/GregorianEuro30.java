@@ -25,6 +25,8 @@ public final class GregorianEuro30 extends Gregorian {
      */
     @Override
     public double month(final int year, final int month) {
+        if (month < 0 || 11 < month)
+            throw new IllegalArgumentException("Month out of range.");
         return 30.0;
     }
 
