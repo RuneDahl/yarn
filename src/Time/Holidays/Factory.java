@@ -14,7 +14,7 @@ import java.util.*;
  */
 public final class Factory {
     private Factory()
-    { }
+    { /* Intentional */ }
 
     /**
      * {@see Holiday Holidays} as used by the majority of danish financial
@@ -23,7 +23,7 @@ public final class Factory {
      * @return Danish financial holidays.
      */
     public static Holiday<GregorianCalendar> DanishFinancialHolidays() {
-        And<GregorianCalendar> holidays = new And<GregorianCalendar>();
+        Or<GregorianCalendar> holidays = new Or<GregorianCalendar>();
         holidays.add(new GregorianWeekday(GregorianCalendar.SATURDAY)); // Saturdays
         holidays.add(new GregorianWeekday(GregorianCalendar.SUNDAY)); // Sundays
         holidays.add(new GregorianAnniversary(0, 1)); // New Year's day
@@ -57,7 +57,7 @@ public final class Factory {
      * @return TARGET holidays.
      */
     public static Holiday<GregorianCalendar> TARGET() {
-        And<GregorianCalendar> holidays = new And<GregorianCalendar>();
+        Or<GregorianCalendar> holidays = new Or<GregorianCalendar>();
         holidays.add(new GregorianWeekday(GregorianCalendar.SATURDAY)); // Saturdays
         holidays.add(new GregorianWeekday(GregorianCalendar.SUNDAY)); // Sundays
         holidays.add(new GregorianAnniversary(0, 1)); // New Year's day
@@ -79,7 +79,7 @@ public final class Factory {
      * @return TARGET2 holidays.
      */
     public static Holiday<GregorianCalendar> TARGET2() {
-        And<GregorianCalendar> holidays = new And<GregorianCalendar>();
+        Or<GregorianCalendar> holidays = new Or<GregorianCalendar>();
         holidays.add(new GregorianWeekday(GregorianCalendar.SATURDAY)); // Saturdays
         holidays.add(new GregorianWeekday(GregorianCalendar.SUNDAY)); // Sundays
         holidays.add(new GregorianAnniversary(0, 1)); // New Year's day
@@ -92,10 +92,10 @@ public final class Factory {
 
     private static Holiday<GregorianCalendar> _WesternEaster(int... displacedDays) {
         Relatives<GregorianCalendar> holidays = new Relatives<GregorianCalendar>(
-                new GregorianWesternEaster(), new ArrayList<Period<GregorianCalendar>>());
-        if (displacedDays != null)
-            for (int displacedDay : displacedDays)
-                holidays.add(new Time.Periods.GregorianDay(displacedDay));
+                new GregorianWesternEaster(),
+                new ArrayList<Period<GregorianCalendar>>());
+        for (int displacedDay : displacedDays)
+            holidays.add(new Time.Periods.GregorianDay(displacedDay));
         return holidays;
     }
 }
