@@ -25,6 +25,7 @@ public class GregorianEuro30Test {
     private GregorianCalendar _mar1st2008;
     private GregorianCalendar _feb28th2009;
     private GregorianCalendar _mar1st2009;
+    private GregorianCalendar _mar31st2010;
 
     public GregorianEuro30Test() { // Intentional
     }
@@ -47,6 +48,7 @@ public class GregorianEuro30Test {
         this._mar1st2008 = new GregorianCalendar(2008, 2, 1, 04, 51, 42);
         this._feb28th2009 = new GregorianCalendar(2009, 1, 28, 11, 22, 33);
         this._mar1st2009 = new GregorianCalendar(2009, 2, 1, 12, 34, 56);
+        this._mar31st2010 = new GregorianCalendar(2010, 2, 31);
     }
 
     @After
@@ -54,7 +56,11 @@ public class GregorianEuro30Test {
         this._euro30 = null;
         this._may9th1974 = null;
         this._jan1st2000 = null;
+        this._feb28th2008 = null;
         this._mar1st2008 = null;
+        this._feb28th2009 = null;
+        this._mar1st2009 = null;
+        this._mar31st2010 = null;
     }
 
     /**
@@ -79,6 +85,14 @@ public class GregorianEuro30Test {
 
         expResult = -3.0502662037036998;
         result = instance.days(this._mar1st2009, this._feb28th2009);
+        assertEquals(expResult, result, 0.0);
+
+        expResult = 388.4757407407407;
+        result = instance.days(this._mar1st2009, this._mar31st2010);
+        assertEquals(expResult, result, 0.0);
+
+        expResult = 0.0;
+        result = instance.days(this._mar31st2010, this._mar31st2010);
         assertEquals(expResult, result, 0.0);
     }
 
