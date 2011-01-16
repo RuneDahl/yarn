@@ -26,7 +26,8 @@ public class GregorianHourTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Time.Periods.GregorianHour");
     }
 
     @AfterClass
@@ -101,7 +102,7 @@ public class GregorianHourTest {
      */
     @Test (expected=NullPointerException.class)
     public void testShift_NullDate() {
-        System.out.println("shift(null ,i)");
+        System.out.println("shift(null, i)");
         int count = 15;
         this._negativeOne.shift(null, count);
         fail("No exception thrown.");
