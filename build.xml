@@ -91,5 +91,15 @@
       <!-- Used by the hudson plug-in -->
       <cobertura-report format="xml" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
       <delete file="cobertura.ser" />
+        <fail if="tests.failed" unless="ignore.failing.tests">Some tests failed; see details above.</fail>
+    </target>
+    <target name="-post-test-run-single">
+        <!--  depends="test" -->
+      <!-- You can disable the html portion if you are using the hudson plugin and rely on the xml -->
+      <cobertura-report format="html" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
+      <!-- Used by the hudson plug-in -->
+      <cobertura-report format="xml" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
+      <delete file="cobertura.ser" />
+        <fail if="tests.failed" unless="ignore.failing.tests">Some tests failed; see details above.</fail>
     </target>
 </project>
