@@ -109,7 +109,6 @@ public class RelativesTest {
         Holiday<GregorianCalendar> centralHoliday = null;
         Relatives<GregorianCalendar> instance = this._relative;
         instance.setCentralHoliday(centralHoliday);
-        fail("No exception thrown.");
     }
 
     /**
@@ -138,6 +137,5 @@ public class RelativesTest {
         GregorianCalendar date = null;
         Relatives<GregorianCalendar> instance = this._relative;
         instance.isHoliday(date);
-        fail("No exception thrown.");
     }
 }

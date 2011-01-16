@@ -83,7 +83,6 @@ public class GregorianWeekdayTest {
         System.out.println("setWeekday(0)");
         GregorianWeekday instance = this._saturday;
         instance.setWeekday(0);
-        fail("No exception thrown.");
     }
 
     /**
@@ -94,7 +93,6 @@ public class GregorianWeekdayTest {
         System.out.println("setWeekday(8)");
         GregorianWeekday instance = this._saturday;
         instance.setWeekday(8);
-        fail("No exception thrown.");
     }
 
     /**
@@ -125,6 +123,5 @@ public class GregorianWeekdayTest {
         System.out.println("isHoliday");
         GregorianWeekday instance = this._saturday;
         instance.isHoliday(null);
-        fail("No exception thrown.");
     }
 }

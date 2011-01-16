@@ -92,7 +92,6 @@ public class GregorianDateTest {
         GregorianCalendar date = null;
         GregorianDate instance = this._mayNinth2k;
         instance.setDate(date);
-        fail("No exception thrown.");
     }
 
     /**
@@ -137,6 +136,5 @@ public class GregorianDateTest {
         GregorianCalendar date = null;
         GregorianDate instance = this._mayNinth2k;
         instance.isHoliday(date);
-        fail("No exception thrown.");
     }
 }

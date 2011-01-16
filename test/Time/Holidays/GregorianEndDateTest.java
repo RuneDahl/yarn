@@ -113,9 +113,7 @@ public class GregorianEndDateTest {
         System.out.println("setHoliday(null)");
         Holiday<GregorianCalendar> holiday = null;
         GregorianEndDate instance = this._valid;
-
         instance.setHoliday(holiday);
-        fail("No exception thrown.");
     }
 
     /**
@@ -146,9 +144,7 @@ public class GregorianEndDateTest {
         System.out.println("setEnd(null)");
         GregorianCalendar end = null;
         GregorianEndDate instance = this._valid;
-
         instance.setEnd(end);
-        fail("No exception thrown.");
     }
 
     /**
@@ -177,6 +173,5 @@ public class GregorianEndDateTest {
         GregorianCalendar dateTime = null;
         GregorianEndDate instance = this._valid;
        instance.isHoliday(dateTime);
-        fail("No exception thrown.");
     }
 }

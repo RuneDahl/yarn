@@ -91,7 +91,6 @@ public class GregorianMonthlyTest {
         System.out.println("setDate(0)");
         GregorianMonthly instance = this._first;
         instance.setDate(0);
-        fail("No exception thrown.");
     }
 
     /**
@@ -102,7 +101,6 @@ public class GregorianMonthlyTest {
         System.out.println("setDate(32)");
         GregorianMonthly instance = this._first;
         instance.setDate(32);
-        fail("No exception thrown.");
     }
 
     /**
@@ -137,7 +135,6 @@ public class GregorianMonthlyTest {
         int month = 1;
         GregorianMonthly instance = this._thirtyFirst;
         instance.getHoliday(year, month);
-        fail("No exception thrown.");
     }
 
     /**
