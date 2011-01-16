@@ -27,6 +27,16 @@ public final class Or<TypeOfCalendar>
      * Create a collection of holidays containing the specified holidays.
      * @param holidays Holidays.
      */
+    public Or(final Holiday<TypeOfCalendar>... holidays) {
+        this();
+        for (Holiday<TypeOfCalendar> h : holidays)
+            this.add(h);
+    }
+
+    /**
+     * Create a collection of holidays containing the specified holidays.
+     * @param holidays Holidays.
+     */
     public Or(final Collection<? extends Holiday<TypeOfCalendar>> holidays) {
         super(holidays);
     }
@@ -41,7 +51,7 @@ public final class Or<TypeOfCalendar>
     @Override
     public boolean isHoliday(final TypeOfCalendar date) {
         for (Holiday<TypeOfCalendar> holiday : this)
-            if (holiday != null && holiday.isHoliday(date))
+            if (holiday.isHoliday(date))
                 return true;
         return false;
     }

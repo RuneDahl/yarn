@@ -27,6 +27,16 @@ public final class And<TypeOfCalendar>
      * Create a collection of holidays containing the specified holidays.
      * @param holidays Holidays.
      */
+    public And(final Holiday<TypeOfCalendar>... holidays) {
+        this();
+        for (Holiday<TypeOfCalendar> h : holidays)
+            this.add(h);
+    }
+
+    /**
+     * Create a collection of holidays containing the specified holidays.
+     * @param holidays Holidays.
+     */
     public And(final Collection<? extends Holiday<TypeOfCalendar>> holidays) {
         super(holidays);
     }
@@ -41,7 +51,7 @@ public final class And<TypeOfCalendar>
     @Override
     public boolean isHoliday(final TypeOfCalendar date) {
         for (Holiday<TypeOfCalendar> holiday : this)
-            if (holiday != null && !holiday.isHoliday(date))
+            if (!holiday.isHoliday(date))
                 return false;
         return true;
     }
