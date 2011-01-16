@@ -23,6 +23,7 @@ public final class GregorianEuro30 extends Gregorian {
      * @param month Month.
      * @return      The length in days of the specified month of the specified year.
      */
+    @Override
     public double month(final int year, final int month) {
         return 30.0;
     }
@@ -32,6 +33,7 @@ public final class GregorianEuro30 extends Gregorian {
      * @param year Year.
      * @return     The length in days of the specified year.
      */
+    @Override
     public double year(final int year) {
         return 360.0;
     }
@@ -40,6 +42,7 @@ public final class GregorianEuro30 extends Gregorian {
      * Gets a string representation of this daycount when acting as a denominator.
      * @return String representation of this daycount when acting as a denominator.
      */
+    @Override
     public String getDenominator() {
         return "360";
     }
@@ -48,6 +51,7 @@ public final class GregorianEuro30 extends Gregorian {
      * Gets a string representation of this daycount when acting as a numerator.
      * @return String representation of this daycount when acting as a numerator.
      */
+    @Override
     public String getNumerator() {
         return "30E";
     }

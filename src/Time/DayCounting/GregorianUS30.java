@@ -25,6 +25,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * @param to   To date/time.
      * @return     The length of the period between the 2 specified date/times.
      */
+    @Override
     public double days(final GregorianCalendar from, final GregorianCalendar to) {
         if (0 < from.compareTo(to))
             return -this.days(to, from);
@@ -44,6 +45,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * @param month Month.
      * @return      The length in days of the specified month of the specified year.
      */
+    @Override
     public double month(final int year, final int month) {
         return 30.0;
     }
@@ -53,6 +55,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * @param year  Year.
      * @return      The length in days of the specified year.
      */
+    @Override
     public double year(final int year) {
         return 360.0;
     }
@@ -61,6 +64,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * Gets a string representation of this daycount when acting as a denominator.
      * @return String representation of this daycount when acting as a denominator.
      */
+    @Override
     public String getDenominator() {
         return "360";
     }
@@ -69,6 +73,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
      * Gets a string representation of this daycount when acting as a numerator.
      * @return String representation of this daycount when acting as a numerator.
      */
+    @Override
     public String getNumerator() {
         return "30U";
     }
