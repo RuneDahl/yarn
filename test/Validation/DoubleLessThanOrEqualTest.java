@@ -25,7 +25,8 @@ public class DoubleLessThanOrEqualTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Validation.DoubleLessThanOrEqual");
     }
 
     @AfterClass
@@ -70,7 +71,7 @@ public class DoubleLessThanOrEqualTest {
      */
     @Test
     public void testGetLimit() {
-        System.out.println("Testing DoubleLessThanOrEqual.getLimit().");
+        System.out.println("getLimit");
         this._limit.testGetLimit(this._instance, 0.0);
     }
 
@@ -79,7 +80,7 @@ public class DoubleLessThanOrEqualTest {
      */
     @Test
     public void testSetLimit() {
-        System.out.println("Testing DoubleLessThanOrEqual.setLimit(...).");
+        System.out.println("setLimit");
         this._limit.testSetLimit(this._instance, 1.0);
     }
 
@@ -89,8 +90,7 @@ public class DoubleLessThanOrEqualTest {
      */
     @Test
     public void testSetLimitToNaN() {
-        System.out.println("Testing DoubleLessThanOrEqual.setLimit(...) " +
-                "with Double.NaN as input.");
+        System.out.println("setLimit(Double.NaN)");
         this._limit.testSetLimit(this._instance, Double.NaN);
     }
 
@@ -101,8 +101,7 @@ public class DoubleLessThanOrEqualTest {
      */
     @Test(expected=NullPointerException.class)
     public void testSetLimitToNull() {
-        System.out.println("Testing DoubleLessThanOrEqual.setLimit(...) " +
-                "with null input.");
+        System.out.println("setLimit(null)");
         this._limit.testSetLimit(this._instance, null);
     }
 
@@ -111,7 +110,7 @@ public class DoubleLessThanOrEqualTest {
      */
     @Test
     public void testMessage() {
-        System.out.println("Testing DoubleLessThanOrEqual.Message(...).");
+        System.out.println("Message");
         this._tester.testMessage(this._instance, this._values[0],
                 Double.toString(this._values[0]), "");
         this._tester.testMessage(this._instance, this._values[1],
@@ -136,7 +135,7 @@ public class DoubleLessThanOrEqualTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("Testing DoubleLessThanOrEqual.isValid(...)");
+        System.out.println("isValid");
         this._tester.testIsValid(this._instance, this._values[0], true);
         this._tester.testIsValid(this._instance, this._values[1], true);
         this._tester.testIsValid(this._instance, this._values[2], true);

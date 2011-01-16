@@ -25,7 +25,8 @@ public class DoubleGreaterThanTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Validation.DoubleGreaterThan");
     }
 
     @AfterClass
@@ -70,7 +71,7 @@ public class DoubleGreaterThanTest {
      */
     @Test
     public void testGetLimit() {
-        System.out.println("Testing DoubleGreaterThan.getLimit().");
+        System.out.println("getLimit()");
         this._limit.testGetLimit(this._instance, 0.0);
     }
 
@@ -79,7 +80,7 @@ public class DoubleGreaterThanTest {
      */
     @Test
     public void testSetLimit() {
-        System.out.println("Testing DoubleGreaterThan.setLimit(...).");
+        System.out.println("setLimit");
         this._limit.testSetLimit(this._instance, 1.0);
     }
 
@@ -89,8 +90,7 @@ public class DoubleGreaterThanTest {
      */
     @Test
     public void testSetLimitToNaN() {
-        System.out.println("Testing DoubleGreaterThan.setLimit(...) " +
-                "with Double.NaN as input.");
+        System.out.println("setLimit(Double.NaN)");
         this._limit.testSetLimit(this._instance, Double.NaN);
     }
 
@@ -101,8 +101,7 @@ public class DoubleGreaterThanTest {
      */
     @Test(expected=NullPointerException.class)
     public void testSetLimitToNull() {
-        System.out.println("Testing DoubleGreaterThan.setLimit(...) " +
-                "with null input.");
+        System.out.println("setLimit(null)");
         this._limit.testSetLimit(this._instance, null);
     }
 
@@ -137,7 +136,7 @@ public class DoubleGreaterThanTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("Testing DoubleGreaterThan.isValid(...)");
+        System.out.println("isValid");
         this._tester.testIsValid(this._instance, this._values[0], false);
         this._tester.testIsValid(this._instance, this._values[1], false);
         this._tester.testIsValid(this._instance, this._values[2], false);

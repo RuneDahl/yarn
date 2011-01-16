@@ -24,7 +24,8 @@ public class DoubleIsNumericTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Validation.DoubleIsNumeric");
     }
 
     @AfterClass
@@ -80,7 +81,7 @@ public class DoubleIsNumericTest {
      */
     @Test
     public void testIsValid() {
-        System.out.println("Testing DoubleIsNumeric.isValid(...)");
+        System.out.println("isValid");
         this._tester.testIsValid(this._instance, this._values[0], true);
         this._tester.testIsValid(this._instance, this._values[1], true);
         this._tester.testIsValid(this._instance, this._values[2], true);
