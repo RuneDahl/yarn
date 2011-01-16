@@ -96,6 +96,9 @@ public class GregorianWesternEasterTest {
     public void testGetHoliday() {
         System.out.println("getHoliday");
         GregorianWesternEaster instance = this._easter;
+        for (int year = 1600; year < 2000; year++) {
+            GregorianCalendar result = instance.getHoliday(year);
+        }
         for (int year = 1982; year < 2023; year++) {
             GregorianCalendar expResult = this._easters.get(year);
             GregorianCalendar result = instance.getHoliday(year);
@@ -111,7 +114,6 @@ public class GregorianWesternEasterTest {
         System.out.println("getHoliday(1582)");
         GregorianWesternEaster instance = this._easter;
         instance.getHoliday(1582);
-        fail("No exception thrown.");
     }
 
     /**
@@ -122,7 +124,6 @@ public class GregorianWesternEasterTest {
         System.out.println("getHoliday(4100)");
         GregorianWesternEaster instance = this._easter;
         instance.getHoliday(4100);
-        fail("No exception thrown.");
     }
 
     /**
@@ -154,6 +155,8 @@ public class GregorianWesternEasterTest {
             assertEquals("", expResult, result);
             date.add(GregorianCalendar.DAY_OF_YEAR, 1);
         }
+        date = new GregorianCalendar(1000, 0, 1);
+        assertFalse(instance.isHoliday(date));
     }
 
     /**
@@ -164,6 +167,5 @@ public class GregorianWesternEasterTest {
         System.out.println("isHoliday(null)");
         GregorianWesternEaster instance = this._easter;
         instance.isHoliday(null);
-        fail("No exception thrown.");
     }
 }
