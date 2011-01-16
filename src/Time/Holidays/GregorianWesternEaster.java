@@ -48,6 +48,7 @@ public final class GregorianWesternEaster
      * @exception  NullPointerException Gregorian Easter does not occur/
      *             cannot be computed for the specified year.
      */
+    @Override
     public GregorianCalendar getHoliday(final int year) {
         if (!this.occurs(year))
             throw new NullPointerException("Gregorian Easter does not occur/" +
@@ -84,6 +85,7 @@ public final class GregorianWesternEaster
      * @return     Whether the Gregorian Easter occurs/can be computed for the
      *             specified year.
      */
+    @Override
     public boolean occurs(final int year) {
         return 1582 < year && year < 4100;
     }
@@ -93,13 +95,13 @@ public final class GregorianWesternEaster
      * @param date Date/time.
      * @return     Whether the specified date/time is on Easter Sunday.
      */
+    @Override
     public boolean isHoliday(final GregorianCalendar date) {
         int year = date.get(GregorianCalendar.YEAR);
         if (!this.occurs(year))
             return false;
         GregorianCalendar easter = this.getHoliday(year);
         return date.get(GregorianCalendar.DATE) == easter.get(GregorianCalendar.DATE) &&
-                date.get(GregorianCalendar.MONTH) == easter.get(GregorianCalendar.MONTH) &&
-                date.get(GregorianCalendar.YEAR) == easter.get(GregorianCalendar.YEAR);
+                date.get(GregorianCalendar.MONTH) == easter.get(GregorianCalendar.MONTH);
     }
 }
