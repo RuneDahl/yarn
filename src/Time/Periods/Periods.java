@@ -36,9 +36,8 @@ public final class Periods<TypeOfCalendar>
     public Periods(final int count,
             final Period<TypeOfCalendar>... periods) {
         this(count);
-        if (periods != null)
-            for (Period<TypeOfCalendar> p : periods)
-                this.add(p);
+        for (Period<TypeOfCalendar> p : periods)
+            this.add(p);
     }
 
     /**
