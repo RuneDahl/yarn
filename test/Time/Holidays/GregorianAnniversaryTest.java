@@ -93,7 +93,31 @@ public class GregorianAnniversaryTest {
         instance = this._februaryThirtyFirst;
         instance.setDate(date);
         assertEquals(15, instance.getDate());
-}
+    }
+
+    /**
+     * Test of setDate method, of class GregorianAnniversary,
+     * for the value 0 (zero).
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetDate_Zero() {
+        System.out.println("setDate(0)");
+        int date = 0;
+        GregorianAnniversary instance = this._mayNinth;
+        instance.setDate(date);
+    }
+
+    /**
+     * Test of setDate method, of class GregorianAnniversary,
+     * for the value 0 (zero).
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testSetDate_ThirtyTwo() {
+        System.out.println("setDate(32)");
+        int date = 32;
+        GregorianAnniversary instance = this._mayNinth;
+        instance.setDate(date);
+    }
 
     /**
      * Test of setMonth method, of class GregorianAnniversary.
@@ -120,7 +144,6 @@ public class GregorianAnniversaryTest {
         int month = -1;
         GregorianAnniversary instance = this._mayNinth;
         instance.setMonth(month);
-        fail("No exception thrown.");
     }
 
     /**
@@ -132,7 +155,6 @@ public class GregorianAnniversaryTest {
         int month = 12;
         GregorianAnniversary instance = this._mayNinth;
         instance.setMonth(month);
-        fail("No exception thrown.");
     }
 
     /**
@@ -159,7 +181,6 @@ public class GregorianAnniversaryTest {
         int year = 2000;
         GregorianAnniversary instance = this._februaryThirtyFirst;
         instance.getHoliday(year);
-        fail("No exception thrown.");
     }
 
     /**
@@ -213,6 +234,5 @@ public class GregorianAnniversaryTest {
         GregorianAnniversary instance = this._mayNinth;
         GregorianCalendar nullValue = null;
         instance.isHoliday(nullValue);
-        fail("No exception thrown.");
     }
 }
