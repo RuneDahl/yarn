@@ -162,12 +162,18 @@ public class DoubleFractionalRangeTest {
         }
     }
 
+    /**
+     * Test of the method getPrecision, of class DoubleFractionalRange.
+     */
     @Test
     public void testGetPrecision() {
         System.out.println("getPrecision");
         this._precisionBased.testGetPrecision(_instance, Math.pow(10.0, -10.0));
     }
 
+    /**
+     * Test of the method setPrecision, of class DoubleFractionalRange.
+     */
     @Test
     public void testSetPrecision() {
         System.out.println("setPrecision");
@@ -175,24 +181,40 @@ public class DoubleFractionalRangeTest {
             this._precisionBased.testSetPrecision(_instance, this._precisions[i]);
     }
 
+    /**
+     * Test of the method setPrecision, of class DoubleFractionalRange,
+     * for the value Double.NaN.
+     */
     @Test(expected=IllegalArgumentException.class)
     public void testSetPrecision_NaN() {
         System.out.println("setPrecision(Double.NaN)");
         this._precisionBased.testSetPrecision(_instance, Double.NaN);
     }
 
+    /**
+     * Test of the method setPrecision, of class DoubleFractionalRange,
+     * for the value Double.NEGATIVE_INFINITY.
+     */
     @Test(expected=IllegalArgumentException.class)
     public void testSetPrecision_NegativeInfinity() {
         System.out.println("setPrecision(Double.NEGATIVE_INFINITY)");
         this._precisionBased.testSetPrecision(_instance, Double.NEGATIVE_INFINITY);
     }
 
+    /**
+     * Test of the method getPrecision, of class DoubleFractionalRange,
+     * for a negative value.
+     */
     @Test(expected=IllegalArgumentException.class)
     public void testSetPrecision_NegativeValue() {
         System.out.println("setPrecision(negative value)");
         this._precisionBased.testSetPrecision(_instance, -_defaultPrecision);
     }
 
+    /**
+     * Test of the method setPrecision, of class DoubleFractionalRange,
+     * for the value Double.POSITIVE_INFINITY.
+     */
     @Test(expected=IllegalArgumentException.class)
     public void testSetPrecision_PositiveInfinity() {
         System.out.println("setPrecision(Double.POSITIVE_INFINITY)");
