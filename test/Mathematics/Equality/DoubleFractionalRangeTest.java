@@ -87,6 +87,10 @@ public class DoubleFractionalRangeTest {
         this._precisions = null;
     }
 
+    /**
+     * Test of the empty contructor, of class DoubleFractionalRange.
+     */
+    @Test
     public void testCtor_Empty() {
         System.out.println("DoubleFractionalRange()");
         DoubleFractionalRange instance = new DoubleFractionalRange();
@@ -95,11 +99,11 @@ public class DoubleFractionalRangeTest {
     }
 
     /**
-     * Test of Equal method, of class DoubleFractionalRange.
+     * Test of value method, of class DoubleFractionalRange.
      */
     @Test
-    public void testEqual() {
-        System.out.println("Equal");
+    public void testValue() {
+        System.out.println("value");
         for (int i = 0; i < this._values.length; i++)
         {
             _equals.testValue(_instance, _values[0], _values[i], false);

@@ -87,6 +87,10 @@ public class DoubleRelativeTest {
         this._precisions = null;
     }
 
+    /**
+     * Test of the empty constructor, of class DoubleRelative.
+     */
+    @Test
     public void testCtor_Empty() {
         System.out.println("DoubleRelative()");
         DoubleRelative instance = new DoubleRelative();

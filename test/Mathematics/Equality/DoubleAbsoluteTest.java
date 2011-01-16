@@ -88,6 +88,17 @@ public class DoubleAbsoluteTest {
     }
 
     /**
+     * Test of the empty contructor, of class DoubleAbsolute.
+     */
+    @Test
+    public void testCtor_Empty() {
+        System.out.println("DoubleAbsolute()");
+        DoubleAbsolute instance = new DoubleAbsolute();
+        assertNotNull(instance);
+        assertEquals(0.0, instance.getPrecision(), 0.0);
+    }
+
+    /**
      * Test of value method, of class DoubleAbsolute.
      */
     @Test
