@@ -30,7 +30,7 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
         if (0 < from.compareTo(to))
             return -this.days(to, from);
         GregorianCalendar f = _AdjustFrom(from);
-        GregorianCalendar t = _AdjustTo(to, from);
+        GregorianCalendar t = _AdjustTo(from, to);
         double difference = Time.Gregorian.belowDateDifference(f, t);
 
         difference += t.get(GregorianCalendar.DATE) - f.get(GregorianCalendar.DATE);
@@ -87,8 +87,8 @@ public final class GregorianUS30 implements DayCount<GregorianCalendar> {
         return adjusted;
     }
 
-    private GregorianCalendar _AdjustTo(final GregorianCalendar to,
-            final GregorianCalendar from) {
+    private GregorianCalendar _AdjustTo(final GregorianCalendar from,
+            final GregorianCalendar to) {
         GregorianCalendar adjusted = (GregorianCalendar)to.clone();
         if (adjusted.get(GregorianCalendar.DAY_OF_MONTH) == 31 &&
                 30 <= from.get(GregorianCalendar.DAY_OF_MONTH))
