@@ -29,6 +29,7 @@ public final class ModifiedFollowing<TypeOfCalendar>
         super(holidays, period);
     }
 
+    @Override
     public TypeOfCalendar adjust(final TypeOfCalendar dateTime) {
         Period<TypeOfCalendar> p = this.getPeriod();
         TypeOfCalendar adjusted = dateTime;
@@ -45,6 +46,7 @@ public final class ModifiedFollowing<TypeOfCalendar>
         return adjusted;
     }
 
+    @Override
     public TypeOfCalendar shift(final TypeOfCalendar dateTime,
             final int count) {
         Period<TypeOfCalendar> p = this.getPeriod();
