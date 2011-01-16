@@ -30,7 +30,8 @@ public class DoubleRelativeTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.Equality.DoubleRelative");
     }
 
     @AfterClass
@@ -86,21 +87,28 @@ public class DoubleRelativeTest {
         this._precisions = null;
     }
 
+    public void testCtor_Empty() {
+        System.out.println("DoubleRelative()");
+        DoubleRelative instance = new DoubleRelative();
+        assertNotNull(instance);
+        assertEquals(0.0, instance.getPrecision(), 0.0);
+    }
+
     /**
-     * Test of Equal method, of class DoubleRelative.
+     * Test of value method, of class DoubleRelative.
      */
     @Test
-    public void testEqual() {
-        System.out.println("DoubleRelative.Equal");
+    public void testValue() {
+        System.out.println("value");
         for (int i = 0; i < this._values.length; i++)
         {
-            _equals.testEqual(_instance, _values[0], _values[i], false);
-            _equals.testEqual(_instance, _values[1], _values[i], false);
-            _equals.testEqual(_instance, _values[2], _values[i], false);
+            _equals.testValue(_instance, _values[0], _values[i], false);
+            _equals.testValue(_instance, _values[1], _values[i], false);
+            _equals.testValue(_instance, _values[2], _values[i], false);
 
-            _equals.testEqual(_instance, _values[i], _values[0], false);
-            _equals.testEqual(_instance, _values[i], _values[1], false);
-            _equals.testEqual(_instance, _values[i], _values[2], false);
+            _equals.testValue(_instance, _values[i], _values[0], false);
+            _equals.testValue(_instance, _values[i], _values[1], false);
+            _equals.testValue(_instance, _values[i], _values[2], false);
         }
 
         boolean expecteds[] = new boolean[5];
@@ -150,38 +158,38 @@ public class DoubleRelativeTest {
 
     @Test
     public void testGetPrecision() {
-        System.out.println("DoubleRelative.getPrecision");
+        System.out.println("getPrecision");
         this._precisionBased.testGetPrecision(_instance, Math.pow(10.0, -10.0));
     }
 
     @Test
     public void testSetPrecision() {
-        System.out.println("DoubleRelative.setPrecision");
+        System.out.println("setPrecision");
         for (int i = 0; i < this._precisions.length; i++)
             this._precisionBased.testSetPrecision(_instance, this._precisions[i]);
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void testSetPrecisionNaN() {
-        System.out.println("DoubleRelative.setPrecision to Double.NaN");
+    public void testSetPrecision_NaN() {
+        System.out.println("setPrecision(Double.NaN)");
         this._precisionBased.testSetPrecision(_instance, Double.NaN);
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void testSetPrecisionNegativeInfinity() {
-        System.out.println("DoubleRelative.setPrecision to Double.NEGATIVE_INFINITY");
+    public void testSetPrecision_NegativeInfinity() {
+        System.out.println("setPrecision(Double.NEGATIVE_INFINITY)");
         this._precisionBased.testSetPrecision(_instance, Double.NEGATIVE_INFINITY);
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void testSetPrecisionNegativeValue() {
-        System.out.println("DoubleRelative.setPrecision to a negative value");
+    public void testSetPrecision_NegativeValue() {
+        System.out.println("setPrecision(negative value)");
         this._precisionBased.testSetPrecision(_instance, -_defaultPrecision);
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void testSetPrecisionPositiveInfinity() {
-        System.out.println("DoubleRelative.setPrecision to Double.POSITIVE_INFINITY");
+    public void testSetPrecision_PositiveInfinity() {
+        System.out.println("setPrecision(Double.POSITIVE_INFINITY)");
         this._precisionBased.testSetPrecision(_instance, Double.POSITIVE_INFINITY);
     }
 }
