@@ -167,8 +167,8 @@ public class GregorianEuro30Test {
         System.out.println("year");
         GregorianCalendar g = new GregorianCalendar();
         for (int year = 1583; year < 4100; year++) {
-            GregorianActual instance = new GregorianActual();
-            double expResult = (g.isLeapYear(year) ? 366.0 : 365.0);
+            GregorianEuro30 instance = new GregorianEuro30();
+            double expResult = 360.0;
             double result = instance.year(year);
             assertEquals("Failure for year " + Integer.toString(year),
                     expResult, result, 0.0);
