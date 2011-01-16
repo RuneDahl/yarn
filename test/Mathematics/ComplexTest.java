@@ -505,6 +505,16 @@ public class ComplexTest {
                 Complex.NaN.equals(Complex.NaN));
         assertTrue("Complex.Infinity equals itself.",
                 Complex.Infinity.equals(Complex.Infinity));
+
+        Object obj = 7.5;
+        assertFalse("Complex equals object of different class.",
+                this._onePointOne.equals(obj));
+
+        Complex value = Complex.Cartesian(-1.0, 1.0);
+        value = value.setReal(Double.POSITIVE_INFINITY);
+        assertTrue(this._inf.equals(value));
+        value = value.setReal(Double.NaN);
+        assertTrue(this._nan.equals(value));
     }
 
     /**
