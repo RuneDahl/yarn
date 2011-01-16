@@ -5,8 +5,7 @@
 
 package Time.Periods;
 
-import java.util.Collection;
-import java.util.GregorianCalendar;
+import java.util.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,6 +44,20 @@ public class PeriodsTest {
     @After
     public void tearDown() {
         this._periods = null;
+    }
+
+    /**
+     * Test of ctor, of class Periods, for a null period specified.
+     */
+    @Test
+    public void testCtor() {
+        System.out.println("ctor");
+        Collection<Period<GregorianCalendar>> coll = new LinkedList<Period<GregorianCalendar>>();
+        coll.add(this._day);
+        coll.add(this._hour);
+        Periods p = new Periods(2, coll);
+
+        p = new Periods(2, this._hour, this._day);
     }
 
     /**
