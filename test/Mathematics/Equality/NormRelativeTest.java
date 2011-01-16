@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
  * @author Rune Dahl Iversen
  */
 public class NormRelativeTest {
+    private PrecisionBasedTest<Complex> _precisionBased;
     private NormBasedTest _normBased;
     private Norm<Complex> _norm;
     private NormRelative<Complex> _equality;
@@ -40,6 +41,7 @@ public class NormRelativeTest {
 
     @Before
     public void setUp() {
+        this._precisionBased = new PrecisionBasedTest<Complex>();
         this._normBased = new NormBasedTest();
         this._norm = new ComplexPower(2.0);
         this._precision = Math.pow(10.0, -5.0);
@@ -51,6 +53,7 @@ public class NormRelativeTest {
 
     @After
     public void tearDown() {
+        this._precisionBased = null;
         this._normBased = null;
         this._norm = null;
         this._precision = Double.NaN;
@@ -94,6 +97,64 @@ public class NormRelativeTest {
     public void testSetNorm_Null() {
         System.out.println("setNorm(null)");
         this._normBased.testSetNorm(this._equality, null);
+    }
+
+    /**
+     * Test of the getPrecision method, of class NormAbsolute.
+     */
+    @Test
+    public void testGetPrecision() {
+        System.out.println("getPrecision");
+        this._precisionBased.testGetPrecision(this._equality, Math.pow(10.0, -5.0));
+    }
+
+    /**
+     * Test of the setPrecision method, of class NormAbsolute.
+     */
+    @Test
+    public void testsetPrecision() {
+        System.out.println("setPrecision");
+        this._precisionBased.testSetPrecision(this._equality, Math.pow(10.0, -6.0));
+    }
+
+    /**
+     * Test of the method getPrecision, of class NormAbsolute,
+     * for the value Double.NaN.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void testSetPrecision_NaN() {
+        System.out.println("setPrecision(Double.NaN)");
+        this._precisionBased.testSetPrecision(this._equality, Double.NaN);
+    }
+
+    /**
+     * Test of the method getPrecision, of class NormAbsolute,
+     * for the value Double.NEGATIVE_INFINITY.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void testSetPrecision_NegativeInfinity() {
+        System.out.println("setPrecision(Double.NEGATIVE_INFINITY)");
+        this._precisionBased.testSetPrecision(this._equality, Double.NEGATIVE_INFINITY);
+    }
+
+    /**
+     * Test of the method getPrecision, of class NormAbsolute,
+     * for a negative value.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void testSetPrecision_NegativeValue() {
+        System.out.println("setPrecision(negative value)");
+        this._precisionBased.testSetPrecision(this._equality, -this._precision);
+    }
+
+    /**
+     * Test of the method getPrecision, of class NormAbsolute,
+     * for the value Double.POSITIVE_INFINITY.
+     */
+    @Test(expected=IllegalArgumentException.class)
+    public void testSetPrecision_PositiveInfinity() {
+        System.out.println("setPrecision(Double.POSITIVE_INFINITY)");
+        this._precisionBased.testSetPrecision(this._equality, Double.POSITIVE_INFINITY);
     }
 
     /**
