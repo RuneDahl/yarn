@@ -66,9 +66,9 @@ public class GregorianBusinessDayTest {
         assertTrue("Wrong type of period.", f.getPeriod() instanceof GregorianDay);
         GregorianDay g = (GregorianDay)f.getPeriod();
         assertEquals("Wroung count from period.", 1, g.getCount());
-        assertTrue("Wrong type of holidays.", f.getHolidays() instanceof And);
-        And<GregorianCalendar> a = (And)f.getHolidays();
-        assertEquals("Wrong number of holidays in collection.", 9, a.size());
+        assertTrue("Wrong type of holidays.", f.getHolidays() instanceof Or);
+        Or<GregorianCalendar> o = (Or)f.getHolidays();
+        assertEquals("Wrong number of holidays in collection.", 9, o.size());
     }
 
     /**
@@ -130,12 +130,12 @@ public class GregorianBusinessDayTest {
         System.out.println("shift");
         GregorianBusinessDay instance = this._period;
         GregorianCalendar date = new GregorianCalendar(2000, 0, 1);
-        for (int count = 0; count < 1000; count++) {
+        for (int count = 0; count < 300; count++) {
             GregorianCalendar result = instance.shift(date, count);
             GregorianCalendar expResult = new GregorianCalendar(2000, 0, 1);
             for (int i = 0; i < count; ) {
-                i += (this._holidays.isHoliday(expResult) ? 0 : 1);
                 expResult.add(GregorianCalendar.DAY_OF_YEAR, 1);
+                i += (this._holidays.isHoliday(expResult) ? 0 : 1);
             }
             assertEquals(expResult, result);
         }
