@@ -21,7 +21,7 @@ public class GregorianNoLeapTest {
     private GregorianNoLeap _noLeap;
     private GregorianCalendar _may9th1974;
     private GregorianCalendar _jan1st2000;
-    private GregorianCalendar _feb28th2008;
+    private GregorianCalendar _feb29th2008;
     private GregorianCalendar _mar1st2008;
     private GregorianCalendar _feb28th2009;
     private GregorianCalendar _mar1st2009;
@@ -43,7 +43,7 @@ public class GregorianNoLeapTest {
         this._noLeap = new GregorianNoLeap();
         this._may9th1974 = new GregorianCalendar(1974, 4, 9);
         this._jan1st2000 = new GregorianCalendar(2000, 0, 1);
-        this._feb28th2008 = new GregorianCalendar(2008, 1, 28, 13, 46, 26);
+        this._feb29th2008 = new GregorianCalendar(2008, 1, 29, 13, 46, 26);
         this._mar1st2008 = new GregorianCalendar(2008, 2, 1, 04, 51, 42);
         this._feb28th2009 = new GregorianCalendar(2009, 1, 28, 11, 22, 33);
         this._mar1st2009 = new GregorianCalendar(2009, 2, 1, 12, 34, 56);
@@ -74,7 +74,7 @@ public class GregorianNoLeapTest {
         assertEquals(expResult, result, 0.0);
 
         expResult = 0.6286574074074025;
-        result = instance.days(this._feb28th2008, this._mar1st2008);
+        result = instance.days(this._feb29th2008, this._mar1st2008);
         assertEquals(expResult, result, 0.0);
 
         expResult = -1.0502662037036998;
