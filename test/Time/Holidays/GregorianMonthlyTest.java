@@ -111,7 +111,7 @@ public class GregorianMonthlyTest {
         System.out.println("getHoliday");
         for (int year = 2000; year < 2010; year++) {
             for (int month = 0; month < 12; month++) {
-                GregorianMonthly instance = this._first;
+                MonthlyRecurring<GregorianCalendar> instance = this._first;
                 GregorianCalendar expResult = new GregorianCalendar(year, month, 1);
                 GregorianCalendar result = instance.getHoliday(year, month);
                 assertEquals(expResult, result);

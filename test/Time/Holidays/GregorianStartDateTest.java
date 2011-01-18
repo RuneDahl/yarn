@@ -154,7 +154,7 @@ public class GregorianStartDateTest {
     public void testIsHoliday() {
         System.out.println("isHoliday");
         GregorianCalendar dateTime = new GregorianCalendar(2000, 0, 1);
-        GregorianStartDate instance = this._valid;
+        Holiday<GregorianCalendar> instance = this._valid;
         for (int i = 0; i < 10000; i++) {
             boolean expResult = (2010 <= dateTime.get(GregorianCalendar.YEAR)) &&
                     (dateTime.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.SUNDAY);

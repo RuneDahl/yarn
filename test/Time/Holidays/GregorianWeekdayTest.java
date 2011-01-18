@@ -103,7 +103,7 @@ public class GregorianWeekdayTest {
         System.out.println("isHoliday");
         GregorianCalendar date = new GregorianCalendar(2000, 0, 1);
         for (int i = 0; i < 10000; i++) {
-            GregorianWeekday instance = this._saturday;
+            Holiday<GregorianCalendar> instance = this._saturday;
             boolean expResult = date.get(GregorianCalendar.DAY_OF_WEEK) == 7;
             boolean result = instance.isHoliday(date);
             assertEquals(expResult, result);

@@ -155,7 +155,7 @@ public class GregorianEndDateTest {
     public void testIsHoliday() {
         System.out.println("isHoliday");
         GregorianCalendar dateTime = new GregorianCalendar(2010, 0, 1);
-        GregorianEndDate instance = this._valid;
+        Holiday<GregorianCalendar> instance = this._valid;
         GregorianCalendar laborDay = new GregorianCalendar(2010, 5, 1);
         for (int i = 0; i < 10000; i++) {
             boolean expResult = (0 <= laborDay.compareTo(dateTime)) &&

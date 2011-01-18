@@ -102,7 +102,7 @@ public class GregorianDateTest {
         System.out.println("isHoliday");
         GregorianCalendar date = new GregorianCalendar(2000, 0, 1);
         for (int i = 0; i < 10000; i++) {
-            GregorianDate instance = this._mayNinth2k;
+            Holiday<GregorianCalendar> instance = this._mayNinth2k;
             boolean expResult = date.get(GregorianCalendar.YEAR) == 2000 &&
                     date.get(GregorianCalendar.MONTH) == 4 &&
                     date.get(GregorianCalendar.DAY_OF_MONTH) == 9;

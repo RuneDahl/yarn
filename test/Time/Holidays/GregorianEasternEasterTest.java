@@ -149,7 +149,7 @@ public class GregorianEasternEasterTest {
     public void testIsHoliday() {
         System.out.println("isHoliday");
         GregorianCalendar date = new GregorianCalendar(1982, 0, 1);
-        GregorianEasternEaster instance = this._easter;
+        Holiday<GregorianCalendar> instance = this._easter;
         for (int i = 0; i < 10000; i++) {
             boolean expResult = this._easters.containsValue(date);
             boolean result = instance.isHoliday(date);
