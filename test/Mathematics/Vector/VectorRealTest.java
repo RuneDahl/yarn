@@ -14,7 +14,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Unit-test for the class Mathematics.Vector.VectorReal.
+ * jUnit-test for the class Mathematics.Vector.VectorReal.
  * @author Rune Dahl Iversen
  */
 public class VectorRealTest {
@@ -483,6 +483,18 @@ public class VectorRealTest {
         for (int index = 0; index < result.length; index++)
             assertEquals("Wrong value for index " + Integer.toString(index),
                     expResult[index], result[index], 0.0);
+    }
+
+    /**
+     * Test of toString method, of class VectorReal.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        VectorReal instance = this._vector;
+        String expResult = "[4.0 ; 3.2 ; -1.54 ; -3.141592653589793]";
+        String result = instance.toString();
+        assertEquals(expResult, result);
     }
 
     /**
