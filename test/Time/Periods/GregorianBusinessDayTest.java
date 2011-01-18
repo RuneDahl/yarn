@@ -102,7 +102,7 @@ public class GregorianBusinessDayTest {
     @Test
     public void testGetCount() {
         System.out.println("getCount");
-        GregorianBusinessDay instance = this._period;
+        Count<GregorianCalendar> instance = this._period;
         int expResult = 1;
         int result = instance.getCount();
         assertEquals(expResult, result);
@@ -128,7 +128,7 @@ public class GregorianBusinessDayTest {
     @Test
     public void testShift() {
         System.out.println("shift");
-        GregorianBusinessDay instance = this._period;
+        Period<GregorianCalendar> instance = this._period;
         GregorianCalendar date = new GregorianCalendar(2000, 0, 1);
         for (int count = 0; count < 300; count++) {
             GregorianCalendar result = instance.shift(date, count);
