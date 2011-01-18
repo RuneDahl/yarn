@@ -5,6 +5,7 @@
 
 package Time.Holidays;
 
+import Time.Gregorian;
 import java.util.GregorianCalendar;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -37,7 +38,7 @@ public class GregorianEndDateTest {
     public void setUp() {
         this._weekday = new GregorianWeekday(GregorianCalendar.SUNDAY);
         this._valid = new GregorianEndDate(this._weekday,
-                new GregorianCalendar(2010, 0, 1));
+                new GregorianCalendar(2010, 5, 1));
     }
 
     @After
@@ -70,7 +71,7 @@ public class GregorianEndDateTest {
     public void testGetEnd() {
         System.out.println("getEnd");
         GregorianEndDate instance = this._valid;
-        GregorianCalendar expResult = new GregorianCalendar(2010, 0, 1);
+        GregorianCalendar expResult = new GregorianCalendar(2010, 5, 1);
         GregorianCalendar result = instance.getEnd();
         assertEquals("Wrong end date.", expResult, result);
     }
@@ -109,7 +110,7 @@ public class GregorianEndDateTest {
      * Test of setHoliday method, of class GregorianEndDate, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetHolidayNull() {
+    public void testSetHoliday_Null() {
         System.out.println("setHoliday(null)");
         Holiday<GregorianCalendar> holiday = null;
         GregorianEndDate instance = this._valid;
@@ -125,7 +126,7 @@ public class GregorianEndDateTest {
         GregorianCalendar end = new GregorianCalendar(2000, 4, 9);
         GregorianEndDate instance = this._valid;
 
-        GregorianCalendar expResult = new GregorianCalendar(2010, 0, 1);
+        GregorianCalendar expResult = new GregorianCalendar(2010, 5, 1);
         GregorianCalendar result = instance.getEnd();
         assertEquals("Error in pre-condition.", expResult, result);
 
@@ -140,7 +141,7 @@ public class GregorianEndDateTest {
      * Test of setEnd method, of class GregorianEndDate, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testSetEndNull() {
+    public void testSetEnd_Null() {
         System.out.println("setEnd(null)");
         GregorianCalendar end = null;
         GregorianEndDate instance = this._valid;
@@ -155,11 +156,12 @@ public class GregorianEndDateTest {
         System.out.println("isHoliday");
         GregorianCalendar dateTime = new GregorianCalendar(2010, 0, 1);
         GregorianEndDate instance = this._valid;
+        GregorianCalendar laborDay = new GregorianCalendar(2010, 5, 1);
         for (int i = 0; i < 10000; i++) {
-            boolean expResult = (dateTime.get(GregorianCalendar.YEAR) < 2010) &&
+            boolean expResult = (0 <= laborDay.compareTo(dateTime)) &&
                     (dateTime.get(GregorianCalendar.DAY_OF_WEEK) == GregorianCalendar.SUNDAY);
             boolean result = instance.isHoliday(dateTime);
-            assertEquals(expResult, result);
+            assertEquals(Gregorian.toString(dateTime), expResult, result);
             dateTime.add(GregorianCalendar.DAY_OF_YEAR, 1);
         }
     }
@@ -168,7 +170,7 @@ public class GregorianEndDateTest {
      * Test of isHoliday method, of class GregorianEndDate, for the value null.
      */
     @Test (expected=NullPointerException.class)
-    public void testIsHolidayNull() {
+    public void testIsHoliday_Null() {
         System.out.println("isHoliday(null)");
         GregorianCalendar dateTime = null;
         GregorianEndDate instance = this._valid;
