@@ -174,7 +174,7 @@ public class RombergRealRealTest {
     public void testSetRegion_Null() {
         System.out.println("setRegion(null)");
         Interval<Double> interval = null;
-        RombergRealReal instance = this._romberg;
+        Integrator<Function<Double, Double>, Interval<Double>> instance = this._romberg;
         instance.setRegion(interval);
         fail("No exception thrown.");
     }

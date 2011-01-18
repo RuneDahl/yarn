@@ -323,7 +323,7 @@ public class CompositeRealRealTest {
     public void testSetRegion_Null() {
         System.out.println("setRegion(null)");
         Interval<Double> interval = null;
-        CompositeRealReal instance = this._tunable;
+        Integrator<Function<Double, Double>, Interval<Double>> instance = this._tunable;
         instance.setRegion(interval);
         fail("No exception thrown.");
     }
