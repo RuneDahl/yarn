@@ -88,12 +88,24 @@ public class NormBasedTest {
     }
 
     /**
+     * Test of setNorm method, of class NormBased, for the value null.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetNorm_Null() {
+        System.out.println("setNorm(null)");
+        NormBased instance = this._metric;
+
+        Norm<Complex> norm = null;
+        instance.setNorm(norm);
+    }
+
+    /**
      * Test of value method, of class NormBased.
      */
     @Test
     public void testValue() {
         System.out.println("value");
-        NormBased<Complex> instance = this._metric;
+        Metric<Complex> instance = this._metric;
 
         Complex firstInput = Complex.Cartesian(10.0, -3.4);
         Complex secondInput = Complex.Cartesian(1.0, 0.0);
@@ -139,13 +151,60 @@ public class NormBasedTest {
     @Test (expected=IllegalStateException.class)
     public void testValue_IllegalState() {
         System.out.println("value(x, null)");
-        NormBased<Double> instance = this._illegalState;
+        Metric<Double> instance = this._illegalState;
 
         Double firstInput = 5.0;
         Double secondInput = 2.4;
 
         instance.value(firstInput, secondInput);
         fail("No exception thrown.");
+    }
+
+    /**
+     * Test of value method, of class NormBased.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        NormBased<Complex> instance = this._metric;
+        assertTrue("Does not equals itself.", instance.equals(instance));
+
+        assertTrue("Does not identical metric.",
+                instance.equals(new NormBased<Complex>(new ComplexPower(2.0))));
+
+        assertFalse("Equals null.", instance.equals(null));
+
+        assertFalse("Equals metric of different value type.",
+                instance.equals(this._illegalState));
+
+        Object o = 7.5;
+        assertFalse("Equals Object of different type.",
+                instance.equals(o));
+    }
+
+    /**
+     * Test of toString method, of class NormBased.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        NormBased<Complex> instance = this._metric;
+        String result = instance.toString();
+        String expResult = "{Mathematics.Metric.NormBased(Norm: {Mathematics.Norm.ComplexPower(2.0)})}";
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hashCode method, of class NormBased.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        Metric<Complex> instance = this._metric;
+        int result = instance.hashCode();
+        Double d = 2.0;
+        int expResult = d.hashCode();
+        assertEquals(expResult, result);
     }
 
     /**
