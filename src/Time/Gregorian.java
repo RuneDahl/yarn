@@ -178,7 +178,13 @@ public final class Gregorian {
             return (GregorianCalendar)date2.clone();
     }
 
-    public static String toString(GregorianCalendar dateTime) {
+    /**
+     * Returns the default string representation of a date/time in the
+     * Gregorian calendar.
+     * @param dateTime Date/Time.
+     * @return         String value representing the date/time.
+     */
+    public static String toString(final GregorianCalendar dateTime) {
         StringBuilder d = new StringBuilder();
         d.append(Integer.toString(dateTime.get(GregorianCalendar.YEAR)) + "-");
         d.append(Integer.toString(dateTime.get(GregorianCalendar.MONTH) + 1) + "-");
