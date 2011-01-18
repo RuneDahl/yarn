@@ -91,7 +91,7 @@ public class ComplexMaximumTest {
     public void testValue_Null() {
         System.out.println("value(null)");
         Complex input = null;
-        ComplexMaximum instance = this._norm;
+        Norm<Complex> instance = this._norm;
         instance.value(input);
         fail("No exception thrown.");
     }

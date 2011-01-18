@@ -65,7 +65,7 @@ public class VectorRealMaximumTest {
     @Test (expected=NullPointerException.class)
     public void testValue_Null() {
         System.out.println("value(null)");
-        VectorRealMaximum instance = this._norm;
+        Norm<Vector<Double>> instance = this._norm;
 
         Double expResult = 1.0;
         Vector<Double> input = null;

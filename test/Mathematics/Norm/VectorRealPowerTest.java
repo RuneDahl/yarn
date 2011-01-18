@@ -135,7 +135,7 @@ public class VectorRealPowerTest {
     @Test
     public void testValue() {
         System.out.println("value");
-        VectorRealPower instance = this._norm;
+        Norm<Vector<Double>> instance = this._norm;
 
         Vector<Double> vector = this._vector;
         Double expResult = Math.sqrt(7.0);
