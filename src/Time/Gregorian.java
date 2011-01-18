@@ -13,8 +13,8 @@ import java.util.GregorianCalendar;
  * @author Rune Dahl Iversen
  */
 public final class Gregorian {
-    private Gregorian() {
-    }
+    private Gregorian()
+    { /* Intentional */ }
 
     /**
      * Returns the difference between the two specified Gregorian date/times
@@ -99,29 +99,45 @@ public final class Gregorian {
         switch (month)
         {
             case 0:
-            case 2:
-            case 4:
-            case 6:
-            case 7:
-            case 9:
-            case 11:
                 length = 31.0;
                 break;
             case 1:
-                length = 28.0;
+                length = 28.0 + (isLeapYear(year) ? 1.0 : 0.0);
+                break;
+            case 2:
+                length = 31.0;
                 break;
             case 3:
+                length = 30.0;
+                break;
+            case 4:
+                length = 31.0;
+                break;
             case 5:
+                length = 30.0;
+                break;
+            case 6:
+                length = 31.0;
+                break;
+            case 7:
+                length = 31.0;
+                break;
             case 8:
+                length = 30.0;
+                break;
+            case 9:
+                length = 31.0;
+                break;
             case 10:
                 length = 30.0;
+                break;
+            case 11:
+                length = 31.0;
                 break;
             default:
                 throw new IllegalArgumentException("The month must be an " +
                         "integer in the range 0 to 11 (both included).");
         }
-        if (month == 1 && isLeapYear(year))
-            length = 29.0;
         return length;
     }
 
@@ -160,5 +176,17 @@ public final class Gregorian {
             return (GregorianCalendar)date1.clone();
         else
             return (GregorianCalendar)date2.clone();
+    }
+
+    public static String toString(GregorianCalendar dateTime) {
+        StringBuilder d = new StringBuilder();
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.YEAR)) + "-");
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.MONTH) + 1) + "-");
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.DAY_OF_MONTH)) + " ");
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.HOUR_OF_DAY)) + ":");
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.MINUTE)) + ":");
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.SECOND)) + ".");
+        d.append(Integer.toString(dateTime.get(GregorianCalendar.MILLISECOND)));
+        return d.toString();
     }
 }
