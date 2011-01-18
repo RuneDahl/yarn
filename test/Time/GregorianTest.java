@@ -87,7 +87,7 @@ public class GregorianTest {
      * Test of belowDateDifference method, of class Gregorian, for both input null.
      */
     @Test (expected=NullPointerException.class)
-    public void testBelowDateDifferenceBothNull() {
+    public void testBelowDateDifference_BothNull() {
         System.out.println("belowDateDifference(null, null)");
         Gregorian.belowDateDifference(null, null);
         fail("No exception thrown.");
@@ -97,7 +97,7 @@ public class GregorianTest {
      * Test of belowDateDifference method, of class Gregorian, for from null.
      */
     @Test (expected=NullPointerException.class)
-    public void testBelowDateDifferenceFromNull() {
+    public void testBelowDateDifference_FromNull() {
         System.out.println("belowDateDifference(null, x)");
         Gregorian.belowDateDifference(null, new GregorianCalendar());
         fail("No exception thrown.");
@@ -107,7 +107,7 @@ public class GregorianTest {
      * Test of belowDateDifference method, of class Gregorian, for from null.
      */
     @Test (expected=NullPointerException.class)
-    public void testBelowDateDifferenceToNull() {
+    public void testBelowDateDifference_ToNull() {
         System.out.println("belowDateDifference(x, null)");
         Gregorian.belowDateDifference(new GregorianCalendar(), null);
         fail("No exception thrown.");
@@ -266,6 +266,24 @@ public class GregorianTest {
     }
 
     /**
+     * Test of lengthOfMonth method, of class Gregorian, for the value -1.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testLengthOfMonth_MinusOne() {
+        System.out.println("lengthOfMonth(-1)");
+        Gregorian.lengthOfMonth(2000, -1);
+    }
+
+    /**
+     * Test of lengthOfMonth method, of class Gregorian, for the value 12.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testLengthOfMonth_Twelve() {
+        System.out.println("lengthOfMonth(12)");
+        Gregorian.lengthOfMonth(2000, 12);
+    }
+
+    /**
      * Test of lengthOfYear method, of class Gregorian.
      */
     @Test
@@ -299,7 +317,7 @@ public class GregorianTest {
      * Test of max method, of class Gregorian, with both input as null.
      */
     @Test (expected=NullPointerException.class)
-    public void testMaxBothNull() {
+    public void testMax_BothNull() {
         System.out.println("max(null, null)");
         Gregorian.max(null, null);
         fail("No exception thrown.");
@@ -309,7 +327,7 @@ public class GregorianTest {
      * Test of max method, of class Gregorian, with first input as null.
      */
     @Test (expected=NullPointerException.class)
-    public void testMaxNull1() {
+    public void testMax_Null1() {
         System.out.println("max(null, x)");
         Gregorian.max(null, new GregorianCalendar());
         fail("No exception thrown.");
@@ -319,7 +337,7 @@ public class GregorianTest {
      * Test of max method, of class Gregorian, with second input as null.
      */
     @Test (expected=NullPointerException.class)
-    public void testMaxNull2() {
+    public void testMax_Null2() {
         System.out.println("max(x, null)");
         Gregorian.max(new GregorianCalendar(), null);
         fail("No exception thrown.");
@@ -344,7 +362,7 @@ public class GregorianTest {
      * Test of min method, of class Gregorian, with both input as null.
      */
     @Test (expected=NullPointerException.class)
-    public void testminBothNull() {
+    public void testMin_BothNull() {
         System.out.println("min(null, null)");
         Gregorian.min(null, null);
         fail("No exception thrown.");
@@ -354,7 +372,7 @@ public class GregorianTest {
      * Test of min method, of class Gregorian, with first input as null.
      */
     @Test (expected=NullPointerException.class)
-    public void testminNull1() {
+    public void testMin_Null1() {
         System.out.println("min(null, x)");
         Gregorian.min(null, new GregorianCalendar());
         fail("No exception thrown.");
@@ -364,9 +382,31 @@ public class GregorianTest {
      * Test of min method, of class Gregorian, with second input as null.
      */
     @Test (expected=NullPointerException.class)
-    public void testminNull2() {
+    public void testMin_Null2() {
         System.out.println("min(x, null)");
         Gregorian.min(new GregorianCalendar(), null);
         fail("No exception thrown.");
+    }
+
+    /**
+     * Test of toString method, of class Gregorian, for a null value.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        GregorianCalendar date = new GregorianCalendar(2010, 3, 23, 12, 34, 56);
+        date.add(GregorianCalendar.MILLISECOND, 789);
+        String result = Gregorian.toString(date);
+        String expResult = "2010-4-23 12:34:56.789";
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of toString method, of class Gregorian, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testToString_Null() {
+        System.out.println("toString(null)");
+        Gregorian.toString(null);
     }
 }
