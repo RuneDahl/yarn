@@ -106,11 +106,11 @@ public class DoubleLessThanTest {
     }
 
     /**
-     * Test of Message method, of class DoubleLessThan.
+     * Test of message method, of class DoubleLessThan.
      */
     @Test
     public void testMessage() {
-        System.out.println("Message");
+        System.out.println("message");
         this._tester.testMessage(this._instance, this._values[0],
                 Double.toString(this._values[0]), "");
         this._tester.testMessage(this._instance, this._values[1],

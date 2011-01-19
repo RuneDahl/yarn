@@ -54,11 +54,11 @@ public class DoubleIsNumericTest {
     }
 
     /**
-     * Test of Message method, of class DoubleIsNumeric.
+     * Test of message method, of class DoubleIsNumeric.
      */
     @Test
     public void testMessage() {
-        System.out.println("Testing DoubleIsNumeric.Message(...).");
+        System.out.println("Testing DoubleIsNumeric.message(...).");
         this._tester.testMessage(this._instance, this._values[0],
                 Double.toString(this._values[0]), "");
         this._tester.testMessage(this._instance, this._values[1],

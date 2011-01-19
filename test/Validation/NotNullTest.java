@@ -42,11 +42,11 @@ public class NotNullTest {
     }
 
     /**
-     * Test of Message method, of class NotNull.
+     * Test of message method, of class NotNull.
      */
     @Test
     public void testMessage() {
-        System.out.println("Message");
+        System.out.println("message");
         Double value = null;
         String name = "Value";
         NotNull instance = this._notNull;

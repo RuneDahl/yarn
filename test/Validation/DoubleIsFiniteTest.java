@@ -54,11 +54,11 @@ public class DoubleIsFiniteTest {
     }
 
     /**
-     * Test of Message method, of class DoubleIsNumeric.
+     * Test of message method, of class DoubleIsNumeric.
      */
     @Test
     public void testMessage() {
-        System.out.println("Testing DoubleIsFinite.Message(...).");
+        System.out.println("Testing DoubleIsFinite.message(...).");
         this._tester.testMessage(this._instance, this._values[0],
                 Double.toString(this._values[0]),
                 "-Infinity is not finite.");

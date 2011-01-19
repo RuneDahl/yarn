@@ -106,11 +106,11 @@ public class DoubleGreaterThanOrEqualTest {
     }
 
     /**
-     * Test of Message method, of class DoubleGreaterThanOrEqual.
+     * Test of message method, of class DoubleGreaterThanOrEqual.
      */
     @Test
     public void testMessage() {
-        System.out.println("Testing DoubleGreaterThanOrEqual.Message(...).");
+        System.out.println("Testing DoubleGreaterThanOrEqual.message(...).");
         this._tester.testMessage(this._instance, this._values[0],
                 Double.toString(this._values[0]),
                 "-Infinity must be greater than or equal to 0.0.");
