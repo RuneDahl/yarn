@@ -33,11 +33,11 @@ public final class And<TypeOfValue>
     }
 
     @Override
-    public String Message(final TypeOfValue value, final String name) {
+    public String message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder("(");
         for (Validator<TypeOfValue> validator : this)
             if (!validator.isValid(value))
-                messages.append(validator.Message(value, name) + " && ");
+                messages.append(validator.message(value, name) + " && ");
         if (1 < messages.length()) {
             messages.delete(messages.length() - 5, messages.length());
             messages.append(")");

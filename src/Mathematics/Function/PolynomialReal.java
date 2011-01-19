@@ -92,7 +92,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
                     "less than or equal to the degrees of this polynomial.");
         if (!this._validator.isValid(value))
             throw new IllegalArgumentException(
-                    this._validator.Message(value, "Value"));
+                    this._validator.message(value, "Value"));
         Double[] coefficients = new Double[this._coefficients.length];
         for (int d = 0; d < this._coefficients.length; d++)
             if (d == degree)
@@ -260,7 +260,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
                 this._coefficients[dim] = values[dim];
             else
                 throw new IllegalArgumentException(
-                        this._validator.Message(values[dim],
+                        this._validator.message(values[dim],
                         "The value of dimension " + Integer.toString(dim)));
         }
     }

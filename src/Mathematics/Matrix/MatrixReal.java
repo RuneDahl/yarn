@@ -326,7 +326,7 @@ public final class MatrixReal extends MatrixBase<Double> {
     public void setValue(final int row, final int column, final Double value) {
         if (!__valueValidator.isValid(value))
             throw new IllegalArgumentException(
-                    __valueValidator.Message(value, "Value(" +
+                    __valueValidator.message(value, "Value(" +
                     Integer.toString(row) + ";" + Integer.toString(column) + ")"));
         this._values[row - this.getFirstRow()][column - this.getFirstColumn()] = value;
     }

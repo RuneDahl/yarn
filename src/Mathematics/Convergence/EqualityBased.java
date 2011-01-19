@@ -48,7 +48,7 @@ public abstract class EqualityBased<TypeOfValue>
     public final void setEquals(final Equals<TypeOfValue> equals) {
         if (!this._equalsValidator.isValid(equals))
             throw new NullPointerException(
-                    this._equalsValidator.Message(equals, "Equals"));
+                    this._equalsValidator.message(equals, "Equals"));
         this._equals = equals;
     }
 }

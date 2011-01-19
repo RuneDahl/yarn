@@ -44,7 +44,7 @@ public final class RichardsonExtrapolationReal
      */
     public void setFactor(double factor) {
         if (!__validator.isValid(factor))
-            throw new IllegalArgumentException(__validator.Message(factor, "Factor"));
+            throw new IllegalArgumentException(__validator.message(factor, "Factor"));
         this._factor = factor;
     }
 

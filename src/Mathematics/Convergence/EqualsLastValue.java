@@ -54,7 +54,7 @@ public final class EqualsLastValue<TypeOfValue>
     public void setNumberOfEqualities(final int numberOfEqualities) {
         if (!__numberValidator.isValid(numberOfEqualities))
             throw new IllegalArgumentException(
-                    __numberValidator.Message(numberOfEqualities,
+                    __numberValidator.message(numberOfEqualities,
                     "Number of equalities"));
         this._numberOfEqualities = numberOfEqualities;
     }

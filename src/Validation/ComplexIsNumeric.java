@@ -21,7 +21,7 @@ public final class ComplexIsNumeric implements Validator<Complex> {
     }
 
     @Override
-    public String Message(final Complex value, final String name) {
+    public String message(final Complex value, final String name) {
         if (this.isValid(value))
             return "";
         else

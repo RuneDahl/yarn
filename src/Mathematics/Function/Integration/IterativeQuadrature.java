@@ -55,7 +55,7 @@ public abstract class IterativeQuadrature extends MaximumIterations {
     public final void setInitialSplits(final int initialSplits) {
         if (!__validator.isValid(initialSplits))
             throw new IllegalArgumentException(
-                    __validator.Message(initialSplits, "Initial splits"));
+                    __validator.message(initialSplits, "Initial splits"));
         this._initialSplits = initialSplits;
     }
 

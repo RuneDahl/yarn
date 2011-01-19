@@ -61,7 +61,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
     public final void setStep(final TypeOfInput step) {
         if (!this._stepValidator.isValid(step))
             throw new IllegalArgumentException(
-                    this._stepValidator.Message(step, "Step"));
+                    this._stepValidator.message(step, "Step"));
         this._step = step;
     }
 

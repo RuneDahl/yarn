@@ -59,7 +59,7 @@ public abstract class Trigonometric<TypeOfValue>
     public final void setAmplitude(final TypeOfValue amplitude) {
         if (!this._validation.isValid(amplitude))
             throw new IllegalArgumentException(
-                    this._validation.Message(amplitude, "Amplitude"));
+                    this._validation.message(amplitude, "Amplitude"));
         this._amplitude = amplitude;
     }
 
@@ -78,7 +78,7 @@ public abstract class Trigonometric<TypeOfValue>
     public final void setFrequency(final TypeOfValue frequency) {
         if (!this._validation.isValid(frequency))
             throw new IllegalArgumentException(
-                    this._validation.Message(frequency, "Frequency"));
+                    this._validation.message(frequency, "Frequency"));
         this._frequency = frequency;
     }
 
@@ -97,7 +97,7 @@ public abstract class Trigonometric<TypeOfValue>
     public final void setPhase(final TypeOfValue phase) {
         if (!this._validation.isValid(phase))
             throw new IllegalArgumentException(
-                    this._validation.Message(phase, "Phase"));
+                    this._validation.message(phase, "Phase"));
         this._phase = phase;
     }
 

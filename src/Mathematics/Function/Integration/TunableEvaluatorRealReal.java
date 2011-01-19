@@ -56,7 +56,7 @@ public final class TunableEvaluatorRealReal implements
     public void setGain(final double gain) {
         if (!this._validator.isValid(gain))
             throw new IllegalArgumentException(
-                    this._validator.Message(gain, "Gain"));
+                    this._validator.message(gain, "Gain"));
         this._gain = gain;
     }
 
@@ -67,7 +67,7 @@ public final class TunableEvaluatorRealReal implements
     public void setPhase(final double phase) {
         if (!this._validator.isValid(phase))
             throw new IllegalArgumentException(
-                    this._validator.Message(phase, "Phase"));
+                    this._validator.message(phase, "Phase"));
         this._phase = phase;
     }
 

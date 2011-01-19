@@ -113,7 +113,7 @@ public final class VectorReal implements Vector<Double> {
     public Vector<Double> setValue(final int dimension, final Double value) {
         if (!__validator.isValid(value))
             throw new IllegalArgumentException(
-                    __validator.Message(value, "Value"));
+                    __validator.message(value, "Value"));
         VectorReal v = new VectorReal(this._firstDimension, this._values);
         v._values[dimension - this._firstDimension] = value;
         return v;
@@ -214,7 +214,7 @@ public final class VectorReal implements Vector<Double> {
                 this._values[dim] = values[dim];
             else
                 throw new IllegalArgumentException(
-                        __validator.Message(values[dim],
+                        __validator.message(values[dim],
                         "The value of dimension " + Integer.toString(dim)));
         }
     }

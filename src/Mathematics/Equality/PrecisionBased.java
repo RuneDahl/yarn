@@ -60,6 +60,6 @@ public abstract class PrecisionBased<TypeOfValue>
             this._precision = precision;
         else
             throw new IllegalArgumentException(
-                    __precisionValidator.Message(precision, "Precision"));
+                    __precisionValidator.message(precision, "Precision"));
     }
 }

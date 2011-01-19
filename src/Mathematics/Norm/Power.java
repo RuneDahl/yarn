@@ -46,7 +46,7 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
     public final void setPower(final double power) {
         if (!__powerValidator.isValid(power))
             throw new IllegalArgumentException(
-                    __powerValidator.Message(power, "Power"));
+                    __powerValidator.message(power, "Power"));
         this._power = power;
     }
 

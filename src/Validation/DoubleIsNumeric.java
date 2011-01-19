@@ -19,7 +19,7 @@ public final class DoubleIsNumeric implements Validator<Double> {
     }
 
     @Override
-    public String Message(final Double value, final String name) {
+    public String message(final Double value, final String name) {
         if (this.isValid(value))
             return "";
         else

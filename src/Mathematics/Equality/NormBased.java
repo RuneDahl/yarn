@@ -63,7 +63,7 @@ public abstract class NormBased<TypeOfValue>
     public final void setNorm(final Norm<TypeOfValue> norm) {
         if (!this._normValidator.isValid(norm))
             throw new NullPointerException(
-                    this._normValidator.Message(norm, "Norm"));
+                    this._normValidator.message(norm, "Norm"));
         this._metric.setNorm(norm);
     }
 

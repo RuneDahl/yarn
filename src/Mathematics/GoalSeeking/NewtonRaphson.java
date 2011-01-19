@@ -96,7 +96,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     public void setGoalValue(final Double value) {
         if (!__validator.isValid(value))
             throw new IllegalArgumentException(
-                    __validator.Message(value, "Goal value"));
+                    __validator.message(value, "Goal value"));
         this._goalValue = value;
     }
 
@@ -104,7 +104,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     public void setInitialValue(final Double initialValue) {
         if (!__validator.isValid(initialValue))
             throw new IllegalArgumentException(
-                    __validator.Message(initialValue, "Initial value"));
+                    __validator.message(initialValue, "Initial value"));
         this._initialValue = initialValue;
     }
 
@@ -112,7 +112,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     public void setMaximumIterations(final int iterations) {
         if (!__maxIterValidator.isValid(iterations))
             throw new IllegalArgumentException(
-                    __maxIterValidator.Message(iterations, "Maximum iterations"));
+                    __maxIterValidator.message(iterations, "Maximum iterations"));
         this._maxIter = iterations;
     }
 

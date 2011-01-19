@@ -70,7 +70,7 @@ public final class IntervalReal implements Interval<Double> {
     public void setLowerBound(final Double lowerBound) {
         if (!__validator.isValid(lowerBound))
             throw new IllegalArgumentException(
-                    __validator.Message(lowerBound, "Lower bound"));
+                    __validator.message(lowerBound, "Lower bound"));
         this._lowerBound = lowerBound;
     }
 
@@ -85,7 +85,7 @@ public final class IntervalReal implements Interval<Double> {
     public void setUpperBound(final Double upperBound) {
         if (!__validator.isValid(upperBound))
             throw new IllegalArgumentException(
-                    __validator.Message(upperBound, "Upper bound"));
+                    __validator.message(upperBound, "Upper bound"));
         this._upperBound = upperBound;
     }
 

@@ -37,7 +37,7 @@ public final class NumberOfValues<TypeOfValue>
 
     public void setCount(final int count) {
         if (!_validator.isValid(count))
-            throw new IllegalArgumentException(_validator.Message(count, "Count"));
+            throw new IllegalArgumentException(_validator.message(count, "Count"));
         this._count = count;
     }
 }

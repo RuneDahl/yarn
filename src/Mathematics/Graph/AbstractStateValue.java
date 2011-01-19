@@ -70,14 +70,14 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
     public final void setState(final TypeOfState state) {
         if (!this._stateValidator.isValid(state))
             throw new IllegalArgumentException(
-                    this._stateValidator.Message(state, "State"));
+                    this._stateValidator.message(state, "State"));
         this._state = state;
     }
 
     public final void setValue(final TypeOfValue value) {
         if (!this._valueValidator.isValid(value))
             throw new IllegalArgumentException(
-                    this._valueValidator.Message(value, "Value"));
+                    this._valueValidator.message(value, "Value"));
         this._value = value;
     }
 }

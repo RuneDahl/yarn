@@ -56,7 +56,7 @@ public class ValidatorTest<TypeOfValue> {
             String name,
             String expectedMessage) {
         //System.out.println("Testing " + validator.getClass().getName() + ".Message(...).");
-        String message = validator.Message(value, name);
+        String message = validator.message(value, name);
         assertEquals(expectedMessage, message);
     }
 

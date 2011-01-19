@@ -18,7 +18,7 @@ public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
     }
 
     @Override
-    public String Message(final TypeOfValue value, final String name) {
+    public String message(final TypeOfValue value, final String name) {
         if (this.isValid(value))
             return "";
         else

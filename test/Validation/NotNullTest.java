@@ -51,17 +51,17 @@ public class NotNullTest {
         String name = "Value";
         NotNull instance = this._notNull;
         String expResult = "Value is null.";
-        String result = instance.Message(value, name);
+        String result = instance.message(value, name);
         assertEquals(expResult, result);
 
         value = 7.3;
         expResult = "";
-        result = instance.Message(value, name);
+        result = instance.message(value, name);
         assertEquals(expResult, result);
 
         value = null;
         name = null;
-        result = instance.Message(value, name);
+        result = instance.message(value, name);
         expResult = "null is null.";
         assertEquals(expResult, result);
     }

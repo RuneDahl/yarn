@@ -28,7 +28,7 @@ public final class IntegerGreaterThan extends LimitBased<Integer> {
     }
 
     @Override
-    public String Message(final Integer value, final String name) {
+    public String message(final Integer value, final String name) {
         if (this.isValid(value))
             return "";
         else
