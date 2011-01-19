@@ -42,14 +42,14 @@ public final class PrimeNumber implements Function<Integer, Boolean> {
 
     @Override
     public Boolean value(final Integer input) {
-        if (input <= 2)
+        if (input < this._primes.get(1))
             return false;
         int largestKnownPrime = this._primes.get(this._primes.size());
-        if (largestKnownPrime <= Math.sqrt((double)input)) {
+        if (largestKnownPrime <= input) {
             for (int pc = largestKnownPrime + 2; pc <= input + 1; pc += 2) {
                 boolean isPrime = true;
                 for (Entry<Integer, Integer> p: this._primes.entrySet()) {
-                    isPrime &= !this._isDivisible(pc, p.getValue());
+                    isPrime &= pc % p.getValue() != 0;
                     if (!isPrime)
                         break;
                 }
@@ -58,20 +58,5 @@ public final class PrimeNumber implements Function<Integer, Boolean> {
             }
         }
         return this._primes.containsValue(input);
-    }
-
-    /**
-     * Returns whether the
-     * <a href="http://en.wikipedia.org/wiki/Divisor">suggested divisor</a>
-     * is a factor of the value.
-     * @param value   Value.
-     * @param divisor Suggested divisor.
-     * @return        True if the suggested divisor is a factor of the value,
-     *                else false.
-     */
-    private boolean _isDivisible(final int value, final int divisor) {
-        if (divisor <= 0)
-            return false;
-        return (value / divisor == ((double)value)/((double)divisor));
     }
 }
