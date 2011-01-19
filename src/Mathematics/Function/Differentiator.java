@@ -23,6 +23,6 @@ public interface Differentiator<TypeOfInput, TypeOfFunctionOutput,
      * @param function Function.
      * @return         The derivative value.
      */
-    public abstract TypeOfDifferentialOutput value(final TypeOfInput value,
+    public TypeOfDifferentialOutput value(final TypeOfInput value,
             final Function<TypeOfInput, TypeOfFunctionOutput> function);
 }
