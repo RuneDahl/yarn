@@ -49,13 +49,12 @@ public class ValidatorTest<TypeOfValue> {
     }
 
     /**
-     * Test of Message method, of a Validator.
+     * Test of message method, of a Validator.
      */
     public void testMessage(Validator<TypeOfValue> validator,
             TypeOfValue value,
             String name,
             String expectedMessage) {
-        //System.out.println("Testing " + validator.getClass().getName() + ".Message(...).");
         String message = validator.message(value, name);
         assertEquals(expectedMessage, message);
     }
