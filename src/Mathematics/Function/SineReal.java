@@ -20,7 +20,7 @@ public final class SineReal
      * default values for amplitude (1.0), frequency (1.0) and phase (0.0).
      */
     public SineReal() {
-        super(Validation.Factory.FiniteReal(), 1.0, 1.0, 0.0);
+        this(1.0, 1.0, 0.0);
     }
 
     /**
@@ -51,5 +51,10 @@ public final class SineReal
     @Override
     public int hashCode() {
         return this._hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return this._toString();
     }
 }
