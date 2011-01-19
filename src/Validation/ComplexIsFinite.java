@@ -19,6 +19,7 @@ public final class ComplexIsFinite implements Validator<Complex> {
     public ComplexIsFinite() { // Intentional
     }
 
+    @Override
     public String Message(final Complex value, final String name) {
         if (this.isValid(value))
             return "";
@@ -26,6 +27,7 @@ public final class ComplexIsFinite implements Validator<Complex> {
             return name + " is not finite.";
     }
 
+    @Override
     public boolean isValid(final Complex value) {
         return value != null && !Complex.isInfinite(value);
     }

@@ -18,6 +18,7 @@ public final class DoubleIsNumeric implements Validator<Double> {
     public DoubleIsNumeric() { // Intentional
     }
 
+    @Override
     public String Message(final Double value, final String name) {
         if (this.isValid(value))
             return "";
@@ -25,6 +26,7 @@ public final class DoubleIsNumeric implements Validator<Double> {
             return name + " is not a number (Double.NaN).";
     }
 
+    @Override
     public boolean isValid(final Double value) {
         return value != null && !Double.isNaN(value);
     }

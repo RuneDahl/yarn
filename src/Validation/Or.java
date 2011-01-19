@@ -32,6 +32,7 @@ public final class Or<TypeOfValue>
         super(c);
     }
 
+    @Override
     public String Message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder();
         if (this.isValid(value))
@@ -50,6 +51,7 @@ public final class Or<TypeOfValue>
         return messages.toString();
     }
 
+    @Override
     public boolean isValid(final TypeOfValue value) {
         if (this.isEmpty())
             return true;

@@ -27,6 +27,7 @@ public final class DoubleLessThanOrEqual extends LimitBased<Double> {
         super(limit);
     }
 
+    @Override
     public String Message(final Double value, final String name) {
         if (this.isValid(value))
             return "";
@@ -35,6 +36,7 @@ public final class DoubleLessThanOrEqual extends LimitBased<Double> {
                     Double.toString(this.getLimit()) + ".";
     }
 
+    @Override
     public boolean isValid(final Double value) {
         return (value != null && value <= this.getLimit());
     }

@@ -27,6 +27,7 @@ public final class IntegerGreaterThan extends LimitBased<Integer> {
         super(limit);
     }
 
+    @Override
     public String Message(final Integer value, final String name) {
         if (this.isValid(value))
             return "";
@@ -35,6 +36,7 @@ public final class IntegerGreaterThan extends LimitBased<Integer> {
                     Double.toString(this.getLimit()) + ".";
     }
 
+    @Override
     public boolean isValid(final Integer value) {
         return (value != null && this.getLimit() < value);
     }

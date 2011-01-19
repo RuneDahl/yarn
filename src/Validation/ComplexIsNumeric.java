@@ -20,6 +20,7 @@ public final class ComplexIsNumeric implements Validator<Complex> {
     public ComplexIsNumeric() { // Intentional
     }
 
+    @Override
     public String Message(final Complex value, final String name) {
         if (this.isValid(value))
             return "";
@@ -27,6 +28,7 @@ public final class ComplexIsNumeric implements Validator<Complex> {
             return name + " is not a number (Complex.NaN).";
     }
 
+    @Override
     public boolean isValid(final Complex value) {
         return value != null && !Complex.isNaN(value);
     }

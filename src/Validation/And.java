@@ -32,6 +32,7 @@ public final class And<TypeOfValue>
         super(c);
     }
 
+    @Override
     public String Message(final TypeOfValue value, final String name) {
         StringBuilder messages = new StringBuilder("(");
         for (Validator<TypeOfValue> validator : this)
@@ -46,6 +47,7 @@ public final class And<TypeOfValue>
         return messages.toString();
     }
 
+    @Override
     public boolean isValid(final TypeOfValue value) {
         for (Validator<TypeOfValue> validator : this)
             if (!validator.isValid(value))

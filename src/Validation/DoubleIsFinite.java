@@ -17,6 +17,7 @@ public final class DoubleIsFinite implements Validator<Double> {
     public DoubleIsFinite() { // Intentional
     }
 
+    @Override
     public String Message(final Double value, final String name) {
         if (this.isValid(value))
             return "";
@@ -24,6 +25,7 @@ public final class DoubleIsFinite implements Validator<Double> {
             return name + " is not finite.";
     }
 
+    @Override
     public boolean isValid(final Double value) {
         return value != null && !Double.isInfinite(value);
     }

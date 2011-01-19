@@ -17,6 +17,7 @@ public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
     public NotNull() { // Intentional
     }
 
+    @Override
     public String Message(final TypeOfValue value, final String name) {
         if (this.isValid(value))
             return "";
@@ -24,6 +25,7 @@ public class NotNull<TypeOfValue> implements Validator<TypeOfValue> {
             return name + " is null.";
     }
 
+    @Override
     public boolean isValid(final TypeOfValue value) {
         return value != null;
     }
