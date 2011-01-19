@@ -24,8 +24,6 @@ public abstract class HolidaysBased<TypeOfCalendar>
      * and period.
      * @param holidays Holidays.
      * @param period   Period used to adjust and shift date/times.
-     * @throws NullPointerException Holidays not properly specified.
-     * @throws NullPointerException Period not properly specified.
      */
     protected HolidaysBased(final Holiday<TypeOfCalendar> holidays,
             final Period<TypeOfCalendar> period) {

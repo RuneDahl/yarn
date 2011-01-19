@@ -17,16 +17,13 @@ import Validation.*;
 public abstract class ComparerAndValueBased<TypeOfValue>
         extends ComparerBased<TypeOfValue> {
     private TypeOfValue _value;
-
-    protected Validator<TypeOfValue> _valueValidator;
+    private final Validator<TypeOfValue> _valueValidator;
 
     /**
      * Creates an instance with the specified comparer, value and validator.
      * @param comparer       The comparer.
      * @param value          The value.
      * @param valueValidator Value validator.
-     * @exception NullPointerException Comparer not specified.
-     * @exception NullPointerException Value validator not specified.
      */
     protected ComparerAndValueBased(
             final Equals<TypeOfValue> comparer, final TypeOfValue value,

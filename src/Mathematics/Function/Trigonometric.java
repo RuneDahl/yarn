@@ -128,6 +128,10 @@ public abstract class Trigonometric<TypeOfValue>
         return hashCode;
     }
 
+    /**
+     * Returns a string representation of this trigonometric function.
+     * @return String.
+     */
     protected String _toString() {
         StringBuilder t = new StringBuilder("{" + this.getClass().getName() + "[");
         t.append("Amplitude: " + this._amplitude.toString() + " ; ");

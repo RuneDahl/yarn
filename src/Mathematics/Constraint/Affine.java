@@ -28,8 +28,6 @@ public abstract class Affine implements Constraint<Vector<Double>> {
      * using the specified matrix and vector.
      * @param matrix Matrix.
      * @param vector Vector.
-     * @throws NullPointerException Matrix not properly specified.
-     * @throws NullPointerException Vector not properly specified.
      */
     protected Affine(final Matrix<Double> matrix, final Vector<Double> vector) {
         this.setMatrix(matrix);

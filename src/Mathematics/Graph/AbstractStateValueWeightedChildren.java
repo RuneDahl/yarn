@@ -19,6 +19,13 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
     private final HashMap<TreeNode<TypeOfState, TypeOfValue>, Double> _children =
             new HashMap<TreeNode<TypeOfState, TypeOfValue>, Double>();
 
+    /**
+     * Creates an instance of a node with state and value
+     * without specifying the value.
+     * @param stateValidator {@see Validator} for the state.
+     * @param state          State of the node.
+     * @param valueValidator {@see Validator} for the value.
+     */
     protected AbstractStateValueWeightedChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -26,6 +33,14 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
         super(stateValidator, state, valueValidator);
     }
 
+    /**
+     * Creates an instance of a node with state, weighted child nodes and value
+     * without specifying the value.
+     * @param stateValidator {@see Validator} for the state.
+     * @param state          State of the node.
+     * @param valueValidator {@see Validator} for the value.
+     * @param children       Collection of weighted child nodes.
+     */
     protected AbstractStateValueWeightedChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -35,6 +50,13 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
         this._children.putAll(children);
     }
 
+    /**
+     * Creates an instance of a node with state and value.
+     * @param stateValidator {@see Validator} for the state.
+     * @param state          State of the node.
+     * @param valueValidator {@see Validator} for the value.
+     * @param value          Value of the node.
+     */
     protected AbstractStateValueWeightedChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -43,6 +65,14 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
         super(stateValidator, state, valueValidator, value);
     }
 
+    /**
+     * Creates an instance of a node with state, weighted child nodes and value.
+     * @param stateValidator {@see Validator} for the state.
+     * @param state          State of the node.
+     * @param valueValidator {@see Validator} for the value.
+     * @param value          Value of the node.
+     * @param children       Collection of weighted child nodes.
+     */
     protected AbstractStateValueWeightedChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,

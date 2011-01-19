@@ -21,6 +21,13 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
     private TypeOfInput _step;
     private final Validator<TypeOfInput> _stepValidator;
 
+    /**
+     * Creates an instance of a differentiator using a differential and
+     * the specified values.
+     * @param stepValidator {@see Validation.Validator Validator} for the step.
+     * @param step          Step.
+     * @param direction     Direction(s) to step in.
+     */
     protected Differential(final Validator<TypeOfInput> stepValidator,
             final TypeOfInput step, final DifferentialDirection direction) {
         if (stepValidator == null)

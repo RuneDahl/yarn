@@ -21,8 +21,6 @@ public final class ComplexPower extends Power<Complex> {
      * <a href="http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm">P-norm</a>
      * for a {@see Complex complex number} with the specified power.
      * @param power Power. Must be greater than or equal to 1 and finite.
-     * @throws IllegalArgumentException Power is not finite.
-     * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
     public ComplexPower(double power) {
         super(power);

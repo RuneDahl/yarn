@@ -22,8 +22,6 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
     /**
      * Creates a new instance of a P-norm.
      * @param power Power. Must be greater than or equal to 1 and finite.
-     * @throws IllegalArgumentException Power is not finite.
-     * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
     protected Power(double power) {
         this.setPower(power);
@@ -40,8 +38,6 @@ public abstract class Power<TypeOfValue> implements Norm<TypeOfValue> {
     /**
      * Sets the power of this P-norm.
      * @param power Power. Must be greater than or equal to 1 and finite.
-     * @throws IllegalArgumentException Power is not finite.
-     * @throws IllegalArgumentException Power must be greater than or equal to 1.
      */
     public final void setPower(final double power) {
         if (!__powerValidator.isValid(power))

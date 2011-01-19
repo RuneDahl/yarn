@@ -27,8 +27,6 @@ public final class AffineAnd extends Affine {
      * using the specified matrix and vector.
      * @param matrix Matrix.
      * @param vector Vector.
-     * @throws NullPointerException Matrix not properly specified.
-     * @throws NullPointerException Vector not properly specified.
      */
     public AffineAnd(final Matrix<Double> matrix, final Vector<Double> vector) {
         super(matrix, vector);

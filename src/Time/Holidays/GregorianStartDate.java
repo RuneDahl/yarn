@@ -23,8 +23,6 @@ public final class GregorianStartDate implements Holiday<GregorianCalendar> {
      * delimited by the start date/time
      * @param holiday Holiday.
      * @param start   Start date/time.
-     * @throws NullPointerException Holiday not properly specified.
-     * @throws NullPointerException Start date/time not properly specified.
      */
     public GregorianStartDate(
             final Holiday<GregorianCalendar> holiday,
