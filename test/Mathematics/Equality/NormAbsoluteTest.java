@@ -165,7 +165,7 @@ public class NormAbsoluteTest {
         System.out.println("value");
         Complex a = this._a;
         Complex b = this._b;
-        NormAbsolute<Complex> instance = this._equality;
+        Equals<Complex> instance = this._equality;
         Boolean expResult = false;
         Boolean result = instance.value(a, b);
         assertEquals(a.toString() + " compared to " + b.toString() + " using " + instance.toString(), expResult, result);
