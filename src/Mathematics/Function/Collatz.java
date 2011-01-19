@@ -14,11 +14,6 @@ package Mathematics.Function;
 public class Collatz implements Function<Long, Long> {
     @Override
     public Long value(final Long input) {
-        long value = input;
-        if (value / 2.0 == value / 2)
-            value = value / 2;
-        else
-            value = 3 * value + 1;
-        return value;
+        return (input % 2 == 0 ? input/2 : input*3 + 1);
     }
 }
