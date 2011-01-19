@@ -39,15 +39,9 @@ public final class Or<TypeOfValue>
             return messages.toString();
         messages.append("(");
         for (Validator<TypeOfValue> validator : this)
-            if (!validator.isValid(value))
-                messages.append(validator.message(value, name) + " || ");
-        if (1 < messages.length())
-        {
-            messages.delete(messages.length() - 5, messages.length());
-            messages.append(")");
-        }
-        else
-            messages = new StringBuilder();
+            messages.append(validator.message(value, name) + " || ");
+        messages.delete(messages.length() - 5, messages.length());
+        messages.append(")");
         return messages.toString();
     }
 
