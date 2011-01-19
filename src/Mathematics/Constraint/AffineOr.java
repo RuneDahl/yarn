@@ -34,6 +34,7 @@ public final class AffineOr extends Affine {
         super(matrix, vector);
     }
 
+    @Override
     public boolean isBinding(final Vector<Double> value) {
         if (value == null)
             return false;
@@ -44,6 +45,7 @@ public final class AffineOr extends Affine {
         return true;
     }
 
+    @Override
     public boolean isFeasible(final Vector<Double> value) {
         if (value == null)
             return false;

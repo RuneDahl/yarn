@@ -57,16 +57,19 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
         this.setValue(value);
     }
 
+    @Override
     public final TypeOfState getState() {
         return this._state;
     }
 
+    @Override
     public final TypeOfValue getValue() {
         if (this._value == null)
             this.computeValue();
         return this._value;
     }
 
+    @Override
     public final void setState(final TypeOfState state) {
         if (!this._stateValidator.isValid(state))
             throw new IllegalArgumentException(
@@ -74,6 +77,7 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
         this._state = state;
     }
 
+    @Override
     public final void setValue(final TypeOfValue value) {
         if (!this._valueValidator.isValid(value))
             throw new IllegalArgumentException(

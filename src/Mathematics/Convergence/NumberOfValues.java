@@ -27,14 +27,17 @@ public final class NumberOfValues<TypeOfValue>
         this.setCount(count);
     }
 
+    @Override
     public boolean converges(final TypeOfValue[] series) {
         return (this._count <= series.length);
     }
 
+    @Override
     public int getCount() {
         return this._count;
     }
 
+    @Override
     public void setCount(final int count) {
         if (!_validator.isValid(count))
             throw new IllegalArgumentException(_validator.message(count, "Count"));

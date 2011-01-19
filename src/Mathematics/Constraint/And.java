@@ -32,6 +32,7 @@ public class And<TypeOfValue>
         super(constraints);
     }
 
+    @Override
     public boolean isBinding(TypeOfValue value) {
         for (Constraint<TypeOfValue> c: this)
             if (c != null && c.isBinding(value))
@@ -39,6 +40,7 @@ public class And<TypeOfValue>
         return false;
     }
 
+    @Override
     public boolean isFeasible(TypeOfValue value) {
         for (Constraint<TypeOfValue> c: this)
             if (c != null && !c.isFeasible(value))

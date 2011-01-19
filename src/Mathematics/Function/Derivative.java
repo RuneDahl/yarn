@@ -25,6 +25,7 @@ public final class Derivative<TypeOfInput, TypeOfFunctionOutput,
     public Derivative() { // Intentional
     }
 
+    @Override
     public TypeOfDifferentialOutput value(final TypeOfInput value,
             final Function<TypeOfInput, TypeOfFunctionOutput> function) {
         if (function instanceof Differentiable) {

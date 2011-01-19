@@ -32,6 +32,7 @@ public class And<TypeOfValue>
         super(c);
     }
 
+    @Override
     public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         for (Equals<TypeOfValue> equals : this)
             if (!equals.value(a, b))

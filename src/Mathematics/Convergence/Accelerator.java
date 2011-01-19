@@ -25,5 +25,6 @@ public interface Accelerator<TypeOfValue>
      * @param sequence Series/Sequence.
      * @return         Accelerated series/sequence.
      */
+    @Override
     public TypeOfValue[] value(final TypeOfValue[] sequence);
 }

@@ -32,6 +32,7 @@ public class Or<TypeOfValue>
         super(c);
     }
 
+    @Override
     public Boolean value(final TypeOfValue a, final TypeOfValue b) {
         if (this.isEmpty())
             return true;

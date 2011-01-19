@@ -53,10 +53,12 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
         this._children.putAll(children);
     }
 
+    @Override
     public TreeNode<TypeOfState, TypeOfValue> getChild(final int index) {
         return this._child(index).getKey();
     }
 
+    @Override
     public int getChildren() {
         return this._children.size();
     }
@@ -80,6 +82,7 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
         this._children.put(child, weight);
     }
 
+    @Override
     public boolean hasChild(final TreeNode<TypeOfState, TypeOfValue> node) {
         return this._children.containsKey(node);
     }

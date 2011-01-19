@@ -24,6 +24,7 @@ public abstract class Gregorian implements DayCount<GregorianCalendar> {
      * @param to   To date/time.
      * @return     The length of the period between the 2 specified date/times.
      */
+    @Override
     public final double days(final GregorianCalendar from, final GregorianCalendar to) {
         if (0 < from.compareTo(to))
             return -this.days(to, from);

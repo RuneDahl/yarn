@@ -26,6 +26,7 @@ public final class IterativeSuccess<TypeOfResult> extends Iterative
         this._result = result;
     }
 
+    @Override
     public TypeOfResult getResult() {
         return this._result;
     }

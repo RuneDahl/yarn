@@ -48,6 +48,7 @@ public final class RichardsonExtrapolationReal
         this._factor = factor;
     }
 
+    @Override
     public Double value(final Integer iteration, final Double[] sequence) {
         if (sequence == null)
             throw new NullPointerException("Sequence not properly specified.");
@@ -73,6 +74,7 @@ public final class RichardsonExtrapolationReal
                     "the " + Integer.toString(iteration) + "th iteration.");
     }
 
+    @Override
     public Double[] value(final Double[] sequence) {
         if (sequence == null)
             return null;

@@ -19,6 +19,7 @@ import Mathematics.Vector.VectorReal;
  */
 public final class HadamardReal
         implements Operator<Vector<Double>, Vector<Double>, Vector<Double>> {
+    @Override
     public Vector<Double> value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))

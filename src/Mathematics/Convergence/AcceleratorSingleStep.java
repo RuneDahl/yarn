@@ -26,6 +26,7 @@ public interface AcceleratorSingleStep<TypeOfValue>
      * @param sequence  Sequence/Series.
      * @return          Accelerated value.
      */
+    @Override
     public TypeOfValue value(
             final Integer iteration,
             final TypeOfValue[] sequence);

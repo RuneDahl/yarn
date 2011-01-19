@@ -17,6 +17,7 @@ import Mathematics.Vector.Vector;
  */
 public final class OuterReal
         implements Operator<Vector<Double>, Vector<Double>, Matrix<Double>> {
+    @Override
     public Matrix<Double> value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
         int startR = firstInput.getFirstDimension();

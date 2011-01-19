@@ -28,6 +28,7 @@ public abstract class Gregorian
         this._basicPeriod = basicPeriod;
     }
 
+    @Override
     public GregorianCalendar shift(final GregorianCalendar date, final int count) {
         GregorianCalendar shifted = (GregorianCalendar) date.clone();
         shifted.add(this._basicPeriod, count * this.getCount());

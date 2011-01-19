@@ -16,6 +16,7 @@ import Mathematics.Vector.Vector;
  */
 public final class InnerReal
         implements Operator<Vector<Double>, Vector<Double>, Double> {
+    @Override
     public Double value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))

@@ -24,10 +24,12 @@ public abstract class Count<TypeOfCalendar>
         this.setCount(count);
     }
 
+    @Override
     public final int getCount() {
         return this._count;
     }
 
+    @Override
     public final void setCount(final int count) {
         this._count = count;
     }

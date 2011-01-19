@@ -31,10 +31,12 @@ public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
         this._done = new ArrayList<TreeNode<TypeOfState, TypeOfValue>>();
     }
 
+    @Override
     public boolean hasNext() {
         return !this._stack.isEmpty();
     }
 
+    @Override
     public TreeNode<TypeOfState, TypeOfValue> next() {
         if (!this.hasNext())
             throw new NoSuchElementException("No more nodes to iterate.");
@@ -63,6 +65,7 @@ public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
         return node;
     }
 
+    @Override
     public void remove() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
