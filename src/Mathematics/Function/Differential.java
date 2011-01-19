@@ -17,14 +17,14 @@ import Validation.Validator;
  */
 public abstract class Differential<TypeOfInput, TypeOfOutput>
         implements Differentiator<TypeOfInput, TypeOfOutput, TypeOfOutput> {
-    private DiffentialDirection _direction;
+    private DifferentialDirection _direction;
     private TypeOfInput _step;
     private final Validator<TypeOfInput> _stepValidator;
 
     protected Differential(final Validator<TypeOfInput> stepValidator,
-            final TypeOfInput step, final DiffentialDirection direction) {
+            final TypeOfInput step, final DifferentialDirection direction) {
         if (stepValidator == null)
-            throw new NullPointerException("Step validator is not sspecified.");
+            throw new NullPointerException("Step validator is not specified.");
         this._stepValidator = stepValidator;
         this.setDirection(direction);
         this.setStep(step);
@@ -34,7 +34,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Gets the direction/way the differential is computed relative to the step.
      * @return The direction.
      */
-    public final DiffentialDirection getDirection() {
+    public final DifferentialDirection getDirection() {
         return this._direction;
     }
 
@@ -50,7 +50,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Sets the direction/way the differential is computed relative to the step.
      * @param direction The direction.
      */
-    public final void setDirection(final DiffentialDirection direction) {
+    public final void setDirection(final DifferentialDirection direction) {
         this._direction = direction;
     }
 
@@ -69,7 +69,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Possible values for the direction to use in computing the
      * <a href="http://en.wikipedia.org/wiki/Derivative#Definition_via_difference_quotients">differential</a>.
      */
-    public enum DiffentialDirection {
+    public enum DifferentialDirection {
         /**
          * Step is taken in the opposite direction of the step specified.
          */
