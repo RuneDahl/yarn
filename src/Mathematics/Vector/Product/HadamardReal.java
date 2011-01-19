@@ -3,9 +3,11 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Vector;
+package Mathematics.Vector.Product;
 
 import Mathematics.Function.*;
+import Mathematics.Vector.Vector;
+import Mathematics.Vector.VectorReal;
 
 /**
  * Implementation of the
@@ -15,7 +17,7 @@ import Mathematics.Function.*;
  * entries in the 2 vectors, that must be the of the same dimensions.
  * @author Rune Dahl Iversen
  */
-public final class HadamardProductReal
+public final class HadamardReal
         implements Operator<Vector<Double>, Vector<Double>, Vector<Double>> {
     public Vector<Double> value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {

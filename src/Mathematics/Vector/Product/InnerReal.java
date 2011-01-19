@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Vector;
+package Mathematics.Vector.Product;
 
 import Mathematics.Function.*;
+import Mathematics.Vector.Vector;
 
 /**
  * Implementation of the
@@ -13,7 +14,7 @@ import Mathematics.Function.*;
  * two {@see Vector vectors} of {@see Double real} values.
  * @author Rune Dahl Iversen
  */
-public final class InnerProductReal
+public final class InnerReal
         implements Operator<Vector<Double>, Vector<Double>, Double> {
     public Double value(final Vector<Double> firstInput,
             final Vector<Double> secondInput) {
