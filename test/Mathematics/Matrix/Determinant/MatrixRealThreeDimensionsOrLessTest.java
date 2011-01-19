@@ -130,6 +130,10 @@ public class MatrixRealThreeDimensionsOrLessTest {
         input = this._matrix;
         result = instance.value(input);
         assertEquals(input.toString(), expResult, result, 0.0);
+
+        input = input.transpose();
+        result = instance.value(input);
+        assertEquals(input.toString(), expResult, result, 0.0);
     }
 
     /**
