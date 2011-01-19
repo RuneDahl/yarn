@@ -127,7 +127,6 @@ public class NormBasedTest {
         Complex secondInput = Complex.Cartesian(1.0, 0.0);
 
         instance.value(firstInput, secondInput);
-        fail("No exception thrown.");
     }
 
     /**
@@ -142,7 +141,6 @@ public class NormBasedTest {
         Complex secondInput = null;
 
         instance.value(firstInput, secondInput);
-        fail("No exception thrown.");
     }
 
     /**
@@ -157,7 +155,6 @@ public class NormBasedTest {
         Double secondInput = 2.4;
 
         instance.value(firstInput, secondInput);
-        fail("No exception thrown.");
     }
 
     /**
