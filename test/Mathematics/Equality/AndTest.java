@@ -77,6 +77,16 @@ public class AndTest {
     }
 
     /**
+     * Test of constructor, of class And, that take a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testCtor_Null() {
+        System.out.println("And(null)");
+        Collection<Equals<Double>> c = null;
+        new And<Double>(c);
+    }
+
+    /**
      * Test of value method, of class And.
      */
     @Test

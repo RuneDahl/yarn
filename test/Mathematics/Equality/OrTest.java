@@ -77,6 +77,16 @@ public class OrTest {
     }
 
     /**
+     * Test of constructor, of class Or, that take a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testCtor_Null() {
+        System.out.println("Or(null)");
+        Collection<Equals<Double>> c = null;
+        new Or<Double>(c);
+    }
+
+    /**
      * Test of value method, of class Or.
      */
     @Test
