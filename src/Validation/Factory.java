@@ -13,7 +13,7 @@ import Mathematics.Complex;
  */
 public final class Factory {
     private Factory()
-    { }
+    { /* Intentional */ }
 
     /**
      * Validator allowing not null, finite {@see Complex complex}
