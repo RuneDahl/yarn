@@ -46,6 +46,40 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of constructor, of class MatrixReal,
+     * for the overload taking the values (int, int, double).
+     */
+    @Test
+    public void testCtor_Int_Int_Double() {
+        System.out.println("MatrixReal(int, int, double)");
+        MatrixReal instance = new MatrixReal(4, 2, 7.4);
+
+        assertNotNull("Result from ctor(int, int, double).", instance);
+        assertEquals("Wrong number of first row.", 0, instance.getFirstRow());
+        assertEquals("Wrong number of rows.", 4, instance.getRows());
+        assertEquals("Wrong number of first column.", 0, instance.getFirstColumn());
+        assertEquals("Wrong number of columns.", 2, instance.getColumns());
+
+        for (int c = instance.getFirstColumn(); c < instance.getLastColumn(); c++)
+            for (int r = instance.getFirstRow(); r < instance.getLastRow(); r++)
+                assertEquals("The value of row " + Integer.toString(r) +
+                        " column " + Integer.toString(c),
+                        7.4, instance.getValue(r, c), 0.0);
+
+    }
+
+    /**
+     * Test of constructor, of class MatrixReal,
+     * for the overload taking the values (int, int, double[0][]).
+     */
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testCtor_Int_Int_DoubleArray_ZeroRows() {
+        System.out.println("MatrixReal(int, int, double[0][])");
+        double[][] values = new double[0][];
+        MatrixReal instance = new MatrixReal(4, 2, values);
+    }
+
+    /**
      * Test of addColumn method, of class MatrixReal.
      */
     @Test
@@ -75,6 +109,18 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of addColumn method, of class MatrixReal,
+     * for a vector of the wrong dimensions.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddColumn_WrongDimensions() {
+        System.out.println("addColumn(wrong dimensions)");
+        Vector<Double> vector = new VectorReal(17, 5);
+        MatrixReal instance = this._matrix;
+        instance.addColumn(vector);
+    }
+
+    /**
      * Test of addRow method, of class MatrixReal.
      */
     @Test
@@ -99,6 +145,18 @@ public class MatrixRealTest {
     public void testAddRow_Null() {
         System.out.println("addRow(null)");
         Vector<Double> vector = null;
+        MatrixReal instance = this._matrix;
+        instance.addRow(vector);
+    }
+
+    /**
+     * Test of addRow method, of class MatrixReal,
+     * for a vector of the wrong dimensions.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testAddRow_WrongDimensions() {
+        System.out.println("addRow(wrong dimensions)");
+        Vector<Double> vector = new VectorReal(17, 5);
         MatrixReal instance = this._matrix;
         instance.addRow(vector);
     }
@@ -651,10 +709,11 @@ public class MatrixRealTest {
     @Test
     public void testRemoveColumn() {
         System.out.println("removeColumn");
-        int column = 0;
+        int column = 1;
         MatrixReal instance = this._matrix;
         double[][] values = new double[3][2];
-        for (int col = 0; col < 2; col++) {
+        values[0][0] = 1.0;
+        for (int col = 1; col < 2; col++) {
             values[col + 1][col] = 1.0;
         }
         Matrix expResult = new MatrixReal(values);
@@ -675,15 +734,28 @@ public class MatrixRealTest {
     }
 
     /**
+     * Test of removeColumn method, of class MatrixReal,
+     * for the last column.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testRemoveColumn_LastColumn() {
+        System.out.println("removeColumn(last column)");
+        int column = 0;
+        MatrixReal instance = MatrixReal.Value(0, 2, 0, 1, 3.0);
+        instance.removeColumn(column);
+    }
+
+    /**
      * Test of removeRow method, of class MatrixReal.
      */
     @Test
     public void testRemoveRow() {
         System.out.println("removeRow");
-        int row = 0;
+        int row = 1;
         MatrixReal instance = this._matrix;
         double[][] values = new double[2][3];
-        for (int col = 0; col < 2; col++) {
+        values[0][0] = 1.0;
+        for (int col = 1; col < 2; col++) {
             values[col][col + 1] = 1.0;
         }
         Matrix expResult = new MatrixReal(values);
@@ -700,6 +772,18 @@ public class MatrixRealTest {
         System.out.println("removeRow(x)");
         int row = -1;
         MatrixReal instance = this._matrix;
+        instance.removeRow(row);
+    }
+
+    /**
+     * Test of removeRow method, of class MatrixReal,
+     * for the last row.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testRemoveRow_LastRow() {
+        System.out.println("removeRow(last row)");
+        int row = 0;
+        MatrixReal instance = MatrixReal.Value(0, 1, 0, 2, 3.0);
         instance.removeRow(row);
     }
 
@@ -1632,6 +1716,12 @@ public class MatrixRealTest {
         MatrixReal three = MatrixReal.Zero(0, 3, 0, 2);
         MatrixReal two = MatrixReal.Identity(0, 2);
         this._base.testEquals(instance, matrix, three, two);
+
+        MatrixReal wrongValue = MatrixReal.Identity(0, 3);
+        wrongValue.setValue(1, 0, 5.0);
+
+        assertFalse(instance.toString() + " compared to " + wrongValue.toString(),
+                instance.equals(wrongValue));
     }
 
     /**
@@ -1643,6 +1733,15 @@ public class MatrixRealTest {
         MatrixReal instance = this._matrix;
         String expResult = "{Mathematics.Matrix.MatrixReal Rows: 0-2 Columns: 0-2 [[1.0; 0.0; 0.0]; [0.0; 1.0; 0.0]; [0.0; 0.0; 1.0]]}";
         this._base.testToString(instance, expResult);
+    }
+
+    /**
+     * Test of hashCode method, of class MatrixReal.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        this._base.testHashCode(this._matrix, 23188331);
     }
 
     /**
