@@ -26,10 +26,10 @@ public final class HadamardReal
             throw new IllegalArgumentException("The vectors are not conforming" +
                     " in dimensions.");
         int start = firstInput.getFirstDimension();
-        int end = firstInput.getFirstDimension() + firstInput.getDimensions();
-        Vector<Double> ep = new VectorReal(start, end - start);
+        int end = firstInput.getDimensions();
+        double[] values = new double[end];
         for (int dim = start; dim < end; dim++)
-            ep.setValue(dim, firstInput.getValue(dim) * secondInput.getValue(dim));
-        return ep;
+            values[dim] = firstInput.getValue(dim) * secondInput.getValue(dim);
+        return new VectorReal(start, values);
     }
 }
