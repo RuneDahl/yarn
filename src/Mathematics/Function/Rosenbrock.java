@@ -15,7 +15,7 @@ import Mathematics.Vector.*;
  * optimization algorithms.
  * @author Rune Dahl Iversen
  */
-public class Rosenbrock implements Function<Vector<Double>, Double> {
+public final class Rosenbrock implements Function<Vector<Double>, Double> {
     @Override
     public Double value(Vector<Double> input) {
         if (input.getDimensions() != 2)
