@@ -93,7 +93,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         if (!this._validator.isValid(value))
             throw new IllegalArgumentException(
                     this._validator.message(value, "Value"));
-        Double[] coefficients = new Double[this._coefficients.length];
+        double[] coefficients = new double[this._coefficients.length];
         for (int d = 0; d < this._coefficients.length; d++)
             if (d == degree)
                 coefficients[d] = value;
@@ -104,9 +104,8 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
 
     @Override
     public Function<Double, Double> getDifferential() {
-        Double[] coefficients = new Double[Math.max(this.getDegree() - 1, 1)];
-        coefficients[0] = 0.0;
-        for (int degree = 1; degree < this.getDegree(); degree++)
+        double[] coefficients = new double[Math.max(this.getDegree(), 1)];
+        for (int degree = 1; degree <= this.getDegree(); degree++)
             coefficients[degree - 1] = ((double)degree) * this._coefficients[degree];
         return new PolynomialReal(coefficients);
     }
@@ -140,10 +139,9 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     public Polynomial<Double, Double, Double> sum(
             final Polynomial<Double, Double, Double> value) {
         int degree = Math.max(this.getDegree(), value.getDegree());
-        Double[] sums = new Double[degree + 1];
+        double[] sums = new double[degree + 1];
         for (int d = 0; d <= degree; d++)
         {
-            sums[d] = 0.0;
             if (d <= this.getDegree())
                 sums[d] += this.getCoefficient(d);
             if (d <= value.getDegree())
@@ -156,10 +154,9 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     public Polynomial<Double, Double, Double> subtract(
             final Polynomial<Double, Double, Double> value) {
         int degree = Math.max(this.getDegree(), value.getDegree());
-        Double[] diffs = new Double[degree + 1];
+        double[] diffs = new double[degree + 1];
         for (int d = 0; d <= degree; d++)
         {
-            diffs[d] = 0.0;
             if (d <= this.getDegree())
                 diffs[d] += this.getCoefficient(d);
             if (d <= value.getDegree())
@@ -172,9 +169,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     public Polynomial<Double, Double, Double> product(
             final Polynomial<Double, Double, Double> factor) {
         int degree = this.getDegree() + factor.getDegree();
-        Double[] products = new Double[degree + 1];
-        for (int d = 0; d <= degree; d++)
-            products[d] = 0.0;
+        double[] products = new double[degree + 1];
         for (int d = 0; d <= this.getDegree(); d++)
             for (int i = 0; i <= factor.getDegree(); i++)
                 products[d + i] +=
@@ -185,13 +180,9 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
     @Override
     public Polynomial<Double, Double, Double> scale(final Double scalar) {
         int degree = this.getDegree();
-        Double[] scales = new Double[degree + 1];
+        double[] scales = new double[degree + 1];
         for (int d = 0; d <= degree; d++)
-        {
-            scales[d] = 0.0;
-            if (d <= this.getDegree())
-                scales[d] += this.getCoefficient(d) * scalar;
-        }
+            scales[d] += this.getCoefficient(d) * scalar;
         return new PolynomialReal(scales);
     }
 
@@ -202,31 +193,9 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
             equals = false;
         else if (o == this)
             equals = true;
-        else if (o instanceof PolynomialReal)
-            equals = this.equals((PolynomialReal)o);
+        else if (o instanceof Polynomial)
+            equals = this._equals((Polynomial)o);
         else
-            equals = false;
-        return equals;
-    }
-
-    /**
-     * Indicates whether some other PolynomialReal is equal to this.
-     * @param function Polynomial.
-     * @return         True if the polynomials are equal, else false.
-     */
-    public boolean equals(final PolynomialReal function) {
-        boolean equals;
-        if (function == null)
-            equals = false;
-        else if (function == this)
-            equals = true;
-        else if (function.getDegree() == this.getDegree()){
-            equals = true;
-            for (int degree = 0; degree <= this.getDegree(); degree++)
-                equals &= (this.getCoefficient(degree) -
-                        function.getCoefficient(degree) == 0);
-        }
-        else 
             equals = false;
         return equals;
     }
@@ -240,7 +209,7 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
 
     @Override
     public String toString() {
-        String value = "{PolynomialReal[";
+        String value = "{Mathematics.Function.PolynomialReal[";
         for (int d = this.getDegree(); 0 <= d; d--) {
             value += (Math.signum(this.getCoefficient(d)) == 1 ? " +" : " -");
             value += Double.toString(Math.abs(this.getCoefficient(d)));
@@ -250,6 +219,19 @@ public final class PolynomialReal implements Polynomial<Double, Double, Double> 
         }
         value += "]}";
         return value;
+    }
+
+    /**
+     * Indicates whether some other Polynomial of doubles is equal to this.
+     * @param function Polynomial.
+     * @return         True if the polynomials are equal, else false.
+     */
+    private boolean _equals(final Polynomial<Double, Double, Double> function) {
+        boolean equals = (function.getDegree() == this.getDegree());
+        for (int degree = 0; equals && degree <= this.getDegree(); degree++)
+            equals &= (this.getCoefficient(degree) -
+                    function.getCoefficient(degree) == 0);
+        return equals;
     }
 
     private void _setCoefficients(final Double[] values) {
