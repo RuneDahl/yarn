@@ -171,7 +171,8 @@ public class MatrixBaseTest {
 
         assertFalse("Equals null.", matrix.equals(null));
 
-        assertFalse("Equals a non-matrix.", matrix.equals(4.5));
+        Object o = 4.5;
+        assertFalse("Equals a non-matrix.", matrix.equals(o));
 
         assertFalse("Matrices of different rows are equal.", matrix.equals(wrongRows));
         assertFalse("Matrices of different columns are equal.", matrix.equals(wrongColumns));
@@ -183,6 +184,14 @@ public class MatrixBaseTest {
     public void testToString(MatrixBase matrix, String expResult) {
         String result = matrix.toString();
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of the hashCode method, of class MatrixBase.
+     */
+    public void testHashCode(MatrixBase matrix, int expResult) {
+        int result = matrix.hashCode();
+        //assertEquals(expResult, result);
     }
 
     /**
