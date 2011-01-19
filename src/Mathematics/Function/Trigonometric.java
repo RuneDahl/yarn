@@ -109,8 +109,6 @@ public abstract class Trigonometric<TypeOfValue>
      * @return    True if the value are equal, else false.
      */
     protected boolean _equals(final Trigonometric<TypeOfValue> obj) {
-        if (obj == null)
-            return false;
         if (obj == this)
             return true;
         return this._amplitude.equals(obj.getAmplitude()) &&
@@ -124,15 +122,18 @@ public abstract class Trigonometric<TypeOfValue>
      * @return Hash code value.
      */
     protected int _hashCode() {
-        int hashCode = 0;
-        try {
-            hashCode = this._amplitude.hashCode() +
+        int hashCode = this._amplitude.hashCode() +
                     this._frequency.hashCode() * 19 +
                     this._phase.hashCode() * 361;
-        }
-        catch (Exception e) {
-            hashCode = 0;
-        }
         return hashCode;
+    }
+
+    protected String _toString() {
+        StringBuilder t = new StringBuilder("{" + this.getClass().getName() + "[");
+        t.append("Amplitude: " + this._amplitude.toString() + " ; ");
+        t.append("Frequency: " + this._frequency.toString() + " ; ");
+        t.append("Phase: " + this._phase.toString());
+        t.append("]}");
+        return t.toString();
     }
 }
