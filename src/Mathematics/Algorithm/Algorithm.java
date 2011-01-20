@@ -18,5 +18,5 @@ public interface Algorithm<TypeOfValue> {
      * @param value Value
      * @return The result from this algorithm.
      */
-    public Mathematics.Result.Result Run(final TypeOfValue value);
+    public Mathematics.Result.Result run(final TypeOfValue value);
 }

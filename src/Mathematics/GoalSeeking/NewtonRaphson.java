@@ -117,7 +117,7 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Result Run(final Function<Double, Double> function) {
+    public Result run(final Function<Double, Double> function) {
         double value = this._initialValue;
         int iterations = 0;
         double output = function.value(value);

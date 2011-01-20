@@ -101,7 +101,7 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Result Run(final Function<Double, Double> value) {
+    public Result run(final Function<Double, Double> value) {
         double x_1 = this.getInitialValue().getLowerBound();
         double fx_1 = value.value(x_1);
         if (this._criterion.value(fx_1, this._goalValue))
