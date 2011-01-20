@@ -63,6 +63,19 @@ public class NewtonRaphsonTest {
     }
 
     /**
+     * Test of getDifferentiator method, of class NewtonRaphson.
+     */
+    @Test
+    public void testGetDifferentiator() {
+        System.out.println("getDifferentiator");
+        NewtonRaphson instance = this._instance;
+        Object result = instance.getDifferentiator();
+        assertTrue(result instanceof Derivative);
+        Derivative<Double, Double, Double> d =
+                (Derivative<Double, Double, Double>)result;
+    }
+
+    /**
      * Test of getGoalValue method, of class NewtonRaphson.
      */
     @Test
@@ -122,6 +135,34 @@ public class NewtonRaphsonTest {
         NewtonRaphson instance = this._instance;
         Equals<Double> criterion = null;
         instance.setCriterion(criterion);
+    }
+
+    /**
+     * Test of setDifferentiator method, of class NewtonRaphson.
+     */
+    @Test
+    public void testSetDifferentiator() {
+        System.out.println("setDifferentiator");
+        NewtonRaphson instance = this._instance;
+        Derivative<Double, Double, Double> derivative =
+                new Derivative<Double, Double, Double>();
+        instance.setDifferentiator(derivative);
+        Object result = instance.getDifferentiator();
+        assertTrue(result instanceof Derivative);
+        Derivative<Double, Double, Double> d =
+                (Derivative<Double, Double, Double>)result;
+    }
+
+    /**
+     * Test of setDifferentiator method, of class NewtonRaphson,
+     * for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetDifferentiator_Null() {
+        System.out.println("setDifferentiator(null)");
+        NewtonRaphson instance = this._instance;
+        Derivative<Double, Double, Double> derivative = null;
+        instance.setDifferentiator(derivative);
     }
 
     /**
@@ -199,11 +240,11 @@ public class NewtonRaphsonTest {
     }
 
     /**
-     * Test of Run method, of class NewtonRaphson.
+     * Test of run method, of class NewtonRaphson.
      */
     @Test
     public void testRun() {
-        System.out.println("Run");
+        System.out.println("run");
         double[] values = new double[3];
         values[0] = -1.0;
         values[2] = 1.0;
@@ -214,5 +255,17 @@ public class NewtonRaphsonTest {
         IterativeSuccess<Double> is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations from result.", 6, is.getIterations());
         assertEquals("Wrong value from result.", 1.553773974403, is.getResult(), Math.pow(-10.0, -6.0));
+
+        this._instance.setMaximumIterations(5);
+        result = instance.run(value);
+        assertTrue("Maximum iterations hit - Wrong type of result.", result instanceof MaximumIterationsFailure);
+        MaximumIterationsFailure mif = (MaximumIterationsFailure)result;
+        assertEquals("Maximum iterations hit - Wrong number of iterations from result.", 5, mif.getIterations());
+
+        this._instance.setInitialValue(0.0);
+        result = instance.run(value);
+        assertTrue("Slope equals 0 (zero) - Wrong type of result.", result instanceof SlopeEqualsZeroFailure);
+        SlopeEqualsZeroFailure<Double> sez = (SlopeEqualsZeroFailure<Double>)result;
+        assertEquals("Slope equals 0 (zero) - Wrong number of iterations from result.", 0.0, sez.getValue(), 0.0);
     }
 }
