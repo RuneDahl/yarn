@@ -206,11 +206,11 @@ public class BisectionTest {
     }
 
     /**
-     * Test of Run method, of class Bisection.
+     * Test of run method, of class Bisection.
      */
     @Test
     public void testRun() {
-        System.out.println("Run");
+        System.out.println("run");
         double[] values = new double[3];
         values[0] = -1.0;
         values[2] = 1.0;
@@ -221,5 +221,50 @@ public class BisectionTest {
         IterativeSuccess<Double> is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations from result.", 21, is.getIterations());
         assertEquals("Wrong value from result.", 1.553773974403, is.getResult(), Math.pow(-10.0, -6.0));
+
+        this._instance.setMaximumIterations(20);
+        result = instance.run(value);
+        assertTrue("Maximum Iterations hit: Wrong type of result.", result instanceof MaximumIterationsFailure);
+        MaximumIterationsFailure mif = (MaximumIterationsFailure)result;
+
+        this._instance.setMaximumIterations(40);
+        this._instance.setGoalValue(-1.0);
+
+        result = instance.run(value);
+        assertTrue("Initial hit: Lower Bound - Wrong type of result.", result instanceof SuccessWithValue);
+        SuccessWithValue<Double> swv = (SuccessWithValue<Double>)result;
+        assertEquals("Initial hit: Lower Bound - Wrong value from result.", 0.0, swv.getResult(), Math.pow(-10.0, -6.0));
+
+        this._instance.setGoalValue(15.0);
+        result = instance.run(value);
+        assertTrue("Initial hit: Upper Bound - Wrong type of result.", result instanceof SuccessWithValue);
+        swv = (SuccessWithValue<Double>)result;
+        assertEquals("Initial hit: Upper Bound - Wrong value from result.", 4.0, swv.getResult(), Math.pow(-10.0, -6.0));
+
+        this._instance.setInitialValue(
+                new IntervalReal(0.0, Interval.EndType.Includes,
+                2.0, Interval.EndType.Includes));
+        result = instance.run(value);
+        assertTrue("Solution not enclosed - Wrong type of result.", result instanceof SolutionNotEnclosedFailure);
+        SolutionNotEnclosedFailure<Double, Double> snef = (SolutionNotEnclosedFailure<Double, Double>)result;
+        assertEquals("Solution not enclosed - Wrong goal value from result.", 15.0, snef.getGoalValue(), Math.pow(-10.0, -6.0));
+        Polynomial<Double, Double, Double> f = new PolynomialReal(2);
+        f = f.setCoefficient(0, -1.0);
+        f = f.setCoefficient(2, 1.0);
+        assertEquals("Solution not enclosed - Wrong function from result.", f, snef.getFunction());
+    }
+
+    /**
+     * Test of run method, of class Bisection, for a null value.
+     */
+    @Test
+    public void testRun_Null() {
+        System.out.println("run(null)");
+        Function<Double, Double> value = null;
+        Algorithm<Function<Double, Double>> instance = this._instance;
+        Result result = instance.run(value);
+        assertTrue("Wrong type of result.", result instanceof UnhandledExceptionThrown);
+        UnhandledExceptionThrown uht = (UnhandledExceptionThrown)result;
+        assertTrue("Class of exception from result.", uht.getException() instanceof NullPointerException);
     }
 }
