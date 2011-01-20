@@ -102,7 +102,7 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Result Run(final Function<Double, Double> value) {
+    public Result run(final Function<Double, Double> value) {
         try
         {
             Interval<Double> interval = new IntervalReal(
@@ -121,24 +121,25 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
             if (0.0 < lSign * uSign)
                 return new SolutionNotEnclosedFailure<Double, Double>(
                         value, interval, this._goalValue);
+            double midPoint = Double.NaN;
             int iter;
             for (iter = 0; iter < this._maxIter &&
                     !this._criterion.value(output, this._goalValue); iter++) {
-                double midPoint = interval.getLowerBound() / 2.0 +
+                midPoint = interval.getLowerBound() / 2.0 +
                         interval.getUpperBound() / 2.0;
                 if (midPoint == interval.getLowerBound() ||
                         midPoint == interval.getUpperBound())
                     return new ResolutionNotFineEnough<Double, Double>(
                             value, interval, this._goalValue);
-                output = value.value(midPoint) - this._goalValue;
-                if (Math.signum(output) == lSign)
+                output = value.value(midPoint);
+                if (Math.signum(output - this._goalValue) == lSign)
                     interval.setLowerBound(midPoint);
                 else
                     interval.setUpperBound(midPoint);
             }
             if (this._maxIter <= iter)
                 return new MaximumIterationsFailure(iter);
-            return new IterativeSuccess(iter, output);
+            return new IterativeSuccess(iter, midPoint);
         }
         catch (Exception e)
         { return new UnhandledExceptionThrown(e); }
