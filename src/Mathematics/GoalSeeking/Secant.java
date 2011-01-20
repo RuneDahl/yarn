@@ -102,26 +102,38 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
 
     @Override
     public Result run(final Function<Double, Double> value) {
-        double x_1 = this.getInitialValue().getLowerBound();
-        double fx_1 = value.value(x_1);
-        if (this._criterion.value(fx_1, this._goalValue))
-            return new SuccessWithValue(x_1);
-        double x = this.getInitialValue().getUpperBound();
-        double fx = value.value(x);
-        if (this._criterion.value(fx, this._goalValue))
-            return new SuccessWithValue(x);
-        int iter;
-        for (iter = 0; iter < this._maxIter &&
-                !this._criterion.value(fx, this._goalValue); iter++) {
-            double n = x - (fx - this._goalValue) * (x - x_1) / (fx - fx_1);
-            double fn = value.value(n);
-            x_1 = x;
-            fx_1 = fx;
-            x = n;
-            fx = fn;
+        try {
+            double x_1 = this.getInitialValue().getLowerBound();
+            double fx_1 = value.value(x_1);
+            if (this._criterion.value(fx_1, this._goalValue))
+                return new SuccessWithValue(x_1);
+            double x = this.getInitialValue().getUpperBound();
+            double fx = value.value(x);
+            if (this._criterion.value(fx, this._goalValue))
+                return new SuccessWithValue(x);
+            int iter = -1;
+            for (iter = 0; iter < this._maxIter &&
+                    !this._criterion.value(fx, this._goalValue); iter++) {
+                double n = x - (fx - this._goalValue) * (x - x_1) / (fx - fx_1);
+                double fn = value.value(n);
+                x_1 = x;
+                fx_1 = fx;
+                if (x == n)
+                    return new ResolutionNotFineEnough(value,
+                            new IntervalReal(
+                            Math.min(x_1, n), Interval.EndType.Includes,
+                            Math.max(x_1, n), Interval.EndType.Includes),
+                            this._goalValue);
+                x = n;
+                fx = fn;
+            }
+            if (this._maxIter <= iter)
+                return new MaximumIterationsFailure(iter);
+            else
+                return new IterativeSuccess(iter, x);
         }
-        if (this._maxIter <= iter)
-            return new MaximumIterationsFailure(iter);
-        return new IterativeSuccess(iter, x);
+        catch (Exception e) {
+            return new UnhandledExceptionThrown(e);
+        }
     }
 }
