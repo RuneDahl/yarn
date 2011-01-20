@@ -266,8 +266,7 @@ public class BisectionTest {
                 3872.9834753068594, Interval.EndType.Includes,
                 3872.98347530686, Interval.EndType.Includes);
         assertEquals("Resolution not fine enough - Wrong value from result.", interval, rnfe.getInterval());
-
-}
+    }
 
     /**
      * Test of run method, of class Bisection, for a null value.
