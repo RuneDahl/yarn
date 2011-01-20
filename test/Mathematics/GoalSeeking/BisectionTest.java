@@ -252,7 +252,22 @@ public class BisectionTest {
         f = f.setCoefficient(0, -1.0);
         f = f.setCoefficient(2, 1.0);
         assertEquals("Solution not enclosed - Wrong function from result.", f, snef.getFunction());
-    }
+
+        this._instance.setInitialValue(
+                new IntervalReal(3000.0, Interval.EndType.Includes,
+                4000.0, Interval.EndType.Includes));
+        this._instance.setMaximumIterations(300);
+        this._instance.setGoalValue(15000000.0);
+        ((PrecisionBased)this._instance.getCriterion()).setPrecision(Math.pow(10.0, -12.0));
+        result = instance.run(value);
+        assertTrue("Resolution not fine enough - Wrong type of result.", result instanceof ResolutionNotFineEnough);
+        ResolutionNotFineEnough<Double, Double> rnfe = (ResolutionNotFineEnough<Double, Double>)result;
+        IntervalReal interval = new IntervalReal(
+                3872.9834753068594, Interval.EndType.Includes,
+                3872.98347530686, Interval.EndType.Includes);
+        assertEquals("Resolution not fine enough - Wrong value from result.", interval, rnfe.getInterval());
+
+}
 
     /**
      * Test of run method, of class Bisection, for a null value.
