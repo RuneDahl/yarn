@@ -36,8 +36,7 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
      * Creates an instance of the secant method {@see Algorithm algorithm}
      * for goal-seeking the input to a funtion.
      * @param goalValue         Target value.
-     * @param initialValue     First initial value.
-     * @param initialValue2     Second initial value.
+     * @param initialValue      First initial value.
      * @param criterion         End criterion for the iteration.
      * @param maximumIterations Maximum number of iterations allowed.
      */
