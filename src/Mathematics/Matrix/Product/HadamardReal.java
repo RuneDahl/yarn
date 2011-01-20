@@ -22,7 +22,7 @@ public final class HadamardReal
     public Matrix<Double> value(final Matrix<Double> firstInput,
             final Matrix<Double> secondInput) {
         if (!firstInput.hasSameDimensions(secondInput))
-            throw new IllegalArgumentException("The matrices are not " +
+            throw new ArithmeticException("The matrices are not " +
                     "conforming in dimensions.");
         int fr = firstInput.getFirstRow();
         int rs = firstInput.getRows();
