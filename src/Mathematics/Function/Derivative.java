@@ -28,7 +28,9 @@ public final class Derivative<TypeOfInput, TypeOfFunctionOutput,
     @Override
     public TypeOfDifferentialOutput value(final TypeOfInput value,
             final Function<TypeOfInput, TypeOfFunctionOutput> function) {
-        if (function instanceof Differentiable) {
+        if (function == null)
+            throw new NullPointerException("Function is null.");
+        else if (function instanceof Differentiable) {
             Differentiable<TypeOfInput, TypeOfFunctionOutput,
                     TypeOfDifferentialOutput> differential =
                     (Differentiable<TypeOfInput, TypeOfFunctionOutput,
@@ -36,7 +38,7 @@ public final class Derivative<TypeOfInput, TypeOfFunctionOutput,
             return differential.getDifferential(value);
         }
         else
-            throw new IllegalArgumentException("Function is not " +
+            throw new ArithmeticException("Function is not " +
                     "Mathematics.Function.Differentiable.");
     }
 }
