@@ -108,15 +108,14 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
             Interval<Double> interval = new IntervalReal(
                     this._initialValue.getLowerBound(), Interval.EndType.Includes,
                     this._initialValue.getUpperBound(), Interval.EndType.Includes);
-            double output = value.value(this._initialValue.getLowerBound()) -
-                    this._goalValue;
+            double output = value.value(this._initialValue.getLowerBound());
             if (this._criterion.value(output, this._goalValue))
-                return new SuccessWithValue(output);
-            double lSign = Math.signum(output);
-            output = value.value(interval.getUpperBound()) - this._goalValue;
+                return new SuccessWithValue(this._initialValue.getLowerBound());
+            double lSign = Math.signum(output - this._goalValue);
+            output = value.value(interval.getUpperBound());
             if (this._criterion.value(output, this._goalValue))
-                return new SuccessWithValue(output);
-            double uSign = Math.signum(output);
+                return new SuccessWithValue(this._initialValue.getUpperBound());
+            double uSign = Math.signum(output - this._goalValue);
 
             if (0.0 < lSign * uSign)
                 return new SolutionNotEnclosedFailure<Double, Double>(
