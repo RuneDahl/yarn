@@ -11,7 +11,8 @@ import Mathematics.Matrix.*;
 /**
  * Implementation of the
  * <a href="http://en.wikipedia.org/wiki/Matrix_product#Ordinary_matrix_product">
- * ordinary matrix product</a> of two {@see Matrix matrices} of {@see Double real values}.
+ * ordinary matrix product</a> of two {@see Matrix matrices} of
+ * {@see Double real values}.
  * @author Rune Dahl Iversen
  */
 public class OrdinaryReal implements
@@ -20,11 +21,11 @@ public class OrdinaryReal implements
     public Matrix<Double> value(final Matrix<Double> firstInput,
             final Matrix<Double> secondInput) {
         if (firstInput.getFirstColumn() != secondInput.getFirstRow())
-             throw new IllegalArgumentException("The matrices are not " +
+             throw new ArithmeticException("The matrices are not " +
                     "conforming in dimensions: First column does not " +
                     "match the first row.");
         if (firstInput.getColumns() != secondInput.getRows())
-            throw new IllegalArgumentException("The matrices are not " +
+            throw new ArithmeticException("The matrices are not " +
                     "conforming in dimensions: Number of columns does not " +
                     "match the number of rows.");
         int fr = firstInput.getFirstRow();
