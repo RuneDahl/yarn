@@ -19,22 +19,24 @@ public class KroneckerReal implements
     @Override
     public Matrix<Double> value(final Matrix<Double> firstInput,
             final Matrix<Double> secondInput) {
-        int sir = secondInput.getRows();
-        int sic = secondInput.getColumns();
-        int rows = firstInput.getRows() * sir;
-        int columns = firstInput.getColumns() * sic;
+        int fir = firstInput.getRows();
+        int fic = firstInput.getColumns();
+        int rows = secondInput.getRows() * fir;
+        int columns = secondInput.getColumns() * fic;
         int ffr = firstInput.getFirstRow();
         int ffc = firstInput.getFirstColumn();
         int sfr = secondInput.getFirstRow();
         int sfc = secondInput.getFirstColumn();
         MatrixReal kp = new MatrixReal(0, rows, 0, columns);
+        int sr = -1;
         for (int r = 0; r < rows; r++) {
-            int fr = (r % sir);
-            int sr = r - (fr * sir);
+            int fr = (r % fir);
+            sr += (fr == 0 ? 1 : 0);
+            int sc = -1;
             for (int c = 0; c < columns; c++)
             {
-                int fc = (c % sic);
-                int sc = c - (fc * sic);
+                int fc = (c % fic);
+                sc += (fc == 0 ? 1 : 0);
                 kp.setValue(r, c,
                         firstInput.getValue(fr + ffr, fc + ffc) *
                         secondInput.getValue(sr + sfr, sc + sfc));
