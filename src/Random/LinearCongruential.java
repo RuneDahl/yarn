@@ -10,7 +10,10 @@ import Validation.*;
 /**
  * Implementation of a
  * <a href="http://en.wikipedia.org/wiki/Linear_congruential_generator">
- * linear congruential pseudo random number generator</a>.
+ * linear congruential pseudo random number generator</a>.<br>
+ * List of parameters in frequent use:
+ * <a href="http://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use">
+ * Wikipedia</a>.
  * @author Rune Dahl Iversen
  */
 public final class LinearCongruential implements Seed<Long, Long> {
@@ -114,7 +117,8 @@ public final class LinearCongruential implements Seed<Long, Long> {
 
     @Override
     public Long getSample() {
-        this._seed = (this._multiplier * this._seed + this._increment) % this._modulus;
+        this._seed = (this._multiplier*this._seed + this._increment) %
+                this._modulus;
         return this._seed;
     }
 
