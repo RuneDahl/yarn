@@ -34,8 +34,6 @@ public final class AffineOr extends Affine {
 
     @Override
     public boolean isBinding(final Vector<Double> value) {
-        if (value == null)
-            return false;
         Vector<Double> eval = this._Evaluate(value);
         for (int dim = eval.getFirstDimension(); dim <= eval.getLastDimension(); dim++)
             if (eval.getValue(dim) != 0.0)
@@ -45,8 +43,6 @@ public final class AffineOr extends Affine {
 
     @Override
     public boolean isFeasible(final Vector<Double> value) {
-        if (value == null)
-            return false;
         Vector<Double> eval = this._Evaluate(value);
         for (int dim = eval.getFirstDimension(); dim <= eval.getLastDimension(); dim++)
             if (eval.getValue(dim) >= 0.0)
