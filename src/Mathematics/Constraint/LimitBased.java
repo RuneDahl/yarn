@@ -13,7 +13,8 @@ import Validation.Validator;
  * @param <TypeOfValue> Type of value.
  * @param <TypeOfLimit> Type of limit.
  */
-public abstract class LimitBased<TypeOfValue, TypeOfLimit> {
+public abstract class LimitBased<TypeOfValue, TypeOfLimit>
+        implements Constraint<TypeOfValue> {
     private TypeOfLimit _limit;
     private Validator<TypeOfLimit> _validator;
 
