@@ -13,7 +13,7 @@ import Validation.*;
  * linear congruential pseudo random number generator</a>.
  * @author Rune Dahl Iversen
  */
-public final class LinearCongruential implements SeedBased<Long, Long> {
+public final class LinearCongruential implements Seed<Long, Long> {
     private long _increment;
     private long _modulus;
     private long _multiplier;

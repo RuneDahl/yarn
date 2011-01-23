@@ -10,7 +10,7 @@ package Random;
  * <a href="http://en.wikipedia.org/wiki/Random_seed">seed</a>.
  * @author Rune Dahl Iversen
  */
-public interface SeedBased<TypeOfSeed, TypeOfValue>
+public interface Seed<TypeOfSeed, TypeOfValue>
         extends Generator<TypeOfValue> {
     /**
      * Set the seed of this random generator.
