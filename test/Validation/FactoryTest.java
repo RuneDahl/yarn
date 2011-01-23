@@ -148,6 +148,19 @@ public class FactoryTest {
     }
 
     /**
+     * Test of NonNegativeLong method, of class Factory.
+     */
+    @Test
+    public void testNonNegativeLong() {
+        System.out.println("NonNegativeLong");
+        Validator<Long> result = Factory.NonNegativeLong();
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<Long> and = (And)result;
+        assertEquals("Wrong size of result.", 2, and.size());
+    }
+
+    /**
      * Test of Real method, of class Factory.
      */
     @Test
