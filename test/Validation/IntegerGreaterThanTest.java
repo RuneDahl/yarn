@@ -57,6 +57,18 @@ public class IntegerGreaterThanTest {
     }
 
     /**
+     * Test of constructor, of class IntegerGreaterThan, without input.
+     */
+    @Test
+    public void testCtor() {
+        System.out.println("IntegerGreaterThan()");
+        IntegerGreaterThan instance = new IntegerGreaterThan();
+
+        assertNotNull("Null value result from ctor().", instance);
+        this._limit.testGetLimit(instance, 0);
+    }
+
+    /**
      * Test of constructor, of class IntegerGreaterThan, with an int value.
      */
     @Test
