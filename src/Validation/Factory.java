@@ -127,6 +127,23 @@ public final class Factory {
     }
 
     /**
+     * Validator allowing not null {@see Long long} values
+     * that are limited by the specified lower and upper bound.
+     * @param lowerBound Lower bound.
+     * @param upperBound Upper bound.
+     * @return
+     */
+    public static Validator<Long> BoundedLong(
+            final long lowerBound,
+            final long upperBound) {
+        And<Long> validator = new And<Long>();
+        validator.add(new NotNull<Long>());
+        validator.add(new LongGreaterThanOrEqual(lowerBound));
+        validator.add(new LongLessThanOrEqual(upperBound));
+        return validator;
+    }
+
+    /**
      * Validator allowing not null {@see Long long}
      * values that are non-negative.
      * @return New validator.
