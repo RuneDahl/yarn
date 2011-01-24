@@ -45,9 +45,9 @@ public class MersenneTwisterTest {
      * Test of getSample method, of class MersenneTwister.
      */
     @Test
-    public void testGetSample_0args() {
+    public void testGetSample() {
         System.out.println("getSample");
-        MersenneTwister instance = this._instance;
+        Generator<Long> instance = this._instance;
         Long expResult = 1617746096L;
         Long result = instance.getSample();
         assertEquals(expResult, result);
@@ -59,7 +59,7 @@ public class MersenneTwisterTest {
     @Test
     public void testGetSample_int() {
         System.out.println("getSample(int)");
-        MersenneTwister instance = this._instance;
+        Generator<Long> instance = this._instance;
         int count = 3;
         Long[] expResult = new Long[count];
         expResult[0] = 1617746096L;
@@ -67,6 +67,19 @@ public class MersenneTwisterTest {
         expResult[2] = 1162986294L;
         Long[] result = instance.getSample(count);
         assertArrayEquals(expResult, result);
+
+        result = instance.getSample(700); // Invoked to ensure 100% code coverage.
+    }
+
+    /**
+     * Test of getSample method, of class MersenneTwister.
+     */
+    @Test (expected=NegativeArraySizeException.class)
+    public void testGetSample_NegativeOne() {
+        System.out.println("getSample(-1)");
+        MersenneTwister instance = this._instance;
+        int count = -1;
+        instance.getSample(count);
     }
 
     /**
@@ -94,7 +107,6 @@ public class MersenneTwisterTest {
         MersenneTwister instance = this._instance;
         instance.setSeed(seed);
     }
-
 
     /**
      * Test of setSeed method, of class MersenneTwister, for the value 4294967297.
