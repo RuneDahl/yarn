@@ -6,13 +6,13 @@
 package Validation;
 
 /**
- * {@see Validator} allowing longs greater than the limit.
+ * {@see Validator} allowing {@see Long longs} greater than the limit.
  * @author Rune Dahl Iversen
  */
 public final class LongGreaterThan extends LimitBased<Long> {
     /**
      * Create an instance of a long validation requiring a value greater
-     * than or equal to the default limit of 0.
+     * than the default limit of 0.
      */
     public LongGreaterThan() {
         super(0L);
@@ -20,7 +20,7 @@ public final class LongGreaterThan extends LimitBased<Long> {
 
     /**
      * Create an instance of a long validation requiring a value greater
-     * than or equal to the specified limit.
+     * than the specified limit.
      * @param limit Limit.
      */
     public LongGreaterThan(final long limit) {
