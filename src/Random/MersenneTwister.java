@@ -5,6 +5,8 @@
 
 package Random;
 
+import Validation.*;
+
 /**
  * Implementation of the <a href="http://en.wikipedia.org/wiki/Mersenne_twister">
  * Mersenne twister</a> pseudo {@see Generator random number generator}.<br>
@@ -45,6 +47,8 @@ package Random;
  */
 public final class MersenneTwister
         implements Seed<Long, Long> {
+    private final static Validator<Long> __validator =
+            Factory.BoundedLong(0, 4294967296L);
     private final static int _n = 624;
     private final static int _m = 397;
     private final static int _upperMask = 0x80000000;
@@ -59,9 +63,15 @@ public final class MersenneTwister
     private final static int _maskC = 0xefc60000;
 
     /* State */
-    private int[] _cache = null;
+    private int[] _cache = new int[_n];
     private int _index = 0;
 
+    /**
+     * Create an instance of the Mersenne twister pseudo random number generator
+     * with the specified seed.<br>
+     * The seed is limited to the values 0 through 4294967296.
+     * @param seed Seed.
+     */
     public MersenneTwister(long seed) {
         this.setSeed(seed);
     }
@@ -99,12 +109,17 @@ public final class MersenneTwister
         return simulations;
     }
 
+    /**
+     * Set the seed of this Mersenne twister.<br>
+     * The seed is limited to the values 0 through 4294967296.
+     * @param seed Seed.
+     */
     @Override
     public void setSeed(final Long seed) {
-        //if (_cache == null) // Lazy (Safe?) initialization of the array.
-        //    _cache = new int[_n];
+        if (!__validator.isValid(seed))
+            throw new IllegalArgumentException(__validator.message(seed, "Seed"));
         long s = seed;
-        _cache[0] = (int)s; //Function.IntegerNumbers.BoundedLong(seed, "Seed", 0, 4294967296L);
+        _cache[0] = (int)s;
         for (_index = 1; _index < _n; _index++) {
             _cache[_index] = _SeedShift(_cache[_index - 1]) + _index;
         }
