@@ -148,6 +148,19 @@ public class FactoryTest {
     }
 
     /**
+     * Test of BoundedLong method, of class Factory.
+     */
+    @Test
+    public void testBoundedLong() {
+        System.out.println("BoundedLong");
+        Validator<Long> result = Factory.BoundedLong(4, 9);
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<Long> and = (And)result;
+        assertEquals("Wrong size of result.", 3, and.size());
+    }
+
+    /**
      * Test of NonNegativeLong method, of class Factory.
      */
     @Test
