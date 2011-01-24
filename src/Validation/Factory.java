@@ -134,7 +134,7 @@ public final class Factory {
     public static Validator<Long> NonNegativeLong() {
         And<Long> validator = new And<Long>();
         validator.add(new NotNull<Long>());
-        validator.add(new LongGreaterThan(-1));
+        validator.add(new LongGreaterThanOrEqual(0));
         return validator;
     }
 
