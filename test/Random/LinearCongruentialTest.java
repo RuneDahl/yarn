@@ -212,7 +212,7 @@ public class LinearCongruentialTest {
      * Test of getSample method, of class LinearCongruential.
      */
     @Test
-    public void testGetSample_0args() {
+    public void testGetSample() {
         System.out.println("getSample");
         Generator<Long> instance = this._instance;
         Long expResult = 1291304790L;
@@ -225,7 +225,7 @@ public class LinearCongruentialTest {
      */
     @Test
     public void testGetSample_int() {
-        System.out.println("getSample");
+        System.out.println("getSample(int)");
         int count = 3;
         Generator<Long> instance = this._instance;
         Long[] expResult = new Long[3];
