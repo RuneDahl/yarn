@@ -156,6 +156,18 @@ public final class Factory {
     }
 
     /**
+     * Validator allowing not null {@see Long long}
+     * values that are positive.
+     * @return New validator.
+     */
+    public static Validator<Long> PositiveLong() {
+        And<Long> validator = new And<Long>();
+        validator.add(new NotNull<Long>());
+        validator.add(new LongGreaterThan(0));
+        return validator;
+    }
+
+    /**
      * Validator allowing not null {@see Double double}
      * values that are not Double.NaN.
      * @return New validator.
