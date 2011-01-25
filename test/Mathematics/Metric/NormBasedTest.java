@@ -6,6 +6,7 @@
 package Mathematics.Metric;
 
 import Mathematics.Complex;
+import Mathematics.Function.Operator;
 import Mathematics.Norm.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -149,7 +150,7 @@ public class NormBasedTest {
     @Test (expected=IllegalStateException.class)
     public void testValue_IllegalState() {
         System.out.println("value(x, null)");
-        Metric<Double> instance = this._illegalState;
+        Operator<Double, Double, Double> instance = this._illegalState;
 
         Double firstInput = 5.0;
         Double secondInput = 2.4;
