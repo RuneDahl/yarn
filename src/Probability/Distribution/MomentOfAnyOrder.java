@@ -23,12 +23,12 @@ public interface MomentOfAnyOrder<TypeOfMoment, TypeOfValue>
      * @param order Order of moment.
      * @return      Central moment.
      */
-    public TypeOfMoment getCentralMoment(final double order);
+    public TypeOfMoment getCentralMoment(final int order);
 
     /**
      * Returns the moment of the specified order of this distribution.
      * @param order Order.
      * @return      Moment.
      */
-    public TypeOfMoment getMoment(final double order);
+    public TypeOfMoment getMoment(final int order);
 }
