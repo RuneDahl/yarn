@@ -149,7 +149,6 @@ public class VectorRealTest {
         VectorReal instance = this._vector;
         VectorReal nullValue = null;
         instance.hasSameDimensions(nullValue);
-        fail("No exception thrown.");
     }
 
     /**
@@ -177,7 +176,6 @@ public class VectorRealTest {
         Double value = Math.E;
         VectorReal instance = this._vector;
         instance.setValue(dimension, value);
-        fail("No exception thrown.");
     }
 
     /**
@@ -190,7 +188,6 @@ public class VectorRealTest {
         Double value = null;
         VectorReal instance = this._vector;
         instance.setValue(dimension, value);
-        fail("No exception thrown.");
     }
 
     /**
@@ -203,7 +200,6 @@ public class VectorRealTest {
         Double value = Double.NaN;
         VectorReal instance = this._vector;
         instance.setValue(dimension, value);
-        fail("No exception thrown.");
     }
 
     /**
@@ -216,7 +212,6 @@ public class VectorRealTest {
         Double value = Double.POSITIVE_INFINITY;
         VectorReal instance = this._vector;
         instance.setValue(dimension, value);
-        fail("No exception thrown.");
     }
 
     /**
@@ -229,7 +224,6 @@ public class VectorRealTest {
         Double value = Double.NEGATIVE_INFINITY;
         VectorReal instance = this._vector;
         instance.setValue(dimension, value);
-        fail("No exception thrown.");
     }
 
     /**
@@ -255,7 +249,6 @@ public class VectorRealTest {
         Vector<Double> value = null;
         VectorReal instance = this._vector;
         instance.sum(value);
-        fail("No Exception thrown.");
     }
 
     /**
@@ -267,7 +260,6 @@ public class VectorRealTest {
         Vector<Double> value = this._dim3;
         VectorReal instance = this._vector;
         instance.sum(value);
-        fail("No Exception thrown.");
     }
 
     /**
@@ -279,7 +271,6 @@ public class VectorRealTest {
         Vector<Double> value = this._dim1Though4;
         VectorReal instance = this._vector;
         instance.sum(value);
-        fail("No Exception thrown.");
     }
 
     /**
@@ -381,7 +372,6 @@ public class VectorRealTest {
         Vector<Double> value = null;
         VectorReal instance = this._vector;
         instance.subtract(value);
-        fail("No Exception thrown.");
     }
 
     /**
@@ -393,7 +383,6 @@ public class VectorRealTest {
         Vector<Double> value = this._dim3;
         VectorReal instance = this._vector;
         instance.subtract(value);
-        fail("No Exception thrown.");
     }
 
     /**
@@ -405,7 +394,6 @@ public class VectorRealTest {
         Vector<Double> value = this._dim1Though4;
         VectorReal instance = this._vector;
         instance.subtract(value);
-        fail("No Exception thrown.");
     }
 
     /**
@@ -431,7 +419,6 @@ public class VectorRealTest {
         Double scalar = null;
         VectorReal instance = this._vector;
         instance.scale(scalar);
-        fail("No exception thrown.");
     }
 
     /**
@@ -443,7 +430,6 @@ public class VectorRealTest {
         Double scalar = Double.NaN;
         VectorReal instance = this._vector;
         instance.scale(scalar);
-        fail("No exception thrown.");
     }
 
     /**
@@ -455,7 +441,6 @@ public class VectorRealTest {
         Double scalar = Double.POSITIVE_INFINITY;
         VectorReal instance = this._vector;
         instance.scale(scalar);
-        fail("No exception thrown.");
     }
 
     /**
@@ -467,7 +452,6 @@ public class VectorRealTest {
         Double scalar = Double.NEGATIVE_INFINITY;
         VectorReal instance = this._vector;
         instance.scale(scalar);
-        fail("No exception thrown.");
     }
 
     /**
@@ -541,7 +525,6 @@ public class VectorRealTest {
         int dimensions = -3;
         int unitDimension = 5;
         VectorReal.Unit(dimensions, unitDimension);
-        fail("No exception thrown.");
     }
 
     /**
@@ -577,7 +560,6 @@ public class VectorRealTest {
         int dimensions = 10;
         int unitDimension = 2;
         VectorReal.Unit(firstDimension, dimensions, unitDimension);
-        fail("No exception thrown.");
     }
 
     /**
@@ -590,6 +572,5 @@ public class VectorRealTest {
         int dimensions = -1;
         int unitDimension = 6;
         VectorReal.Unit(firstDimension, dimensions, unitDimension);
-        fail("No exception thrown.");
     }
 }
