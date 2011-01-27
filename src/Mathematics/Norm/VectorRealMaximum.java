@@ -25,7 +25,7 @@ public class VectorRealMaximum implements Norm<Vector<Double>> {
     @Override
     public Double value(Vector<Double> input) {
         double norm = 0.0;
-        for (int d = 0; d < input.getDimensions(); d++)
+        for (int d = input.getFirstDimension(); d <= input.getLastDimension(); d++)
             norm = Math.max(norm, Math.abs(input.getValue(d)));
         return norm;
     }

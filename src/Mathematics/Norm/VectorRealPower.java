@@ -33,7 +33,7 @@ public class VectorRealPower extends Power<Vector<Double>> {
         double power = this.getPower();
         double max = __maxNorm.value(input);
         double norm = 0.0;
-        for (int d = 0; d < input.getDimensions(); d++)
+        for (int d = input.getFirstDimension(); d < input.getLastDimension(); d++)
             norm += Math.pow(Math.abs(input.getValue(d)) / max, power);
         return max * Math.pow(norm, 1.0 / power);
     }
