@@ -59,6 +59,76 @@ public class VectorRealTest {
     }
 
     /**
+     * Test of constructor, of class VectorReal, taking one integer input.
+     */
+    @Test
+    public void testCtor_int() {
+        System.out.println("ctor(int)");
+        VectorReal vector = new VectorReal(1);
+        VectorReal expResult = new VectorReal(new double[] {0.0});
+        assertEquals(vector, expResult);
+    }
+
+    /**
+     * Test of constructor, of class VectorReal, taking two integer inputs.
+     */
+    @Test
+    public void testCtor_int_int() {
+        System.out.println("ctor(int, int)");
+        VectorReal vector = new VectorReal(1, 3);
+        VectorReal expResult = new VectorReal(1, new double[] {0.0, 0.0, 0.0});
+        assertEquals(vector, expResult);
+    }
+
+    /**
+     * Test of constructor, of class VectorReal,
+     * taking two inputs: integer and double.
+     */
+    @Test
+    public void testCtor_int_double() {
+        System.out.println("ctor(int, double)");
+        VectorReal vector = new VectorReal(1, 3.0);
+        VectorReal expResult = new VectorReal(0, new double[] {3.0});
+        assertEquals(vector, expResult);
+    }
+
+    /**
+     * Test of constructor, of class VectorReal,
+     * taking three inputs: two integers and a double.
+     */
+    @Test
+    public void testCtor_int_int_double() {
+        System.out.println("ctor(int, int, double)");
+        VectorReal vector = new VectorReal(1, 4, 3.0);
+        VectorReal expResult = new VectorReal(1, new double[] {3.0, 3.0, 3.0, 3.0});
+        assertEquals(vector, expResult);
+    }
+
+    /**
+     * Test of constructor, of class VectorReal,
+     * taking an array of doubles as input.
+     */
+    @Test
+    public void testCtor_array() {
+        System.out.println("ctor(double[])");
+        VectorReal vector = new VectorReal(new double[] {3.0, 3.0, 3.0, 3.0});
+        VectorReal expResult = new VectorReal(4, 3.0);
+        assertEquals(vector, expResult);
+    }
+
+    /**
+     * Test of constructor, of class VectorReal,
+     * taking two inputs: integer and an array of doubles as input.
+     */
+    @Test
+    public void testCtor_int_array() {
+        System.out.println("ctor(int, double[])");
+        VectorReal vector = new VectorReal(5, new double[] {3.0, 3.0, 3.0, 3.0});
+        VectorReal expResult = new VectorReal(5, 4, 3.0);
+        assertEquals(vector, expResult);
+    }
+
+    /**
      * Test of getDimensions method, of class VectorReal.
      */
     @Test
