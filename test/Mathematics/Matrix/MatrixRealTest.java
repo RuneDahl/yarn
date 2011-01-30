@@ -1532,16 +1532,7 @@ public class MatrixRealTest {
     public void testSwitchRows_FirstColumn_OutOfRange() {
         System.out.println("switchRows(x, r)");
         MatrixReal instance = this._matrix;
-        double[][] values = new double[3][3];
-        for (int c = 0; c < 3; c++) {
-            if (c == 0)
-                values[0][0] = 1.0;
-            else if (c == 1)
-                values[1][2] = 1.0;
-            else if (c == 2)
-                values[2][1] = 1.0;
-        }
-        MatrixReal expResult = new MatrixReal(values);
+        MatrixReal expResult = null;
         this._base.testSwitchRows(instance, -1, 2, expResult);
      }
 
@@ -1553,16 +1544,7 @@ public class MatrixRealTest {
     public void testSwitchRows_SecondColumn_OutOfRange() {
         System.out.println("switchRows(r, x)");
         MatrixReal instance = this._matrix;
-        double[][] values = new double[3][3];
-        for (int c = 0; c < 3; c++) {
-            if (c == 0)
-                values[0][0] = 1.0;
-            else if (c == 1)
-                values[1][2] = 1.0;
-            else if (c == 2)
-                values[2][1] = 1.0;
-        }
-        MatrixReal expResult = new MatrixReal(values);
+        MatrixReal expResult = null;
         this._base.testSwitchRows(instance, 0, 3, expResult);
      }
 
