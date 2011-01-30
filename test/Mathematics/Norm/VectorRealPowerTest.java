@@ -156,6 +156,17 @@ public class VectorRealPowerTest {
         expResult = 40.0;
         result = instance.value(vector);
         assertEquals(vector.toString(), expResult, result, 0.0);
+
+        vector = vector.scale(0.0);
+        expResult = 0.0;
+        result = instance.value(vector);
+        assertEquals(vector.toString(), expResult, result, 0.0);
+
+        vector = new InfiniteVector();
+        expResult = Double.POSITIVE_INFINITY;
+        result = instance.value(vector);
+        assertEquals("Vector with infinite value.", expResult, result, 0.0);
+
     }
 
     /**
@@ -225,5 +236,59 @@ public class VectorRealPowerTest {
         String expResult = "{Mathematics.Norm.VectorRealPower(2.0)}";
         String result = instance.toString();
         assertEquals(expResult, result);
+    }
+
+    private class InfiniteVector implements Vector<Double> {
+
+        @Override
+        public int getDimensions() {
+            return 1;
+        }
+
+        @Override
+        public int getFirstDimension() {
+            return 0;
+        }
+
+        @Override
+        public int getLastDimension() {
+            return 0;
+        }
+
+        @Override
+        public Double getValue(int dimension) {
+            return Double.POSITIVE_INFINITY;
+        }
+
+        @Override
+        public boolean hasSameDimensions(Vector<Double> vector) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Vector<Double> setValue(int dimension, Double value) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Double[] toArray() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Vector<Double> sum(Vector<Double> value) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Vector<Double> scale(Double scalar) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Vector<Double> subtract(Vector<Double> value) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+        
     }
 }
