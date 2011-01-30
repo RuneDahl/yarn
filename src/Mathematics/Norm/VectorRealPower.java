@@ -32,6 +32,12 @@ public class VectorRealPower extends Power<Vector<Double>> {
         // prevents destructive overruns and underruns.
         double power = this.getPower();
         double max = __maxNorm.value(input);
+        // Handle the case infinity, that would result in max equaling Double.POSITIVE_INFINITY.
+        if (Double.isInfinite(max))
+            return max;
+        // Handle the case zero, that would result in max equaling 0.
+        else if (max == 0.0)
+            return max;
         double norm = 0.0;
         for (int d = input.getFirstDimension(); d <= input.getLastDimension(); d++)
             norm += Math.pow(Math.abs(input.getValue(d)) / max, power);
