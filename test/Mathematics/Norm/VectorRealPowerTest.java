@@ -140,22 +140,22 @@ public class VectorRealPowerTest {
         Vector<Double> vector = this._vector;
         Double expResult = Math.sqrt(7.0);
         Double result = instance.value(vector);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(vector.toString(), expResult, result, 0.0);
 
         vector = vector.scale(40.0);
         expResult = Math.sqrt(7.0) * 40.0;
         result = instance.value(vector);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(vector.toString(), expResult, result, 0.0);
 
         vector = VectorReal.Unit(50, 3); // Unit-vector.
         expResult = 1.0;
         result = instance.value(vector);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(vector.toString(), expResult, result, 0.0);
 
         vector = vector.scale(40.0);
         expResult = 40.0;
         result = instance.value(vector);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(vector.toString(), expResult, result, 0.0);
     }
 
     /**
