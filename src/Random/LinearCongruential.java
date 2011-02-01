@@ -10,7 +10,7 @@ import Validation.*;
 /**
  * Implementation of a
  * <a href="http://en.wikipedia.org/wiki/Linear_congruential_generator">
- * linear congruential pseudo random number generator</a>.<br>
+ * linear congruential</a> pseudo {@see Generator random number generator}.<br>
  * List of parameters in frequent use:
  * <a href="http://en.wikipedia.org/wiki/Linear_congruential_generator#Parameters_in_common_use">
  * Wikipedia</a>.

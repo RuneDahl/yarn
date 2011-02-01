@@ -10,7 +10,7 @@ import Validation.*;
 /**
  * Implementation of a
  * <a href="http://en.wikipedia.org/wiki/Inversive_congruential_generator">
- * inversive congruential pseudo random number generator</a>.
+ * inversive congruential</a> pseudo {@see Generator random number generator}.
  * @author Rune Dahl Iversen
  */
 public final class InversiveCongruential
