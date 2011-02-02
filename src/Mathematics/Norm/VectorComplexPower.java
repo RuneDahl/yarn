@@ -23,6 +23,7 @@ public final class VectorComplexPower extends Power<Vector<Complex>> {
      * <a href="http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm">P-norm</a>
      * for a {@see Vector vector} of {@see Complex complex} values with the specified power.
      * @param power Power. Must be greater than or equal to 1 and finite.
+     * @param norm  Norm to apply to the individual values of the vector.
      */
     public VectorComplexPower(double power, final Norm<Complex> norm) {
         super(power);

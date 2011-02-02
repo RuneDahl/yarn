@@ -21,6 +21,7 @@ public final class VectorComplexMaximum implements Norm<Vector<Complex>> {
      * Creates an instance of the
      * <a href="http://en.wikipedia.org/wiki/Maximum_norm">maximum norm</a>
      * for a {@see Vector vector} of {@see Complex complex} values.
+     * @param norm Norm to apply to the individual values of the vector.
      */
     public VectorComplexMaximum(final Norm<Complex> norm) {
         this.setNorm(norm);
