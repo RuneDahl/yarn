@@ -14,7 +14,7 @@ import java.util.*;
  * @param <TypeOfState> Type of state.
  * @param <TypeOfValue> Type of value.
  */
-public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValue>
+public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
         extends StateValueBased<TypeOfState, TypeOfValue> {
     private final HashMap<TreeNode<TypeOfState, TypeOfValue>, Double> _children =
             new HashMap<TreeNode<TypeOfState, TypeOfValue>, Double>();
@@ -26,7 +26,7 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
      * @param state          State of the node.
      * @param valueValidator {@see Validator} for the value.
      */
-    protected AbstractStateValueWeightedChildren(
+    protected StateValueWeightedChildrenBased(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator) {
@@ -41,7 +41,7 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
      * @param valueValidator {@see Validator} for the value.
      * @param children       Collection of weighted child nodes.
      */
-    protected AbstractStateValueWeightedChildren(
+    protected StateValueWeightedChildrenBased(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator,
@@ -57,7 +57,7 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
      * @param valueValidator {@see Validator} for the value.
      * @param value          Value of the node.
      */
-    protected AbstractStateValueWeightedChildren(
+    protected StateValueWeightedChildrenBased(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator,
@@ -73,7 +73,7 @@ public abstract class AbstractStateValueWeightedChildren<TypeOfState, TypeOfValu
      * @param value          Value of the node.
      * @param children       Collection of weighted child nodes.
      */
-    protected AbstractStateValueWeightedChildren(
+    protected StateValueWeightedChildrenBased(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator,
