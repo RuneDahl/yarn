@@ -44,7 +44,7 @@ public final class BlumBlumShub implements Seed<Long, Long> {
      * values. In order to get a uniform set of possible values from the
      * Blum Blum Shub pseudo random number generator the value should be set
      * according to this rule: 2^n - 1 for some 1 <= n. This will set the
-     * filter to retrieve the lowest n-1 bits of the seed values.
+     * filter to retrieve the lowest n bits of the seed values.
      * @return Filter.
      */
     public long getFilter() {
