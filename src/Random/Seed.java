@@ -9,6 +9,8 @@ package Random;
  * Interface for a {@see Generator random generator} based on a
  * <a href="http://en.wikipedia.org/wiki/Random_seed">seed</a>.
  * @author Rune Dahl Iversen
+ * @param <TypeOfSeed>  Type of seed.
+ * @param <TypeOfValue> Type of value.
  */
 public interface Seed<TypeOfSeed, TypeOfValue>
         extends Generator<TypeOfValue> {

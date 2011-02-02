@@ -11,6 +11,7 @@ package Random;
  * (pseudo)</a> <a href="http://en.wikipedia.org/wiki/Random_number_generation">
  * random generator</a>.
  * @author Rune Dahl Iversen
+ * @param <TypeOfValue> Type of value.
  */
 public interface Generator<TypeOfValue> {
     /**
