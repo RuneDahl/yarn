@@ -15,8 +15,8 @@ import java.util.Map.Entry;
  * <br>Any number outside the natural numbers cannot be considered prime.
  * @author Rune Dahl Iversen
  */
-public final class PrimeNumber implements Function<Integer, Boolean> {
-    private final HashMap<Integer, Integer> _primes;
+public final class PrimeNumber implements Function<Long, Boolean> {
+    private final HashMap<Long, Long> _primes;
 
     /**
      * Creates an instance of this prime number function.
@@ -25,36 +25,37 @@ public final class PrimeNumber implements Function<Integer, Boolean> {
         // Initializes the cache with the first few prime numbers.
         // See Wikipedia article on Prime Numbers to verify:
         // <<< http://en.wikipedia.org/wiki/Prime_number >>>
-        this._primes = new HashMap<Integer, Integer>();
-        this._primes.put(1, 2);
-        this._primes.put(2, 3);
-        this._primes.put(3, 5);
-        this._primes.put(4, 7);
-        this._primes.put(5, 11);
-        this._primes.put(6, 13);
-        this._primes.put(7, 17);
-        this._primes.put(8, 19);
-        this._primes.put(9, 23);
-        this._primes.put(10, 29);
-        this._primes.put(11, 31);
-        this._primes.put(12, 37);
+        this._primes = new HashMap<Long, Long>();
+        this._primes.put(1L, 2L);
+        this._primes.put(2L, 3L);
+        this._primes.put(3L, 5L);
+        this._primes.put(4L, 7L);
+        this._primes.put(5L, 11L);
+        this._primes.put(6L, 13L);
+        this._primes.put(7L, 17L);
+        this._primes.put(8L, 19L);
+        this._primes.put(9L, 23L);
+        this._primes.put(10L, 29L);
+        this._primes.put(11L, 31L);
+        this._primes.put(12L, 37L);
     }
 
     @Override
-    public Boolean value(final Integer input) {
-        if (input < this._primes.get(1))
+    public Boolean value(final Long input) {
+        if (input < this._primes.get(1L))
             return false;
-        int largestKnownPrime = this._primes.get(this._primes.size());
+        long largestKnownPrime = this._primes.size();
+        largestKnownPrime = this._primes.get(largestKnownPrime);
         if (largestKnownPrime <= input) {
-            for (int pc = largestKnownPrime + 2; pc <= input + 1; pc += 2) {
+            for (long pc = largestKnownPrime + 2; pc <= input + 1; pc += 2) {
                 boolean isPrime = true;
-                for (Entry<Integer, Integer> p: this._primes.entrySet()) {
+                for (Entry<Long, Long> p: this._primes.entrySet()) {
                     isPrime &= pc % p.getValue() != 0;
                     if (!isPrime)
                         break;
                 }
                 if (isPrime)
-                    this._primes.put(this._primes.size() + 1, pc);
+                    this._primes.put(this._primes.size() + 1L, pc);
             }
         }
         return this._primes.containsValue(input);

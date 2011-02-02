@@ -47,9 +47,8 @@ public class PrimeNumberTest {
     @Test
     public void testValue() {
         System.out.println("value");
-
-        Function<Integer, Boolean> instance = this._instance;
-        for (Integer input = -100; input < 102; input++) {
+        Function<Long, Boolean> instance = this._instance;
+        for (Long input = -100L; input < 102; input++) {
             Boolean expResult = false;
             if (input == 2)
                 expResult = true;
@@ -115,8 +114,7 @@ public class PrimeNumberTest {
     @Test (expected=NullPointerException.class)
     public void testValue_Null() {
         System.out.println("value(null)");
-
-        Function<Integer, Boolean> instance = this._instance;
+        Function<Long, Boolean> instance = this._instance;
         instance.value(null);
     }
 }
