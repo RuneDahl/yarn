@@ -14,7 +14,7 @@ import Validation.Validator;
  * @param <TypeOfState> Type of state.
  * @param <TypeOfValue> Type of value.
  */
-public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
+public abstract class StateValueBased<TypeOfState, TypeOfValue>
         implements TreeNode<TypeOfState, TypeOfValue> {
     private TypeOfState _state;
     private Validator<TypeOfState> _stateValidator;
@@ -28,7 +28,7 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
      * @param state          State.
      * @param valueValidator Validator of the value.
      */
-    protected AbstractStateValue(final Validator<TypeOfState> stateValidator,
+    protected StateValueBased(final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator) {
         if (stateValidator == null)
@@ -49,7 +49,7 @@ public abstract class AbstractStateValue<TypeOfState, TypeOfValue>
      * @param valueValidator Validator of the value.
      * @param value          Value.
      */
-    protected AbstractStateValue(final Validator<TypeOfState> stateValidator,
+    protected StateValueBased(final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator,
             final TypeOfValue value) {
