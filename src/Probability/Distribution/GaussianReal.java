@@ -23,6 +23,12 @@ public final class GaussianReal implements Mean<Double, Double>, Location<Double
     private static Validator<Double> __devianceValidator =
             Factory.FiniteRealGreaterThan(0.0);
 
+    /**
+     * Create a new normal (Gaussian) distribution on the real numbers
+     * with the specified mean and deviation.
+     * @param mean     Mean.
+     * @param deviance Deviation.
+     */
     public GaussianReal(double mean, double deviance) {
         this._gaussian = new Mathematics.Function.GaussianReal(
                 0.0, 1.0, 1.0/Math.sqrt(2.0*Math.PI));
