@@ -3,8 +3,9 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Builder;
 
+import Mathematics.Graph.TreeNode;
 import Mathematics.Result.Result;
 
 /**
