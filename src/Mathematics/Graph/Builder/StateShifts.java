@@ -14,13 +14,13 @@ import java.util.LinkedHashSet;
  * @param <TypeOfState> Type of state.
  */
 public final class StateShifts<TypeOfState>
-        extends LinkedHashSet<StateShifter<TypeOfState>>
-        implements StateShifter<TypeOfState> {
+        extends LinkedHashSet<StateShift<TypeOfState>>
+        implements StateShift<TypeOfState> {
 
     @Override
     public TypeOfState value(final TypeOfState input) {
         TypeOfState state = input;
-        for (StateShifter<TypeOfState> shift : this)
+        for (StateShift<TypeOfState> shift : this)
             state = shift.value(state);
         return state;
     }

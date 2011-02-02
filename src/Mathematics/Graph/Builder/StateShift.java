@@ -8,10 +8,11 @@ package Mathematics.Graph.Builder;
 import Mathematics.Function.Function;
 
 /**
- * Interface for a funtion to shift a state from one value to another.
+ * Interface for a {@see Function function}
+ * to compute a shifted state from another.
  * @author Rune Dahl Iversen
  * @param <TypeOfState> Type of state.
  */
-public interface StateShifter<TypeOfState>
+public interface StateShift<TypeOfState>
         extends Function<TypeOfState, TypeOfState> {
 }

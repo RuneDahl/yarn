@@ -15,7 +15,7 @@ import Validation.Validator;
  * @param <TypeOfValue> Type of vector value.
  */
 public abstract class VectorDimensionShiftBased<TypeOfValue>
-        implements StateShifter<Vector<TypeOfValue>> {
+        implements StateShift<Vector<TypeOfValue>> {
     private int _dimension;
     private TypeOfValue _shift;
     private Validator<TypeOfValue> _shiftValidator;
