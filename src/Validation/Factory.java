@@ -168,6 +168,19 @@ public final class Factory {
     }
 
     /**
+     * Validator allowing not null {@see Long long}
+     * values that are positive and prime numbers.
+     * @return New validator.
+     */
+    public static Validator<Long> PrimeLong() {
+        And<Long> validator = new And<Long>();
+        validator.add(new NotNull<Long>());
+        validator.add(new LongGreaterThan(0));
+        validator.add(new LongPrime());
+        return validator;
+    }
+
+    /**
      * Validator allowing not null {@see Double double}
      * values that are not Double.NaN.
      * @return New validator.

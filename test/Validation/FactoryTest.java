@@ -187,6 +187,19 @@ public class FactoryTest {
     }
 
     /**
+     * Test of PrimeLong method, of class Factory.
+     */
+    @Test
+    public void testPrimeLong() {
+        System.out.println("PrimeLong");
+        Validator<Long> result = Factory.PrimeLong();
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<Long> and = (And)result;
+        assertEquals("Wrong size of result.", 3, and.size());
+    }
+
+    /**
      * Test of Real method, of class Factory.
      */
     @Test
