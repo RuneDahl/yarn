@@ -142,7 +142,7 @@ public class MatrixRealThreeDimensionsOrLessTest {
      */
     @Test (expected=IllegalArgumentException.class)
     public void testValue_NotSquare() {
-        System.out.println("value(too high dimension)");
+        System.out.println("value(not square)");
         Matrix<Double> input = MatrixReal.Zero(0, 2, 0, 3);
         MatrixRealThreeDimensionsOrLess instance = this._instance;
         instance.value(input);
