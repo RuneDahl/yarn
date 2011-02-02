@@ -209,13 +209,25 @@ public class BlumBlumShubTest {
     }
 
     /**
+     * Test of getSample method, of class BlumBlumShub, for the invalid state
+     * of P and Q not being congruent modulo 4.
+     */
+    @Test (expected=IllegalStateException.class)
+    public void testGetSample_0args_InvalidState() {
+        System.out.println("getSample() from invalid state");
+        BlumBlumShub instance = this._instance;
+        instance.setP(5L);
+        instance.getSample();
+    }
+
+    /**
      * Test of getSample method, of class BlumBlumShub.
      */
     @Test
     public void testGetSample_int() {
         System.out.println("getSample(int)");
-        int count = 7;
         Generator<Long> instance = this._instance;
+        int count = 7;
         Long[] expResult = new Long[count];
         expResult[0] = 1L;
         expResult[1] = 1L;
@@ -225,6 +237,35 @@ public class BlumBlumShubTest {
         expResult[5] = 0L;
         expResult[6] = 0L;
         Long[] result = instance.getSample(count);
-        assertArrayEquals(expResult, result);
+        assertArrayEquals("count = " + Integer.toString(count), expResult, result);
+
+        count = 0;
+        expResult = new Long[count];
+        result = instance.getSample(count);
+        assertArrayEquals("count = " + Integer.toString(count), expResult, result);
+    }
+
+    /**
+     * Test of getSample method, of class BlumBlumShub, for the value -1.
+     */
+    @Test (expected=NegativeArraySizeException.class)
+    public void testGetSample_NegativeOne() {
+        System.out.println("getSample(-1)");
+        Generator<Long> instance = this._instance;
+        int count = -1;
+        instance.getSample(count);
+    }
+
+    /**
+     * Test of getSample method, of class BlumBlumShub, for the invalid state
+     * of P and Q not being congruent modulo 4.
+     */
+    @Test (expected=IllegalStateException.class)
+    public void testGetSample_int_InvalidState() {
+        System.out.println("getSample(int) from invalid state)");
+        int count = 7;
+        BlumBlumShub instance = this._instance;
+        instance.setQ(5L);
+        instance.getSample(count);
     }
 }
