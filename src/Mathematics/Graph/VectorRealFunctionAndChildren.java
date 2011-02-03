@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class VectorRealFunctionAndChildren
         extends FunctionOfStateAndChildren<Vector<Double>, Vector<Double>> {
-    private final static Validator<Vector<Double>> __validator = Factory.FiniteVectorReal();
+    private final static Validator<Vector<Double>> __validator = Factory.VectorRealValues(Factory.FiniteReal());
 
     /**
      * Creates an instance of the real vector, function and weighted child node

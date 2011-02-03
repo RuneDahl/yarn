@@ -103,14 +103,16 @@ public final class Factory {
     }
 
     /**
-     * Validator allowing not null {@see Vector vectors}
-     * of finite {@see Double real} values.
+     * Validator allowing not null {@see Vector vectors} of {@see Double real}
+     * values that must satisfy the specified value validator.
+     * @param valueValidator Value validator.
      * @return New validator.
      */
-    public static Validator<Vector<Double>> FiniteVectorReal() {
+    public static Validator<Vector<Double>> VectorRealValues(
+            final Validator<Double> valueValidator) {
         And<Vector<Double>> validator = new And<Vector<Double>>();
         validator.add(new NotNull<Vector<Double>>());
-        validator.add(new VectorValues<Double>(FiniteReal()));
+        validator.add(new VectorValues<Double>(valueValidator));
         return validator;
     }
 
