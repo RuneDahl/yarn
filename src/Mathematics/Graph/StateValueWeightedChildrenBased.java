@@ -15,7 +15,8 @@ import java.util.*;
  * @param <TypeOfValue> Type of value.
  */
 public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
-        extends StateValueBased<TypeOfState, TypeOfValue> {
+        extends StateValueBased<TypeOfState, TypeOfValue>
+        implements Iterable<Map.Entry<TreeNode<TypeOfState, TypeOfValue>, Double>> {
     private final HashMap<TreeNode<TypeOfState, TypeOfValue>, Double> _children =
             new HashMap<TreeNode<TypeOfState, TypeOfValue>, Double>();
 
@@ -137,8 +138,9 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * Returns an iterator for the map of child-nodes and their respective weights.
      * @return Iterator of the child-nodes and weights.
      */
-    protected Iterator<Map.Entry<TreeNode<TypeOfState, TypeOfValue>, Double>>
-            _childIterator() {
+    @Override
+    public Iterator<Map.Entry<TreeNode<TypeOfState, TypeOfValue>, Double>>
+            iterator() {
         return this._children.entrySet().iterator();
     }
 
