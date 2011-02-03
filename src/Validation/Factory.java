@@ -6,6 +6,7 @@
 package Validation;
 
 import Mathematics.Complex;
+import Mathematics.Vector.Vector;
 
 /**
  * Factory class for often used {@see Validator validation} setups.
@@ -20,8 +21,7 @@ public final class Factory {
      * values that are not Complex.NaN.
      * @return New validator.
      */
-    public static Validator<Complex> FiniteComplex()
-    {
+    public static Validator<Complex> FiniteComplex() {
         And<Complex> validator = new And<Complex>();
         validator.add(new NotNull<Complex>());
         validator.add(new ComplexIsNumeric());
@@ -99,6 +99,18 @@ public final class Factory {
         validator.add(new DoubleIsNumeric());
         validator.add(new DoubleIsFinite());
         validator.add(new DoubleLessThanOrEqual(limit));
+        return validator;
+    }
+
+    /**
+     * Validator allowing not null {@see Vector vectors}
+     * of finite {@see Double real} values.
+     * @return New validator.
+     */
+    public static Validator<Vector<Double>> FiniteVectorReal() {
+        And<Vector<Double>> validator = new And<Vector<Double>>();
+        validator.add(new NotNull<Vector<Double>>());
+        validator.add(new VectorValues<Double>(FiniteReal()));
         return validator;
     }
 
