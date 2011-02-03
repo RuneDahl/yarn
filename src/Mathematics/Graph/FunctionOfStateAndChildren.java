@@ -20,6 +20,16 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
         extends StateValueWeightedChildrenBased<TypeOfState, TypeOfValue> {
     private Function<TypeOfState, TypeOfValue> _function;
 
+    /**
+     * Creates an instance of the state, value, function and weighted child node
+     * values tree node with the specified state, value, child nodes and function.
+     * @param stateValidator State validator.
+     * @param state          State value.
+     * @param valueValidator Value validator.
+     * @param value          Value.
+     * @param children       Child nodes.
+     * @param function       Function.
+     */
     protected FunctionOfStateAndChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -31,6 +41,15 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
         this.setFunction(function);
     }
 
+    /**
+     * Creates an instance of the state, value, function and weighted child node
+     * values tree node with the specified state, value and function.
+     * @param stateValidator State validator.
+     * @param state          State value.
+     * @param valueValidator Value validator.
+     * @param value          Value.
+     * @param function       Function.
+     */
     protected FunctionOfStateAndChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -41,6 +60,15 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
         this.setFunction(function);
     }
 
+    /**
+     * Creates an instance of the state, value, function and weighted child node
+     * values tree node with the specified state, child nodes and function.
+     * @param stateValidator State validator.
+     * @param state          State value.
+     * @param valueValidator Value validator.
+     * @param children       Child nodes.
+     * @param function       Function.
+     */
     protected FunctionOfStateAndChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -51,6 +79,14 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
         this.setFunction(function);
     }
 
+    /**
+     * Creates an instance of the state, value, function and weighted child node
+     * values tree node with the specified state, value, child nodes and function.
+     * @param stateValidator State validator.
+     * @param state          State value.
+     * @param valueValidator Value validator.
+     * @param function       Function.
+     */
     protected FunctionOfStateAndChildren(
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
@@ -60,10 +96,19 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
         this.setFunction(function);
     }
 
+    /**
+     * Gets the function of this node.
+     * @return Function.
+     */
     public final Function<TypeOfState, TypeOfValue> getFunction() {
         return this._function;
     }
 
+    /**
+     * Sets the function of this node.
+     * @param function Function.
+     * @throws NullPointerException Nunction not properly specified.
+     */
     public final void setFunction(final Function<TypeOfState, TypeOfValue> function) {
         if (function == null)
             throw new NullPointerException("Function not properly specified.");
