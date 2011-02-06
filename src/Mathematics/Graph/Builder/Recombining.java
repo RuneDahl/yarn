@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph.Tree.Builder;
+package Mathematics.Graph.Builder;
 
 import Mathematics.Graph.Tree.*;
 import Mathematics.Graph.Builder.StateShift;
