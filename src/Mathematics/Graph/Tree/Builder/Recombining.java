@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph.Builder;
+package Mathematics.Graph.Tree.Builder;
 
-import Mathematics.Graph.*;
+import Mathematics.Graph.Tree.*;
+import Mathematics.Graph.Builder.StateShift;
 import Mathematics.Result.*;
 import Mathematics.Vector.Vector;
 import java.util.*;
@@ -37,19 +38,19 @@ public final class Recombining
 
     @Override
     public Result Build(
-            final TreeNode<Vector<Double>, Vector<Double>> origin) {
+            final Node<Vector<Double>, Vector<Double>> origin) {
         Result result = null;
         try {
-            HashMap<Vector<Double>, TreeNode<Vector<Double>, Vector<Double>>> nodes =
-                    new HashMap<Vector<Double>, TreeNode<Vector<Double>, Vector<Double>>>();
+            HashMap<Vector<Double>, Node<Vector<Double>, Vector<Double>>> nodes =
+                    new HashMap<Vector<Double>, Node<Vector<Double>, Vector<Double>>>();
             nodes.put(origin.getState(), origin);
             for (int step = 0; step < this._stepCount; step++) {
-                HashMap<Vector<Double>, TreeNode<Vector<Double>, Vector<Double>>> cache =
-                        new HashMap<Vector<Double>, TreeNode<Vector<Double>, Vector<Double>>>();
-                for (TreeNode<Vector<Double>, Vector<Double>> node : nodes.values()) {
+                HashMap<Vector<Double>, Node<Vector<Double>, Vector<Double>>> cache =
+                        new HashMap<Vector<Double>, Node<Vector<Double>, Vector<Double>>>();
+                for (Node<Vector<Double>, Vector<Double>> node : nodes.values()) {
                     for (StateShift<Vector<Double>> shift : this) {
                         Vector<Double> state = shift.value(node.getState());
-                        TreeNode<Vector<Double>, Vector<Double>> child;
+                        Node<Vector<Double>, Vector<Double>> child;
                         if (cache.containsKey(state))
                             child = cache.get(state);
                         else
@@ -58,7 +59,7 @@ public final class Recombining
                 }
                 nodes = cache;
             }
-            result = new SuccessWithValue<TreeNode<Vector<Double>, Vector<Double>>>(origin);
+            result = new SuccessWithValue<Node<Vector<Double>, Vector<Double>>>(origin);
         }
         catch (Exception e) {
             result = new UnhandledExceptionThrown(e);

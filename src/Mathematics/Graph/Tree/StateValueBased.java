@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Tree;
 
 import Validation.Validator;
 
@@ -15,7 +15,7 @@ import Validation.Validator;
  * @param <TypeOfValue> Type of value.
  */
 public abstract class StateValueBased<TypeOfState, TypeOfValue>
-        implements TreeNode<TypeOfState, TypeOfValue> {
+        implements Node<TypeOfState, TypeOfValue> {
     private TypeOfState _state;
     private Validator<TypeOfState> _stateValidator;
     private TypeOfValue _value;

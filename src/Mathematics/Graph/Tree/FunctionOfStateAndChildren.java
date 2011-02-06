@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Tree;
 
 import Mathematics.Function.Function;
 import Validation.Validator;
@@ -35,7 +35,7 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator,
             final TypeOfValue value,
-            final Map<TreeNode<TypeOfState, TypeOfValue>, Double> children,
+            final Map<Node<TypeOfState, TypeOfValue>, Double> children,
             final Function<TypeOfState, TypeOfValue> function) {
         super(stateValidator, state, valueValidator, value, children);
         this.setFunction(function);
@@ -73,7 +73,7 @@ public abstract class FunctionOfStateAndChildren<TypeOfState, TypeOfValue>
             final Validator<TypeOfState> stateValidator,
             final TypeOfState state,
             final Validator<TypeOfValue> valueValidator,
-            final Map<TreeNode<TypeOfState, TypeOfValue>, Double> children,
+            final Map<Node<TypeOfState, TypeOfValue>, Double> children,
             final Function<TypeOfState, TypeOfValue> function) {
         super(stateValidator, state, valueValidator, children);
         this.setFunction(function);

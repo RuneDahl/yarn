@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph.Builder;
+package Mathematics.Graph.Tree.Builder;
 
-import Mathematics.Graph.TreeNode;
+import Mathematics.Graph.Tree.Node;
 import Mathematics.Result.Result;
 
 /**
@@ -23,5 +23,5 @@ public interface TreeBuilder<TypeOfState, TypeOfValue> {
      * @param origin Node of origin.
      * @return       Result from the building process.
      */
-    public Result Build(TreeNode<TypeOfState, TypeOfValue> origin);
+    public Result Build(Node<TypeOfState, TypeOfValue> origin);
 }

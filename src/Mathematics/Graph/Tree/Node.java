@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Tree;
 
 import Mathematics.Result.Result;
 
@@ -16,13 +16,13 @@ import Mathematics.Result.Result;
  * @param <TypeOfState> Type of state.
  * @param <TypeOfValue> Type of value.
  */
-public interface TreeNode<TypeOfState, TypeOfValue> {
+public interface Node<TypeOfState, TypeOfValue> {
     /**
      * Gets the child-node with the specified index in this node.
      * @param index Index.
      * @return      Child-node.
      */
-    public TreeNode<TypeOfState, TypeOfValue> getChild(final int index);
+    public Node<TypeOfState, TypeOfValue> getChild(final int index);
 
     /**
      * Gets the number of (direct, 1-step) child-nodes of this node.
@@ -66,5 +66,5 @@ public interface TreeNode<TypeOfState, TypeOfValue> {
      * @param node TreeNode.
      * @return     True if found, else false.
      */
-    public boolean hasChild(final TreeNode<TypeOfState, TypeOfValue> node);
+    public boolean hasChild(final Node<TypeOfState, TypeOfValue> node);
 }

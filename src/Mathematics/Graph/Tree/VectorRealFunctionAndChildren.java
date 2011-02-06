@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Tree;
 
 import Mathematics.Function.Function;
 import Mathematics.Result.*;
@@ -43,7 +43,7 @@ public class VectorRealFunctionAndChildren
      */
     public VectorRealFunctionAndChildren(
             final Vector<Double> state,
-            final Map<TreeNode<Vector<Double>, Vector<Double>>, Double> children,
+            final Map<Node<Vector<Double>, Vector<Double>>, Double> children,
             final Function<Vector<Double>, Vector<Double>> function) {
         super(__validator, state, __validator, children, function);
     }
@@ -73,7 +73,7 @@ public class VectorRealFunctionAndChildren
     public VectorRealFunctionAndChildren(
             final Vector<Double> state,
             final Vector<Double> value,
-            final Map<TreeNode<Vector<Double>, Vector<Double>>, Double> children,
+            final Map<Node<Vector<Double>, Vector<Double>>, Double> children,
             final Function<Vector<Double>, Vector<Double>> function) {
         super(__validator, state, __validator, value, children, function);
     }
@@ -83,7 +83,7 @@ public class VectorRealFunctionAndChildren
         Result result = null;
         try {
             Vector<Double> value = this.getFunction().value(this.getState());
-            for (Map.Entry<TreeNode<Vector<Double>, Vector<Double>>, Double>
+            for (Map.Entry<Node<Vector<Double>, Vector<Double>>, Double>
                     child : this)
                 value = value.sum(child.getKey().getValue().scale(child.getValue()));
             this.setValue(value);

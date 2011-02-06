@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Tree;
 
 import java.util.*;
 
@@ -16,19 +16,19 @@ import java.util.*;
  * @param <TypeOfValue> Type of value.
  */
 public final class TreeIteratorPreOrdered<TypeOfState, TypeOfValue>
-        implements Iterator<TreeNode<TypeOfState, TypeOfValue>> {
-    private final ArrayList<TreeNode<TypeOfState, TypeOfValue>> _done;
-    private final LinkedList<TreeNode<TypeOfState, TypeOfValue>> _queue;
+        implements Iterator<Node<TypeOfState, TypeOfValue>> {
+    private final ArrayList<Node<TypeOfState, TypeOfValue>> _done;
+    private final LinkedList<Node<TypeOfState, TypeOfValue>> _queue;
 
     /**
      * Creates an instance of this non-repeating pre-order tree-iterator
      * from the specified node of origin.
      * @param origin Node of origin.
      */
-    public TreeIteratorPreOrdered(TreeNode<TypeOfState, TypeOfValue> origin) {
-        this._queue = new LinkedList<TreeNode<TypeOfState, TypeOfValue>>();
+    public TreeIteratorPreOrdered(Node<TypeOfState, TypeOfValue> origin) {
+        this._queue = new LinkedList<Node<TypeOfState, TypeOfValue>>();
         this._queue.add(origin);
-        this._done = new ArrayList<TreeNode<TypeOfState, TypeOfValue>>();
+        this._done = new ArrayList<Node<TypeOfState, TypeOfValue>>();
     }
 
     @Override
@@ -37,14 +37,14 @@ public final class TreeIteratorPreOrdered<TypeOfState, TypeOfValue>
     }
 
     @Override
-    public TreeNode<TypeOfState, TypeOfValue> next() {
+    public Node<TypeOfState, TypeOfValue> next() {
         if (!this.hasNext())
             throw new NoSuchElementException("No more nodes to iterate.");
-        TreeNode<TypeOfState, TypeOfValue> node = this._queue.pollFirst();
+        Node<TypeOfState, TypeOfValue> node = this._queue.pollFirst();
         if (0 < node.getChildren()) // If the node has children:
             for (int c = 0; c < node.getChildren(); c++) // Iterate through the children.
             {
-                TreeNode<TypeOfState, TypeOfValue> child = node.getChild(c);
+                Node<TypeOfState, TypeOfValue> child = node.getChild(c);
                 if (!this._queue.contains(child) &&
                         !this._done.contains(child)) // Any child not queued and not done:
                     this._queue.addLast(child); // Add child to queue.

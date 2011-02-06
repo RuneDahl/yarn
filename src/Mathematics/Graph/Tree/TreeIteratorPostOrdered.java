@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Mathematics.Graph;
+package Mathematics.Graph.Tree;
 
 import java.util.*;
 
@@ -16,19 +16,19 @@ import java.util.*;
  * @param <TypeOfValue> Type of value.
  */
 public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
-        implements Iterator<TreeNode<TypeOfState, TypeOfValue>> {
-    private final ArrayList<TreeNode<TypeOfState, TypeOfValue>> _done;
-    private final LinkedList<TreeNode<TypeOfState, TypeOfValue>> _stack;
+        implements Iterator<Node<TypeOfState, TypeOfValue>> {
+    private final ArrayList<Node<TypeOfState, TypeOfValue>> _done;
+    private final LinkedList<Node<TypeOfState, TypeOfValue>> _stack;
 
     /**
      * Creates an instance of this non-repeating post-order tree-iterator
      * from the specified node of origin.
      * @param origin Node of origin.
      */
-    public TreeIteratorPostOrdered(TreeNode<TypeOfState, TypeOfValue> origin) {
-        this._stack = new LinkedList<TreeNode<TypeOfState, TypeOfValue>>();
+    public TreeIteratorPostOrdered(Node<TypeOfState, TypeOfValue> origin) {
+        this._stack = new LinkedList<Node<TypeOfState, TypeOfValue>>();
         this._stack.add(origin);
-        this._done = new ArrayList<TreeNode<TypeOfState, TypeOfValue>>();
+        this._done = new ArrayList<Node<TypeOfState, TypeOfValue>>();
     }
 
     @Override
@@ -37,10 +37,10 @@ public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
     }
 
     @Override
-    public TreeNode<TypeOfState, TypeOfValue> next() {
+    public Node<TypeOfState, TypeOfValue> next() {
         if (!this.hasNext())
             throw new NoSuchElementException("No more nodes to iterate.");
-        TreeNode<TypeOfState, TypeOfValue> node;
+        Node<TypeOfState, TypeOfValue> node;
         boolean keepGoing = true;
         while (keepGoing)
         {
@@ -50,7 +50,7 @@ public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
             {
                 for (int c = 0; c < node.getChildren(); c++) // Iterate through the children.
                 {
-                    TreeNode<TypeOfState, TypeOfValue> child = node.getChild(c);
+                    Node<TypeOfState, TypeOfValue> child = node.getChild(c);
                     if (!this._stack.contains(child) &&
                             !this._done.contains(child)) // For any child not stacked and not done:
                     {
