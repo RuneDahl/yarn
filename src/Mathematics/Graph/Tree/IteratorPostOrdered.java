@@ -15,7 +15,7 @@ import java.util.*;
  * @param <TypeOfState> Type of state.
  * @param <TypeOfValue> Type of value.
  */
-public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
+public final class IteratorPostOrdered<TypeOfState, TypeOfValue>
         implements Iterator<Node<TypeOfState, TypeOfValue>> {
     private final ArrayList<Node<TypeOfState, TypeOfValue>> _done;
     private final LinkedList<Node<TypeOfState, TypeOfValue>> _stack;
@@ -25,7 +25,9 @@ public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
      * from the specified node of origin.
      * @param origin Node of origin.
      */
-    public TreeIteratorPostOrdered(Node<TypeOfState, TypeOfValue> origin) {
+    public IteratorPostOrdered(Node<TypeOfState, TypeOfValue> origin) {
+        if (origin == null)
+            throw new NullPointerException("Origin not properly specified.");
         this._stack = new LinkedList<Node<TypeOfState, TypeOfValue>>();
         this._stack.add(origin);
         this._done = new ArrayList<Node<TypeOfState, TypeOfValue>>();
@@ -67,6 +69,6 @@ public final class TreeIteratorPostOrdered<TypeOfState, TypeOfValue>
 
     @Override
     public void remove() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not implemented.");
     }
 }
