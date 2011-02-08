@@ -84,8 +84,7 @@ public class VectorRealFunctionAndChildren
         Result result = null;
         try {
             Vector<Double> value = this.getFunction().value(this.getState());
-            for (Map.Entry<Node<Vector<Double>, Vector<Double>>, Double>
-                    child : this)
+            for (Map.Entry<Node<Vector<Double>, Vector<Double>>, Double> child : this)
                 value = value.sum(child.getKey().getValue().scale(child.getValue()));
             this.setValue(value);
             result = new SuccessWithValue<Vector<Double>>(value);
