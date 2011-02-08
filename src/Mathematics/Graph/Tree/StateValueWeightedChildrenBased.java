@@ -17,8 +17,8 @@ import java.util.*;
 public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
         extends StateValueBased<TypeOfState, TypeOfValue>
         implements Iterable<Map.Entry<Node<TypeOfState, TypeOfValue>, Double>> {
-    private final HashMap<Node<TypeOfState, TypeOfValue>, Double> _children =
-            new HashMap<Node<TypeOfState, TypeOfValue>, Double>();
+    private final LinkedHashMap<Node<TypeOfState, TypeOfValue>, Double> _children =
+            new LinkedHashMap<Node<TypeOfState, TypeOfValue>, Double>();
 
     /**
      * Creates an instance of a node with state and value
@@ -85,12 +85,12 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
     }
 
     @Override
-    public Node<TypeOfState, TypeOfValue> getChild(final int index) {
+    public final Node<TypeOfState, TypeOfValue> getChild(final int index) {
         return this._child(index).getKey();
     }
 
     @Override
-    public int getChildren() {
+    public final int getChildren() {
         return this._children.size();
     }
 
@@ -99,7 +99,7 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * @param index Index.
      * @return      Weight of the child-node.
      */
-    public double getWeight(final int index) {
+    public final double getWeight(final int index) {
         return this._child(index).getValue();
     }
 
@@ -108,13 +108,15 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * @param child  Child-node.
      * @param weight Weight.
      */
-    public void addChild(final Node<TypeOfState, TypeOfValue> child,
+    public final void addChild(final Node<TypeOfState, TypeOfValue> child,
             final double weight) {
+        if (child == null)
+            throw new NullPointerException("Child node not properly specified.");
         this._children.put(child, weight);
     }
 
     @Override
-    public boolean hasChild(final Node<TypeOfState, TypeOfValue> node) {
+    public final boolean hasChild(final Node<TypeOfState, TypeOfValue> node) {
         return this._children.containsKey(node);
     }
 
@@ -122,7 +124,7 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * Removes the child-node with the specified index.
      * @param index Index.
      */
-    public void removeChild(final int index) {
+    public final void removeChild(final int index) {
         this.removeChild(this.getChild(index));
     }
 
@@ -130,7 +132,7 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * Removes the specified child-node.
      * @param child Child-node.
      */
-    public void removeChild(final Node<TypeOfState, TypeOfValue> child) {
+    public final void removeChild(final Node<TypeOfState, TypeOfValue> child) {
         this._children.remove(child);
     }
 
@@ -139,7 +141,7 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * @return Iterator of the child-nodes and weights.
      */
     @Override
-    public Iterator<Map.Entry<Node<TypeOfState, TypeOfValue>, Double>>
+    public final Iterator<Map.Entry<Node<TypeOfState, TypeOfValue>, Double>>
             iterator() {
         return this._children.entrySet().iterator();
     }
@@ -150,10 +152,10 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * @param index Index.
      * @return      Child-node and weight.
      */
-    protected Map.Entry<Node<TypeOfState, TypeOfValue>, Double> _child(
+    protected final Map.Entry<Node<TypeOfState, TypeOfValue>, Double> _child(
             final int index) {
         if (index < 0 || this.getChildren() <= index) {
-            throw new IllegalArgumentException("Index out of range.");
+            throw new ArrayIndexOutOfBoundsException("Index out of range: " + Integer.toString(index));
         }
         int i = 0;
         for (Map.Entry<Node<TypeOfState, TypeOfValue>, Double> child :
