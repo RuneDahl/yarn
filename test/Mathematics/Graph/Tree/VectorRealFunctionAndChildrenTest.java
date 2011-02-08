@@ -67,6 +67,7 @@ public class VectorRealFunctionAndChildrenTest {
     @After
     public void tearDown() {
         this._instance = null;
+        this._childNodes = null;
         this._stateValue = null;
         this._children = null;
         this._function = null;
