@@ -15,7 +15,7 @@ import java.util.*;
  * @param <TypeOfState> Type of state.
  * @param <TypeOfValue> Type of value.
  */
-public final class TreeIteratorPreOrdered<TypeOfState, TypeOfValue>
+public final class IteratorPreOrdered<TypeOfState, TypeOfValue>
         implements Iterator<Node<TypeOfState, TypeOfValue>> {
     private final ArrayList<Node<TypeOfState, TypeOfValue>> _done;
     private final LinkedList<Node<TypeOfState, TypeOfValue>> _queue;
@@ -25,7 +25,9 @@ public final class TreeIteratorPreOrdered<TypeOfState, TypeOfValue>
      * from the specified node of origin.
      * @param origin Node of origin.
      */
-    public TreeIteratorPreOrdered(Node<TypeOfState, TypeOfValue> origin) {
+    public IteratorPreOrdered(Node<TypeOfState, TypeOfValue> origin) {
+        if (origin == null)
+            throw new NullPointerException("Origin not properly specified.");
         this._queue = new LinkedList<Node<TypeOfState, TypeOfValue>>();
         this._queue.add(origin);
         this._done = new ArrayList<Node<TypeOfState, TypeOfValue>>();
