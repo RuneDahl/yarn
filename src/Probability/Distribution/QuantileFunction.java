@@ -19,8 +19,9 @@ public interface QuantileFunction<TypeOfValue>
     /**
      * Returns the quantile function of this distribution
      * evaluated at the specified value.
-     * @param value Value.
+     * @param value Quantile value. This should be a
+     *              number in the interval 0 though 1.
      * @return      Quantile function value.
      */
-    public double quantileFunction(final TypeOfValue value);
+    public TypeOfValue quantileFunction(final double value);
 }
