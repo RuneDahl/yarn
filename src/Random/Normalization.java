@@ -11,6 +11,8 @@ package Random;
  * to them into samples in a unit interval.<br>
  * For {@see Double real} values think of the interval: [0.0 ; 1.0].
  * @author Rune Dahl Iversen
+ * @param <TypeOfSample> Type of sample.
+ * @param <TypeOfFactor> Type of factor.
  */
 public interface Normalization<TypeOfSample, TypeOfFactor>
         extends Generator<TypeOfSample> {
