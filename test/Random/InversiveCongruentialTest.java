@@ -48,6 +48,18 @@ public class InversiveCongruentialTest {
     }
 
     /**
+     * Test of getFactor method, of class InversiveCongruential.
+     */
+    @Test
+    public void testGetFactor() {
+        System.out.println("getFactor");
+        InversiveCongruential instance = this._instance;
+        double expResult = 4294967296L;
+        double result = instance.getFactor();
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
      * Test of getIncrement method, of class InversiveCongruential.
      */
     @Test
