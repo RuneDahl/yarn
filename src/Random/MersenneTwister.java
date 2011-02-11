@@ -46,24 +46,24 @@ import Validation.*;
  * @author Rune Dahl Iversen
  */
 public final class MersenneTwister
-        implements Seed<Long, Long> {
+        implements Seed<Long, Long>, Normalization<Long, Double> {
     private final static Validator<Long> __validator =
             Factory.BoundedLong(0, 4294967296L);
-    private final static int _n = 624;
-    private final static int _m = 397;
-    private final static int _upperMask = 0x80000000;
-    private final static int _lowerMask = 0x7fffffff;
-    private final static int[] _a = new int[] { 0x0 , 0x9908b0df };
+    private final static int __n = 624;
+    private final static int __m = 397;
+    private final static int __upperMask = 0x80000000;
+    private final static int __lowerMask = 0x7fffffff;
+    private final static int[] __a = new int[] { 0x0 , 0x9908b0df };
 
-    private final static int _seedFactor = 1812433253;
-    private final static double _normalize = 4294967296L;
+    private final static int __seedFactor = 1812433253;
+    private final static double __normalize = 4294967296L;
 
     /* Tempering parameters */
-    private final static int _maskB = 0x9d2c5680;
-    private final static int _maskC = 0xefc60000;
+    private final static int __maskB = 0x9d2c5680;
+    private final static int __maskC = 0xefc60000;
 
     /* State */
-    private int[] _cache = new int[_n];
+    private int[] _cache = new int[__n];
     private int _index = 0;
 
     /**
@@ -77,22 +77,27 @@ public final class MersenneTwister
     }
 
     @Override
+    public Double getFactor() {
+        return __normalize;
+    }
+
+    @Override
     public Long getSample() {
         int y;
-        if (_n <= _index) {
-            for (_index = 0; _index < _n - _m; _index++) {
-                y = (_cache[_index] & _upperMask) | (_cache[_index + 1] & _lowerMask);
-                _cache[_index] = _cache[_index + _m] ^ (y >>> 1) ^ _a[(int)(y & 0x1)];
+        if (__n <= this._index) {
+            for (this._index = 0; this._index < __n - __m; this._index++) {
+                y = (this._cache[this._index] & __upperMask) | (_cache[this._index + 1] & __lowerMask);
+                this._cache[this._index] = this._cache[this._index + __m] ^ (y >>> 1) ^ __a[(int)(y & 0x1)];
             }
-            for (; _index < _n - 1; _index++) {
-                y = (_cache[_index] & _upperMask) | (_cache[_index + 1] & _lowerMask);
-                _cache[_index] = _cache[_index + _m - _n] ^ (y >>> 1) ^ _a[(int)(y & 0x1)];
+            for (; this._index < __n - 1; this._index++) {
+                y = (this._cache[this._index] & __upperMask) | (this._cache[this._index + 1] & __lowerMask);
+                this._cache[this._index] = this._cache[this._index + __m - __n] ^ (y >>> 1) ^ __a[(int)(y & 0x1)];
             }
-            y = (_cache[_index] & _upperMask) | (_cache[0] & _lowerMask);
-            _cache[_index] = _cache[_index + _m - _n] ^ (y >>> 1) ^ _a[(int)(y & 0x1)];
-            _index = 0;
+            y = (this._cache[this._index] & __upperMask) | (this._cache[0] & __lowerMask);
+            this._cache[this._index] = this._cache[this._index + __m - __n] ^ (y >>> 1) ^ __a[(int)(y & 0x1)];
+            this._index = 0;
         }
-        y = _cache[_index++];
+        y = this._cache[this._index++];
         y ^= _ShiftU(y);
         y ^= _ShiftS(y);
         y ^= _ShiftT(y);
@@ -119,18 +124,18 @@ public final class MersenneTwister
         if (!__validator.isValid(seed))
             throw new IllegalArgumentException(__validator.message(seed, "Seed"));
         long s = seed;
-        _cache[0] = (int)s;
-        for (_index = 1; _index < _n; _index++) {
-            _cache[_index] = _SeedShift(_cache[_index - 1]) + _index;
+        this._cache[0] = (int)s;
+        for (this._index = 1; this._index < __n; this._index++) {
+            this._cache[this._index] = _SeedShift(this._cache[this._index - 1]) + this._index;
         }
-        _index = 0;
+        this._index = 0;
     }
 
     private final int _ShiftU(int value) { return value >>> 11; }
-    private final int _ShiftS(int value) { return (value << 7) & _maskB; }
-    private final int _ShiftT(int value) { return (value << 15) & _maskC; }
+    private final int _ShiftS(int value) { return (value << 7) & __maskB; }
+    private final int _ShiftT(int value) { return (value << 15) & __maskC; }
     private final int _ShiftL(int value) { return value >>> 18; }
     private final int _SeedShift(int value) {
-        return _seedFactor * (value ^ (value >>> 30));
+        return __seedFactor * (value ^ (value >>> 30));
     }
 }
