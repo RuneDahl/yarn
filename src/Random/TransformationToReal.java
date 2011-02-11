@@ -15,9 +15,6 @@ import Mathematics.Function.Function;
  */
 public final class TransformationToReal<TypeOfInput>
         extends TransformationBased<TypeOfInput, Double> {
-    private Function<TypeOfInput, Double> _function;
-    private Generator<TypeOfInput> _generator;
-
     /**
      * Create an instance of a transformation into real values using
      * the specified generator and function.
@@ -32,10 +29,10 @@ public final class TransformationToReal<TypeOfInput>
 
     @Override
     public Double[] getSample(final int count) {
-        TypeOfInput[] inputs = this._generator.getSample(count);
+        TypeOfInput[] inputs = this.getGenerator().getSample(count);
         Double[] samples = new Double[count];
         for (int index = 0; index < count; index++)
-            samples[index] = this._function.value(inputs[index]);
+            samples[index] = this.getFunction().value(inputs[index]);
         return samples;
     }
 }
