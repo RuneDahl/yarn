@@ -15,6 +15,10 @@ public abstract class GeneratorBased<TypeOfGenerator, TypeOfSample>
         implements Generator<TypeOfSample> {
     private TypeOfGenerator _generator;
 
+    /**
+     * Creates an instance of this TypeOfSample generator using the specified generator.
+     * @param generator Generator.
+     */
     protected GeneratorBased(final TypeOfGenerator generator) {
         this.setGenerator(generator);
     }
