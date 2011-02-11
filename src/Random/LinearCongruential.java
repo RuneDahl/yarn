@@ -16,7 +16,8 @@ import Validation.*;
  * Wikipedia</a>.
  * @author Rune Dahl Iversen
  */
-public final class LinearCongruential implements Seed<Long, Long> {
+public final class LinearCongruential
+        implements Seed<Long, Long>, Normalization<Long, Double> {
     private long _increment;
     private long _modulus;
     private long _multiplier;
@@ -40,6 +41,11 @@ public final class LinearCongruential implements Seed<Long, Long> {
         this.setModulus(modulus);
         this.setMultiplier(multiplier);
         this.setSeed(seed);
+    }
+
+    @Override
+    public Double getFactor() {
+        return (double)this._modulus;
     }
 
     /**

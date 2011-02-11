@@ -14,7 +14,7 @@ import Validation.*;
  * @author Rune Dahl Iversen
  */
 public final class InversiveCongruential
-        implements Seed<Long, Long> {
+        implements Seed<Long, Long>, Normalization<Long, Double> {
     private final static Validator<Long> __validator =
             Factory.NonNegativeLong();
     private final static Validator<Long> __powerValidator =
@@ -45,6 +45,11 @@ public final class InversiveCongruential
         this.setMultiplier(multiplier);
         this.setPower(power);
         this.setSeed(seed);
+    }
+
+    @Override
+    public Double getFactor() {
+        return (double)this._modulus;
     }
 
     /**
