@@ -15,9 +15,8 @@ import Mathematics.Function.Function;
  * @param <TypeOfOutput> Type of output.
  */
 public abstract class TransformationBased<TypeOfSample, TypeOfOutput>
-        implements Generator<TypeOfOutput> {
+        extends GeneratorBased<TypeOfSample, TypeOfOutput> {
     private Function<TypeOfSample, TypeOfOutput> _function;
-    private Generator<TypeOfSample> _generator;
 
     /**
      * Create an instance of a transformation
@@ -28,7 +27,7 @@ public abstract class TransformationBased<TypeOfSample, TypeOfOutput>
     protected TransformationBased(
             final Generator<TypeOfSample> generator,
             final Function<TypeOfSample, TypeOfOutput> function) {
-        this.setGenerator(generator);
+        super(generator);
         this.setFunction(function);
     }
 
@@ -38,14 +37,6 @@ public abstract class TransformationBased<TypeOfSample, TypeOfOutput>
      */
     public final Function<TypeOfSample, TypeOfOutput> getFunction() {
         return this._function;
-    }
-
-    /**
-     * Gets the {@see Generator generator} of this transformation.
-     * @return Transformation.
-     */
-    public final Generator<TypeOfSample> getGenerator() {
-        return this._generator;
     }
 
     /**
@@ -59,19 +50,8 @@ public abstract class TransformationBased<TypeOfSample, TypeOfOutput>
         this._function = function;
     }
 
-    /**
-     * Sets the {@see Generator generator} of this transformation.
-     * @param generator Generator.
-     * @throws NullPointerException Generator not properly specified.
-     */
-    public final void setGenerator(final Generator<TypeOfSample> generator) {
-        if (generator == null)
-            throw new NullPointerException("Generator not properly specified.");
-        this._generator = generator;
-    }
-
     @Override
     public final TypeOfOutput getSample() {
-        return this._function.value(this._generator.getSample());
+        return this._function.value(this.getGenerator().getSample());
     }
 }
