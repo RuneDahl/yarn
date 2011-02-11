@@ -15,7 +15,7 @@ import Mathematics.Function.Function;
  * @param <TypeOfOutput> Type of output.
  */
 public abstract class TransformationBased<TypeOfSample, TypeOfOutput>
-        extends GeneratorBased<TypeOfSample, TypeOfOutput> {
+        extends GeneratorBased<Generator<TypeOfSample>, TypeOfOutput> {
     private Function<TypeOfSample, TypeOfOutput> _function;
 
     /**
