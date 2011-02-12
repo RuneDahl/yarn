@@ -51,19 +51,19 @@ public final class MersenneTwister
             Factory.BoundedLong(0, 4294967296L);
     private final static int __n = 624;
     private final static int __m = 397;
-    private final static int __upperMask = 0x80000000;
-    private final static int __lowerMask = 0x7fffffff;
-    private final static int[] __a = new int[] { 0x0 , 0x9908b0df };
+    private final static long __upperMask = 0x80000000;
+    private final static long __lowerMask = 0x7fffffff;
+    private final static long[] __a = new long[] { 0x0 , 0x9908b0df };
 
     private final static int __seedFactor = 1812433253;
     private final static double __normalize = 4294967296L;
 
     /* Tempering parameters */
-    private final static int __maskB = 0x9d2c5680;
-    private final static int __maskC = 0xefc60000;
+    private final static long __maskB = 0x9d2c5680;
+    private final static long __maskC = 0xefc60000;
 
     /* State */
-    private int[] _cache = new int[__n];
+    private long[] _cache = new long[__n];
     private int _index = 0;
 
     /**
@@ -83,7 +83,7 @@ public final class MersenneTwister
 
     @Override
     public Long getSample() {
-        int y;
+        long y;
         if (__n <= this._index) {
             for (this._index = 0; this._index < __n - __m; this._index++) {
                 y = (this._cache[this._index] & __upperMask) | (_cache[this._index + 1] & __lowerMask);
@@ -102,7 +102,7 @@ public final class MersenneTwister
         y ^= _ShiftS(y);
         y ^= _ShiftT(y);
         y ^= _ShiftL(y);
-        return (long)y;
+        return y & 4294967295L;
     }
 
     @Override
@@ -131,11 +131,11 @@ public final class MersenneTwister
         this._index = 0;
     }
 
-    private final int _ShiftU(int value) { return value >>> 11; }
-    private final int _ShiftS(int value) { return (value << 7) & __maskB; }
-    private final int _ShiftT(int value) { return (value << 15) & __maskC; }
-    private final int _ShiftL(int value) { return value >>> 18; }
-    private final int _SeedShift(int value) {
+    private final long _ShiftU(long value) { return value >>> 11; }
+    private final long _ShiftS(long value) { return (value << 7) & __maskB; }
+    private final long _ShiftT(long value) { return (value << 15) & __maskC; }
+    private final long _ShiftL(long value) { return value >>> 18; }
+    private final long _SeedShift(long value) {
         return __seedFactor * (value ^ (value >>> 30));
     }
 }

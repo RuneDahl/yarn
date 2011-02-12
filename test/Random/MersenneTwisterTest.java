@@ -60,7 +60,7 @@ public class MersenneTwisterTest {
     public void testGetSample() {
         System.out.println("getSample");
         Generator<Long> instance = this._instance;
-        Long expResult = 1617746096L;
+        Long expResult = 1617549488L;
         Long result = instance.getSample();
         assertEquals(expResult, result);
     }
@@ -74,9 +74,9 @@ public class MersenneTwisterTest {
         Generator<Long> instance = this._instance;
         int count = 3;
         Long[] expResult = new Long[count];
-        expResult[0] = 1617746096L;
-        expResult[1] = -1297498142L;
-        expResult[2] = 1162986294L;
+        expResult[0] = 1617549488L;
+        expResult[1] = 3170833330L;
+        expResult[2] = 225264536L;
         Long[] result = instance.getSample(count);
         assertArrayEquals(expResult, result);
 
@@ -104,7 +104,7 @@ public class MersenneTwisterTest {
         MersenneTwister instance = this._instance;
         instance.setSeed(seed);
         Long result = instance.getSample();
-        Long expResult = 55453292L;
+        Long expResult = 55518828L;
         assertEquals("Wrong sample value after setSeed(Long).",
                 expResult, result);
     }
