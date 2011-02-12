@@ -134,7 +134,7 @@ public class TransformationToRealTest {
     public void testGetSample_Int() {
         System.out.println("getSample(int)");
         int count = 4;
-        TransformationToReal instance = this._instance;
+        Generator<Double> instance = this._instance;
         Double[] expResult = new Double[count];
         expResult[0] = 0.7579047329014654;
         expResult[1] = 0.726734121503021;
