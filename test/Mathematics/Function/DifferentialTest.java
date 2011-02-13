@@ -5,7 +5,6 @@
 
 package Mathematics.Function;
 
-import Mathematics.Function.Differential.DifferentialDirection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,16 +39,18 @@ public class DifferentialTest<TypeOfInput, TypeOfOutput> {
     /**
      * Test of getDirection method, of class Differential.
      */
-    public void testGetDirection(final Differential<TypeOfInput, TypeOfOutput> instance,
-            final DifferentialDirection expResult) {
-        DifferentialDirection result = instance.getDirection();
+    public void testGetDirection(
+            final Differential<TypeOfInput, TypeOfOutput> instance,
+            final DifferentialDirections expResult) {
+        DifferentialDirections result = instance.getDirection();
         assertEquals(instance.toString(), expResult, result);
     }
 
     /**
      * Test of getStep method, of class Differential.
      */
-    public void testGetStep(final Differential<TypeOfInput, TypeOfOutput> instance,
+    public void testGetStep(
+            final Differential<TypeOfInput, TypeOfOutput> instance,
             final TypeOfInput expResult) {
         TypeOfInput result = instance.getStep();
         assertEquals(instance.toString(), expResult, result);
@@ -58,8 +59,9 @@ public class DifferentialTest<TypeOfInput, TypeOfOutput> {
     /**
      * Test of setDirection method, of class Differential.
      */
-    public void testSetDirection(final Differential<TypeOfInput, TypeOfOutput> instance,
-            final DifferentialDirection value) {
+    public void testSetDirection(
+            final Differential<TypeOfInput, TypeOfOutput> instance,
+            final DifferentialDirections value) {
         instance.setDirection(value);
         this.testGetDirection(instance, value);
     }

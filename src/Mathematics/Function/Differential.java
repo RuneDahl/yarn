@@ -17,7 +17,7 @@ import Validation.Validator;
  */
 public abstract class Differential<TypeOfInput, TypeOfOutput>
         implements Differentiator<TypeOfInput, TypeOfOutput, TypeOfOutput> {
-    private DifferentialDirection _direction;
+    private DifferentialDirections _direction;
     private TypeOfInput _step;
     private final Validator<TypeOfInput> _stepValidator;
 
@@ -29,7 +29,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * @param direction     Direction(s) to step in.
      */
     protected Differential(final Validator<TypeOfInput> stepValidator,
-            final TypeOfInput step, final DifferentialDirection direction) {
+            final TypeOfInput step, final DifferentialDirections direction) {
         if (stepValidator == null)
             throw new NullPointerException("Step validator is not specified.");
         this._stepValidator = stepValidator;
@@ -41,7 +41,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Gets the direction/way the differential is computed relative to the step.
      * @return The direction.
      */
-    public final DifferentialDirection getDirection() {
+    public final DifferentialDirections getDirection() {
         return this._direction;
     }
 
@@ -57,7 +57,7 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * Sets the direction/way the differential is computed relative to the step.
      * @param direction The direction.
      */
-    public final void setDirection(final DifferentialDirection direction) {
+    public final void setDirection(final DifferentialDirections direction) {
         this._direction = direction;
     }
 
@@ -70,24 +70,5 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
             throw new IllegalArgumentException(
                     this._stepValidator.message(step, "Step"));
         this._step = step;
-    }
-
-    /**
-     * Possible values for the direction to use in computing the
-     * <a href="http://en.wikipedia.org/wiki/Derivative#Definition_via_difference_quotients">differential</a>.
-     */
-    public enum DifferentialDirection {
-        /**
-         * Step is taken in the opposite direction of the step specified.
-         */
-        Negative,
-        /**
-         * Both positive and negative steps are taken.
-         */
-        Central,
-        /**
-         * Step is taken in the direction of the step specified.
-         */
-        Positive
     }
 }
