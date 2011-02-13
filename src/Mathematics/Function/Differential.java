@@ -58,6 +58,8 @@ public abstract class Differential<TypeOfInput, TypeOfOutput>
      * @param direction The direction.
      */
     public final void setDirection(final DifferentialDirections direction) {
+        if (direction == null)
+            throw new NullPointerException("Direction not properly specified.");
         this._direction = direction;
     }
 
