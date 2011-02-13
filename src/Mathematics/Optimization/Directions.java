@@ -27,7 +27,7 @@ public enum Directions {
      * Creates an instance of direction with the specified value.
      * @param value Value.
      */
-    Directions(final int value) {
+    private Directions(final int value) {
         this._value = value;
     }
 
