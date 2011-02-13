@@ -5,6 +5,7 @@
 
 package Mathematics.Function;
 
+import Validation.Validator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,6 +35,16 @@ public class DifferentialTest<TypeOfInput, TypeOfOutput> {
 
     @After
     public void tearDown() { // Intentional
+    }
+
+    /**
+     * Test of constructor, of class Differential,
+     * for a null stepvalidator.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testConstructor_StepValidatorNull() {
+        System.out.println("Differential(null, step, direction)");
+        new StepValidatorNull();
     }
 
     /**
@@ -76,10 +87,18 @@ public class DifferentialTest<TypeOfInput, TypeOfOutput> {
     }
 
     /**
-     * Blank test to allow this setup.
+     * Class to test NullPointerException from constructor the
+     * class Mathematics.Function.Differential.
      */
-    @Test
-    public void testBlank() {
-        assertTrue(true);
+    public class StepValidatorNull extends Differential<Double, Double> {
+        public StepValidatorNull() {
+            super(null, 1.0, DifferentialDirections.Positive);
+        }
+
+        @Override
+        public Double value(Double value, Function<Double, Double> function) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
     }
 }
