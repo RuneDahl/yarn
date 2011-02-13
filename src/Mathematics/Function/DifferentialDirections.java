@@ -28,7 +28,11 @@ public enum DifferentialDirections {
     private DifferentialDirections(final int value) {
         this._value = value;
     }
-    
+
+    /**
+     * Gets the value of this differential direction.
+     * @return Value.
+     */
     public int getValue() {
         return this._value;
     }
