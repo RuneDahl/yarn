@@ -48,14 +48,10 @@ public final class IteratorPostOrdered<TypeOfState, TypeOfValue>
         {
             node = this._stack.peekLast(); // Get current suggestion for next node.
             keepGoing = false; // Assume that node is next in the iteration.
-            if (0 < node.getChildren()) // If node has any children:
-            {
-                for (int c = 0; c < node.getChildren(); c++) // Iterate through the children.
-                {
-                    Node<TypeOfState, TypeOfValue> child = node.getChild(c);
-                    if (!this._stack.contains(child) &&
-                            !this._done.contains(child)) // For any child not stacked and not done:
-                    {
+            if (0 < node.getChildren()) { // If the node has any children:
+                for (Node<TypeOfState, TypeOfValue> child : node) { // Iterate through the children:
+                    if (!this._stack.contains(child) && // For any child not stacked and not done:
+                            !this._done.contains(child)) {
                         this._stack.addLast(child); // Add child to stack.
                         keepGoing = true; // Because a child was added, another node is the next in the iteration.
                     }

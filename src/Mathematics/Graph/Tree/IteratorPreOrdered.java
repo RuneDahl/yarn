@@ -43,14 +43,13 @@ public final class IteratorPreOrdered<TypeOfState, TypeOfValue>
         if (!this.hasNext())
             throw new NoSuchElementException("No more nodes to iterate.");
         Node<TypeOfState, TypeOfValue> node = this._queue.pollFirst();
-        if (0 < node.getChildren()) // If the node has children:
-            for (int c = 0; c < node.getChildren(); c++) // Iterate through the children.
-            {
-                Node<TypeOfState, TypeOfValue> child = node.getChild(c);
+        if (0 < node.getChildren()) { // If the node has children:
+            for (Node<TypeOfState, TypeOfValue> child : node) { // Iterate through the children.
                 if (!this._queue.contains(child) &&
                         !this._done.contains(child)) // Any child not queued and not done:
                     this._queue.addLast(child); // Add child to queue.
             }
+        }
         this._done.add(node); // Add return value to done nodes.
         return node;
     }
