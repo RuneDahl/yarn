@@ -16,7 +16,8 @@ import Mathematics.Result.Result;
  * @param <TypeOfState> Type of state.
  * @param <TypeOfValue> Type of value.
  */
-public interface Node<TypeOfState, TypeOfValue> {
+public interface Node<TypeOfState, TypeOfValue>
+        extends Iterable<Node<TypeOfState, TypeOfValue>> {
     /**
      * Gets the child-node with the specified index in this node.
      * @param index Index.

@@ -15,8 +15,7 @@ import java.util.*;
  * @param <TypeOfValue> Type of value.
  */
 public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
-        extends StateValueBased<TypeOfState, TypeOfValue>
-        implements Iterable<Map.Entry<Node<TypeOfState, TypeOfValue>, Double>> {
+        extends StateValueBased<TypeOfState, TypeOfValue> {
     private final LinkedHashMap<Node<TypeOfState, TypeOfValue>, Double> _children =
             new LinkedHashMap<Node<TypeOfState, TypeOfValue>, Double>();
 
@@ -95,6 +94,19 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
     }
 
     /**
+     * Gets the weight associated with the specified child node. With a
+     * safe-guard for non-child-nodes returning the weight 0 (zero).
+     * @param child Child-node.
+     * @return      Weight of the child node.
+     */
+    public final double getWeight(final Node<TypeOfState, TypeOfValue> child) {
+        if (this._children.containsKey(this))
+            return this._children.get(child);
+        else
+            return 0.0;
+    }
+
+    /**
      * Gets the weight associated with the child-node of the specified index.
      * @param index Index.
      * @return      Weight of the child-node.
@@ -137,13 +149,13 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
     }
 
     /**
-     * Returns an iterator for the map of child-nodes and their respective weights.
-     * @return Iterator of the child-nodes and weights.
+     * Returns an iterator for the child-nodes.
+     * @return Iterator of the child-nodes.
      */
     @Override
-    public final Iterator<Map.Entry<Node<TypeOfState, TypeOfValue>, Double>>
+    public final Iterator<Node<TypeOfState, TypeOfValue>>
             iterator() {
-        return this._children.entrySet().iterator();
+        return this._children.keySet().iterator();
     }
 
     /**
