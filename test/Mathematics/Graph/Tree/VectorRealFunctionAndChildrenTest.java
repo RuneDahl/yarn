@@ -85,7 +85,6 @@ public class VectorRealFunctionAndChildrenTest {
         VectorRealFunctionAndChildren instance = new VectorRealFunctionAndChildren(state, value, function);
 
         assertNotNull("null value from ctor(state, value, fucntion).", instance);
-
         assertEquals("Wrong count of child nodes from ctor(state, value, fucntion).",
                 0, instance.getChildren());
 
@@ -108,10 +107,10 @@ public class VectorRealFunctionAndChildrenTest {
         Map<Node<Vector<Double>, Vector<Double>>, Double> children =
                 new LinkedHashMap<Node<Vector<Double>, Vector<Double>>, Double>();
         Function<Vector<Double>, Vector<Double>> function = new Identity();
-        VectorRealFunctionAndChildren instance = new VectorRealFunctionAndChildren(state, value, children, function);
+        VectorRealFunctionAndChildren instance =
+                new VectorRealFunctionAndChildren(state, value, children, function);
 
         assertNotNull("null value from ctor(state, value, fucntion).", instance);
-
         assertEquals("Wrong count of child nodes from ctor(state, value, fucntion).",
                 0, instance.getChildren());
 
@@ -202,7 +201,25 @@ public class VectorRealFunctionAndChildrenTest {
         System.out.println("getWeight(int)");
         VectorRealFunctionAndChildren instance = this._instance;
         for (int index = 0; index < instance.getChildren(); index++)
-            this._children.testGetWeight(instance, index, Math.pow(2.0, index) / 3.0);
+            this._children.testGetWeight_Int(instance,
+                    index, Math.pow(2.0, index) / 3.0);
+    }
+
+    /**
+     * Test of getChild method, of class VectorRealFunctionAndChildren,
+     * for a node.
+     */
+    @Test
+    public void testGetWeight_Node() {
+        System.out.println("getWeight(Node)");
+        VectorRealFunctionAndChildren instance = this._instance;
+        for (int index = 0; index < instance.getChildren(); index++)
+            this._children.testGetWeight_Node(instance,
+                    this._childNodes[index], Math.pow(2.0, index) / 3.0);
+        // Weight for a non-child-node:
+        this._children.testGetWeight_Node(instance, instance, 0.0);
+        // Weight for a null value:
+        this._children.testGetWeight_Node(instance, null, 0.0);
     }
 
     /**
@@ -285,7 +302,8 @@ public class VectorRealFunctionAndChildrenTest {
         double[] values = new double[]{1.0, 3.5};
         Vector<Double> state = new VectorReal(values);
         Function<Vector<Double>, Vector<Double>> function = new Scale(0.05);
-        Node<Vector<Double>, Vector<Double>> child = new VectorRealFunctionAndChildren(state, function);
+        Node<Vector<Double>, Vector<Double>> child =
+                new VectorRealFunctionAndChildren(state, function);
         this._children.testAddChild(instance, child, 0.4);
     }
 
@@ -312,7 +330,8 @@ public class VectorRealFunctionAndChildrenTest {
         Vector<Double> value = new VectorReal(values);
         Result result = instance.computeValue();
         assertTrue(result instanceof SuccessWithValue);
-        SuccessWithValue<Vector<Double>> swv = (SuccessWithValue<Vector<Double>>)result;
+        SuccessWithValue<Vector<Double>> swv =
+                (SuccessWithValue<Vector<Double>>)result;
         assertEquals(value, swv.getResult());
 
         result = instance.computeValue();
