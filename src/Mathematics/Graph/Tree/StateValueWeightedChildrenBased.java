@@ -100,7 +100,7 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * @return      Weight of the child node.
      */
     public final double getWeight(final Node<TypeOfState, TypeOfValue> child) {
-        if (this._children.containsKey(this))
+        if (this._children.containsKey(child))
             return this._children.get(child);
         else
             return 0.0;
