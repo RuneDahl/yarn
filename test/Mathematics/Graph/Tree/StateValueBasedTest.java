@@ -7,6 +7,7 @@ package Mathematics.Graph.Tree;
 
 import Mathematics.Result.*;
 import Validation.*;
+import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -126,6 +127,11 @@ public class StateValueBasedTest<TypeOfState, TypeOfValue> {
 
         @Override
         public boolean hasChild(Node node) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public Iterator iterator() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
     }
