@@ -100,7 +100,7 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
      * @return      Weight of the child node.
      */
     public final double getWeight(final Node<TypeOfState, TypeOfValue> child) {
-        if (this._children.containsKey(child))
+        if (this.hasChild(child))
             return this._children.get(child);
         else
             return 0.0;
@@ -149,7 +149,9 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
     }
 
     /**
-     * Returns an iterator for the child-nodes.
+     * Returns an iterator for the child-nodes.<br>
+     * This iterator will only iterate through the direct child-nodes of this
+     * node and not any child-nodes of the child-nodes.
      * @return Iterator of the child-nodes.
      */
     @Override
@@ -160,14 +162,15 @@ public abstract class StateValueWeightedChildrenBased<TypeOfState, TypeOfValue>
 
     /**
      * Returns the child and weight with the specified index in this node's
-     * collection of child-nodes.
+     * collection of child-nodes and weights.
      * @param index Index.
      * @return      Child-node and weight.
      */
     protected final Map.Entry<Node<TypeOfState, TypeOfValue>, Double> _child(
             final int index) {
         if (index < 0 || this.getChildren() <= index) {
-            throw new ArrayIndexOutOfBoundsException("Index out of range: " + Integer.toString(index));
+            throw new ArrayIndexOutOfBoundsException("Index out of range: " +
+                    Integer.toString(index));
         }
         int i = 0;
         for (Map.Entry<Node<TypeOfState, TypeOfValue>, Double> child :
