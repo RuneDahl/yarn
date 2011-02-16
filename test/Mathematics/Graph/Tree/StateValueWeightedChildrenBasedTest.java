@@ -61,13 +61,26 @@ public class StateValueWeightedChildrenBasedTest<TypeOfState, TypeOfValue> {
     }
 
     /**
-     * Test of getWeight method, of class StateValueWeightedChildrenBased.
+     * Test of getWeight method, of class StateValueWeightedChildrenBased,
+     * for an integer value.
      */
-    public void testGetWeight(
+    public void testGetWeight_Int(
             final StateValueWeightedChildrenBased<TypeOfState, TypeOfValue> instance,
             final int index,
             final double expResult) {
         double result = instance.getWeight(index);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of getWeight method, of class StateValueWeightedChildrenBased,
+     * for a node.
+     */
+    public void testGetWeight_Node(
+            final StateValueWeightedChildrenBased<TypeOfState, TypeOfValue> instance,
+            final Node<TypeOfState, TypeOfValue> child,
+            final double expResult) {
+        double result = instance.getWeight(child);
         assertEquals(expResult, result, 0.0);
     }
 
