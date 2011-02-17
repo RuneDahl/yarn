@@ -45,17 +45,44 @@ public class IteratorPostOrderedTest {
         Function<Vector<Double>, Vector<Double>> function = new Identity();
         Map<Node<Vector<Double>, Vector<Double>>, Double> children =
                 new LinkedHashMap<Node<Vector<Double>, Vector<Double>>, Double>();
-        this._childNodes = new VectorRealFunctionAndChildren[3];
-        VectorRealFunctionAndChildren child =
-                new VectorRealFunctionAndChildren(state.setValue(0, 1.0), function);
-        children.put(child, 1.0/3.0);
+        Map<Node<Vector<Double>, Vector<Double>>, Double> children1 =
+                new LinkedHashMap<Node<Vector<Double>, Vector<Double>>, Double>();
+        this._childNodes = new VectorRealFunctionAndChildren[8];
+        VectorRealFunctionAndChildren child = null;
+        
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 2.0), function);
         this._childNodes[0] = child;
-        child = new VectorRealFunctionAndChildren(state.setValue(0, 1.0).setValue(1, 1.5), function);
-        children.put(child, 2.0/3.0);
+        children1.put(child, 1.0/3.0);
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 2.0).setValue(1, 1.5), function);
         this._childNodes[1] = child;
-        child = new VectorRealFunctionAndChildren(state.setValue(0, 1.0).setValue(1, 0.5), function);
-        children.put(child, 4.0/3.0);
+        children1.put(child, 1.0/3.0);
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 2.0).setValue(1, 0.5), function);
         this._childNodes[2] = child;
+        children1.put(child, 1.0/3.0);
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 1.0), children1, function);
+        children.put(child, 1.0/3.0);
+        this._childNodes[3] = child;
+
+        children1 = new LinkedHashMap<Node<Vector<Double>, Vector<Double>>, Double>();
+        children1.put(this._childNodes[0], 1.0/3.0);
+        children1.put(this._childNodes[1], 1.0/3.0);
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 2.0).setValue(1, 2.0), function);
+        children1.put(child, 1.0/3.0);
+        this._childNodes[4] = child;
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 1.0).setValue(1, 1.5), children1, function);
+        children.put(child, 2.0/3.0);
+        this._childNodes[5] = child;
+
+        children1 = new LinkedHashMap<Node<Vector<Double>, Vector<Double>>, Double>();
+        children1.put(this._childNodes[0], 1.0/3.0);
+        children1.put(this._childNodes[2], 1.0/3.0);
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 2.0).setValue(1, 0.0), function);
+        children1.put(child, 1.0/3.0);
+        this._childNodes[6] = child;
+        child = new VectorRealFunctionAndChildren(state.setValue(0, 1.0).setValue(1, 0.5), children1, function);
+        children.put(child, 4.0/3.0);
+        this._childNodes[7] = child;
+
         this._node = new VectorRealFunctionAndChildren(state, children, function);
         this._instance = new IteratorPostOrdered<Vector<Double>, Vector<Double>>(this._node);
     }
@@ -104,15 +131,35 @@ public class IteratorPostOrderedTest {
     public void testNext() {
         System.out.println("next");
         IteratorPostOrdered<Vector<Double>, Vector<Double>> instance = this._instance;
-        Node<Vector<Double>, Vector<Double>> expResult = this._childNodes[2];
+        Node<Vector<Double>, Vector<Double>> expResult = this._childNodes[6];
         Node<Vector<Double>, Vector<Double>> result = instance.next();
+        assertEquals(expResult, result);
+
+        expResult = this._childNodes[2];
+        result = instance.next();
+        assertEquals(expResult, result);
+
+        expResult = this._childNodes[0];
+        result = instance.next();
+        assertEquals(expResult, result);
+
+        expResult = this._childNodes[7];
+        result = instance.next();
+        assertEquals(expResult, result);
+
+        expResult = this._childNodes[4];
+        result = instance.next();
         assertEquals(expResult, result);
 
         expResult = this._childNodes[1];
         result = instance.next();
         assertEquals(expResult, result);
 
-        expResult = this._childNodes[0];
+        expResult = this._childNodes[5];
+        result = instance.next();
+        assertEquals(expResult, result);
+
+        expResult = this._childNodes[3];
         result = instance.next();
         assertEquals(expResult, result);
 
