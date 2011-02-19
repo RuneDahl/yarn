@@ -17,11 +17,10 @@ package Probability.Distribution;
 public interface QuantileFunction<TypeOfValue>
         extends Distribution<TypeOfValue> {
     /**
-     * Returns the quantile function of this distribution
-     * evaluated at the specified value.
-     * @param value Quantile value. This should be a
-     *              number in the interval 0 though 1.
-     * @return      Quantile function value.
+     * Returns the quantile value of this distribution
+     * evaluated at the specified quantile.
+     * @param quantile Quantile. This should be a number in the interval 0 through 1.
+     * @return         Quantile value.
      */
-    public TypeOfValue quantileFunction(final double value);
+    public TypeOfValue quantileFunction(final double quantile);
 }
