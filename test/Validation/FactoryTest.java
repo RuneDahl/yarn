@@ -53,6 +53,19 @@ public class FactoryTest {
     }
 
     /**
+     * Test of BoundedReal method, of class Factory.
+     */
+    @Test
+    public void testBoundedReal() {
+        System.out.println("BoundedReal");
+        Validator<Double> result = Factory.BoundedReal(0.0, 2.0);
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<Double> and = (And)result;
+        assertEquals("Wrong size of result.", 5, and.size());
+    }
+
+    /**
      * Test of FiniteReal method, of class Factory.
      */
     @Test
@@ -119,6 +132,19 @@ public class FactoryTest {
         assertTrue("Wrong type of result.", result instanceof And);
         And<Double> and = (And)result;
         assertEquals("Wrong size of result.", 4, and.size());
+    }
+
+    /**
+     * Test of LimitedReal method, of class Factory.
+     */
+    @Test
+    public void testLimitedReal() {
+        System.out.println("LimitedReal");
+        Validator<Double> result = Factory.LimitedReal(0.0, 2.0);
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<Double> and = (And)result;
+        assertEquals("Wrong size of result.", 5, and.size());
     }
 
     /**
