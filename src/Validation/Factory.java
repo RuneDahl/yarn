@@ -30,6 +30,24 @@ public final class Factory {
     }
 
     /**
+     * Validator allowing not null, finite {@see Double double} values that are
+     * not Double.NaN and are bounded by the specified limits.
+     * @param lowerBound Lower bound.
+     * @param upperBound Upper bound.
+     * @return           New validator.
+     */
+    public static Validator<Double> BoundedReal(
+            final double lowerBound, final double upperBound) {
+        And<Double> validator = new And<Double>();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        validator.add(new DoubleGreaterThanOrEqual(lowerBound));
+        validator.add(new DoubleLessThanOrEqual(upperBound));
+        return validator;
+    }
+
+    /**
      * Validator allowing not null, finite {@see Double double}
      * values that are not Double.NaN.
      * @return New validator.
@@ -99,6 +117,24 @@ public final class Factory {
         validator.add(new DoubleIsNumeric());
         validator.add(new DoubleIsFinite());
         validator.add(new DoubleLessThanOrEqual(limit));
+        return validator;
+    }
+
+    /**
+     * Validator allowing not null, finite {@see Double double} values that are
+     * not Double.NaN and are limited by the specified limits.
+     * @param lowerBound Lower bound.
+     * @param upperBound Upper bound.
+     * @return           New validator.
+     */
+    public static Validator<Double> LimitedReal(
+            final double lowerBound, final double upperBound) {
+        And<Double> validator = new And<Double>();
+        validator.add(new NotNull<Double>());
+        validator.add(new DoubleIsNumeric());
+        validator.add(new DoubleIsFinite());
+        validator.add(new DoubleGreaterThan(lowerBound));
+        validator.add(new DoubleLessThan(upperBound));
         return validator;
     }
 
