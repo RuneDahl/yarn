@@ -63,6 +63,18 @@ public final class Gregorian {
     }
 
     /**
+     * Returns the date-part of the specified gregorian date/time.
+     * @param dateTime Gregorian date/time.
+     * @return         Gregorian date.
+     */
+    public static GregorianCalendar date(final GregorianCalendar dateTime) {
+        int year = dateTime.get(GregorianCalendar.YEAR);
+        int month = dateTime.get(GregorianCalendar.MONTH);
+        int dayOfMonth = dateTime.get(GregorianCalendar.DAY_OF_MONTH);
+        return new GregorianCalendar(year, month, dayOfMonth);
+    }
+
+    /**
      * Computes whether the specified year is a leap-year in the Gregorian calendar.
      * @param year Year.
      * @return     True if year is a leap-year, otherwise false.
@@ -81,7 +93,7 @@ public final class Gregorian {
     /**
      * Computes whether the specified date/time falls within a leap-year
      * in the Gregorian calendar.
-     * @param date Date/time.
+     * @param date date/time.
      * @return     True if the date is within a leap-year, otherwise false.
      */
     public static boolean isLeapYear(final GregorianCalendar date) {
@@ -152,8 +164,8 @@ public final class Gregorian {
 
     /**
      * Returns the latest of the 2 specified Gregorian date/times.
-     * @param date1 Date/time.
-     * @param date2 Date/time.
+     * @param date1 date/time.
+     * @param date2 date/time.
      * @return      The latest of the 2 specified Gregorian date/times.
      */
     public static GregorianCalendar max(
@@ -166,8 +178,8 @@ public final class Gregorian {
 
     /**
      * Returns the earliest of the 2 specified Gregorian date/times.
-     * @param date1 Date/time.
-     * @param date2 Date/time.
+     * @param date1 date/time.
+     * @param date2 date/time.
      * @return      The earliest of the 2 specified Gregorian date/times.
      */
     public static GregorianCalendar min(
@@ -181,7 +193,7 @@ public final class Gregorian {
     /**
      * Returns the default string representation of a date/time in the
      * Gregorian calendar.
-     * @param dateTime Date/Time.
+     * @param dateTime date/Time.
      * @return         String value representing the date/time.
      */
     public static String toString(final GregorianCalendar dateTime) {
