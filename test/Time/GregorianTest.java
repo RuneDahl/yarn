@@ -90,7 +90,6 @@ public class GregorianTest {
     public void testBelowDateDifference_BothNull() {
         System.out.println("belowDateDifference(null, null)");
         Gregorian.belowDateDifference(null, null);
-        fail("No exception thrown.");
     }
 
     /**
@@ -100,7 +99,6 @@ public class GregorianTest {
     public void testBelowDateDifference_FromNull() {
         System.out.println("belowDateDifference(null, x)");
         Gregorian.belowDateDifference(null, new GregorianCalendar());
-        fail("No exception thrown.");
     }
 
     /**
@@ -110,7 +108,6 @@ public class GregorianTest {
     public void testBelowDateDifference_ToNull() {
         System.out.println("belowDateDifference(x, null)");
         Gregorian.belowDateDifference(new GregorianCalendar(), null);
-        fail("No exception thrown.");
     }
 
     /**
@@ -170,7 +167,6 @@ public class GregorianTest {
     public void testCorrectionInDaysFromJulianToGregorian_1581() {
         System.out.println("correctionInDaysFromJulianToGregorian(1581)");
         Gregorian.correctionInDaysFromJulianToGregorian(1581);
-        fail("No exception thrown.");
     }
 
     /**
@@ -180,7 +176,31 @@ public class GregorianTest {
     public void testCorrectionInDaysFromJulianToGregorian_4100() {
         System.out.println("correctionInDaysFromJulianToGregorian(4100)");
         Gregorian.correctionInDaysFromJulianToGregorian(4100);
-        fail("No exception thrown.");
+    }
+
+    /**
+     * Test of date method, of class Gregorian.
+     */
+    @Test
+    public void testDate() {
+        System.out.println("date");
+        GregorianCalendar dateTime = new GregorianCalendar();
+        GregorianCalendar result = Gregorian.date(dateTime);
+        int year = dateTime.get(GregorianCalendar.YEAR);
+        int month = dateTime.get(GregorianCalendar.MONTH);
+        int dayOfMonth = dateTime.get(GregorianCalendar.DAY_OF_MONTH);
+        GregorianCalendar expResult = new GregorianCalendar(year, month, dayOfMonth);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of date method, of class Gregorian, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testDate_Null() {
+        System.out.println("date(null)");
+        GregorianCalendar dateTime = null;
+        Gregorian.date(dateTime);
     }
 
     /**
@@ -221,7 +241,6 @@ public class GregorianTest {
         System.out.println("isLeapYear(null)");
         GregorianCalendar date = null;
         Gregorian.isLeapYear(date);
-        fail("No exception thrown.");
     }
 
     /**
@@ -320,7 +339,6 @@ public class GregorianTest {
     public void testMax_BothNull() {
         System.out.println("max(null, null)");
         Gregorian.max(null, null);
-        fail("No exception thrown.");
     }
 
     /**
@@ -330,7 +348,6 @@ public class GregorianTest {
     public void testMax_Null1() {
         System.out.println("max(null, x)");
         Gregorian.max(null, new GregorianCalendar());
-        fail("No exception thrown.");
     }
 
     /**
@@ -340,7 +357,6 @@ public class GregorianTest {
     public void testMax_Null2() {
         System.out.println("max(x, null)");
         Gregorian.max(new GregorianCalendar(), null);
-        fail("No exception thrown.");
     }
 
     /**
@@ -365,7 +381,6 @@ public class GregorianTest {
     public void testMin_BothNull() {
         System.out.println("min(null, null)");
         Gregorian.min(null, null);
-        fail("No exception thrown.");
     }
 
     /**
@@ -375,7 +390,6 @@ public class GregorianTest {
     public void testMin_Null1() {
         System.out.println("min(null, x)");
         Gregorian.min(null, new GregorianCalendar());
-        fail("No exception thrown.");
     }
 
     /**
@@ -385,7 +399,6 @@ public class GregorianTest {
     public void testMin_Null2() {
         System.out.println("min(x, null)");
         Gregorian.min(new GregorianCalendar(), null);
-        fail("No exception thrown.");
     }
 
     /**
