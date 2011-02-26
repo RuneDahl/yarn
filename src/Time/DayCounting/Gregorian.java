@@ -8,22 +8,14 @@ package Time.DayCounting;
 import java.util.GregorianCalendar;
 
 /**
- * An abstract
- * <a href="http://en.wikipedia.org/wiki/Day_count_convention">day count convention</a>
- * in the
+ * An abstract {@see DayCount day count convention} in the
  * <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a>.
- * <br>This abstract day count convention is based on the assumption that whether
- * or not to adjust a date/time is determined entirely by the date/time
+ * <br>This abstract day count convention is based on the assumption that
+ * whether or not to adjust a date/time is determined entirely by the date/time
  * and the day count convention.
  * @author Rune Dahl Iversen
  */
 public abstract class Gregorian implements DayCount<GregorianCalendar> {
-    /**
-     * Returns the length of the period between the 2 specified date/times.
-     * @param from From date/time.
-     * @param to   To date/time.
-     * @return     The length of the period between the 2 specified date/times.
-     */
     @Override
     public final double days(final GregorianCalendar from, final GregorianCalendar to) {
         if (0 < from.compareTo(to))

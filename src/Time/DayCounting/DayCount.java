@@ -6,9 +6,8 @@
 package Time.DayCounting;
 
 /**
- * Interface for a
- * <a href="http://en.wikipedia.org/wiki/Day_count_convention">day count
- * convention</a>.<br>
+ * Interface for a <a href="http://en.wikipedia.org/wiki/Day_count_convention">
+ * day count convention</a>.<br>
  * A day count convention is a method to translate the time between
  * two date/times (within a calendar) into a number of days.
  * @author Rune Dahl Iversen
@@ -17,7 +16,7 @@ package Time.DayCounting;
 public interface DayCount<TypeOfCalendar>
 {
     /**
-     * Returns the length of the period between the 2 specified date/times.
+     * Returns the length in days of the period between the 2 specified date/times.
      * @param from From date/time.
      * @param to   To date/time.
      * @return     The length of the period between the 2 specified date/times.
