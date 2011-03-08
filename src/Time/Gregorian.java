@@ -9,7 +9,12 @@ import java.util.GregorianCalendar;
 
 /**
  * Utility class containing methods for date/times in the
- * <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a>.
+ * <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian
+ * calendar</a>.<br>
+ * The implementations allow the calculation using a
+ * <a href="http://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar">
+ * proleptic</a> Gregorian calendar, that is it allows calculation using dates
+ * before 1583 A.D. as if they are specified in the Gregorian calendar.
  * @author Rune Dahl Iversen
  */
 public final class Gregorian {
@@ -54,7 +59,8 @@ public final class Gregorian {
                     "the Gregorian calendar was not implemented.");
         if (4100 <= year)
             throw new IllegalArgumentException("Around the year 4100 " +
-                    "the Gregorian calendar will need a correction of 1 day.");
+                    "the Gregorian calendar will need a correction of 1 day," +
+                    "so calculations beyond that date is not allowed.");
         int centuryDigits = year / 100;
         int days = 10;
         if (1600 < year)
@@ -63,7 +69,7 @@ public final class Gregorian {
     }
 
     /**
-     * Returns the date-part of the specified gregorian date/time.
+     * Returns the date-part of the specified Gregorian date/time.
      * @param dateTime Gregorian date/time.
      * @return         Gregorian date.
      */
@@ -75,9 +81,11 @@ public final class Gregorian {
     }
 
     /**
-     * Computes whether the specified year is a leap-year in the Gregorian calendar.
+     * Computes whether the specified year is a
+     * <a href="http://en.wikipedia.org/wiki/Leap_year">leap year</a>
+     * in the Gregorian calendar.
      * @param year Year.
-     * @return     True if year is a leap-year, otherwise false.
+     * @return     True if year is a leap year, otherwise false.
      */
     public static boolean isLeapYear(final int year) {
         boolean isLeapYear = (year % 4 == 0);
@@ -91,17 +99,19 @@ public final class Gregorian {
     }
 
     /**
-     * Computes whether the specified date/time falls within a leap-year
+     * Computes whether the specified date/time falls within a
+     * <a href="http://en.wikipedia.org/wiki/Leap_year">leap year</a>
      * in the Gregorian calendar.
      * @param date date/time.
-     * @return     True if the date is within a leap-year, otherwise false.
+     * @return     True if the date is within a leap year, otherwise false.
      */
     public static boolean isLeapYear(final GregorianCalendar date) {
         return isLeapYear(date.get(GregorianCalendar.YEAR));
     }
 
     /**
-     * Returns the actual length of a month in a year from the Gregorian calendar in days.
+     * Returns the actual length of a month in a year
+     * from the Gregorian calendar in days.
      * @param year  Year.
      * @param month Month.
      * @return Length of the month in days.
