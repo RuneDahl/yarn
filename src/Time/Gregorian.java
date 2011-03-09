@@ -208,13 +208,22 @@ public final class Gregorian {
      */
     public static String toString(final GregorianCalendar dateTime) {
         StringBuilder d = new StringBuilder();
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.YEAR)) + "-");
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.MONTH) + 1) + "-");
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.DAY_OF_MONTH)) + " ");
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.HOUR_OF_DAY)) + ":");
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.MINUTE)) + ":");
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.SECOND)) + ".");
-        d.append(Integer.toString(dateTime.get(GregorianCalendar.MILLISECOND)));
+        d.append(formatInteger(dateTime.get(GregorianCalendar.YEAR), 4) + "-");
+        d.append(formatInteger(dateTime.get(GregorianCalendar.MONTH) + 1, 2) + "-");
+        d.append(formatInteger(dateTime.get(GregorianCalendar.DAY_OF_MONTH), 2) + " ");
+        d.append(formatInteger(dateTime.get(GregorianCalendar.HOUR_OF_DAY), 2) + ":");
+        d.append(formatInteger(dateTime.get(GregorianCalendar.MINUTE), 2) + ":");
+        d.append(formatInteger(dateTime.get(GregorianCalendar.SECOND), 2) + ".");
+        d.append(formatInteger(dateTime.get(GregorianCalendar.MILLISECOND), 3));
+        return d.toString();
+    }
+
+    private static String formatInteger(final int value, final int decimals) {
+        StringBuilder d = new StringBuilder();
+        String number = Integer.toString(value);
+        for (int i = 0; i < decimals - number.length(); i++)
+            d.append("0");
+        d.append(number);
         return d.toString();
     }
 }
