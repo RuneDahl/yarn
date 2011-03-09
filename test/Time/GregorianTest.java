@@ -410,7 +410,7 @@ public class GregorianTest {
         GregorianCalendar date = new GregorianCalendar(2010, 3, 23, 12, 34, 56);
         date.add(GregorianCalendar.MILLISECOND, 789);
         String result = Gregorian.toString(date);
-        String expResult = "2010-4-23 12:34:56.789";
+        String expResult = "2010-04-23 12:34:56.789";
         assertEquals(expResult, result);
     }
 
