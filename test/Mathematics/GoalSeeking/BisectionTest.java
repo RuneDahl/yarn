@@ -23,6 +23,8 @@ import static org.junit.Assert.*;
  */
 public class BisectionTest {
     private Bisection _instance;
+    private Function<Double, Double> _poly;
+    private GoalSeekFunctionTest<Interval<Double>, Double, Double> _tester;
     
     public BisectionTest() { // Intentional
     }
@@ -38,16 +40,24 @@ public class BisectionTest {
 
     @Before
     public void setUp() {
+        this._tester = new GoalSeekFunctionTest<Interval<Double>, Double, Double>();
+        double[] values = new double[3];
+        values[0] = -1.0;
+        values[2] = 1.0;
+        this._poly = new PolynomialReal(values);
         Interval<Double> initialValue = new IntervalReal(
                 0.0, Interval.EndType.Includes,
                 4.0, Interval.EndType.Includes);
         Equals<Double> criterion = new DoubleAbsolute(Math.pow(10.0, -6.0));
-        this._instance = new Bisection(Math.sqrt(2.0), initialValue, criterion, 40);
+        this._instance = new Bisection(this._poly,
+                Math.sqrt(2.0), initialValue, criterion, 40);
     }
 
     @After
     public void tearDown() {
+        this._tester = null;
         this._instance = null;
+        this._poly = null;
     }
 
     /**
@@ -69,10 +79,7 @@ public class BisectionTest {
     @Test
     public void testGetGoalValue() {
         System.out.println("getGoalValue");
-        Bisection instance = this._instance;
-        Double expResult = Math.sqrt(2.0);
-        Double result = instance.getGoalValue();
-        assertEquals(expResult, result);
+        this._tester.testGetGoalValue(this._instance, Math.sqrt(2.0));
     }
 
     /**
@@ -81,12 +88,10 @@ public class BisectionTest {
     @Test
     public void testGetInitialValue() {
         System.out.println("getInitialValue");
-        Bisection instance = this._instance;
         Interval expResult = new IntervalReal(
                 0.0, Interval.EndType.Includes,
                 4.0, Interval.EndType.Includes);
-        Interval result = instance.getInitialValue();
-        assertEquals(expResult, result);
+        this._tester.testGetInitialValue(this._instance, expResult);
     }
 
     /**
@@ -122,9 +127,16 @@ public class BisectionTest {
     @Test (expected=NullPointerException.class)
     public void testSetCriterion_Null() {
         System.out.println("setCriterion(null)");
-        Bisection instance = this._instance;
-        Equals<Double> criterion = null;
-        instance.setCriterion(criterion);
+        this._tester.testSetCriterion(this._instance, null);
+    }
+
+    /**
+     * Test of setFunction method, of class Bisection, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetFunction_Null() {
+        System.out.println("setFunction(null)");
+        this._tester.testSetFunction(this._instance, null);
     }
 
     /**
@@ -133,12 +145,7 @@ public class BisectionTest {
     @Test
     public void testSetGoalValue() {
         System.out.println("setGoalValue");
-        Double value = 7.45;
-        Bisection instance = this._instance;
-        instance.setGoalValue(value);
-
-        Double result = instance.getGoalValue();
-        assertEquals(7.45, result, 0.0);
+        this._tester.testSetGoalValue(this._instance, 7.45);
     }
 
     /**
@@ -147,9 +154,7 @@ public class BisectionTest {
     @Test (expected=IllegalArgumentException.class)
     public void testSetGoalValue_Null() {
         System.out.println("setGoalValue(null)");
-        Double value = null;
-        Bisection instance = this._instance;
-        instance.setGoalValue(value);
+        this._tester.testSetGoalValue(this._instance, null);
     }
 
     /**
@@ -161,14 +166,7 @@ public class BisectionTest {
         Interval<Double> initialValue = new IntervalReal(
                 -1.0, Interval.EndType.Includes,
                 1.0, Interval.EndType.Includes);
-        Bisection instance = this._instance;
-        instance.setInitialValue(initialValue);
-
-        Interval result = instance.getInitialValue();
-        Interval<Double> expResult = new IntervalReal(
-                -1.0, Interval.EndType.Includes,
-                1.0, Interval.EndType.Includes);
-        assertEquals(expResult, result);
+        this._tester.testSetInitialValue(this._instance, initialValue);
     }
 
     /**
@@ -177,9 +175,7 @@ public class BisectionTest {
     @Test (expected=NullPointerException.class)
     public void testSetInitialValue_Null() {
         System.out.println("setInitialValue(null)");
-        Interval<Double> initialValue = null;
-        Bisection instance = this._instance;
-        instance.setInitialValue(initialValue);
+        this._tester.testSetInitialValue(this._instance, null);
     }
 
     /**
@@ -211,32 +207,28 @@ public class BisectionTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        double[] values = new double[3];
-        values[0] = -1.0;
-        values[2] = 1.0;
-        Function<Double, Double> value = new PolynomialReal(values);
-        Algorithm<Function<Double, Double>> instance = this._instance;
-        Result result = instance.run(value);
+        Algorithm<Result> instance = this._instance;
+        Result result = instance.run();
         assertTrue("Wrong type of result.", result instanceof IterativeSuccess);
         IterativeSuccess<Double> is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations from result.", 21, is.getIterations());
         assertEquals("Wrong value from result.", 1.553773974403, is.getResult(), Math.pow(-10.0, -6.0));
 
         this._instance.setMaximumIterations(20);
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Maximum Iterations hit: Wrong type of result.", result instanceof MaximumIterationsFailure);
         MaximumIterationsFailure mif = (MaximumIterationsFailure)result;
 
         this._instance.setMaximumIterations(40);
         this._instance.setGoalValue(-1.0);
 
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Initial hit: Lower Bound - Wrong type of result.", result instanceof SuccessWithValue);
         SuccessWithValue<Double> swv = (SuccessWithValue<Double>)result;
         assertEquals("Initial hit: Lower Bound - Wrong value from result.", 0.0, swv.getResult(), Math.pow(-10.0, -6.0));
 
         this._instance.setGoalValue(15.0);
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Initial hit: Upper Bound - Wrong type of result.", result instanceof SuccessWithValue);
         swv = (SuccessWithValue<Double>)result;
         assertEquals("Initial hit: Upper Bound - Wrong value from result.", 4.0, swv.getResult(), Math.pow(-10.0, -6.0));
@@ -244,7 +236,7 @@ public class BisectionTest {
         this._instance.setInitialValue(
                 new IntervalReal(0.0, Interval.EndType.Includes,
                 2.0, Interval.EndType.Includes));
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Solution not enclosed - Wrong type of result.", result instanceof SolutionNotEnclosedFailure);
         SolutionNotEnclosedFailure<Double, Double> snef = (SolutionNotEnclosedFailure<Double, Double>)result;
         assertEquals("Solution not enclosed - Wrong goal value from result.", 15.0, snef.getGoalValue(), Math.pow(-10.0, -6.0));
@@ -259,7 +251,7 @@ public class BisectionTest {
         this._instance.setMaximumIterations(300);
         this._instance.setGoalValue(15000000.0);
         ((PrecisionBased)this._instance.getCriterion()).setPrecision(Math.pow(10.0, -12.0));
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Resolution not fine enough - Wrong type of result.", result instanceof ResolutionNotFineEnough);
         ResolutionNotFineEnough<Double, Double> rnfe = (ResolutionNotFineEnough<Double, Double>)result;
         IntervalReal interval = new IntervalReal(
@@ -269,16 +261,16 @@ public class BisectionTest {
     }
 
     /**
-     * Test of run method, of class Bisection, for a null value.
+     * Test of run method, of class Bisection, with an exception thrown.
      */
     @Test
-    public void testRun_Null() {
-        System.out.println("run(null)");
-        Function<Double, Double> value = null;
-        Algorithm<Function<Double, Double>> instance = this._instance;
-        Result result = instance.run(value);
+    public void testRun_Exception() {
+        System.out.println("run throwing Exception");
+        this._instance.setFunction(new ExceptionThrower<Double, Double>());
+        Algorithm<Result> instance = this._instance;
+        Result result = instance.run();
         assertTrue("Wrong type of result.", result instanceof UnhandledExceptionThrown);
-        UnhandledExceptionThrown uht = (UnhandledExceptionThrown)result;
-        assertTrue("Class of exception from result.", uht.getException() instanceof NullPointerException);
+        UnhandledExceptionThrown uet = (UnhandledExceptionThrown)result;
+        assertTrue("Wrong type of Exception.", uet.getException() instanceof UnsupportedOperationException);
     }
 }

@@ -22,6 +22,8 @@ import static org.junit.Assert.*;
  */
 public class NewtonRaphsonTest {
     private NewtonRaphson _instance;
+    private Function<Double, Double> _poly;
+    private GoalSeekFunctionTest<Double, Double, Double> _tester;
 
     public NewtonRaphsonTest() { // Intentional
     }
@@ -37,16 +39,24 @@ public class NewtonRaphsonTest {
 
     @Before
     public void setUp() {
+        this._tester = new GoalSeekFunctionTest<Double, Double, Double>();
+        double[] values = new double[3];
+        values[0] = -1.0;
+        values[2] = 1.0;
+        this._poly = new PolynomialReal(values);
         Double initialValue = 4.0;
         Equals<Double> criterion = new DoubleAbsolute(Math.pow(10.0, -6.0));
         Mathematics.Function.Differentiator<Double, Double, Double> derivative =
                 new Derivative<Double, Double, Double>();
-        this._instance = new NewtonRaphson(Math.sqrt(2.0), initialValue, criterion, derivative, 40);
+        this._instance = new NewtonRaphson(this._poly,
+                Math.sqrt(2.0), initialValue, criterion, derivative, 40);
     }
 
     @After
     public void tearDown() {
+        this._tester = null;
         this._instance = null;
+        this._poly = null;
     }
 
     /**
@@ -81,10 +91,7 @@ public class NewtonRaphsonTest {
     @Test
     public void testGetGoalValue() {
         System.out.println("getGoalValue");
-        NewtonRaphson instance = this._instance;
-        Double expResult = Math.sqrt(2.0);
-        Double result = instance.getGoalValue();
-        assertEquals(expResult, result);
+        this._tester.testGetGoalValue(this._instance, Math.sqrt(2.0));
     }
 
     /**
@@ -93,10 +100,7 @@ public class NewtonRaphsonTest {
     @Test
     public void testGetInitialValue() {
         System.out.println("getInitialValue");
-        NewtonRaphson instance = this._instance;
-        Double expResult = 4.0;
-        Double result = instance.getInitialValue();
-        assertEquals(expResult, result);
+        this._tester.testGetInitialValue(this._instance, 4.0);
     }
 
     /**
@@ -132,9 +136,7 @@ public class NewtonRaphsonTest {
     @Test (expected=NullPointerException.class)
     public void testSetCriterion_Null() {
         System.out.println("setCriterion(null)");
-        NewtonRaphson instance = this._instance;
-        Equals<Double> criterion = null;
-        instance.setCriterion(criterion);
+        this._tester.testSetCriterion(this._instance, null);
     }
 
     /**
@@ -166,17 +168,21 @@ public class NewtonRaphsonTest {
     }
 
     /**
+     * Test of setFunction method, of class NewtonRaphson, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testSetFunction_Null() {
+        System.out.println("setFunction(null)");
+        this._tester.testSetFunction(this._instance, null);
+    }
+
+    /**
      * Test of setGoalValue method, of class NewtonRaphson.
      */
     @Test
     public void testSetGoalValue() {
         System.out.println("setGoalValue");
-        Double value = 7.45;
-        NewtonRaphson instance = this._instance;
-        instance.setGoalValue(value);
-
-        Double result = instance.getGoalValue();
-        assertEquals(7.45, result, 0.0);
+        this._tester.testSetGoalValue(this._instance, 7.45);
     }
 
     /**
@@ -185,9 +191,7 @@ public class NewtonRaphsonTest {
     @Test (expected=IllegalArgumentException.class)
     public void testSetGoalValue_Null() {
         System.out.println("setGoalValue(null)");
-        Double value = null;
-        NewtonRaphson instance = this._instance;
-        instance.setGoalValue(value);
+        this._tester.testSetGoalValue(this._instance, null);
     }
 
     /**
@@ -196,24 +200,16 @@ public class NewtonRaphsonTest {
     @Test
     public void testSetInitialValue() {
         System.out.println("setInitialValue");
-        Double initialValue = 1.0;
-        NewtonRaphson instance = this._instance;
-        instance.setInitialValue(initialValue);
-
-        Double result = instance.getInitialValue();
-        Double expResult = 1.0;
-        assertEquals(expResult, result);
+        this._tester.testSetInitialValue(this._instance, 1.0);
     }
 
     /**
      * Test of setInitialValue method, of class NewtonRaphson, for a null value.
      */
-    @Test (expected=IllegalArgumentException.class)
+    @Test (expected=NullPointerException.class)
     public void testSetInitialValue_Null() {
         System.out.println("setInitialValue(null)");
-        Double initialValue = null;
-        NewtonRaphson instance = this._instance;
-        instance.setInitialValue(initialValue);
+        this._tester.testSetInitialValue(this._instance, null);
     }
 
     /**
@@ -245,27 +241,37 @@ public class NewtonRaphsonTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        double[] values = new double[3];
-        values[0] = -1.0;
-        values[2] = 1.0;
-        Function<Double, Double> value = new PolynomialReal(values);
-        Algorithm<Function<Double, Double>> instance = this._instance;
-        Result result = instance.run(value);
+        Algorithm<Result> instance = this._instance;
+        Result result = instance.run();
         assertTrue("Wrong type of result.", result instanceof IterativeSuccess);
         IterativeSuccess<Double> is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations from result.", 6, is.getIterations());
         assertEquals("Wrong value from result.", 1.553773974403, is.getResult(), Math.pow(-10.0, -6.0));
 
         this._instance.setMaximumIterations(5);
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Maximum iterations hit - Wrong type of result.", result instanceof MaximumIterationsFailure);
         MaximumIterationsFailure mif = (MaximumIterationsFailure)result;
         assertEquals("Maximum iterations hit - Wrong number of iterations from result.", 5, mif.getIterations());
 
         this._instance.setInitialValue(0.0);
-        result = instance.run(value);
+        result = instance.run();
         assertTrue("Slope equals 0 (zero) - Wrong type of result.", result instanceof SlopeEqualsZeroFailure);
         SlopeEqualsZeroFailure<Double> sez = (SlopeEqualsZeroFailure<Double>)result;
         assertEquals("Slope equals 0 (zero) - Wrong number of iterations from result.", 0.0, sez.getValue(), 0.0);
+    }
+
+    /**
+     * Test of run method, of class NewtonRaphson, with an exception thrown.
+     */
+    @Test
+    public void testRun_Exception() {
+        System.out.println("run throwing Exception");
+        this._instance.setFunction(new ExceptionThrower<Double, Double>());
+        Algorithm<Result> instance = this._instance;
+        Result result = instance.run();
+        assertTrue("Wrong type of result.", result instanceof UnhandledExceptionThrown);
+        UnhandledExceptionThrown uet = (UnhandledExceptionThrown)result;
+        assertTrue("Wrong type of Exception.", uet.getException() instanceof UnsupportedOperationException);
     }
 }
