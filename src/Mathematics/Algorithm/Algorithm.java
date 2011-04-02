@@ -9,14 +9,12 @@ package Mathematics.Algorithm;
  * Interface for an
  * <a href="http://en.wikipedia.org/wiki/Algorithm">algorithm</a>.
  * @author Rune Dahl Iversen
- * @param <TypeOfValue> Type of value.
+ * @param <TypeOfResult> Type of result.
  */
-public interface Algorithm<TypeOfValue> {
+public interface Algorithm<TypeOfResult> {
     /**
-     * Returns the {@see Mathematics.Result.Result result}
-     * from this algorithm for the specified value.
-     * @param value Value
+     * Returns the result of running this algorithm.
      * @return The result from this algorithm.
      */
-    public Mathematics.Result.Result run(final TypeOfValue value);
+    public TypeOfResult run();
 }
