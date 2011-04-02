@@ -18,14 +18,11 @@ import Validation.*;
  * for a function of double into double.
  * @author Rune Dahl Iversen
  */
-public final class Bisection implements GoalSeekFunction<Double, Double>,
-        Criterion<Equals<Double>>,
+public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, Double>
+        implements Criterion<Equals<Double>>,
         InitialValue<Interval<Double>>,
-        Mathematics.Algorithm.Iterative<Function<Double, Double>> {
+        Mathematics.Algorithm.Iterative<Result> {
     private int _maxIter;
-    private Equals<Double> _criterion;
-    private Interval<Double> _initialValue;
-    private double _goalValue;
 
     private static final Validator<Double> __validator =
             Validation.Factory.FiniteReal();
@@ -35,62 +32,25 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
     /**
      * Creates an instance of the bisection method {@see Algorithm algorithm}
      * for goal-seeking the input to a funtion.
+     * @param function          Function.
      * @param goalValue         Target value.
-     * @param initialValue      Initial values. The 2 values must be on either
-     *                          side of the solution.
+     * @param initialValue      Initial values. The 2 interval must encompass
+     *                          the solution.
      * @param criterion         End criterion for the iteration.
      * @param maximumIterations Maximum number of iterations allowed.
      */
-    public Bisection(final double goalValue,
+    public Bisection(final Function<Double, Double> function,
+            final double goalValue,
             final Interval<Double> initialValue,
             final Equals<Double> criterion,
             final int maximumIterations) {
-        this.setGoalValue(goalValue);
-        this.setInitialValue(initialValue);
-        this.setCriterion(criterion);
+        super(criterion, function, __validator, goalValue, initialValue);
         this.setMaximumIterations(maximumIterations);
-    }
-
-    @Override
-    public Equals<Double> getCriterion() {
-        return this._criterion;
-    }
-
-    @Override
-    public Double getGoalValue() {
-        return this._goalValue;
-    }
-
-    @Override
-    public Interval<Double> getInitialValue() {
-        return this._initialValue;
     }
 
     @Override
     public int getMaximumIterations() {
         return this._maxIter;
-    }
-
-    @Override
-    public void setCriterion(final Equals<Double> criterion) {
-        if (criterion == null)
-            throw new NullPointerException("Criterion is not properly specified.");
-        this._criterion = criterion;
-    }
-
-    @Override
-    public void setGoalValue(final Double value) {
-        if (!__validator.isValid(value))
-            throw new IllegalArgumentException(
-                    __validator.message(value, "Goal value"));
-        this._goalValue = value;
-    }
-
-    @Override
-    public void setInitialValue(final Interval<Double> initialValue) {
-        if (initialValue == null)
-            throw new NullPointerException("Initial values are not properly specified.");
-        this._initialValue = initialValue;
     }
 
     @Override
@@ -102,45 +62,54 @@ public final class Bisection implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Result run(final Function<Double, Double> value) {
+    public Result run() {
+        Result result = null;
         try
         {
+            Equals<Double> criterion = this.getCriterion();
+            Function<Double, Double> value = this.getFunction();
+            double goalValue = this.getGoalValue();
+            Interval<Double> initialValue = this.getInitialValue();
             Interval<Double> interval = new IntervalReal(
-                    this._initialValue.getLowerBound(), Interval.EndType.Includes,
-                    this._initialValue.getUpperBound(), Interval.EndType.Includes);
-            double output = value.value(this._initialValue.getLowerBound());
-            if (this._criterion.value(output, this._goalValue))
-                return new SuccessWithValue(this._initialValue.getLowerBound());
-            double lSign = Math.signum(output - this._goalValue);
+                    initialValue.getLowerBound(), Interval.EndType.Includes,
+                    initialValue.getUpperBound(), Interval.EndType.Includes);
+            double output = value.value(initialValue.getLowerBound());
+            if (criterion.value(output, goalValue))
+                result = new SuccessWithValue(initialValue.getLowerBound());
+            double lSign = Math.signum(output - goalValue);
             output = value.value(interval.getUpperBound());
-            if (this._criterion.value(output, this._goalValue))
-                return new SuccessWithValue(this._initialValue.getUpperBound());
-            double uSign = Math.signum(output - this._goalValue);
+            if (criterion.value(output, goalValue))
+                result = new SuccessWithValue(initialValue.getUpperBound());
+            double uSign = Math.signum(output - goalValue);
 
             if (0.0 < lSign * uSign)
-                return new SolutionNotEnclosedFailure<Double, Double>(
-                        value, interval, this._goalValue);
+                result = new SolutionNotEnclosedFailure<Double, Double>(
+                        value, interval, goalValue);
             double midPoint = Double.NaN;
             int iter;
             for (iter = 0; iter < this._maxIter &&
-                    !this._criterion.value(output, this._goalValue); iter++) {
+                    !criterion.value(output, goalValue); iter++) {
                 midPoint = interval.getLowerBound() / 2.0 +
                         interval.getUpperBound() / 2.0;
                 if (midPoint == interval.getLowerBound() ||
                         midPoint == interval.getUpperBound())
-                    return new ResolutionNotFineEnough<Double, Double>(
-                            value, interval, this._goalValue);
+                    result = new ResolutionNotFineEnough<Double, Double>(
+                            value, interval, goalValue);
                 output = value.value(midPoint);
-                if (Math.signum(output - this._goalValue) == lSign)
+                if (Math.signum(output - goalValue) == lSign)
                     interval.setLowerBound(midPoint);
                 else
                     interval.setUpperBound(midPoint);
             }
-            if (this._maxIter <= iter)
-                return new MaximumIterationsFailure(iter);
-            return new IterativeSuccess(iter, midPoint);
+            if (result == null) {
+                if (this._maxIter <= iter)
+                    result = new MaximumIterationsFailure(iter);
+                else
+                    result = new IterativeSuccess(iter, midPoint);
+            }
         }
         catch (Exception e)
-        { return new UnhandledExceptionThrown(e); }
+        { result = new UnhandledExceptionThrown(e); }
+        return result;
     }
 }

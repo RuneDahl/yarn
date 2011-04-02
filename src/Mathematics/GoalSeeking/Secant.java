@@ -18,14 +18,11 @@ import Validation.*;
  * for a function of double into double.
  * @author Rune Dahl Iversen
  */
-public final class Secant implements GoalSeekFunction<Double, Double>,
-        Criterion<Equals<Double>>,
+public final class Secant extends GoalSeekFunction<Interval<Double>, Double, Double>
+        implements Criterion<Equals<Double>>,
         InitialValue<Interval<Double>>,
-        Mathematics.Algorithm.Iterative<Function<Double, Double>>  {
+        Mathematics.Algorithm.Iterative<Result>  {
     private int _maxIter;
-    private Equals<Double> _criterion;
-    private Interval<Double> _initialValue;
-    private double _goalValue;
 
     private static final Validator<Double> __validator =
             Validation.Factory.FiniteReal();
@@ -40,56 +37,20 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
      * @param criterion         End criterion for the iteration.
      * @param maximumIterations Maximum number of iterations allowed.
      */
-    public Secant(final double goalValue,
+    public Secant(final Function<Double, Double> function,
+            final double goalValue,
             final Interval<Double> initialValue,
             final Equals<Double> criterion,
             final int maximumIterations) {
-        this.setGoalValue(goalValue);
+        super(criterion, function, __validator, goalValue, initialValue);
         this.setInitialValue(initialValue);
         this.setCriterion(criterion);
         this.setMaximumIterations(maximumIterations);
     }
 
     @Override
-    public Equals<Double> getCriterion() {
-        return this._criterion;
-    }
-
-    @Override
-    public Double getGoalValue() {
-        return this._goalValue;
-    }
-
-    @Override
-    public Interval<Double> getInitialValue() {
-        return this._initialValue;
-    }
-
-    @Override
     public int getMaximumIterations() {
         return this._maxIter;
-    }
-
-    @Override
-    public void setCriterion(final Equals<Double> criterion) {
-        if (criterion == null)
-            throw new NullPointerException("Criterion is not properly specified.");
-        this._criterion = criterion;
-    }
-
-    @Override
-    public void setGoalValue(final Double value) {
-        if (!__validator.isValid(value))
-            throw new IllegalArgumentException(
-                    __validator.message(value, "Goal value"));
-        this._goalValue = value;
-    }
-
-    @Override
-    public void setInitialValue(final Interval<Double> initialValue) {
-        if (initialValue == null)
-            throw new NullPointerException("Initial values are not properly specified.");
-        this._initialValue = initialValue;
     }
 
     @Override
@@ -101,39 +62,46 @@ public final class Secant implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Result run(final Function<Double, Double> value) {
+    public Result run() {
+        Result result = null;
         try {
+            Equals<Double> criterion = this.getCriterion();
+            Function<Double, Double> value = this.getFunction();
+            double goalValue = this.getGoalValue();
             double x_1 = this.getInitialValue().getLowerBound();
             double fx_1 = value.value(x_1);
-            if (this._criterion.value(fx_1, this._goalValue))
+            if (criterion.value(fx_1, goalValue))
                 return new SuccessWithValue(x_1);
             double x = this.getInitialValue().getUpperBound();
             double fx = value.value(x);
-            if (this._criterion.value(fx, this._goalValue))
+            if (criterion.value(fx, goalValue))
                 return new SuccessWithValue(x);
             int iter = -1;
             for (iter = 0; iter < this._maxIter &&
-                    !this._criterion.value(fx, this._goalValue); iter++) {
-                double n = x - (fx - this._goalValue) * (x - x_1) / (fx - fx_1);
+                    !criterion.value(fx, goalValue); iter++) {
+                double n = x - (fx - goalValue) * (x - x_1) / (fx - fx_1);
                 double fn = value.value(n);
                 x_1 = x;
                 fx_1 = fx;
                 if (x == n)
-                    return new ResolutionNotFineEnough(value,
+                    result = new ResolutionNotFineEnough(value,
                             new IntervalReal(
                             Math.min(x_1, n), Interval.EndType.Includes,
                             Math.max(x_1, n), Interval.EndType.Includes),
-                            this._goalValue);
+                            goalValue);
                 x = n;
                 fx = fn;
             }
-            if (this._maxIter <= iter)
-                return new MaximumIterationsFailure(iter);
-            else
-                return new IterativeSuccess(iter, x);
+            if (result == null) {
+                if (this._maxIter <= iter)
+                    result = new MaximumIterationsFailure(iter);
+                else
+                    result = new IterativeSuccess(iter, x);
+            }
         }
         catch (Exception e) {
-            return new UnhandledExceptionThrown(e);
+            result = new UnhandledExceptionThrown(e);
         }
+        return result;
     }
 }

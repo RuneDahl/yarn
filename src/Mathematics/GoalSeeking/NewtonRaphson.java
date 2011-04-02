@@ -16,16 +16,13 @@ import Validation.*;
  * {@see Mathematics.Algorithm.Algorithm algorithm}.
  * @author Rune Dahl Iversen
  */
-public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
-        Mathematics.Algorithm.Criterion<Equals<Double>>,
+public final class NewtonRaphson extends GoalSeekFunction<Double, Double, Double>
+        implements Mathematics.Algorithm.Criterion<Equals<Double>>,
         Mathematics.Algorithm.Differentiator<Differentiator<Double, Double, Double>>,
         Mathematics.Algorithm.InitialValue<Double>,
-        Mathematics.Algorithm.Iterative<Function<Double, Double>> {
-    private double _initialValue;
-    private Equals<Double> _criterion;
+        Mathematics.Algorithm.Iterative<Result> {
     private Differentiator<Double, Double, Double> _differentiator;
     private int _maxIter;
-    private double _goalValue;
     private static final Validator<Double> __validator = Factory.FiniteReal();
     private static final Validator<Integer> __maxIterValidator = new IntegerGreaterThan();
 
@@ -40,21 +37,15 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
      *                          differential of the function.
      * @param maximumIterations Maximum number of iterations allowed.
      */
-    public NewtonRaphson(final double goalValue,
+    public NewtonRaphson(final Function<Double, Double> function,
+            final double goalValue,
             final double initialValue,
             final Equals<Double> criterion,
             final Differentiator<Double, Double, Double> differentiator,
             final int maximumIterations) {
-        this.setCriterion(criterion);
+        super(criterion, function, __validator, goalValue, initialValue);
         this.setDifferentiator(differentiator);
-        this.setGoalValue(goalValue);
-        this.setInitialValue(initialValue);
         this.setMaximumIterations(maximumIterations);
-    }
-
-    @Override
-    public Equals<Double> getCriterion() {
-        return this._criterion;
     }
 
     @Override
@@ -63,49 +54,16 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Double getGoalValue() {
-        return this._goalValue;
-    }
-
-    @Override
-    public Double getInitialValue() {
-        return this._initialValue;
-    }
-
-    @Override
     public int getMaximumIterations() {
         return this._maxIter;
-    }
-
-    @Override
-    public void setCriterion(final Equals<Double> criterion) {
-        if (criterion == null)
-            throw new NullPointerException("Criterion is not properly specified.");
-        this._criterion = criterion;
     }
 
     @Override
     public void setDifferentiator(
             final Differentiator<Double, Double, Double> differentiator) {
         if (differentiator == null)
-            throw new NullPointerException("Differentiator is not properly specified.");
+            throw new NullPointerException("Differentiator not properly specified.");
         this._differentiator = differentiator;
-    }
-
-    @Override
-    public void setGoalValue(final Double value) {
-        if (!__validator.isValid(value))
-            throw new IllegalArgumentException(
-                    __validator.message(value, "Goal value"));
-        this._goalValue = value;
-    }
-
-    @Override
-    public void setInitialValue(final Double initialValue) {
-        if (!__validator.isValid(initialValue))
-            throw new IllegalArgumentException(
-                    __validator.message(initialValue, "Initial value"));
-        this._initialValue = initialValue;
     }
 
     @Override
@@ -117,24 +75,36 @@ public final class NewtonRaphson implements GoalSeekFunction<Double, Double>,
     }
 
     @Override
-    public Result run(final Function<Double, Double> function) {
-        double value = this._initialValue;
-        int iterations = 0;
-        double output = function.value(value);
-        for (iterations = 0; iterations < this._maxIter &&
-                !this._criterion.value(output, this._goalValue);
-                iterations++) {
-            output = function.value(value);
-            double denominator = this._differentiator.value(value, function);
-            if (denominator == 0.0)
-                return new SlopeEqualsZeroFailure<Double>(value);
-            else
-                value -= (output - this.getGoalValue()) /
-                        denominator;
+    public Result run() {
+        Result result = null;
+        try {
+            Equals<Double> criterion = this.getCriterion();
+            Function<Double, Double> function = this.getFunction();
+            double goalValue = this.getGoalValue();
+            double value = this.getInitialValue();
+            int iterations = 0;
+            double output = function.value(value);
+            for (iterations = 0; iterations < this._maxIter &&
+                    !criterion.value(output, goalValue);
+                    iterations++) {
+                output = function.value(value);
+                double denominator = this._differentiator.value(value, function);
+                if (denominator == 0.0)
+                    result = new SlopeEqualsZeroFailure<Double>(value);
+                else
+                    value -= (output - this.getGoalValue()) /
+                            denominator;
+            }
+            if (result == null) {
+                if (this._maxIter <= iterations)
+                    result = new MaximumIterationsFailure(iterations);
+                else
+                    result = new IterativeSuccess<Double>(iterations, value);
+            }
         }
-        if (this._maxIter <= iterations) {
-            return new MaximumIterationsFailure(iterations);
+        catch (Exception e) {
+            result = new UnhandledExceptionThrown(e);
         }
-        return new IterativeSuccess<Double>(iterations, value);
+        return result;
     }
 }
