@@ -8,6 +8,8 @@ package Mathematics.Function;
 /**
  * Interface for a
  * <a href="http://en.wikipedia.org/wiki/Function_%28mathematics%29">function</a>.
+ * <br> NB: It is assumed that a function does not
+ * (significantly) alter the state of the input value.
  * @author Rune Dahl Iversen
  * @param <TypeOfInput>  Type of input.
  * @param <TypeOfOutput> Type of output.
