@@ -223,22 +223,6 @@ public final class MatrixReal extends MatrixBase<Double> {
     }
 
     @Override
-    public void scaleColumn(final int column, final Double scalar) {
-        int start = this.getFirstRow();
-        int end = start + this.getRows();
-        for (int r = start; r < end; r++)
-            this.setValue(r, column, this.getValue(r, column) * scalar);
-    }
-
-    @Override
-    public void scaleRow(final int row, final Double scalar) {
-        int start = this.getFirstColumn();
-        int end = start + this.getColumns();
-        for (int c = start; c < end; c++)
-            this.setValue(row, c, this.getValue(row, c) * scalar);
-    }
-
-    @Override
     public Matrix<Double> stack(final Matrix<Double> matrix) {
         if (!this.hasSameColumns(matrix))
             throw new IllegalArgumentException("The matrix does not have " +

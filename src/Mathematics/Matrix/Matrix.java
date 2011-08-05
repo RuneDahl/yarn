@@ -123,24 +123,6 @@ public interface Matrix<TypeOfValue>
     public Matrix<TypeOfValue> addRow(final Vector<TypeOfValue> row);
 
     /**
-     * Add the the specified scalar times one column to another column.
-     * @param columnToAddTo Column to add the scaled column to.
-     * @param columnToAdd   Column to scale and add.
-     * @param scalar        Scalar.
-     */
-    public void addScaledColumn(final int columnToAddTo, final int columnToAdd,
-            final TypeOfValue scalar);
-
-    /**
-     * Add the the specified scalar times one row to another row.
-     * @param rowToAddTo Row to add the scaled row to.
-     * @param rowToAdd   Row to scale and add.
-     * @param scalar     Scalar.
-     */
-    public void addScaledRow(final int rowToAddTo, final int rowToAdd,
-            final TypeOfValue scalar);
-
-    /**
      * Add the values of the specified vector to the column.
      * @param column Column.
      * @param vector Vector of values.
@@ -230,40 +212,12 @@ public interface Matrix<TypeOfValue>
     public Matrix<TypeOfValue> removeRow(final int row);
 
     /**
-     * Scale the values of the specified column by the scalar.
-     * @param column Column.
-     * @param scalar Scalar.
-     */
-    public void scaleColumn(final int column, final TypeOfValue scalar);
-
-    /**
-     * Scale the values of the specified row by the scalar.
-     * @param row    Row.
-     * @param scalar Scalar.
-     */
-    public void scaleRow(final int row, final TypeOfValue scalar);
-
-    /**
      * Returns a matrix consisting of this matrix
      * stacked on top of the specified matrix.
      * @param matrix Matrix.
      * @return       Stacked matrix.
      */
     public Matrix<TypeOfValue> stack(final Matrix<TypeOfValue> matrix);
-
-    /**
-     * Switch the values of the 2 specified columns.
-     * @param column1 Column.
-     * @param column2 Column.
-     */
-    public void switchColumns(final int column1, final int column2);
-
-    /**
-     * Switch the values of the 2 specified rows.
-     * @param row1 Row.
-     * @param row2 Row.
-     */
-    public void switchRows(final int row1, final int row2);
 
     /**
      * Returns the values of this matrix as a 2-dimensional zero-based array.

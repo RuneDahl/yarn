@@ -30,40 +30,6 @@ public abstract class MatrixBase<TypeOfValue> implements Matrix<TypeOfValue> {
     }
 
     @Override
-    public final void addScaledColumn(final int columnToAddTo, final int columnToAdd,
-            final TypeOfValue scalar) {
-        this.addToColumn(columnToAddTo, this.getColumn(columnToAdd).scale(scalar));
-    }
-
-    @Override
-    public final void addScaledRow(final int rowToAddTo, final int rowToAdd,
-            final TypeOfValue scalar) {
-        this.addToRow(rowToAddTo, this.getRow(rowToAdd).scale(scalar));
-    }
-
-    @Override
-    public final void switchColumns(final int column1, final int column2) {
-        Vector<TypeOfValue> temp = this.getColumn(column1);
-        int start = this.getFirstRow();
-        int end = this.getLastRow();
-        for (int r = start; r <= end; r++) {
-            this.setValue(r, column1, this.getValue(r, column2));
-            this.setValue(r, column2, temp.getValue(r));
-        }
-    }
-
-    @Override
-    public final void switchRows(final int row1, final int row2) {
-        Vector<TypeOfValue> temp = this.getRow(row1);
-        int start = this.getFirstColumn();
-        int end = this.getLastColumn();
-        for (int c = start; c <= end; c++) {
-            this.setValue(row1, c, this.getValue(row2, c));
-            this.setValue(row2, c, temp.getValue(c));
-        }
-    }
-
-    @Override
     public final int getFirstColumn() {
         return this._firstColumn;
     }

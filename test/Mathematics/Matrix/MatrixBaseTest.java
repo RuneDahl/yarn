@@ -39,24 +39,6 @@ public class MatrixBaseTest {
     }
 
     /**
-     * Test of SwitchColumns method, of class MatrixBase.
-     */
-    public void testSwitchColumns(final MatrixBase matrix,
-            final int column1, final int column2, final MatrixBase expResult) {
-        matrix.switchColumns(column1, column2);
-        assertEquals(expResult, matrix);
-    }
-
-    /**
-     * Test of SwitchRows method, of class MatrixBase.
-     */
-    public void testSwitchRows(final MatrixBase matrix,
-            final int row1, final int row2, final MatrixBase expResult) {
-        matrix.switchRows(row1, row2);
-        assertEquals(expResult, matrix);
-    }
-
-    /**
      * Test of getFirstColumn method, of class MatrixBase.
      */
     public void testGetFirstColumn(final MatrixBase matrix, final int expResult) {

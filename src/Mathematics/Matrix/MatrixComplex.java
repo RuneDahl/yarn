@@ -224,22 +224,6 @@ public final class MatrixComplex extends MatrixBase<Complex> {
     }
 
     @Override
-    public void scaleColumn(final int column, final Complex scalar) {
-        int start = this.getFirstRow();
-        int end = start + this.getRows();
-        for (int r = start; r < end; r++)
-            this.setValue(r, column, this.getValue(r, column).product(scalar));
-    }
-
-    @Override
-    public void scaleRow(final int row, final Complex scalar) {
-        int start = this.getFirstColumn();
-        int end = start + this.getColumns();
-        for (int c = start; c < end; c++)
-            this.setValue(row, c, this.getValue(row, c).product(scalar));
-    }
-
-    @Override
     public Matrix<Complex> stack(final Matrix<Complex> matrix) {
         if (!this.hasSameColumns(matrix))
             throw new IllegalArgumentException("The matrix does not have " +
