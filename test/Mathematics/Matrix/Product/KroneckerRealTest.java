@@ -7,6 +7,7 @@ package Mathematics.Matrix.Product;
 
 import Mathematics.Function.Operator;
 import Mathematics.Matrix.*;
+import Mathematics.Matrix.Command.SwitchRows;
 import Mathematics.Vector.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -81,10 +82,10 @@ public class KroneckerRealTest {
 
         expResult = expResult.addRow(new VectorReal(new double[]{-2.0, -2.0, -2.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -9.0, -9.0, -9.0, -1.0, -1.0, -1.0}));
         for (int row = expResult.getLastRow(); 3 < row; row--)
-            expResult.switchRows(row, row-1);
+            expResult = new Mathematics.Matrix.Command.SwitchRows<Double>(row, row-1).applyTo(expResult);
         expResult = expResult.addRow(new VectorReal(new double[]{-0.0, -0.0, -0.0, -2.0, -2.0, -2.0, -0.0, -0.0, -0.0, -9.0, -9.0, -9.0, -1.0, -1.0, -1.0}));
         for (int row = expResult.getLastRow(); 7 < row; row--)
-            expResult.switchRows(row, row-1);
+            expResult = new Mathematics.Matrix.Command.SwitchRows<Double>(row, row-1).applyTo(expResult);
         expResult = expResult.addRow(new VectorReal(new double[]{-0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -2.0, -2.0, -2.0, -9.0, -9.0, -9.0, -1.0, -1.0, -1.0}));
 
 
