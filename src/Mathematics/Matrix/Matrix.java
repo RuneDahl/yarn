@@ -137,6 +137,12 @@ public interface Matrix<TypeOfValue>
     public void addToRow(final int row, final Vector<TypeOfValue> vector);
 
     /**
+     * Returns a clone of this matrix with the same dimensions and values.
+     * @return Cloned matrix.
+     */
+    public Object clone();
+
+    /**
      * Indicates whether the specified vector has the same dimensions
      * (getFirstDimension() and getDimensions()) as the columns
      * (getFirstColumn() and getColumns()) of this matrix.

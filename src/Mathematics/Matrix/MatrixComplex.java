@@ -161,6 +161,11 @@ public final class MatrixComplex extends MatrixBase<Complex> {
     }
 
     @Override
+    public Object clone() {
+        return new MatrixComplex(this.getFirstRow(), this.getFirstColumn(), this._values);
+    }
+
+    @Override
     public Matrix<Complex> join(final Matrix<Complex> matrix) {
         if (!this.hasSameRows(matrix))
             throw new IllegalArgumentException("The matrix does not have " +

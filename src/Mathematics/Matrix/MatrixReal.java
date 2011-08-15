@@ -160,6 +160,11 @@ public final class MatrixReal extends MatrixBase<Double> {
     }
 
     @Override
+    public Object clone() {
+        return new MatrixReal(this.getFirstRow(), this.getFirstColumn(), this._values);
+    }
+
+    @Override
     public Matrix<Double> join(final Matrix<Double> matrix) {
         if (!this.hasSameRows(matrix))
             throw new IllegalArgumentException("The matrix does not have " +

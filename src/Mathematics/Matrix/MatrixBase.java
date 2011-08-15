@@ -50,6 +50,9 @@ public abstract class MatrixBase<TypeOfValue> implements Matrix<TypeOfValue> {
     }
 
     @Override
+    public abstract Object clone();
+
+    @Override
     public final boolean hasSameColumns(Vector<TypeOfValue> column) {
         return this.getFirstColumn() == column.getFirstDimension() &&
                 this.getColumns() == column.getDimensions();
