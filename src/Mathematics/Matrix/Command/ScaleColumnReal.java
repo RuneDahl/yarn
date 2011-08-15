@@ -11,41 +11,41 @@ import Validation.*;
 
 /**
  * {@see Command} that scales a specified column of a
- * {@see Matrix matrix} with the specified factor.
+ * {@see Matrix matrix} with the specified scalar factor.
  * @author Rune Dahl Iversen
  */
 public final class ScaleColumnReal extends Column<Double> {
     private final static Validator<Double> __valueValidator = Factory.FiniteReal();
-    private double _factor;
+    private double _scalar;
 
     /**
-     * Creates an instance of a column scaling {@see Command command}
-     * with the specified row index and factor.
+     * Creates an instance of a column scaling command
+     * with the specified row index and scalar factor.
      * @param row    Row index.
-     * @param factor Factor.
+     * @param scalar Scalar factor.
      */
-    public ScaleColumnReal(final int row, final double factor) {
+    public ScaleColumnReal(final int row, final double scalar) {
         super(row);
-        this.setFactor(factor);
+        this.setScalar(scalar);
     }
 
     /**
-     * Gets the factor.
-     * @return The factor.
+     * Gets the scalar factor.
+     * @return The scalar factor.
      */
-    public double getFactor() {
-        return this._factor;
+    public double getScalar() {
+        return this._scalar;
     }
 
     /**
-     * Sets the factor to the specified value.
-     * @param factor Factor.
+     * Sets the scalar factor to the specified value.
+     * @param scalar The scalar factor.
      */
-    public void setFactor(final double factor) {
-        if (!__valueValidator.isValid(factor))
+    public void setScalar(final double scalar) {
+        if (!__valueValidator.isValid(scalar))
             throw new IllegalArgumentException(
-                    __valueValidator.message(factor, "Factor"));
-        this._factor = factor;
+                    __valueValidator.message(scalar, "Scalar"));
+        this._scalar = scalar;
     }
 
     @Override
@@ -55,8 +55,9 @@ public final class ScaleColumnReal extends Column<Double> {
         int start = matrix.getFirstRow();
         int end = start + matrix.getRows();
         int column = this.getColumn();
+        double scalar = this._scalar;
         for (int r = start; r < end; r++)
-            matrix.setValue(r, column, matrix.getValue(r, column) * this._factor);
+            matrix.setValue(r, column, matrix.getValue(r, column) * scalar);
         return matrix;
     }
 }

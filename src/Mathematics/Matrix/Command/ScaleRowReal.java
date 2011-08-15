@@ -11,41 +11,41 @@ import Validation.*;
 
 /**
  * {@see Command} that scales a specified row of a
- * {@see Matrix matrix} with the specified factor.
+ * {@see Matrix matrix} with the specified scalar factor.
  * @author Rune Dahl Iversen
  */
 public final class ScaleRowReal extends Row<Double> {
     private final static Validator<Double> __valueValidator = Factory.FiniteReal();
-    private double _factor;
+    private double _scalar;
 
     /**
      * Creates an instance of a row scaling command
-     * with the specified row index and factor.
+     * with the specified row index and scalar factor.
      * @param row    Row index.
-     * @param factor Factor.
+     * @param scalar Scalar factor.
      */
-    public ScaleRowReal(final int row, final double factor) {
+    public ScaleRowReal(final int row, final double scalar) {
         super(row);
-        this.setFactor(factor);
+        this.setScalar(scalar);
     }
 
     /**
      * Gets the factor.
      * @return The factor.
      */
-    public double getFactor() {
-        return this._factor;
+    public double getScalar() {
+        return this._scalar;
     }
 
     /**
-     * Sets the factor to the specified value.
-     * @param factor Factor.
+     * Sets the scalar factor to the specified value.
+     * @param scalar Scalar factor.
      */
-    public void setFactor(final double factor) {
-        if (!__valueValidator.isValid(factor))
+    public void setScalar(final double scalar) {
+        if (!__valueValidator.isValid(scalar))
             throw new IllegalArgumentException(
-                    __valueValidator.message(factor, "Factor"));
-        this._factor = factor;
+                    __valueValidator.message(scalar, "Scalar"));
+        this._scalar = scalar;
     }
 
     @Override
@@ -55,8 +55,9 @@ public final class ScaleRowReal extends Row<Double> {
         int start = matrix.getFirstColumn();
         int end = start + matrix.getColumns();
         int row = this.getRow();
+        double scalar = this._scalar;
         for (int c = start; c < end; c++)
-            matrix.setValue(row, c, matrix.getValue(row, c) * this._factor);
+            matrix.setValue(row, c, matrix.getValue(row, c) * scalar);
         return matrix;
     }
 }
