@@ -28,6 +28,7 @@ public class ScaleRowRealTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        System.out.print("Mathematics.Matrix.Command.ScaleRowReal");
     }
 
     @AfterClass
@@ -52,7 +53,7 @@ public class ScaleRowRealTest {
      * Test of getRow method, of class AddScaledRowReal.
      */
     @Test
-    public void testGetFirstRow() {
+    public void testGetRow() {
         System.out.println("getRow");
         this._rowTest.testGetRow(this._instance, 2);
     }
@@ -61,7 +62,7 @@ public class ScaleRowRealTest {
      * Test of setRow method, of class AddScaledRowReal.
      */
     @Test
-    public void testSetFirstRow() {
+    public void testSetRow() {
         System.out.println("setRow");
         this._rowTest.testSetRow(this._instance, 14);
     }

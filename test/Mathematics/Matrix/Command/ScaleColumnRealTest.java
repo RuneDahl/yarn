@@ -28,6 +28,7 @@ public class ScaleColumnRealTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        System.out.print("Mathematics.Matrix.Command.ScaleColumnReal");
     }
 
     @AfterClass
@@ -52,7 +53,7 @@ public class ScaleColumnRealTest {
      * Test of getColumn method, of class AddScaledColumnReal.
      */
     @Test
-    public void testGetFirstColumn() {
+    public void testGetColumn() {
         System.out.println("getColumn");
         this._columnTest.testGetColumn(this._instance, 2);
     }
@@ -61,7 +62,7 @@ public class ScaleColumnRealTest {
      * Test of setColumn method, of class AddScaledColumnReal.
      */
     @Test
-    public void testSetFirstColumn() {
+    public void testSetColumn() {
         System.out.println("setColumn");
         this._columnTest.testSetColumn(this._instance, 14);
     }
