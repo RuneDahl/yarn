@@ -57,7 +57,6 @@ public class RowsTest<TypeOfValue> {
     /**
      * Test of getSecondRow method, of class Rows.
      */
-    @Test
     public void testGetSecondRow(Rows<TypeOfValue> instance, int expResult) {
         int result = instance.getSecondRow();
         assertEquals("Wrong result from " + instance.getClass().getName() +

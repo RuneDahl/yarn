@@ -57,7 +57,6 @@ public class ColumnsTest<TypeOfValue> {
     /**
      * Test of getSecondColumn method, of class Columns.
      */
-    @Test
     public void testGetSecondColumn(Columns<TypeOfValue> instance, int expResult) {
         int result = instance.getSecondColumn();
         assertEquals("Wrong result from " + instance.getClass().getName() +
