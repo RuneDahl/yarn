@@ -323,8 +323,8 @@ public final class MatrixReal extends MatrixBase<Double> {
     @Override
     public Matrix<Double> sum(final Matrix<Double> value) {
         if (!this.hasSameDimensions(value))
-            throw new IllegalArgumentException("The matrix does not the same " +
-                    "dimensions as this matrix.");
+            throw new IllegalArgumentException("The matrix does not have the " +
+                    "same dimensions as this matrix.");
         int startR = this.getFirstRow();
         int endR = startR + this.getRows();
         int startC = this.getFirstColumn();
@@ -373,8 +373,8 @@ public final class MatrixReal extends MatrixBase<Double> {
     @Override
     public Matrix<Double> subtract(final Matrix<Double> value) {
         if (!this.hasSameDimensions(value))
-            throw new IllegalArgumentException("The matrix does not the same " +
-                    "dimensions as this matrix.");
+            throw new IllegalArgumentException("The matrix does not have the " +
+                    "same dimensions as this matrix.");
         int startR = this.getFirstRow();
         int endR = startR + this.getRows();
         int startC = this.getFirstColumn();
