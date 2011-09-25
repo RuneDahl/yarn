@@ -324,8 +324,8 @@ public final class MatrixComplex extends MatrixBase<Complex> {
     @Override
     public Matrix<Complex> sum(final Matrix<Complex> value) {
         if (!this.hasSameDimensions(value))
-            throw new IllegalArgumentException("The matrix does not the same " +
-                    "dimensions as this matrix.");
+            throw new IllegalArgumentException("The matrix does not have the " +
+                    "same dimensions as this matrix.");
         int startR = this.getFirstRow();
         int endR = startR + this.getRows();
         int startC = this.getFirstColumn();
@@ -374,8 +374,8 @@ public final class MatrixComplex extends MatrixBase<Complex> {
     @Override
     public Matrix<Complex> subtract(final Matrix<Complex> value) {
         if (!this.hasSameDimensions(value))
-            throw new IllegalArgumentException("The matrix does not the same " +
-                    "dimensions as this matrix.");
+            throw new IllegalArgumentException("The matrix does not have the " +
+                    "same dimensions as this matrix.");
         int startR = this.getFirstRow();
         int endR = startR + this.getRows();
         int startC = this.getFirstColumn();
