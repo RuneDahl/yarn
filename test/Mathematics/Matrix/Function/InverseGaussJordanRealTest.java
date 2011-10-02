@@ -141,4 +141,29 @@ public class InverseGaussJordanRealTest {
                 " against Expected: " + expResult.toString();
         assertTrue(message, this._comparer.value(expResult, result));
     }
+
+    /**
+     * Test of value method, of class InverseGaussJordanReal,
+     * for a non-square matrix.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testValue_NonSquareMatrix() {
+        System.out.println("value(non-square matrix)");
+        Matrix<Double> input = MatrixReal.Identity(1, 4);
+        input = input.removeColumn(2);
+        InverseGaussJordanReal instance = new InverseGaussJordanReal();
+        input = instance.value(input);
+    }
+
+    /**
+     * Test of value method, of class InverseGaussJordanReal,
+     * for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testValue_Null() {
+        System.out.println("value(null)");
+        Matrix<Double> input = null;
+        InverseGaussJordanReal instance = new InverseGaussJordanReal();
+        input = instance.value(input);
+    }
 }
