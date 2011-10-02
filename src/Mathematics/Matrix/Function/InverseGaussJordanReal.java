@@ -6,7 +6,7 @@
 package Mathematics.Matrix.Function;
 
 import Mathematics.Command;
-import Mathematics.Function.Function;
+import Mathematics.Function.*;
 import Mathematics.Matrix.*;
 import Mathematics.Matrix.Command.*;
 
@@ -29,21 +29,18 @@ public class InverseGaussJordanReal
         Matrix<Double> inverse =
                 MatrixReal.Identity(matrix.getFirstRow(), matrix.getRows());
 
+        Operator<Double, Double, Boolean> comparer = new LargestAbsoluteValue();
+        IndexOfBestValueInColumn indexFinder =
+                new IndexOfBestValueInColumn(0, 0, matrix.getLastRow(), comparer);
         // For each column in the matrix going forward
         for (int col = matrix.getFirstColumn(); col <= matrix.getLastColumn(); col++) {
-            double maxValue = 0.0;
-            int r = matrix.getFirstRow();
             // Identify the row that has the same relative position as the column.
             // Thus the position (cRow, col) is in the diagonal.
             int cRow = matrix.getFirstRow() + col - matrix.getFirstColumn();
-            // Identify the largest value in the column, that is below the diagonal.
-            for (int row = cRow; row <= matrix.getLastRow(); row++) {
-                double value = matrix.getValue(row, col);
-                if (maxValue < Math.abs(value)) {
-                    maxValue = Math.abs(value);
-                    r = row;
-                }
-            }
+            // Find the index of the numerically largest value below the diagonal.
+            indexFinder.setColumn(col);
+            indexFinder.setLowerRowBound(cRow);
+            int r = indexFinder.value(matrix);
             // Switch rows to place the largest value in the diagonal.
             Command<Matrix<Double>> switchRows = new SwitchRows<Double>(cRow, r);
             switchRows.applyTo(matrix);
@@ -79,5 +76,13 @@ public class InverseGaussJordanReal
                 }
         }
         return inverse.transpose();
+    }
+
+    private final class LargestAbsoluteValue
+            implements Operator<Double, Double, Boolean> {
+        @Override
+        public Boolean value(Double firstInput, Double secondInput) {
+            return Math.abs(firstInput) < Math.abs(secondInput);
+        }
     }
 }
