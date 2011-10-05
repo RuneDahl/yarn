@@ -18,24 +18,24 @@ import static org.junit.Assert.*;
  * @author Rune Dahl Iversen
  */
 public class MatrixRealMaximumTest {
-
-    public MatrixRealMaximumTest() {
+    public MatrixRealMaximumTest() { // Intentional
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.Norm.MatrixRealPower");
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() throws Exception { // Intentional
     }
 
     @Before
-    public void setUp() {
+    public void setUp() { // Intentional
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() { // Intentional
     }
 
     /**
@@ -77,11 +77,12 @@ public class MatrixRealMaximumTest {
     }
 
     /**
-     * Test of equals method, of class MatrixRealMaximum.
+     * Test of equals method, of class MatrixRealMaximum,
+     * for an instance of a different class.
      */
     @Test
     public void testEquals_DifferentClass() {
-        System.out.println("equals");
+        System.out.println("equals(different class)");
         Object obj = MatrixReal.Identity(1, 3);
         MatrixRealMaximum instance = new MatrixRealMaximum();
         boolean expResult = false;
@@ -90,7 +91,7 @@ public class MatrixRealMaximumTest {
     }
 
     /**
-     * Test of equals method, of class MatrixRealMaximum.
+     * Test of equals method, of class MatrixRealMaximum, for a null value.
      */
     @Test
     public void testEquals_Null() {
@@ -125,5 +126,4 @@ public class MatrixRealMaximumTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
-
 }
