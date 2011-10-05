@@ -43,7 +43,7 @@ public class ComplexPowerTest {
     }
 
     /**
-     * Test of getPower method, of class VectorRealPower.
+     * Test of getPower method, of class ComplexPower.
      */
     @Test
     public void testGetPower() {
@@ -56,7 +56,7 @@ public class ComplexPowerTest {
     }
 
     /**
-     * Test of setPower method, of class VectorRealPower.
+     * Test of setPower method, of class ComplexPower.
      */
     @Test
     public void testSetPower() {
