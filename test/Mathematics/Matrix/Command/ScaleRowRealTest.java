@@ -136,12 +136,23 @@ public class ScaleRowRealTest {
     public void testApplyTo() {
         System.out.println("applyTo");
         Matrix<Double> matrix = this._matrix;
-        ScaleRowReal instance = this._instance;
+        Mathematics.Command<Matrix<Double>> instance = this._instance;
         Matrix<Double> expResult = MatrixReal.Value(1, 3, 1, 3, 2.0);
         expResult.setValue(2, 1, -4.0);
         expResult.setValue(2, 2, -4.0);
         expResult.setValue(2, 3, -4.0);
         Matrix result = instance.applyTo(matrix);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of applyTo method, of class ScaleRowReal, for a null value.
+     */
+    @Test (expected=NullPointerException.class)
+    public void testApplyTo_Null() {
+        System.out.println("applyTo(null)");
+        Matrix<Double> matrix = null;
+        Mathematics.Command<Matrix<Double>> instance = this._instance;
+        instance.applyTo(matrix);
     }
 }
