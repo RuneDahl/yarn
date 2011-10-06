@@ -92,11 +92,25 @@ public class SwitchRowsTest {
     public void testApplyTo() {
         System.out.println("applyTo");
         Matrix<Double> matrix = this._matrix;
-        SwitchRows<Double> instance = this._instance;
+        Mathematics.Command<Matrix<Double>> instance = this._instance;
         Matrix expResult = MatrixReal.Zero(1, 3, 1, 3);
         expResult.setValue(1, 2, 1.0);
         expResult.setValue(2, 1, 1.0);
         expResult.setValue(3, 3, 1.0);
+        Matrix result = instance.applyTo(matrix);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of applyTo method, of class SwitchRows.
+     */
+    @Test
+    public void testApplyTo_HavingSameRows() {
+        System.out.println("applyTo(having same rows)");
+        Matrix<Double> matrix = this._matrix;
+        SwitchRows<Double> instance = this._instance;
+        instance.setFirstRow(instance.getSecondRow());
+        Matrix expResult = MatrixReal.Identity(1, 3);
         Matrix result = instance.applyTo(matrix);
         assertEquals(expResult, result);
     }
