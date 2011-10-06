@@ -28,7 +28,8 @@ public class MidPointEvaluatorRealRealTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.Function.Integration.MidPointEvaluatorRealReal");
     }
 
     @AfterClass

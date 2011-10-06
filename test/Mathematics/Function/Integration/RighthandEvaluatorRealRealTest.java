@@ -28,7 +28,8 @@ public class RighthandEvaluatorRealRealTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception { // Intentional
+    public static void setUpClass() throws Exception {
+        System.out.println("Mathematics.Function.Integration.RighthandEvaluatorRealReal");
     }
 
     @AfterClass
