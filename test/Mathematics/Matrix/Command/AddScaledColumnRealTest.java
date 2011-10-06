@@ -206,9 +206,23 @@ public class AddScaledColumnRealTest {
     public void testApplyTo() {
         System.out.println("applyTo");
         Matrix<Double> matrix = this._matrix;
-        AddScaledColumnReal instance = this._instance;
+        Mathematics.Command<Matrix<Double>> instance = this._instance;
         Matrix<Double> expResult = MatrixReal.Identity(1, 2);
         expResult.setValue(2, 1, 2.0);
+        Matrix result = instance.applyTo(matrix);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of applyTo method, of class AddScaledColumnReal.
+     */
+    @Test
+    public void testApplyTo_HavingScalarZero() {
+        System.out.println("applyTo(having scalar == 0.0)");
+        Matrix<Double> matrix = this._matrix;
+        AddScaledColumnReal instance = this._instance;
+        instance.setScalar(0.0);
+        Matrix<Double> expResult = MatrixReal.Identity(1, 2);
         Matrix result = instance.applyTo(matrix);
         assertEquals(expResult, result);
     }
