@@ -177,6 +177,23 @@ public final class Factory {
     }
 
     /**
+     * Validator allowing not null {@see Integer integer} values
+     * that are limited by the specified lower and upper bound.
+     * @param lowerBound Lower bound.
+     * @param upperBound Upper bound.
+     * @return
+     */
+    public static Validator<Integer> BoundedInteger(
+            final int lowerBound,
+            final int upperBound) {
+        And<Integer> validator = new And<Integer>();
+        validator.add(new NotNull<Integer>());
+        validator.add(new IntegerGreaterThanOrEqual(lowerBound));
+        validator.add(new IntegerLessThanOrEqual(upperBound));
+        return validator;
+    }
+
+    /**
      * Validator allowing not null {@see Long long} values
      * that are limited by the specified lower and upper bound.
      * @param lowerBound Lower bound.
