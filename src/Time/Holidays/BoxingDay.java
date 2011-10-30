@@ -16,7 +16,7 @@ import java.util.GregorianCalendar;
  * of Nations</a>.
  * @author Rune Dahl Iversen
  */
-public class BoxingDay
+public final class BoxingDay
         implements AnnuallyRecurring<GregorianCalendar> {
     /**
      * Create a holiday consisting of the Boxing Day.
