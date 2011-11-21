@@ -72,34 +72,37 @@
 
     -->
     <property environment="env"/>
-    <taskdef classpath="cobertura.jar" resource="tasks.properties"/>
+    <path id="cobertura.class.path">
+        <fileset dir="lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    <taskdef classpathref="cobertura.class.path" resource="tasks.properties"/>
     <target name="-pre-compile-test">
       <delete dir="${build.instrumented.dir}" />
       <delete dir="${build.report.cobertura.dir}" />
       <mkdir dir="${build.instrumented.dir}" />
       <mkdir dir="${build.report.cobertura.dir}" />
-      <cobertura-instrument todir="${build.instrumented.dir}">
-        <fileset dir="${build.classes.dir}">
-            <include name="**/*.class"/>
-        </fileset>
-      </cobertura-instrument>
     </target>
-    <target name="-post-test-run">
-        <!--  depends="test" -->
-      <!-- You can disable the html portion if you are using the hudson plugin and rely on the xml -->
-      <cobertura-report format="html" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
-      <!-- Used by the hudson plug-in -->
-      <cobertura-report format="xml" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
-      <delete file="cobertura.ser" />
-        <fail if="tests.failed" unless="ignore.failing.tests">Some tests failed; see details above.</fail>
+    <target depends="-init-check,init" name="-init-check-cobertura">
+        <fail unless="build.classes.dir">Must set build.classes.dir</fail>
     </target>
-    <target name="-post-test-run-single">
-        <!--  depends="test" -->
-      <!-- You can disable the html portion if you are using the hudson plugin and rely on the xml -->
-      <cobertura-report format="html" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
-      <!-- Used by the hudson plug-in -->
-      <cobertura-report format="xml" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
-      <delete file="cobertura.ser" />
-        <fail if="tests.failed" unless="ignore.failing.tests">Some tests failed; see details above.</fail>
+    <target name="-post-compile" depends="-init-check-cobertura,init">
+        <delete dir="${build.instrumented.dir}" />
+        <delete dir="${build.report.cobertura.dir}" />
+        <mkdir dir="${build.instrumented.dir}" />
+        <mkdir dir="${build.report.cobertura.dir}" />
+        <cobertura-instrument todir="${build.instrumented.dir}">
+            <fileset dir="${build.classes.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </cobertura-instrument>
+    </target>
+    <target name="coberturareport" depends="init,test">
+        <!-- You can disable the html portion if you are using the hudson plugin and rely on the xml -->
+        <cobertura-report format="html" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
+        <!-- Used by the hudson plug-in -->
+        <cobertura-report format="xml" srcdir="${src.dir}" destdir="${build.report.cobertura.dir}"/>
+        <delete file="cobertura.ser" />
     </target>
 </project>
