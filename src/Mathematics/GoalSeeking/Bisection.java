@@ -67,6 +67,7 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
             Equals<Double> criterion = this.getCriterion();
             Function<Double, Double> value = this.getFunction();
             double goalValue = this.getGoalValue();
+            int maxIter = this.getMaximumIterations();
             Interval<Double> initialValue = this.getInitialValue();
             Interval<Double> interval = new IntervalReal(
                     initialValue.getLowerBound(), Interval.EndType.Includes,
@@ -86,7 +87,7 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
             else {
                 double midPoint = Double.NaN;
                 int iter;
-                for (iter = 0; iter < this._maxIter
+                for (iter = 0; iter < maxIter
                         && !criterion.value(output, goalValue); iter++) {
                     midPoint = interval.getLowerBound() / 2.0
                             + interval.getUpperBound() / 2.0;
@@ -103,7 +104,7 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
                     }
                 }
                 if (result == null) {
-                    if (this._maxIter <= iter) {
+                    if (maxIter <= iter) {
                         result = new MaximumIterationsFailure(iter);
                     } else {
                         result = new IterativeSuccess(iter, midPoint);
