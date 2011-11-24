@@ -213,45 +213,88 @@ public class BisectionTest {
         IterativeSuccess<Double> is = (IterativeSuccess<Double>)result;
         assertEquals("Wrong number of iterations from result.", 21, is.getIterations());
         assertEquals("Wrong value from result.", 1.553773974403, is.getResult(), Math.pow(-10.0, -6.0));
+    }
 
+    /**
+     * Test of run method, of class Bisection, resulting in a maximum iterations
+     * result.
+     */
+    @Test
+    public void testRun_MaximumIterations() {
+        System.out.println("run(maximum iterations)");
+        Algorithm<Result> instance = this._instance;
         this._instance.setMaximumIterations(20);
-        result = instance.run();
+        Result result = instance.run();
         assertTrue("Maximum Iterations hit: Wrong type of result.", result instanceof MaximumIterationsFailure);
         MaximumIterationsFailure mif = (MaximumIterationsFailure)result;
-
-        this._instance.setMaximumIterations(40);
+    }
+    
+    /**
+     * Test of run method, of class Bisection, resulting in an initial hit on
+     * the lower bound.
+     */
+    @Test
+    public void testRun_InitialHit_LowerBound() {
+        System.out.println("run(initial hit - lower bound");
+        Algorithm<Result> instance = this._instance;
         this._instance.setGoalValue(-1.0);
+        Result result = instance.run();
 
-        result = instance.run();
         assertTrue("Initial hit: Lower Bound - Wrong type of result.", result instanceof SuccessWithValue);
         SuccessWithValue<Double> swv = (SuccessWithValue<Double>)result;
         assertEquals("Initial hit: Lower Bound - Wrong value from result.", 0.0, swv.getResult(), Math.pow(-10.0, -6.0));
-
+    }
+    
+    /**
+     * Test of run method, of class Bisection, resulting in an initial hit on
+     * the upper bound.
+     */
+    @Test
+    public void testRun_InitialHit_UpperBound() {
+        System.out.println("run(initial hit - upper bound)");
+        Algorithm<Result> instance = this._instance;
         this._instance.setGoalValue(15.0);
-        result = instance.run();
+        Result result = instance.run();
         assertTrue("Initial hit: Upper Bound - Wrong type of result.", result instanceof SuccessWithValue);
-        swv = (SuccessWithValue<Double>)result;
+        SuccessWithValue<Double>swv = (SuccessWithValue<Double>)result;
         assertEquals("Initial hit: Upper Bound - Wrong value from result.", 4.0, swv.getResult(), Math.pow(-10.0, -6.0));
-
+    }
+    
+    /**
+     * Test of run method, of class Bisection, resulting in a solution not enclosed.
+     */
+    @Test
+    public void testRun_SolutionNotEnclosed() {
+        System.out.println("run(solution not enclosed)");
+        Algorithm<Result> instance = this._instance;
         this._instance.setInitialValue(
-                new IntervalReal(0.0, Interval.EndType.Includes,
-                2.0, Interval.EndType.Includes));
-        result = instance.run();
+                new IntervalReal(100.0, Interval.EndType.Includes,
+                102.0, Interval.EndType.Includes));
+        Result result = instance.run();
         assertTrue("Solution not enclosed - Wrong type of result.", result instanceof SolutionNotEnclosedFailure);
         SolutionNotEnclosedFailure<Double, Double> snef = (SolutionNotEnclosedFailure<Double, Double>)result;
-        assertEquals("Solution not enclosed - Wrong goal value from result.", 15.0, snef.getGoalValue(), Math.pow(-10.0, -6.0));
+        assertEquals("Solution not enclosed - Wrong goal value from result.", Math.sqrt(2.0), snef.getGoalValue(), Math.pow(-10.0, -6.0));
         Polynomial<Double, Double, Double> f = new PolynomialReal(2);
         f = f.setCoefficient(0, -1.0);
         f = f.setCoefficient(2, 1.0);
         assertEquals("Solution not enclosed - Wrong function from result.", f, snef.getFunction());
-
+    }
+    
+    /**
+     * Test of run method, of class Bisection, resulting in a resolution not
+     * fine enough.
+     */
+    @Test
+    public void testRun_ResolutionNotFineEnough() {
+        System.out.println("run(resolution not fine enough)");
+        Algorithm<Result> instance = this._instance;
         this._instance.setInitialValue(
                 new IntervalReal(3000.0, Interval.EndType.Includes,
                 4000.0, Interval.EndType.Includes));
         this._instance.setMaximumIterations(300);
         this._instance.setGoalValue(15000000.0);
         ((PrecisionBased)this._instance.getCriterion()).setPrecision(Math.pow(10.0, -12.0));
-        result = instance.run();
+        Result result = instance.run();
         assertTrue("Resolution not fine enough - Wrong type of result.", result instanceof ResolutionNotFineEnough);
         ResolutionNotFineEnough<Double, Double> rnfe = (ResolutionNotFineEnough<Double, Double>)result;
         IntervalReal interval = new IntervalReal(
