@@ -79,10 +79,10 @@
     </path>
     <taskdef classpathref="cobertura.class.path" resource="tasks.properties"/>
     <target name="-pre-compile-test">
-      <delete dir="${build.instrumented.dir}" />
-      <delete dir="${build.report.cobertura.dir}" />
-      <mkdir dir="${build.instrumented.dir}" />
-      <mkdir dir="${build.report.cobertura.dir}" />
+        <delete dir="${build.instrumented.dir}" />
+        <delete dir="${build.report.cobertura.dir}" />
+        <mkdir dir="${build.instrumented.dir}" />
+        <mkdir dir="${build.report.cobertura.dir}" />
     </target>
     <target depends="-init-check,init" name="-init-check-cobertura">
         <fail unless="build.classes.dir">Must set build.classes.dir</fail>
