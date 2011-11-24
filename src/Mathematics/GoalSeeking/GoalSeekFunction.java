@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Mathematics.GoalSeeking;
 
 import Mathematics.Algorithm.Algorithm;
@@ -14,10 +13,7 @@ import Validation.Validator;
 /**
  * Interface of a
  * <a href="http://en.wikipedia.org/wiki/Goal_seeking">goal-seeking</a>
- * {@see Algorithm algorithm} where the function is the last input to
- * the algorithm. <br>
- * This allows the user to change the function easily while keeping
- * the other values (goal value, initial value et c.) constant.
+ * {@see Algorithm algorithm}.
  * @author Rune Dahl Iversen
  * @param <TypeOfInitialValue> Type of initial value(s).
  * @param <TypeOfInput>        Type of input.
@@ -25,6 +21,7 @@ import Validation.Validator;
  */
 public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOutput>
         implements Algorithm<Result> {
+
     private Equals<TypeOfOutput> _criterion;
     private Function<TypeOfInput, TypeOfOutput> _function;
     private TypeOfOutput _goalValue;
@@ -32,7 +29,7 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
     private TypeOfInitialValue _initialValue;
 
     /**
-     *
+     * Creates an instance of a goal-seeking algorithm with the specified values.
      * @param function         Function.
      * @param goalValidator    Validator for the goal values.
      * @param goalValue        Goal value.
@@ -47,8 +44,9 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
             final TypeOfInitialValue initialValue) {
         this.setCriterion(criterion);
         this.setFunction(function);
-        if (goalValidator == null)
+        if (goalValidator == null) {
             throw new NullPointerException("Goal validator not properly specified.");
+        }
         this._goalValidator = goalValidator;
         this.setGoalValue(goalValue);
         this.setInitialValue(initialValue);
@@ -94,8 +92,9 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
      * @throws NullPointerException Criterion not properly specified.
      */
     public final void setCriterion(final Equals<TypeOfOutput> criterion) {
-        if (criterion == null)
+        if (criterion == null) {
             throw new NullPointerException("Criterion not properly specified.");
+        }
         this._criterion = criterion;
     }
 
@@ -106,8 +105,9 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
      */
     public final void setFunction(
             final Function<TypeOfInput, TypeOfOutput> function) {
-        if (function == null)
+        if (function == null) {
             throw new NullPointerException("Function not properly specified.");
+        }
         this._function = function;
     }
 
@@ -117,9 +117,10 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
      * @throws IllegalArgumentException Goal value not valid.
      */
     public final void setGoalValue(final TypeOfOutput value) {
-        if (!this._goalValidator.isValid(value))
+        if (!this._goalValidator.isValid(value)) {
             throw new IllegalArgumentException(
                     this._goalValidator.message(value, "Goal value"));
+        }
         this._goalValue = value;
     }
 
@@ -129,8 +130,9 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
      * @throws NullPointerException Initial value not properly specified.
      */
     public final void setInitialValue(final TypeOfInitialValue value) {
-        if (value == null)
+        if (value == null) {
             throw new NullPointerException("Initial value not properly specified.");
+        }
         this._initialValue = value;
     }
-} // http://en.wikipedia.org/wiki/Steffensen's_method
+}

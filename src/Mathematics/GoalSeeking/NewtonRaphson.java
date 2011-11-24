@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Mathematics.GoalSeeking;
 
 import Mathematics.Equality.*;
@@ -21,6 +20,7 @@ public final class NewtonRaphson extends GoalSeekFunction<Double, Double, Double
         Mathematics.Algorithm.Differentiator<Differentiator<Double, Double, Double>>,
         Mathematics.Algorithm.InitialValue<Double>,
         Mathematics.Algorithm.Iterative<Result> {
+
     private Differentiator<Double, Double, Double> _differentiator;
     private int _maxIter;
     private static final Validator<Double> __validator = Factory.FiniteReal();
@@ -30,6 +30,7 @@ public final class NewtonRaphson extends GoalSeekFunction<Double, Double, Double
      * Creates an instance of a Newton-Raphson
      * {@see GoalSeekFunction goal-seeking}
      * {@see Mathematics.Algorithm.Algorithm algorithm}.
+     * @param function          Function being goal-seeked.
      * @param goalValue         Target output value.
      * @param initialValue      Initial value of the algorithm.
      * @param criterion         End criterion for the iteration.
@@ -61,16 +62,18 @@ public final class NewtonRaphson extends GoalSeekFunction<Double, Double, Double
     @Override
     public void setDifferentiator(
             final Differentiator<Double, Double, Double> differentiator) {
-        if (differentiator == null)
+        if (differentiator == null) {
             throw new NullPointerException("Differentiator not properly specified.");
+        }
         this._differentiator = differentiator;
     }
 
     @Override
     public void setMaximumIterations(final int iterations) {
-        if (!__maxIterValidator.isValid(iterations))
+        if (!__maxIterValidator.isValid(iterations)) {
             throw new IllegalArgumentException(
                     __maxIterValidator.message(iterations, "Maximum iterations"));
+        }
         this._maxIter = iterations;
     }
 
@@ -82,27 +85,29 @@ public final class NewtonRaphson extends GoalSeekFunction<Double, Double, Double
             Function<Double, Double> function = this.getFunction();
             double goalValue = this.getGoalValue();
             double value = this.getInitialValue();
+            int maxIter = this.getMaximumIterations();
             int iterations = 0;
             double output = function.value(value);
-            for (iterations = 0; iterations < this._maxIter &&
-                    !criterion.value(output, goalValue);
+            for (iterations = 0; iterations < maxIter
+                    && !criterion.value(output, goalValue);
                     iterations++) {
                 output = function.value(value);
                 double denominator = this._differentiator.value(value, function);
-                if (denominator == 0.0)
+                if (denominator == 0.0) {
                     result = new SlopeEqualsZeroFailure<Double>(value);
-                else
-                    value -= (output - this.getGoalValue()) /
-                            denominator;
+                } else {
+                    value -= (output - this.getGoalValue())
+                            / denominator;
+                }
             }
             if (result == null) {
-                if (this._maxIter <= iterations)
+                if (maxIter <= iterations) {
                     result = new MaximumIterationsFailure(iterations);
-                else
+                } else {
                     result = new IterativeSuccess<Double>(iterations, value);
+                }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             result = new UnhandledExceptionThrown(e);
         }
         return result;

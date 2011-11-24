@@ -31,7 +31,7 @@ public final class Secant extends GoalSeekFunction<Interval<Double>, Double, Dou
 
     /**
      * Creates an instance of the secant method {@see Algorithm algorithm}
-     * for goal-seeking the input to a funtion.
+     * for goal-seeking the input to a function.
      * @param goalValue         Target value.
      * @param initialValue      First initial value.
      * @param criterion         End criterion for the iteration.
@@ -68,6 +68,7 @@ public final class Secant extends GoalSeekFunction<Interval<Double>, Double, Dou
             Equals<Double> criterion = this.getCriterion();
             Function<Double, Double> value = this.getFunction();
             double goalValue = this.getGoalValue();
+            int maxIter = this.getMaximumIterations();
             double x_1 = this.getInitialValue().getLowerBound();
             double fx_1 = value.value(x_1);
             if (criterion.value(fx_1, goalValue))
@@ -76,8 +77,8 @@ public final class Secant extends GoalSeekFunction<Interval<Double>, Double, Dou
             double fx = value.value(x);
             if (criterion.value(fx, goalValue))
                 return new SuccessWithValue(x);
-            int iter = -1;
-            for (iter = 0; iter < this._maxIter &&
+            int iter;
+            for (iter = 0; iter < maxIter &&
                     !criterion.value(fx, goalValue); iter++) {
                 double n = x - (fx - goalValue) * (x - x_1) / (fx - fx_1);
                 double fn = value.value(n);
@@ -93,7 +94,7 @@ public final class Secant extends GoalSeekFunction<Interval<Double>, Double, Dou
                 fx = fn;
             }
             if (result == null) {
-                if (this._maxIter <= iter)
+                if (maxIter <= iter)
                     result = new MaximumIterationsFailure(iter);
                 else
                     result = new IterativeSuccess(iter, x);

@@ -54,9 +54,10 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
 
     @Override
     public void setMaximumIterations(final int iterations) {
-        if (!__maxIterValidator.isValid(iterations))
+        if (!__maxIterValidator.isValid(iterations)) {
             throw new IllegalArgumentException(
                     __maxIterValidator.message(iterations, "Maximum iterations"));
+        }
         this._maxIter = iterations;
     }
 
@@ -73,18 +74,20 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
                     initialValue.getLowerBound(), Interval.EndType.Includes,
                     initialValue.getUpperBound(), Interval.EndType.Includes);
             double output = value.value(initialValue.getLowerBound());
-            if (criterion.value(output, goalValue))
+            if (criterion.value(output, goalValue)) {
                 result = new SuccessWithValue(initialValue.getLowerBound());
+            }
             double lSign = Math.signum(output - goalValue);
             output = value.value(interval.getUpperBound());
-            if (criterion.value(output, goalValue))
+            if (criterion.value(output, goalValue)) {
                 result = new SuccessWithValue(initialValue.getUpperBound());
+            }
             double uSign = Math.signum(output - goalValue);
 
-            if (0.0 < lSign * uSign)
+            if (0.0 < lSign * uSign) {
                 result = new SolutionNotEnclosedFailure<Double, Double>(
                         value, interval, goalValue);
-            else {
+            } else {
                 double midPoint = Double.NaN;
                 int iter;
                 for (iter = 0; iter < maxIter
