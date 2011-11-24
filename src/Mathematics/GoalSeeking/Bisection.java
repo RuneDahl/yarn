@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Mathematics.GoalSeeking;
 
 import Mathematics.*;
@@ -22,16 +21,16 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
         implements Criterion<Equals<Double>>,
         InitialValue<Interval<Double>>,
         Mathematics.Algorithm.Iterative<Result> {
-    private int _maxIter;
 
+    private int _maxIter;
     private static final Validator<Double> __validator =
             Validation.Factory.FiniteReal();
     private static final Validator<Integer> __maxIterValidator =
-            new IntegerGreaterThan();;
+            new IntegerGreaterThan();
 
     /**
      * Creates an instance of the bisection method {@see Algorithm algorithm}
-     * for goal-seeking the input to a funtion.
+     * for goal-seeking the input to a function.
      * @param function          Function.
      * @param goalValue         Target value.
      * @param initialValue      Initial values. The 2 interval must encompass
@@ -64,8 +63,7 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
     @Override
     public Result run() {
         Result result = null;
-        try
-        {
+        try {
             Equals<Double> criterion = this.getCriterion();
             Function<Double, Double> value = this.getFunction();
             double goalValue = this.getGoalValue();
@@ -85,31 +83,36 @@ public final class Bisection extends GoalSeekFunction<Interval<Double>, Double, 
             if (0.0 < lSign * uSign)
                 result = new SolutionNotEnclosedFailure<Double, Double>(
                         value, interval, goalValue);
-            double midPoint = Double.NaN;
-            int iter;
-            for (iter = 0; iter < this._maxIter &&
-                    !criterion.value(output, goalValue); iter++) {
-                midPoint = interval.getLowerBound() / 2.0 +
-                        interval.getUpperBound() / 2.0;
-                if (midPoint == interval.getLowerBound() ||
-                        midPoint == interval.getUpperBound())
-                    result = new ResolutionNotFineEnough<Double, Double>(
-                            value, interval, goalValue);
-                output = value.value(midPoint);
-                if (Math.signum(output - goalValue) == lSign)
-                    interval.setLowerBound(midPoint);
-                else
-                    interval.setUpperBound(midPoint);
+            else {
+                double midPoint = Double.NaN;
+                int iter;
+                for (iter = 0; iter < this._maxIter
+                        && !criterion.value(output, goalValue); iter++) {
+                    midPoint = interval.getLowerBound() / 2.0
+                            + interval.getUpperBound() / 2.0;
+                    if (midPoint == interval.getLowerBound()
+                            || midPoint == interval.getUpperBound()) {
+                        result = new ResolutionNotFineEnough<Double, Double>(
+                                value, interval, goalValue);
+                    }
+                    output = value.value(midPoint);
+                    if (Math.signum(output - goalValue) == lSign) {
+                        interval.setLowerBound(midPoint);
+                    } else {
+                        interval.setUpperBound(midPoint);
+                    }
+                }
+                if (result == null) {
+                    if (this._maxIter <= iter) {
+                        result = new MaximumIterationsFailure(iter);
+                    } else {
+                        result = new IterativeSuccess(iter, midPoint);
+                    }
+                }
             }
-            if (result == null) {
-                if (this._maxIter <= iter)
-                    result = new MaximumIterationsFailure(iter);
-                else
-                    result = new IterativeSuccess(iter, midPoint);
-            }
+        } catch (Exception e) {
+            result = new UnhandledExceptionThrown(e);
         }
-        catch (Exception e)
-        { result = new UnhandledExceptionThrown(e); }
         return result;
     }
 }
