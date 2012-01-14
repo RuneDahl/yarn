@@ -26,7 +26,7 @@ public final class BinomialInteger
     private LinkedHashMap<Integer, Double> _distributionFunction =
             new LinkedHashMap<Integer, Double>();
     private static final Validator<Double> __pValidator =
-            Factory.LimitedReal(0.0, 1.0);
+            Factory.BoundedReal(0.0, 1.0);
     private static final Validator<Integer> __boundValidator =
             Factory.PositiveInteger();
 
@@ -34,7 +34,7 @@ public final class BinomialInteger
      * Create an instance of the binomial distribution on integer values
      * with the specified upper bound and probability of success.
      * @param upperBound Upper bound.
-     * @param p          Probability of succes in each separate trial.
+     * @param p          Probability of success in each separate trial.
      */
     public BinomialInteger(final Integer upperBound, final double p) {
         this.setUpperBound(upperBound);
@@ -80,16 +80,16 @@ public final class BinomialInteger
     }
 
     /**
-     * Gets the probability of succes in each separate trial.
-     * @return The probability of succes in each separate trial.
+     * Gets the probability of success in each separate trial.
+     * @return The probability of success in each separate trial.
      */
     public double getP() {
         return this._p;
     }
 
     /**
-     * Sets the probability of succes in each separate trial.
-     * @param p Probability of succes in each separate trial.
+     * Sets the probability of success in each separate trial.
+     * @param p Probability of success in each separate trial.
      */
     public void setP(final double p) {
         if (!__pValidator.isValid(p))
