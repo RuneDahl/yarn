@@ -38,9 +38,9 @@ public final class GregorianEasternEaster
     { /* Intentional */ }
 
     /**
-     * Returns the Easter Sunday in the Gregorian Calendar occuring in the specified year.
+     * Returns the Easter Sunday in the Gregorian Calendar occurring in the specified year.
      * @param year Year.
-     * @return     The Easter Sunday in the Gregorian Calendar occuring in the specified year.
+     * @return     The Easter Sunday in the Gregorian Calendar occurring in the specified year.
      * @exception  NullPointerException Gregorian Easter does not occur/
      *             cannot be computed for the specified year.
      */
