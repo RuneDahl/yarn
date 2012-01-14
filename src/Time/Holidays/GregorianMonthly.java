@@ -47,17 +47,17 @@ public final class GregorianMonthly
     }
 
     /**
-     * Returns this holiday as occuring in the specified year and month.
+     * Returns this holiday as occurring in the specified year and month.
      * @param year  Year.
      * @param month Month.
-     * @return      This holiday as occuring in the specified year and month.
+     * @return      This holiday as occurring in the specified year and month.
      */
     @Override
     public GregorianCalendar getHoliday(final int year, final int month) {
         if (this.occurs(year, month))
             return new GregorianCalendar(year, month, this._date);
         throw new NullPointerException("This monthly holiday does not occur in " +
-                "the specified yead and month: " + Integer.toString(year) +
+                "the specified year and month: " + Integer.toString(year) +
                 " " + Integer.toString(month) + ".");
     }
 
