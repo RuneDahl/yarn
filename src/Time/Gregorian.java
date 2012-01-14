@@ -18,6 +18,13 @@ import java.util.GregorianCalendar;
  * @author Rune Dahl Iversen
  */
 public final class Gregorian {
+    private final static Validation.Validator<Integer> __countValidator =
+            Validation.Factory.BoundedInteger(1, 5);
+    private final static Validation.Validator<Integer> __monthValidator =
+            Validation.Factory.BoundedInteger(0, 11);
+    private final static Validation.Validator<Integer> __weekdayValidator =
+            Validation.Factory.BoundedInteger(1, 7);
+    
     private Gregorian()
     { /* Intentional */ }
 
@@ -198,6 +205,48 @@ public final class Gregorian {
             return (GregorianCalendar)date1.clone();
         else
             return (GregorianCalendar)date2.clone();
+    }
+    
+    /**
+     * Returns the number of days from the start of the specified month to
+     * the n'th occurrence of the specified weekday.
+     * @param n       Number of occurrences.
+     * @param weekday Weekday.
+     * @param year    Year of the month.
+     * @param month   Month.
+     * @return        The number of days from the start of the specified month
+     *                to the n'th occurrence of the specified weekday.
+     */
+    public static int daysToNthWeekdayFromStartOfMonth(
+            final int n, final int weekday, final int year, final int month) {
+        if (!__countValidator.isValid(n))
+            throw new IllegalArgumentException(__countValidator.message(n, "count"));
+        if (!__monthValidator.isValid(month))
+            throw new IllegalArgumentException(__monthValidator.message(month, "month"));
+        if (!__weekdayValidator.isValid(weekday))
+            throw new IllegalArgumentException(__weekdayValidator.message(weekday, "weekday"));
+        GregorianCalendar temp = new GregorianCalendar(year, month, 1);
+        int date = 1 + weekday - temp.get(GregorianCalendar.DAY_OF_WEEK);
+        if (date <= 0)
+            date += 7;
+        date += 7 * (n - 1);
+        return date;
+    }
+    
+    /**
+     * Returns whether the n'th occurrence of specified weekday from the start
+     * of the month occurs within the same month.
+     * @param n       Number of occurrences.
+     * @param weekday Weekday.
+     * @param year    Year of the month.
+     * @param month   Month.
+     * @return        Whether the n'th occurrence of specified weekday from the
+     *                start of the month occurs within the same month.
+     */
+    public static boolean nthWeekdayOfMonthOccurs(
+            final int n, final int weekday, final int year, final int month) {
+        return daysToNthWeekdayFromStartOfMonth(n, weekday, year, month) <=
+                lengthOfMonth(year, month);
     }
 
     /**
