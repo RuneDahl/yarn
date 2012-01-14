@@ -135,19 +135,6 @@ public class FactoryTest {
     }
 
     /**
-     * Test of LimitedReal method, of class Factory.
-     */
-    @Test
-    public void testLimitedReal() {
-        System.out.println("LimitedReal");
-        Validator<Double> result = Factory.LimitedReal(0.0, 2.0);
-        assertNotNull("Result is null.", result);
-        assertTrue("Wrong type of result.", result instanceof And);
-        And<Double> and = (And)result;
-        assertEquals("Wrong size of result.", 5, and.size());
-    }
-
-    /**
      * Test of Complex method, of class Factory.
      */
     @Test
