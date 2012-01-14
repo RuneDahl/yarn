@@ -400,6 +400,188 @@ public class GregorianTest {
         System.out.println("min(x, null)");
         Gregorian.min(new GregorianCalendar(), null);
     }
+    
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test
+    public void testDaysToNthWeekdayFromStartOfMonth() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth");
+        int year = 2012;
+        for (int month = 0; month < 12; month++) {
+            for (int weekday = 1; weekday < 8; weekday++) {
+                int expected = 0; // cases 0, 3, 6
+                switch (month) {
+                    case 1:
+                    case 7:
+                        expected = 4;
+                        break;
+                    case 2:
+                    case 10:
+                        expected = 3;
+                        break;
+                    case 4:
+                        expected = 5;
+                        break;
+                    case 5:
+                        expected = 2;
+                        break;
+                    case 8:
+                    case 11:
+                        expected = 1;
+                        break;
+                    case 9:
+                        expected = 6;
+                        break;
+                }
+                expected += weekday;
+                expected = ((expected - 1) % 7) + 1;
+                for (int n = 1; n < 6; n++) {
+                    int actual = Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+                    assertEquals("Wrong #days to the " + Integer.toString(n) +
+                            "'th weekday " + Integer.toString(weekday) + 
+                            " for month " + Integer.toString(month) +
+                            " of year " + Integer.toString(year), expected, actual);
+                    expected += 7;
+                }
+            }
+        }
+    }
+
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testDaysToNthWeekdayFromStartOfMonth_MonthNegativeOne() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth(month = -1)");
+        int year = 2012;
+        int month = -1;
+        int weekday = 1;
+        int n = 2;
+        Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+    }
+    
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testDaysToNthWeekdayFromStartOfMonth_MonthTwelve() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth(month = 12)");
+        int year = 2012;
+        int month = 12;
+        int weekday = 1;
+        int n = 2;
+        Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+    }
+    
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testDaysToNthWeekdayFromStartOfMonth_NisZero() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth(n = 0)");
+        int year = 2012;
+        int month = 0;
+        int weekday = 1;
+        int n = 0;
+        Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+    }
+    
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testDaysToNthWeekdayFromStartOfMonth_NisSix() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth(n = 6)");
+        int year = 2012;
+        int month = 0;
+        int weekday = 1;
+        int n = 6;
+        Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+    }
+    
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testDaysToNthWeekdayFromStartOfMonth_WeekdayZero() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth(weekday = 0)");
+        int year = 2012;
+        int month = 0;
+        int weekday = 0;
+        int n = 3;
+        Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+    }
+    
+    /**
+     * Test of daysToNthWeekdayFromStartOfMonth method, of class Gregorian.
+     */
+    @Test (expected=IllegalArgumentException.class)
+    public void testDaysToNthWeekdayFromStartOfMonth_WeekdayEight() {
+        System.out.println("daysToNthWeekdayFromStartOfMonth(weekday = 8)");
+        int year = 2012;
+        int month = 0;
+        int weekday = 8;
+        int n = 3;
+        Gregorian.daysToNthWeekdayFromStartOfMonth(
+                            n, weekday, year, month);
+    }
+    
+    /**
+     * Test of nthWeekdayOfMonthOccurs method, of class Gregorian.
+     */
+    @Test
+    public void testNthWeekdayOfMonthOccurs() {
+        System.out.println("nthWeekdayOfMonthOccurs");
+        int year = 2012;
+        for (int month = 0; month < 12; month++) {
+            for (int weekday = 1; weekday < 8; weekday++) {
+                int date = 0; // cases 0, 3, 6
+                switch (month) {
+                    case 1:
+                    case 7:
+                        date = 4;
+                        break;
+                    case 2:
+                    case 10:
+                        date = 3;
+                        break;
+                    case 4:
+                        date = 5;
+                        break;
+                    case 5:
+                        date = 2;
+                        break;
+                    case 8:
+                    case 11:
+                        date = 1;
+                        break;
+                    case 9:
+                        date = 6;
+                        break;
+                }
+                date += weekday;
+                date = ((date - 1) % 7) + 1;
+                for (int n = 1; n < 6; n++) {
+                    boolean expected = (date <=
+                                Gregorian.lengthOfMonth(year, month));
+                    boolean actual = Gregorian.nthWeekdayOfMonthOccurs(
+                            n, weekday, year, month);
+                    assertEquals("Wrong occurrence of the " + Integer.toString(n) +
+                            "'th weekday " + Integer.toString(weekday) + 
+                            " for month " + Integer.toString(month) +
+                            " of year " + Integer.toString(year), expected, actual);
+                    date += 7;
+                }
+            }
+        }
+    }
 
     /**
      * Test of toString method, of class Gregorian, for a null value.
