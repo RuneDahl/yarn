@@ -8,7 +8,8 @@ import Time.Gregorian;
 import java.util.GregorianCalendar;
 
 /**
- *
+ * Implementation of a {@see Holiday holiday} that occurs on a set count of the
+ * specified weekday every month.
  * @author Rune Dahl Iversen
  */
 public final class GregorianNthWeekday
