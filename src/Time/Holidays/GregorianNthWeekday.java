@@ -18,8 +18,8 @@ public final class GregorianNthWeekday
     private static final Validation.Validator<Integer> __weekdayValidator =
             Validation.Factory.BoundedInteger(1, 7);
     
-    private int _weekday;
     private int _count;
+    private int _weekday;
 
     /**
      * Create a monthly recurring holiday in the Gregorian calendar on the 
@@ -32,10 +32,18 @@ public final class GregorianNthWeekday
         this.setWeekday(weekday);
     }
     
+    /**
+     * Returns the count of weekdays.
+     * @return The count of weekdays.
+     */
     public int getCount() {
         return this._count;
     }
     
+    /**
+     * Sets the count of weekdays.
+     * @param count The count of weekdays.
+     */
     public void setCount(final int count) {
         Integer c = count;
         if (!__countValidator.isValid(c))
