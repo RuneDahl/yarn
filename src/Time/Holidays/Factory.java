@@ -17,7 +17,7 @@ public final class Factory {
     { /* Intentional */ }
 
     /**
-     * {@see Holiday Holidays} as used by the majority of danish financial
+     * {@see Holiday Holidays} as used by the majority of Danish financial
      * institutions.<br>
      * This set of holidays is not applicable backwards in time beyond 2009.
      * @return Danish financial holidays.
@@ -42,6 +42,28 @@ public final class Factory {
                 50)); // Whit Monday.
         return holidays;
     }
+    
+    /**
+     * {@see Holiday Holidays} as used by the 
+     * <a href="http://www.nyse.com/">New York Stock Exchange</a>.
+     * @return Holidays of the New York Stock Exchange.
+     */
+    public static Holiday<GregorianCalendar> UsNyseHolidays() {
+        Or<GregorianCalendar> holidays = new Or<GregorianCalendar>();
+        holidays.add(new GregorianWeekday(GregorianCalendar.SATURDAY)); // Saturdays
+        holidays.add(new GregorianWeekday(GregorianCalendar.SUNDAY)); // Sundays
+        holidays.add(new Time.Holidays.UnitedStates.NewYearsDay()); // New Year's day
+        holidays.add(new GregorianNthWeekdayOfMonth(0, 2, 3)); // MLK/Civil Rights day
+        holidays.add(new GregorianNthWeekdayOfMonth(1, 2, 3)); // Presidents' day
+        holidays.add(new GregorianNthLastWeekdayOfMonth(4, 2, 1)); // Memorial day
+        holidays.add(new GregorianAnniversary(6, 4)); // Independence day
+        holidays.add(new GregorianNthWeekdayOfMonth(8, 2, 1)); // Labor day
+        holidays.add(new GregorianNthWeekdayOfMonth(10, 5, 4)); // Thanksgiving day
+        holidays.add(new Time.Holidays.UnitedStates.ChristmasDay()); // Christmas day
+        holidays.add(_WesternEaster(
+                -2)); // Good Friday                
+        return holidays;
+    }
 
     /**
      * {@see Holiday Holidays} as specified by the
@@ -50,10 +72,10 @@ public final class Factory {
      * System) in the {@see GregorianCalendar Gregorian calendar}.<br>
      * TARGET was incepted on January 4th 1999, so the TARGET holidays
      * are not applicable prior to that date.<br>
-     * As stated on the Wikipedia TARGET was replaced with the TARGET2
+     * As stated on the WikiPedia TARGET was replaced with the TARGET2
      * during November of 2007, so the TARGET holidays are not applicable
      * after that.<br>
-     * This setup of the TARGET holidays allows usage ouside the applicable range.
+     * This setup of the TARGET holidays allows use outside the applicable range.
      * @return TARGET holidays.
      */
     public static Holiday<GregorianCalendar> TARGET() {
@@ -73,9 +95,9 @@ public final class Factory {
      * <a href="http://en.wikipedia.org/wiki/TARGET">TARGET2</a>
      * (Trans-European Automated Real-time Gross Settlement Express Transfer
      * System) in the {@see GregorianCalendar Gregorian calendar}.<br>
-     * As stated on the Wikipedia TARGET2 was started during November of 2007,
+     * As stated on the WikiPedia TARGET2 was started during November of 2007,
      * so the TARGET2 holidays are not applicable prior to that.<br>
-     * This setup of the TARGET2 holidays allows usage ouside the applicable range.
+     * This setup of the TARGET2 holidays allows use outside the applicable range.
      * @return TARGET2 holidays.
      */
     public static Holiday<GregorianCalendar> TARGET2() {
