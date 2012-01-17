@@ -62,7 +62,7 @@ public class GregorianNthWeekdayTest {
         GregorianNthWeekday instance = this._instance;
         int expResult = 5;
         
-        int result = instance.getCount();
+        int result = instance.getOccurrence();
 
         assertEquals(expResult, result);
     }
@@ -76,10 +76,10 @@ public class GregorianNthWeekdayTest {
         int count = 1;
         GregorianNthWeekday instance = this._instance;
         assertTrue("Failed precondition to test setCount(int).", 
-                instance.getCount() != count);
+                instance.getOccurrence() != count);
         
-        instance.setCount(count);
-        int result = instance.getCount();
+        instance.setOccurrence(count);
+        int result = instance.getOccurrence();
         
         assertEquals(count, result);
     }
@@ -93,7 +93,7 @@ public class GregorianNthWeekdayTest {
         System.out.println("setCount(6)");
         int count = 6;
         GregorianNthWeekday instance = this._instance;
-        instance.setCount(count);
+        instance.setOccurrence(count);
     }
 
     /**
@@ -105,7 +105,7 @@ public class GregorianNthWeekdayTest {
         System.out.println("setCount(0)");
         int count = 0;
         GregorianNthWeekday instance = this._instance;
-        instance.setCount(count);
+        instance.setOccurrence(count);
     }
 
     /**
