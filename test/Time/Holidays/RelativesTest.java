@@ -17,7 +17,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * jUnit test for the class Time.Holidays.Relatives.
  * @author Rune Dahl Iversen
  */
 public class RelativesTest {
