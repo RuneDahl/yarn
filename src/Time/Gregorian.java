@@ -209,6 +209,35 @@ public final class Gregorian {
     
     /**
      * Returns the number of days from the start of the specified month to
+     * the n'th occurrence of the specified weekday counted from the end of
+     * the month.
+     * @param n       Number of occurrences.
+     * @param weekday Weekday.
+     * @param year    Year of the month.
+     * @param month   Month.
+     * @return        The number of days from the start of the specified month
+     *                to the n'th occurrence of the specified weekday counted
+     *                from the end of the month.
+     */
+    public static int dateOfNthWeekdayFromEndOfMonth(
+            final int n, final int weekday, final int year, final int month) {
+        if (!__countValidator.isValid(n))
+            throw new IllegalArgumentException(__countValidator.message(n, "count"));
+        if (!__monthValidator.isValid(month))
+            throw new IllegalArgumentException(__monthValidator.message(month, "month"));
+        if (!__weekdayValidator.isValid(weekday))
+            throw new IllegalArgumentException(__weekdayValidator.message(weekday, "weekday"));
+        int date = (int)lengthOfMonth(year, month);
+        int lom = date;
+        date += weekday - new GregorianCalendar(year, month, date).get(GregorianCalendar.DAY_OF_WEEK);
+        if (lom < date)
+            date -= 7;
+        date -= 7 * (n - 1);
+        return date;
+    }
+    
+    /**
+     * Returns the number of days from the start of the specified month to
      * the n'th occurrence of the specified weekday.
      * @param n       Number of occurrences.
      * @param weekday Weekday.
@@ -217,7 +246,7 @@ public final class Gregorian {
      * @return        The number of days from the start of the specified month
      *                to the n'th occurrence of the specified weekday.
      */
-    public static int daysToNthWeekdayFromStartOfMonth(
+    public static int dateOfNthWeekdayFromStartOfMonth(
             final int n, final int weekday, final int year, final int month) {
         if (!__countValidator.isValid(n))
             throw new IllegalArgumentException(__countValidator.message(n, "count"));
@@ -225,8 +254,8 @@ public final class Gregorian {
             throw new IllegalArgumentException(__monthValidator.message(month, "month"));
         if (!__weekdayValidator.isValid(weekday))
             throw new IllegalArgumentException(__weekdayValidator.message(weekday, "weekday"));
-        GregorianCalendar temp = new GregorianCalendar(year, month, 1);
-        int date = 1 + weekday - temp.get(GregorianCalendar.DAY_OF_WEEK);
+        int date = 1;
+        date += weekday - new GregorianCalendar(year, month, 1).get(GregorianCalendar.DAY_OF_WEEK);
         if (date <= 0)
             date += 7;
         date += 7 * (n - 1);
@@ -245,7 +274,7 @@ public final class Gregorian {
      */
     public static boolean nthWeekdayOfMonthOccurs(
             final int n, final int weekday, final int year, final int month) {
-        return daysToNthWeekdayFromStartOfMonth(n, weekday, year, month) <=
+        return dateOfNthWeekdayFromStartOfMonth(n, weekday, year, month) <=
                 lengthOfMonth(year, month);
     }
 
