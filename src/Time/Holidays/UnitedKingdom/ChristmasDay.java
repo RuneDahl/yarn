@@ -45,8 +45,7 @@ public final class ChristmasDay
     public boolean isHoliday(final GregorianCalendar dateTime) {
         GregorianCalendar christmas =
                 this.getHoliday(dateTime.get(GregorianCalendar.YEAR));
-        return christmas.get(GregorianCalendar.YEAR) == dateTime.get(GregorianCalendar.YEAR) &&
-                christmas.get(GregorianCalendar.MONTH) == dateTime.get(GregorianCalendar.MONTH) &&
+        return christmas.get(GregorianCalendar.MONTH) == dateTime.get(GregorianCalendar.MONTH) &&
                 christmas.get(GregorianCalendar.DATE) == dateTime.get(GregorianCalendar.DATE);
     }
 }

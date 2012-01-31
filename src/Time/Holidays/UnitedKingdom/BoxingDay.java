@@ -44,8 +44,7 @@ public final class BoxingDay
     public boolean isHoliday(final GregorianCalendar dateTime) {
         GregorianCalendar boxingDay =
                 this.getHoliday(dateTime.get(GregorianCalendar.YEAR));
-        return boxingDay.get(GregorianCalendar.YEAR) == dateTime.get(GregorianCalendar.YEAR) &&
-                boxingDay.get(GregorianCalendar.MONTH) == dateTime.get(GregorianCalendar.MONTH) &&
+        return boxingDay.get(GregorianCalendar.MONTH) == dateTime.get(GregorianCalendar.MONTH) &&
                 boxingDay.get(GregorianCalendar.DATE) == dateTime.get(GregorianCalendar.DATE);
     }
 }
