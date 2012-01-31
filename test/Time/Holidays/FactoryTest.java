@@ -75,4 +75,17 @@ public class FactoryTest {
         Or o = (Or)result;
         assertEquals("Wrong number of holidays in collection.", 7, o.size());
     }
+
+    /**
+     * Test of UsNyseHolidays method, of class Factory.
+     */
+    @Test
+    public void testUsNyseHolidays() {
+        System.out.println("UsNyseHolidays");
+        Holiday result = Factory.UsNyseHolidays();
+        assertTrue("Wrong type of result from UsNyseHolidays.",
+                result instanceof Or);
+        Or o = (Or)result;
+        assertEquals("Wrong number of holidays in collection.", 11, o.size());
+    }
 }
