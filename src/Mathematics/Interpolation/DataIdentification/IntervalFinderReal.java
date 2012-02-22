@@ -41,7 +41,7 @@ public class IntervalFinderReal {
             if (Double.isInfinite(iAfter))
                 iAfter = iBefore;
         }
-        if (Double.isInfinite(iAfter)) {
+        else if (Double.isInfinite(iAfter)) {
             iAfter = iBefore;
             iBefore = Double.NEGATIVE_INFINITY;
             for (double i : data) {

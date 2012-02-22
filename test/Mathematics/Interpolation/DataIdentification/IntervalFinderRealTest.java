@@ -63,28 +63,46 @@ public class IntervalFinderRealTest {
     @Test
     public void testGetNeighbors() {
         System.out.println("getNeighbors");
-        double value = 0.0;
+        double value = -1.0;
         Iterable<Double> data = this._data;
         IntervalFinderReal instance = this._instance;
         Interval<Double> expResult = new IntervalReal(
-                0.0, Interval.EndType.Includes, 0.0, Interval.EndType.Includes);
+                0.0, Interval.EndType.Includes, 1.0, Interval.EndType.Includes);
         Interval<Double> result = instance.getNeighbors(value, data);
-        assertEquals("Wrong interval from method getNeighbors.",
+        assertEquals("Wrong interval from method getNeighbors for the value " +
+                Double.toString(value),
+                expResult, result);
+
+        value = 0.0;
+        expResult = new IntervalReal(
+                0.0, Interval.EndType.Includes, 0.0, Interval.EndType.Includes);
+        result = instance.getNeighbors(value, data);
+        assertEquals("Wrong interval from method getNeighbors for the value " +
+                Double.toString(value),
                 expResult, result);
 
         value = 2.5;
         expResult = new IntervalReal(
                 2.0, Interval.EndType.Includes, 3.0, Interval.EndType.Includes);
         result = instance.getNeighbors(value, data);
-        assertEquals("Wrong interval from method getNeighbors.",
+        assertEquals("Wrong interval from method getNeighbors for the value " +
+                Double.toString(value),
                 expResult, result);
 
+        value = 3.0;
+        expResult = new IntervalReal(
+                3.0, Interval.EndType.Includes, 3.0, Interval.EndType.Includes);
+        result = instance.getNeighbors(value, data);
+        assertEquals("Wrong interval from method getNeighbors for the value " +
+                Double.toString(value),
+                expResult, result);
 
         value = 3.5;
         expResult = new IntervalReal(
                 2.0, Interval.EndType.Includes, 3.0, Interval.EndType.Includes);
         result = instance.getNeighbors(value, data);
-        assertEquals("Wrong interval from method getNeighbors.",
+        assertEquals("Wrong interval from method getNeighbors for the value " +
+                Double.toString(value),
                 expResult, result);
     }
 
