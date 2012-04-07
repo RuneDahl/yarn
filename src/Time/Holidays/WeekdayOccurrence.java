@@ -8,6 +8,7 @@ package Time.Holidays;
  * Abstract implementation of a {@see Holiday holiday} based on a specified
  * weekday and a number of occurrences.
  * @author Rune Dahl Iversen
+ * @param <TypeOfCalendar> Type of calendar.
  */
 public abstract class WeekdayOccurrence<TypeOfCalendar>
     implements Holiday<TypeOfCalendar> {
@@ -19,14 +20,19 @@ public abstract class WeekdayOccurrence<TypeOfCalendar>
     private int _occurrence;
     private int _weekday;
     
+    /**
+     * Creates an instance with the specified occurrences and weekday.
+     * @param occurrence The occurrence of weekdays.
+     * @param weekday    Weekday. An integer in the range 1 through 7.
+     */
     protected WeekdayOccurrence(final int occurrence, final int weekday) {
         this.setOccurrence(occurrence);
         this.setWeekday(weekday);
     }
 
     /**
-     * Returns the count of weekdays.
-     * @return The count of weekdays.
+     * Returns the occurrence of weekdays.
+     * @return The occurrence of weekdays.
      */
     public final int getOccurrence() {
         return this._occurrence;
