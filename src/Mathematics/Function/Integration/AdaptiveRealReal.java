@@ -32,6 +32,15 @@ public final class AdaptiveRealReal extends IterativeQuadrature
     private Evaluator<Function<Double, Double>, Interval<Double>, Double> _evaluator;
     private Interval<Double> _region;
 
+    /**
+     * Creates an instance of the adaptive integrator with the specified values.
+     * @param maximumIterations Maximum number of iterations allowed.
+     * @param initialSplits     Number of subintervals to split the original interval into.
+     * @param iterativeSplits   Number of subintervals to split the preceeding interval into.
+     * @param evaluator         Evaluator.
+     * @param region            Interval to integrate over.
+     * @param criterion         Criterion for convergence.
+     */
     public AdaptiveRealReal(final int maximumIterations, final int initialSplits,
             final int iterativeSplits,
             final Evaluator<Function<Double, Double>, Interval<Double>, Double> evaluator,
