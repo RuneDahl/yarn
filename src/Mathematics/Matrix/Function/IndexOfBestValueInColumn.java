@@ -13,6 +13,7 @@ import Mathematics.Matrix.Matrix;
  * row index of the "best" value in the specified column between the specified
  * rows. The "best" value is determined by the specified comparer.
  * @author Rune Dahl Iversen
+ * @param <TypeOfValue> Type of value.
  */
 public final class IndexOfBestValueInColumn<TypeOfValue>
         implements Function<Matrix<TypeOfValue>, Integer> {
