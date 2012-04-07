@@ -32,6 +32,7 @@ public final class Secant extends GoalSeekFunction<Interval<Double>, Double, Dou
     /**
      * Creates an instance of the secant method {@see Algorithm algorithm}
      * for goal-seeking the input to a function.
+     * @param function          Function.
      * @param goalValue         Target value.
      * @param initialValue      First initial value.
      * @param criterion         End criterion for the iteration.
