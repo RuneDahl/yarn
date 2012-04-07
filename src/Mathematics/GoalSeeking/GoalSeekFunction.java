@@ -30,10 +30,10 @@ public abstract class GoalSeekFunction<TypeOfInitialValue, TypeOfInput, TypeOfOu
 
     /**
      * Creates an instance of a goal-seeking algorithm with the specified values.
+     * @param criterion        Criterion used to determine convergence.
      * @param function         Function.
      * @param goalValidator    Validator for the goal values.
      * @param goalValue        Goal value.
-     * @param initialValidator Validator for the initial value.
      * @param initialValue     Initial value.
      */
     protected GoalSeekFunction(
