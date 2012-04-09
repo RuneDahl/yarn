@@ -177,7 +177,7 @@ public class GregorianPeriodFractionWithAnchorTest {
         System.out.println("setNumerator(null)");
         PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         DayCount<GregorianCalendar> numerator = null;
-        instance.setDenominator(numerator);
+        instance.setNumerator(numerator);
     }
 
     /**
@@ -218,8 +218,8 @@ public class GregorianPeriodFractionWithAnchorTest {
     public void testSetPeriod_Null() {
         System.out.println("setPeriod(null)");
         PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
-        DayCount<GregorianCalendar> period = null;
-        instance.setDenominator(period);
+        Period<GregorianCalendar> period = null;
+        instance.setPeriod(period);
     }
 
     /**
