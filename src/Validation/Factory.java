@@ -240,4 +240,28 @@ public final class Factory {
         validator.add(new DoubleIsNumeric());
         return validator;
     }
+    
+    /**
+     * Validator allowing not null {@see String string}
+     * values that are not empty.
+     * @return New validator.
+     */
+    public static Validator<String> StringNotEmpty() {
+        And<String> validator = new And<String>();
+        validator.add(new NotNull<String>());
+        validator.add(new StringNotEmpty());
+        return validator;
+    }
+    
+    /**
+     * Validator allowing not null {@see String string}
+     * values that does not solely consist of whitespace.
+     * @return New validator.
+     */
+    public static Validator<String> StringNotWhitespace() {
+        And<String> validator = new And<String>();
+        validator.add(new NotNull<String>());
+        validator.add(new StringNotWhitespace());
+        return validator;
+    }
 }
