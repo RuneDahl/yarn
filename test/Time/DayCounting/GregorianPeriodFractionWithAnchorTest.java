@@ -57,7 +57,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test
     public void testGetAnchor() {
         System.out.println("getAnchor");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         GregorianCalendar expResult = new GregorianCalendar(2000, 0, 1);
         GregorianCalendar result = instance.getAnchor();
         assertEquals(expResult, result);
@@ -70,7 +70,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     public void testSetAnchor() {
         System.out.println("setAnchor");
         GregorianCalendar expResult = new GregorianCalendar(2000, 0, 1);
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         assertFalse("Precondition for testing setAnchor is violated.", 
                 expResult == instance.getAnchor());
         instance.setAnchor(expResult);
@@ -85,7 +85,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test (expected = NullPointerException.class)
     public void testSetAnchor_Null() {
         System.out.println("setAnchor(null)");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         GregorianCalendar anchor = null;
         instance.setAnchor(anchor);
     }
@@ -96,7 +96,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test
     public void testGetDenominator() {
         System.out.println("getDenominator");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         DayCount<GregorianCalendar> result = instance.getDenominator();
         assertNotNull(result);
         assertTrue(result instanceof GregorianEuro30);
@@ -109,7 +109,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     public void testSetDenominator() {
         System.out.println("setDenominator");
         DayCount<GregorianCalendar> expResult = new GregorianActual();
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         assertFalse("Precondition for testing setDenominator is violated.", 
                 instance.getDenominator() instanceof GregorianActual);
         instance.setDenominator(expResult);
@@ -124,7 +124,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test (expected = NullPointerException.class)
     public void testSetDenominator_Null() {
         System.out.println("setDenominator(null)");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         DayCount<GregorianCalendar> denominator = null;
         instance.setDenominator(denominator);
     }
@@ -135,7 +135,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        Fraction<GregorianCalendar> instance = this._instance;
         String expResult = "Act/360";
         String result = instance.getName();
         assertEquals(expResult, result);
@@ -147,7 +147,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test
     public void testGetNumerator() {
         System.out.println("getNumerator");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         DayCount<GregorianCalendar> result = instance.getNumerator();
         assertNotNull(result);
         assertTrue(result instanceof GregorianActual);
@@ -160,7 +160,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     public void testSetNumerator() {
         System.out.println("setNumerator");
         DayCount<GregorianCalendar> expResult = new GregorianEuro30();
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         assertFalse("Precondition for testing setNumerator is violated.", 
                 instance.getNumerator() instanceof GregorianEuro30);
         instance.setNumerator(expResult);
@@ -175,7 +175,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test (expected = NullPointerException.class)
     public void testSetNumerator_Null() {
         System.out.println("setNumerator(null)");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         DayCount<GregorianCalendar> numerator = null;
         instance.setDenominator(numerator);
     }
@@ -186,7 +186,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test
     public void testGetPeriod() {
         System.out.println("getPeriod");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         Period<GregorianCalendar> result = instance.getPeriod();
         assertNotNull(result);
         assertTrue(result instanceof GregorianYear);
@@ -202,7 +202,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     public void testSetPeriod() {
         System.out.println("setPeriod");
         Period<GregorianCalendar> expResult = new GregorianMonth(1);
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         assertFalse("Precondition for testing setPeriod is violated.", 
                 instance.getPeriod() instanceof GregorianMonth);
         instance.setPeriod(expResult);
@@ -217,7 +217,7 @@ public class GregorianPeriodFractionWithAnchorTest {
     @Test (expected = NullPointerException.class)
     public void testSetPeriod_Null() {
         System.out.println("setPeriod(null)");
-        GregorianPeriodFractionWithAnchor instance = this._instance;
+        PeriodFractionWithAnchor<GregorianCalendar> instance = this._instance;
         DayCount<GregorianCalendar> period = null;
         instance.setDenominator(period);
     }
