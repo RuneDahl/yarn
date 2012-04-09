@@ -225,4 +225,29 @@ public class FactoryTest {
         assertEquals("Wrong size of result.", 2, and.size());
     }
 
+    /**
+     * Test of StringNotEmpty method, of class Factory.
+     */
+    @Test
+    public void testStringNotEmpty() {
+        System.out.println("StringNotEmpty");
+        Validator<String> result = Factory.StringNotEmpty();
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<String> and = (And)result;
+        assertEquals("Wrong size of result.", 2, and.size());
+    }
+
+    /**
+     * Test of StringNotWhitespace method, of class Factory.
+     */
+    @Test
+    public void testStringNotWhitespace() {
+        System.out.println("StringNotWhitespace");
+        Validator<String> result = Factory.StringNotWhitespace();
+        assertNotNull("Result is null.", result);
+        assertTrue("Wrong type of result.", result instanceof And);
+        And<String> and = (And)result;
+        assertEquals("Wrong size of result.", 2, and.size());
+    }
 }
