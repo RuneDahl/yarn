@@ -31,7 +31,7 @@ public final class MatrixReal extends MatrixBase<Double> {
     }
 
     /**
-     * Cerates a real matrix with the specified dimensions
+     * Creates a real matrix with the specified dimensions
      * (firstRow, rows, firstColumn and columns).
      * The matrix will be initialized with the value 0.0 in all values.
      * @param firstRow    First row of this matrix.
@@ -45,7 +45,7 @@ public final class MatrixReal extends MatrixBase<Double> {
     }
 
     /**
-     * Cerates a real matrix with the specified rows and columns and the
+     * Creates a real matrix with the specified rows and columns and the
      * specified value.
      * @param rows    Number of rows of this matrix.
      * @param columns Number of columns of this matrix.
@@ -56,7 +56,7 @@ public final class MatrixReal extends MatrixBase<Double> {
     }
 
     /**
-     * Cerates a real matrix with the specified dimensions
+     * Creates a real matrix with the specified dimensions
      * (firstRow, rows, firstColumn and columns) and value.
      * @param firstRow    First row of this matrix.
      * @param rows        Number of rows of this matrix.
