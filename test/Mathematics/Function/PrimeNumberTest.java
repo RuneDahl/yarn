@@ -107,7 +107,31 @@ public class PrimeNumberTest {
                     expResult, result);
         }
     }
+    
+    /**
+     * Test of value method, of class PrimeNumber, for the value 102.
+     */
+    @Test
+    public void testValue_102() {
+        System.out.println("value(102)");
+        Function<Long, Boolean> instance = this._instance;
+        Boolean expResult = false;
+        Boolean result = instance.value(102L);
+        assertEquals("PrimeNumer(" + Integer.toString(102) + ")", expResult, result);
+    }
 
+    /**
+     * Test of value method, of class PrimeNumber, for the value 103.
+     */
+    @Test
+    public void testValue_103() {
+        System.out.println("value(103)");
+        Function<Long, Boolean> instance = this._instance;
+        Boolean expResult = true;
+        Boolean result = instance.value(103L);
+        assertEquals("PrimeNumer(" + Integer.toString(103) + ")", expResult, result);
+    }
+    
     /**
      * Test of value method, of class PrimeNumber, for a null value.
      */
