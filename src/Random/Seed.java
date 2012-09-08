@@ -8,6 +8,11 @@ package Random;
 /**
  * Interface for a {@see Generator random generator} based on a
  * <a href="http://en.wikipedia.org/wiki/Random_seed">seed</a>.
+ * <br>The idea is that the user can specify the state of this
+ * random generator by calling the method setSeed. <br>Seeds in
+ * random generators are often specified as
+ * <a href="http://en.wikipedia.org/wiki/Integer">integer numbers</a>
+ * but this interface allows different specifications.
  * @author Rune Dahl Iversen
  * @param <TypeOfSeed>  Type of seed.
  * @param <TypeOfValue> Type of value.
