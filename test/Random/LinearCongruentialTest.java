@@ -202,7 +202,7 @@ public class LinearCongruentialTest {
      * Test of setSeed method, of class LinearCongruential, for the value -1.
      */
     @Test (expected=IllegalArgumentException.class)
-    public void testSetSeed_NegaiveOne() {
+    public void testSetSeed_NegativeOne() {
         System.out.println("setSeed(-1)");
         Long seed = -1L;
         Seed<Long, Long> instance = this._instance;
