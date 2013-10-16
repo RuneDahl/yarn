@@ -3,9 +3,9 @@ My first attempt at a java-based numerical library.
 
 Main points:
 - The project will use JDK 1.6.
-- The project is written in Java using NetBeans 6.8.
-- A unit tests will be added using JUnit 4.5, available from within NetBeans 6.8.
-- Documentation will be written using JavaDoc from within NetBeans 6.8.
+- The project is written in Java using NetBeans 7.0.1.
+- A unit tests will be added using JUnit 4.5, available from within NetBeans 7.0.1.
+- Documentation will be written using JavaDoc from within NetBeans 7.0.1.
 - Code coverage is measured using Cobertura 1.9. (See http://cobertura.sourceforge.net/)
 
 Declaration of intent:
