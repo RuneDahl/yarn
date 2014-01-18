@@ -17,7 +17,7 @@ public final class IterativeSuccess<TypeOfResult> extends Iterative
     private final TypeOfResult _result;
 
     /**
-     * Creates an instance of an iterative succesful result.
+     * Creates an instance of an iterative successful result.
      * @param iterations Number of iterations used.
      * @param result     Resulting value.
      */
